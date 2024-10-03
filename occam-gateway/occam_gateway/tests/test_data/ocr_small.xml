@@ -1,0 +1,88 @@
+<PcGts xmlns="http://schema.primaresearch.org/PAGE/gts/pagecontent/2019-07-15" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://schema.primaresearch.org/PAGE/gts/pagecontent/2019-07-15/pagecontent.xsd">
+  <Metadata>
+    <Creator>Pero OCR</Creator>
+    <Created>2024-04-05T09:37:14.378516+00:00</Created>
+    <LastChange>2024-04-05T09:37:14.378516+00:00</LastChange>
+  </Metadata>
+  <Page imageFilename="/tmp/tmpv7zm9dn_/onkosten_2024_03_27_Laurens.jpg" imageWidth="3480" imageHeight="4640">
+    <TextRegion id="r002">
+      <Coords points="887,859 884,924 989,929 992,864 887,859"/>
+      <TextLine id="r002-l007" index="0" custom="heights_v2:[45.9,19.0]">
+        <Coords points="884,924 989,929 992,864 887,859 884,924"/>
+        <Baseline points="885,905 990,910"/>
+        <TextEquiv conf="0.828">
+          <Unicode>10</Unicode>
+        </TextEquiv>
+      </TextLine>
+    </TextRegion>
+    <TextRegion id="r004">
+      <Coords points="898,774 894,845 1240,850 1366,772 1721,762 1852,843 2047,828 2167,905 2186,981 2421,966 2427,798 2421,719 2346,724 2196,651 2082,539 2076,421 1231,451 1237,569 1117,690 970,779 898,774"/>
+      <TextLine id="r004-l001" index="0" custom="heights_v2:[84.4,34.2]">
+        <Coords points="2076,421 1971,426 1936,426 1784,431 1696,436 1655,436 1522,440 1515,441 1512,441 1231,451 1237,569 1337,564 1425,559 1522,559 1610,554 1702,554 1797,549 1885,544 1977,544 2082,539 2076,421"/>
+        <Baseline points="1235,535 1335,530 1425,525 1520,525 1610,520 1700,520 1795,515 1885,510 1975,510 2080,505"/>
+        <TextEquiv conf="0.677">
+          <Unicode>Frituur Marcel</Unicode>
+        </TextEquiv>
+      </TextLine>
+      <TextLine id="r004-l002" index="1" custom="heights_v2:[73.5,30.6]">
+        <Coords points="1270,691 1362,691 1440,686 1527,686 1605,681 1692,681 1770,676 1857,676 1937,671 2032,666 2026,562 1931,567 1850,572 1770,571 1685,577 1605,576 1520,582 1440,581 1355,587 1270,586 1270,691"/>
+        <Baseline points="1270,660 1360,660 1440,655 1525,655 1605,650 1690,650 1770,645 1855,645 1935,640 2030,635"/>
+        <TextEquiv conf="0.593">
+          <Unicode>BIW-kasticket</Unicode>
+        </TextEquiv>
+      </TextLine>
+      <TextLine id="r004-l003" index="2" custom="heights_v2:[54.6,22.0]">
+        <Coords points="1721,762 1836,757 1958,752 2072,737 2202,727 2196,651 2066,661 1948,676 1833,680 1718,685 1598,690 1485,690 1363,695 1240,695 1117,690 1114,767 1240,772 1366,772 1485,767 1543,767 1721,762"/>
+        <Baseline points="1115,745 1240,750 1365,750 1485,745 1600,745 1720,740 1835,735 1955,730 2070,715 2200,705"/>
+        <TextEquiv conf="0.702">
+          <Unicode>Lightspeed ticket nummer: 171959</Unicode>
+        </TextEquiv>
+      </TextLine>
+      <TextLine id="r004-l004" index="3" custom="heights_v2:[56.2,22.8]">
+        <Coords points="2047,828 2107,823 2167,818 2232,813 2292,808 2352,803 2427,798 2421,719 2346,724 2285,729 2225,734 2161,739 2100,744 2040,749 1976,754 1915,759 1846,764 1852,843 2047,828"/>
+        <Baseline points="1850,820 1920,815 1980,810 2045,805 2105,800 2165,795 2230,790 2290,785 2350,780 2425,775"/>
+        <TextEquiv conf="0.681">
+          <Unicode>27/03/2024 12.53</Unicode>
+        </TextEquiv>
+      </TextLine>
+      <TextLine id="r004-l005" index="4" custom="heights_v2:[50.9,19.8]">
+        <Coords points="894,845 1240,850 1240,779 1165,779 1100,779 1035,779 970,779 898,774 894,845"/>
+        <Baseline points="895,825 970,830 1035,830 1100,830 1165,830 1240,830"/>
+        <TextEquiv conf="0.987">
+          <Unicode>AFHALEN</Unicode>
+        </TextEquiv>
+      </TextLine>
+      <TextLine id="r004-l006" index="5" custom="heights_v2:[51.3,20.0]">
+        <Coords points="2425,858 2422,814 2332,819 2252,824 2159,834 2167,905 2256,895 2336,890 2424,885 2425,858"/>
+        <Baseline points="2165,885 2255,875 2335,870 2424,865"/>
+        <TextEquiv conf="0.620">
+          <Unicode>Laurent</Unicode>
+        </TextEquiv>
+      </TextLine>
+      <TextLine id="r004-l008" index="6" custom="heights_v2:[53.3,21.1]">
+        <Coords points="2280,975 2336,971 2421,966 2417,892 2332,897 2261,902 2182,907 2186,981 2280,975"/>
+        <Baseline points="2185,960 2265,955 2335,950 2420,945"/>
+        <TextEquiv conf="0.971">
+          <Unicode>15924</Unicode>
+        </TextEquiv>
+      </TextLine>
+    </TextRegion>
+    <TextRegion id="r013">
+      <Coords points="2230,2623 2230,2695 2245,2777 2465,2772 2465,2697 2420,2623 2230,2623"/>
+      <TextLine id="r013-l064" index="0" custom="heights_v2:[52.1,20.0]">
+        <Coords points="2230,2695 2325,2695 2420,2695 2420,2623 2325,2623 2230,2623 2230,2695"/>
+        <Baseline points="2230,2675 2325,2675 2420,2675"/>
+        <TextEquiv conf="0.476">
+          <Unicode>131.*</Unicode>
+        </TextEquiv>
+      </TextLine>
+      <TextLine id="r013-l066" index="1" custom="heights_v2:[53.2,22.1]">
+        <Coords points="2352,2775 2385,2772 2465,2772 2465,2697 2385,2697 2316,2702 2245,2702 2245,2777 2352,2775"/>
+        <Baseline points="2245,2755 2320,2755 2385,2750 2465,2750"/>
+        <TextEquiv conf="0.805">
+          <Unicode>Totaal</Unicode>
+        </TextEquiv>
+      </TextLine>
+    </TextRegion>
+  </Page>
+</PcGts>

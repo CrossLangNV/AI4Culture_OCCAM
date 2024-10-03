@@ -1,0 +1,48 @@
+services:
+  web:
+    build:
+      context: ./occam_gateway
+    image: <your-docker-registry>/occam_gateway
+    ports:
+      - '18000:8000'
+    volumes:
+      - ./occam_gateway:/app
+      - ./data:/data
+    environment:
+      - DEBUG=0 # 1 for debug mode and 0 for production mode
+    env_file:
+      - ./secrets/.env
+
+  nginx:
+    build: ./nginx
+    image: <your-docker-registry>/occam_gateway_nginx
+    restart: always
+    ports:
+      - '19000:8000'
+    healthcheck:
+      test: [ "CMD", "curl", "-I", "http://localhost:8000/docs/" ]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+    depends_on:
+      - web
+
+  celery:
+    build:
+      context: ./occam_gateway
+    command: celery -A occam_gateway worker -l info -Q ocr_queue,translation_queue -c 1
+    environment:
+      - DEBUG=0
+    env_file:
+      - ./secrets/.env
+    volumes:
+      - ./occam_gateway:/app
+      - ./data:/data
+    depends_on:
+      - web
+      - redis
+
+  redis:
+    image: redis:6-alpine
+    ports:
+      - "6379:6379"

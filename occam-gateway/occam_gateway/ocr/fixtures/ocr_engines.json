@@ -1,0 +1,10 @@
+[
+  {
+    "model": "ocr.OCREngine",
+    "pk": 1,
+    "fields": {
+      "name": "PERO OCR - General",
+      "description": "General-purpose OCR for European printed documents. See https://github.com/DCGM/pero-ocr"
+    }
+  }
+]

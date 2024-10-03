@@ -1,0 +1,733 @@
+<PcGts xmlns="http://schema.primaresearch.org/PAGE/gts/pagecontent/2019-07-15" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://schema.primaresearch.org/PAGE/gts/pagecontent/2019-07-15/pagecontent.xsd">
+  <Metadata>
+    <Creator>Pero OCR</Creator>
+    <Created>2024-04-05T09:37:14.378516+00:00</Created>
+    <LastChange>2024-04-05T09:37:14.378516+00:00</LastChange>
+  </Metadata>
+  <Page imageFilename="/tmp/tmpv7zm9dn_/onkosten_2024_03_27_Laurens.jpg" imageWidth="3480" imageHeight="4640">
+    <TextRegion id="r002">
+      <Coords points="887,859 884,924 989,929 992,864 887,859"/>
+      <TextLine id="r002-l007" index="0" custom="heights_v2:[45.9,19.0]">
+        <Coords points="884,924 989,929 992,864 887,859 884,924"/>
+        <Baseline points="885,905 990,910"/>
+        <TextEquiv conf="0.828">
+          <Unicode>10</Unicode>
+        </TextEquiv>
+      </TextLine>
+    </TextRegion>
+    <TextRegion id="r004">
+      <Coords points="898,774 894,845 1240,850 1366,772 1721,762 1852,843 2047,828 2167,905 2186,981 2421,966 2427,798 2421,719 2346,724 2196,651 2082,539 2076,421 1231,451 1237,569 1117,690 970,779 898,774"/>
+      <TextLine id="r004-l001" index="0" custom="heights_v2:[84.4,34.2]">
+        <Coords points="2076,421 1971,426 1936,426 1784,431 1696,436 1655,436 1522,440 1515,441 1512,441 1231,451 1237,569 1337,564 1425,559 1522,559 1610,554 1702,554 1797,549 1885,544 1977,544 2082,539 2076,421"/>
+        <Baseline points="1235,535 1335,530 1425,525 1520,525 1610,520 1700,520 1795,515 1885,510 1975,510 2080,505"/>
+        <TextEquiv conf="0.677">
+          <Unicode>Frituur Marcel</Unicode>
+        </TextEquiv>
+      </TextLine>
+      <TextLine id="r004-l002" index="1" custom="heights_v2:[73.5,30.6]">
+        <Coords points="1270,691 1362,691 1440,686 1527,686 1605,681 1692,681 1770,676 1857,676 1937,671 2032,666 2026,562 1931,567 1850,572 1770,571 1685,577 1605,576 1520,582 1440,581 1355,587 1270,586 1270,691"/>
+        <Baseline points="1270,660 1360,660 1440,655 1525,655 1605,650 1690,650 1770,645 1855,645 1935,640 2030,635"/>
+        <TextEquiv conf="0.593">
+          <Unicode>BIW-kasticket</Unicode>
+        </TextEquiv>
+      </TextLine>
+      <TextLine id="r004-l003" index="2" custom="heights_v2:[54.6,22.0]">
+        <Coords points="1721,762 1836,757 1958,752 2072,737 2202,727 2196,651 2066,661 1948,676 1833,680 1718,685 1598,690 1485,690 1363,695 1240,695 1117,690 1114,767 1240,772 1366,772 1485,767 1543,767 1721,762"/>
+        <Baseline points="1115,745 1240,750 1365,750 1485,745 1600,745 1720,740 1835,735 1955,730 2070,715 2200,705"/>
+        <TextEquiv conf="0.702">
+          <Unicode>Lightspeed ticket nummer: 171959</Unicode>
+        </TextEquiv>
+      </TextLine>
+      <TextLine id="r004-l004" index="3" custom="heights_v2:[56.2,22.8]">
+        <Coords points="2047,828 2107,823 2167,818 2232,813 2292,808 2352,803 2427,798 2421,719 2346,724 2285,729 2225,734 2161,739 2100,744 2040,749 1976,754 1915,759 1846,764 1852,843 2047,828"/>
+        <Baseline points="1850,820 1920,815 1980,810 2045,805 2105,800 2165,795 2230,790 2290,785 2350,780 2425,775"/>
+        <TextEquiv conf="0.681">
+          <Unicode>27/03/2024 12.53</Unicode>
+        </TextEquiv>
+      </TextLine>
+      <TextLine id="r004-l005" index="4" custom="heights_v2:[50.9,19.8]">
+        <Coords points="894,845 1240,850 1240,779 1165,779 1100,779 1035,779 970,779 898,774 894,845"/>
+        <Baseline points="895,825 970,830 1035,830 1100,830 1165,830 1240,830"/>
+        <TextEquiv conf="0.987">
+          <Unicode>AFHALEN</Unicode>
+        </TextEquiv>
+      </TextLine>
+      <TextLine id="r004-l006" index="5" custom="heights_v2:[51.3,20.0]">
+        <Coords points="2425,858 2422,814 2332,819 2252,824 2159,834 2167,905 2256,895 2336,890 2424,885 2425,858"/>
+        <Baseline points="2165,885 2255,875 2335,870 2424,865"/>
+        <TextEquiv conf="0.620">
+          <Unicode>Laurent</Unicode>
+        </TextEquiv>
+      </TextLine>
+      <TextLine id="r004-l008" index="6" custom="heights_v2:[53.3,21.1]">
+        <Coords points="2280,975 2336,971 2421,966 2417,892 2332,897 2261,902 2182,907 2186,981 2280,975"/>
+        <Baseline points="2185,960 2265,955 2335,950 2420,945"/>
+        <TextEquiv conf="0.971">
+          <Unicode>15924</Unicode>
+        </TextEquiv>
+      </TextLine>
+    </TextRegion>
+    <TextRegion id="r009">
+      <Coords points="1255,1024 1180,1024 1206,2398 1701,2388 1740,2323 1740,2262 1615,2262 1545,2185 1570,2109 1694,2046 1735,1966 1735,1898 1676,1745 1672,1680 1735,1525 1735,1458 1825,1376 1915,1376 1915,1305 1745,1305 1690,1230 1500,1230 1415,1156 1395,1090 1395,1024 1255,1024"/>
+      <TextLine id="r009-l011" index="0" custom="heights_v2:[45.5,19.9]">
+        <Coords points="1180,1024 1181,1090 1255,1090 1320,1090 1395,1090 1395,1024 1320,1024 1255,1024 1180,1024"/>
+        <Baseline points="1181,1070 1255,1070 1320,1070 1395,1070"/>
+        <TextEquiv conf="0.979">
+          <Unicode>Naam</Unicode>
+        </TextEquiv>
+      </TextLine>
+      <TextLine id="r009-l013" index="1" custom="heights_v2:[44.7,17.7]">
+        <Coords points="1184,1148 1275,1153 1365,1153 1365,1090 1275,1090 1187,1085 1184,1148"/>
+        <Baseline points="1185,1130 1275,1135 1365,1135"/>
+        <TextEquiv conf="0.361">
+          <Unicode>Klem</Unicode>
+        </TextEquiv>
+      </TextLine>
+      <TextLine id="r009-l015" index="2" custom="heights_v2:[44.0,18.0]">
+        <Coords points="1184,1218 1260,1218 1330,1218 1415,1218 1415,1156 1330,1156 1260,1156 1183,1156 1184,1218"/>
+        <Baseline points="1183,1200 1260,1200 1330,1200 1415,1200"/>
+        <TextEquiv conf="0.435">
+          <Unicode>Middel</Unicode>
+        </TextEquiv>
+      </TextLine>
+      <TextLine id="r009-l017" index="3" custom="heights_v2:[44.7,18.4]">
+        <Coords points="1620,1230 1560,1230 1500,1230 1444,1225 1380,1225 1324,1220 1260,1220 1195,1220 1195,1283 1260,1283 1318,1283 1380,1288 1438,1288 1500,1293 1560,1293 1620,1293 1690,1293 1690,1230 1620,1230"/>
+        <Baseline points="1195,1265 1260,1265 1320,1265 1380,1270 1440,1270 1500,1275 1560,1275 1620,1275 1690,1275"/>
+        <TextEquiv conf="0.561">
+          <Unicode>hillentje Middel</Unicode>
+        </TextEquiv>
+      </TextLine>
+      <TextLine id="r009-l019" index="4" custom="heights_v2:[50.0,21.4]">
+        <Coords points="1187,1366 1270,1371 1350,1371 1429,1371 1510,1376 1585,1376 1665,1376 1745,1376 1825,1376 1915,1376 1915,1305 1825,1305 1745,1305 1665,1305 1585,1305 1510,1305 1433,1300 1350,1300 1270,1300 1188,1295 1186,1330 1187,1366"/>
+        <Baseline points="1186,1345 1270,1350 1350,1350 1430,1350 1510,1355 1585,1355 1665,1355 1745,1355 1825,1355 1915,1355"/>
+        <TextEquiv conf="0.731">
+          <Unicode>Bicky Burger ZONDER</Unicode>
+        </TextEquiv>
+      </TextLine>
+      <TextLine id="r009-l021" index="5" custom="heights_v2:[46.1,19.1]">
+        <Coords points="1190,1439 1269,1439 1345,1444 1414,1444 1499,1449 1503,1384 1418,1379 1345,1379 1273,1374 1190,1374 1190,1439"/>
+        <Baseline points="1190,1420 1270,1420 1345,1425 1415,1425 1500,1430"/>
+        <TextEquiv conf="0.533">
+          <Unicode>Frikandel</Unicode>
+        </TextEquiv>
+      </TextLine>
+      <TextLine id="r009-l025" index="6" custom="heights_v2:[47.2,20.4]">
+        <Coords points="1735,1458 1665,1458 1605,1458 1554,1453 1490,1453 1430,1453 1379,1448 1315,1448 1255,1448 1190,1448 1190,1515 1255,1515 1315,1515 1373,1515 1430,1520 1490,1520 1548,1520 1605,1525 1665,1525 1735,1525 1735,1458"/>
+        <Baseline points="1190,1495 1255,1495 1315,1495 1375,1495 1430,1500 1490,1500 1550,1500 1605,1505 1665,1505 1735,1505"/>
+        <TextEquiv conf="0.795">
+          <Unicode>Min Bamihapjes</Unicode>
+        </TextEquiv>
+      </TextLine>
+      <TextLine id="r009-l028" index="7" custom="heights_v2:[45.3,19.5]">
+        <Coords points="1191,1589 1260,1589 1320,1589 1378,1589 1440,1594 1500,1594 1575,1594 1575,1530 1500,1530 1440,1530 1384,1525 1320,1525 1260,1525 1190,1525 1190,1545 1191,1589"/>
+        <Baseline points="1190,1570 1260,1570 1320,1570 1380,1570 1440,1575 1500,1575 1575,1575"/>
+        <TextEquiv conf="0.951">
+          <Unicode>Bilterballen</Unicode>
+        </TextEquiv>
+      </TextLine>
+      <TextLine id="r009-l031" index="8" custom="heights_v2:[44.8,20.5]">
+        <Coords points="1195,1665 1260,1665 1320,1665 1380,1665 1440,1665 1499,1665 1569,1670 1573,1605 1503,1600 1440,1600 1380,1600 1320,1600 1260,1600 1195,1600 1195,1665"/>
+        <Baseline points="1195,1645 1260,1645 1320,1645 1380,1645 1440,1645 1500,1645 1570,1650"/>
+        <TextEquiv conf="0.981">
+          <Unicode>Kaaskroket</Unicode>
+        </TextEquiv>
+      </TextLine>
+      <TextLine id="r009-l033" index="9" custom="heights_v2:[44.9,20.3]">
+        <Coords points="1672,1680 1602,1685 1554,1680 1490,1680 1439,1675 1379,1670 1320,1670 1260,1670 1195,1670 1195,1735 1260,1735 1320,1735 1373,1735 1433,1740 1490,1745 1548,1745 1606,1750 1676,1745 1672,1680"/>
+        <Baseline points="1195,1715 1260,1715 1320,1715 1375,1715 1435,1720 1490,1725 1550,1725 1605,1730 1675,1725"/>
+        <TextEquiv conf="0.463">
+          <Unicode>Gaſhaalkroket</Unicode>
+        </TextEquiv>
+      </TextLine>
+      <TextLine id="r009-l036" index="10" custom="heights_v2:[42.0,19.3]">
+        <Coords points="1195,1809 1265,1814 1329,1814 1395,1819 1470,1819 1470,1758 1395,1758 1333,1753 1265,1753 1198,1748 1195,1793 1195,1809"/>
+        <Baseline points="1195,1790 1265,1795 1330,1795 1395,1800 1470,1800"/>
+        <TextEquiv conf="0.939">
+          <Unicode>Kip sate</Unicode>
+        </TextEquiv>
+      </TextLine>
+      <TextLine id="r009-l039" index="11" custom="heights_v2:[42.5,19.8]">
+        <Coords points="1200,1880 1284,1880 1360,1885 1445,1885 1445,1822 1360,1822 1288,1818 1200,1817 1200,1880"/>
+        <Baseline points="1200,1860 1285,1860 1360,1865 1445,1865"/>
+        <TextEquiv conf="0.558">
+          <Unicode>Vandel</Unicode>
+        </TextEquiv>
+      </TextLine>
+      <TextLine id="r009-l042" index="12" custom="heights_v2:[46.8,20.8]">
+        <Coords points="1198,1956 1260,1956 1318,1956 1375,1961 1435,1961 1488,1961 1550,1966 1605,1966 1665,1966 1735,1966 1735,1898 1665,1898 1605,1898 1550,1898 1494,1893 1435,1893 1375,1893 1324,1888 1260,1888 1197,1888 1198,1956"/>
+        <Baseline points="1197,1935 1260,1935 1320,1935 1375,1940 1435,1940 1490,1940 1550,1945 1605,1945 1665,1945 1735,1945"/>
+        <TextEquiv conf="0.308">
+          <Unicode>Ketchup tomaat</Unicode>
+        </TextEquiv>
+      </TextLine>
+      <TextLine id="r009-l046" index="13" custom="heights_v2:[45.8,20.7]">
+        <Coords points="1199,2036 1265,2036 1325,2036 1385,2036 1445,2036 1503,2036 1565,2041 1624,2041 1694,2046 1698,1979 1628,1974 1565,1974 1509,1969 1445,1969 1385,1969 1325,1969 1265,1969 1198,1969 1199,2036"/>
+        <Baseline points="1199,2015 1265,2015 1325,2015 1385,2015 1445,2015 1505,2015 1565,2020 1625,2020 1695,2025"/>
+        <TextEquiv conf="0.356">
+          <Unicode>Bioky Dressing</Unicode>
+        </TextEquiv>
+      </TextLine>
+      <TextLine id="r009-l048" index="14" custom="heights_v2:[43.5,19.4]">
+        <Coords points="1201,2104 1265,2104 1323,2104 1385,2109 1440,2109 1500,2109 1570,2109 1570,2046 1500,2046 1440,2046 1385,2046 1329,2042 1265,2041 1200,2041 1200,2066 1201,2104"/>
+        <Baseline points="1200,2085 1265,2085 1325,2085 1385,2090 1440,2090 1500,2090 1570,2090"/>
+        <TextEquiv conf="0.977">
+          <Unicode>Andalouse</Unicode>
+        </TextEquiv>
+      </TextLine>
+      <TextLine id="r009-l051" index="15" custom="heights_v2:[45.1,19.8]">
+        <Coords points="1545,2120 1470,2120 1408,2115 1340,2115 1275,2115 1205,2115 1205,2180 1275,2180 1340,2180 1403,2180 1470,2185 1545,2185 1545,2120"/>
+        <Baseline points="1205,2160 1275,2160 1340,2160 1405,2160 1470,2165 1545,2165"/>
+        <TextEquiv conf="0.487">
+          <Unicode>Americain</Unicode>
+        </TextEquiv>
+      </TextLine>
+      <TextLine id="r009-l054" index="16" custom="heights_v2:[44.0,18.6]">
+        <Coords points="1205,2254 1275,2254 1335,2254 1395,2254 1455,2254 1525,2254 1525,2191 1455,2191 1395,2191 1335,2191 1275,2191 1205,2191 1205,2254"/>
+        <Baseline points="1205,2235 1275,2235 1335,2235 1395,2235 1455,2235 1525,2235"/>
+        <TextEquiv conf="0.510">
+          <Unicode>Samoeral</Unicode>
+        </TextEquiv>
+      </TextLine>
+      <TextLine id="r009-l057" index="17" custom="heights_v2:[42.9,18.2]">
+        <Coords points="1740,2262 1670,2262 1615,2262 1560,2262 1500,2262 1445,2262 1390,2262 1330,2262 1275,2262 1210,2262 1210,2323 1275,2323 1330,2323 1390,2323 1445,2323 1500,2323 1560,2323 1615,2323 1670,2323 1740,2323 1740,2262"/>
+        <Baseline points="1210,2305 1275,2305 1330,2305 1390,2305 1445,2305 1500,2305 1560,2305 1615,2305 1670,2305 1740,2305"/>
+        <TextEquiv conf="0.425">
+          <Unicode>StoofvleesSAUS</Unicode>
+        </TextEquiv>
+      </TextLine>
+      <TextLine id="r009-l058" index="18" custom="heights_v2:[43.1,17.9]">
+        <Coords points="1206,2398 1270,2393 1330,2393 1390,2393 1450,2393 1451,2393 1701,2388 1697,2327 1627,2332 1570,2332 1510,2332 1450,2332 1390,2332 1330,2332 1270,2332 1205,2337 1206,2398"/>
+        <Baseline points="1206,2380 1270,2375 1330,2375 1390,2375 1450,2375 1510,2375 1570,2375 1630,2375 1700,2370"/>
+        <TextEquiv conf="0.509">
+          <Unicode>Coca Cola 330</Unicode>
+        </TextEquiv>
+      </TextLine>
+    </TextRegion>
+    <TextRegion id="r005">
+      <Coords points="897,1526 894,1663 910,1883 905,2183 915,2323 910,2408 895,2493 895,2719 1395,2714 1395,2647 1270,2574 1201,2483 1196,2404 1049,2258 1035,1883 1036,1608 1015,1373 905,1373 897,1526"/>
+      <TextLine id="r005-l022" index="0" custom="heights_v2:[51.9,20.7]">
+        <Coords points="905,1373 905,1446 1015,1446 1015,1373 905,1373"/>
+        <Baseline points="905,1425 1015,1425"/>
+        <TextEquiv conf="0.432">
+          <Unicode>1O</Unicode>
+        </TextEquiv>
+      </TextLine>
+      <TextLine id="r005-l024" index="1" custom="heights_v2:[47.7,19.0]">
+        <Coords points="1022,1447 901,1447 900,1464 900,1514 1025,1514 1025,1483 1022,1447"/>
+        <Baseline points="900,1495 1025,1495"/>
+        <TextEquiv conf="0.511">
+          <Unicode>TO</Unicode>
+        </TextEquiv>
+      </TextLine>
+      <TextLine id="r005-l027" index="2" custom="heights_v2:[44.3,17.2]">
+        <Coords points="896,1587 1029,1592 1031,1548 1029,1531 897,1526 896,1587"/>
+        <Baseline points="896,1570 1030,1575"/>
+        <TextEquiv conf="0.835">
+          <Unicode>RO</Unicode>
+        </TextEquiv>
+      </TextLine>
+      <TextLine id="r005-l030" index="3" custom="heights_v2:[41.5,17.5]">
+        <Coords points="896,1603 894,1663 1034,1668 1036,1608 896,1603"/>
+        <Baseline points="895,1645 1035,1650"/>
+        <TextEquiv conf="0.412">
+          <Unicode>Q C</Unicode>
+        </TextEquiv>
+      </TextLine>
+      <TextLine id="r005-l034" index="4" custom="heights_v2:[41.9,17.6]">
+        <Coords points="1036,1683 907,1678 904,1738 1034,1743 1036,1699 1036,1683"/>
+        <Baseline points="905,1720 1035,1725"/>
+        <TextEquiv conf="0.404">
+          <Unicode>TC</Unicode>
+        </TextEquiv>
+      </TextLine>
+      <TextLine id="r005-l037" index="5" custom="heights_v2:[45.4,18.0]">
+        <Coords points="905,1813 1025,1813 1025,1750 905,1750 905,1812 905,1813"/>
+        <Baseline points="905,1795 1025,1795"/>
+        <TextEquiv conf="0.292">
+          <Unicode>DO</Unicode>
+        </TextEquiv>
+      </TextLine>
+      <TextLine id="r005-l040" index="6" custom="heights_v2:[44.0,17.8]">
+        <Coords points="1035,1821 910,1821 910,1883 1035,1883 1035,1821"/>
+        <Baseline points="910,1865 1035,1865"/>
+        <TextEquiv conf="0.422">
+          <Unicode>j C</Unicode>
+        </TextEquiv>
+      </TextLine>
+      <TextLine id="r005-l043" index="7" custom="heights_v2:[45.3,17.9]">
+        <Coords points="910,1958 1025,1958 1025,1895 910,1895 910,1958"/>
+        <Baseline points="910,1940 1025,1940"/>
+        <TextEquiv conf="0.566">
+          <Unicode>1 (</Unicode>
+        </TextEquiv>
+      </TextLine>
+      <TextLine id="r005-l045" index="8" custom="heights_v2:[46.2,18.8]">
+        <Coords points="1038,1969 910,1969 910,2034 1040,2034 1040,2014 1038,1969"/>
+        <Baseline points="910,2015 1040,2015"/>
+        <TextEquiv conf="0.432">
+          <Unicode>1C</Unicode>
+        </TextEquiv>
+      </TextLine>
+      <TextLine id="r005-l049" index="9" custom="heights_v2:[47.0,18.1]">
+        <Coords points="906,2108 1040,2108 1040,2043 907,2043 906,2108"/>
+        <Baseline points="907,2090 1040,2090"/>
+        <TextEquiv conf="0.582">
+          <Unicode>2C</Unicode>
+        </TextEquiv>
+      </TextLine>
+      <TextLine id="r005-l052" index="10" custom="heights_v2:[46.4,18.2]">
+        <Coords points="905,2183 1040,2183 1040,2119 906,2119 905,2183"/>
+        <Baseline points="905,2165 1040,2165"/>
+        <TextEquiv conf="0.524">
+          <Unicode>2 C</Unicode>
+        </TextEquiv>
+      </TextLine>
+      <TextLine id="r005-l055" index="11" custom="heights_v2:[48.2,18.4]">
+        <Coords points="1047,2192 917,2187 914,2253 1049,2258 1047,2192"/>
+        <Baseline points="915,2235 1049,2240"/>
+        <TextEquiv conf="0.853">
+          <Unicode>1C</Unicode>
+        </TextEquiv>
+      </TextLine>
+      <TextLine id="r005-l056" index="12" custom="heights_v2:[48.8,18.5]">
+        <Coords points="1045,2323 1045,2256 915,2256 915,2323 1045,2323"/>
+        <Baseline points="915,2305 1045,2305"/>
+        <TextEquiv conf="0.508">
+          <Unicode>2 O</Unicode>
+        </TextEquiv>
+      </TextLine>
+      <TextLine id="r005-l060" index="13" custom="heights_v2:[56.5,22.9]">
+        <Coords points="1196,2404 1116,2409 1055,2408 985,2408 910,2408 910,2488 985,2488 1055,2488 1121,2488 1201,2483 1196,2404"/>
+        <Baseline points="910,2465 985,2465 1055,2465 1120,2465 1200,2460"/>
+        <TextEquiv conf="0.970">
+          <Unicode>Totaal</Unicode>
+        </TextEquiv>
+      </TextLine>
+      <TextLine id="r005-l062" index="14" custom="heights_v2:[52.2,21.1]">
+        <Coords points="895,2566 975,2566 1045,2566 1116,2566 1201,2561 1197,2488 1112,2493 1045,2493 975,2493 895,2493 895,2566"/>
+        <Baseline points="895,2545 975,2545 1045,2545 1115,2545 1200,2540"/>
+        <TextEquiv conf="0.989">
+          <Unicode>Betaling</Unicode>
+        </TextEquiv>
+      </TextLine>
+      <TextLine id="r005-l063" index="15" custom="heights_v2:[46.0,17.8]">
+        <Coords points="1200,2574 1140,2574 1085,2574 1025,2574 965,2574 900,2574 900,2638 965,2638 1025,2638 1085,2638 1140,2638 1200,2638 1270,2638 1270,2574 1200,2574"/>
+        <Baseline points="900,2620 965,2620 1025,2620 1085,2620 1140,2620 1200,2620 1270,2620"/>
+        <TextEquiv conf="0.987">
+          <Unicode>Bancontact</Unicode>
+        </TextEquiv>
+      </TextLine>
+      <TextLine id="r005-l065" index="16" custom="heights_v2:[48.1,19.2]">
+        <Coords points="895,2719 975,2718 1025,2714 1085,2714 1145,2714 1205,2714 1265,2714 1325,2714 1395,2714 1395,2647 1325,2647 1265,2647 1205,2647 1145,2647 1085,2647 1025,2647 961,2652 895,2652 895,2719"/>
+        <Baseline points="895,2700 965,2700 1025,2695 1085,2695 1145,2695 1205,2695 1265,2695 1325,2695 1395,2695"/>
+        <TextEquiv conf="0.312">
+          <Unicode>Fotaal betaald</Unicode>
+        </TextEquiv>
+      </TextLine>
+    </TextRegion>
+    <TextRegion id="r016">
+      <Coords points="2242,1061 2246,1272 2271,1352 2278,1511 2278,1803 2290,1945 2277,2022 2290,2240 2440,2240 2446,2084 2433,1870 2441,1718 2428,1280 2436,1197 2417,986 2255,991 2242,1061"/>
+      <TextLine id="r016-l009" index="0" custom="heights_v2:[53.6,19.9]">
+        <Coords points="2332,991 2255,991 2255,1065 2336,1065 2421,1060 2417,986 2332,991"/>
+        <Baseline points="2255,1045 2335,1045 2420,1040"/>
+        <TextEquiv conf="0.986">
+          <Unicode>Prijs</Unicode>
+        </TextEquiv>
+      </TextLine>
+      <TextLine id="r016-l012" index="1" custom="heights_v2:[53.8,18.6]">
+        <Coords points="2423,1052 2332,1056 2242,1061 2246,1134 2336,1129 2429,1124 2423,1052"/>
+        <Baseline points="2245,1115 2335,1110 2428,1105"/>
+        <TextEquiv conf="0.975">
+          <Unicode>19.20</Unicode>
+        </TextEquiv>
+      </TextLine>
+      <TextLine id="r016-l014" index="2" custom="heights_v2:[51.3,17.4]">
+        <Coords points="2430,1129 2347,1134 2265,1134 2265,1202 2351,1202 2436,1197 2430,1129"/>
+        <Baseline points="2265,1185 2350,1185 2434,1180"/>
+        <TextEquiv conf="0.855">
+          <Unicode>7 60</Unicode>
+        </TextEquiv>
+      </TextLine>
+      <TextLine id="r016-l016" index="3" custom="heights_v2:[51.4,17.4]">
+        <Coords points="2246,1272 2386,1267 2383,1199 2244,1204 2246,1272"/>
+        <Baseline points="2245,1255 2385,1250"/>
+        <TextEquiv conf="0.620">
+          <Unicode>47 5</Unicode>
+        </TextEquiv>
+      </TextLine>
+      <TextLine id="r016-l018" index="4" custom="heights_v2:[50.3,17.0]">
+        <Coords points="2428,1280 2268,1285 2271,1352 2430,1347 2428,1280"/>
+        <Baseline points="2270,1335 2430,1330"/>
+        <TextEquiv conf="0.788">
+          <Unicode>9 O0</Unicode>
+        </TextEquiv>
+      </TextLine>
+      <TextLine id="r016-l020" index="5" custom="heights_v2:[50.3,16.7]">
+        <Coords points="2276,1432 2431,1422 2427,1355 2272,1365 2276,1432"/>
+        <Baseline points="2275,1415 2430,1405"/>
+        <TextEquiv conf="0.597">
+          <Unicode>Z. 50</Unicode>
+        </TextEquiv>
+      </TextLine>
+      <TextLine id="r016-l023" index="6" custom="heights_v2:[48.0,17.2]">
+        <Coords points="2278,1502 2435,1492 2433,1448 2432,1427 2275,1437 2278,1502"/>
+        <Baseline points="2277,1485 2434,1475"/>
+        <TextEquiv conf="0.813">
+          <Unicode>3 50</Unicode>
+        </TextEquiv>
+      </TextLine>
+      <TextLine id="r016-l026" index="7" custom="heights_v2:[48.6,17.1]">
+        <Coords points="2281,1577 2436,1572 2433,1506 2278,1511 2281,1577"/>
+        <Baseline points="2280,1560 2435,1555"/>
+        <TextEquiv conf="0.978">
+          <Unicode>5 80</Unicode>
+        </TextEquiv>
+      </TextLine>
+      <TextLine id="r016-l029" index="8" custom="heights_v2:[52.2,18.0]">
+        <Coords points="2278,1584 2281,1653 2439,1648 2437,1578 2278,1583 2278,1584"/>
+        <Baseline points="2280,1635 2439,1630"/>
+        <TextEquiv conf="0.541">
+          <Unicode>5 20</Unicode>
+        </TextEquiv>
+      </TextLine>
+      <TextLine id="r016-l032" index="9" custom="heights_v2:[52.3,18.4]">
+        <Coords points="2278,1683 2281,1728 2441,1718 2437,1648 2278,1658 2278,1683"/>
+        <Baseline points="2280,1710 2440,1700"/>
+        <TextEquiv conf="0.915">
+          <Unicode>3.10</Unicode>
+        </TextEquiv>
+      </TextLine>
+      <TextLine id="r016-l035" index="10" custom="heights_v2:[51.2,18.4]">
+        <Coords points="2281,1798 2436,1793 2433,1724 2278,1729 2281,1798"/>
+        <Baseline points="2280,1780 2435,1775"/>
+        <TextEquiv conf="0.463">
+          <Unicode>9 00</Unicode>
+        </TextEquiv>
+      </TextLine>
+      <TextLine id="r016-l038" index="11" custom="heights_v2:[51.9,18.8]">
+        <Coords points="2284,1874 2431,1869 2428,1798 2278,1803 2284,1874"/>
+        <Baseline points="2283,1855 2430,1850"/>
+        <TextEquiv conf="0.493">
+          <Unicode>2.80</Unicode>
+        </TextEquiv>
+      </TextLine>
+      <TextLine id="r016-l041" index="12" custom="heights_v2:[49.8,18.5]">
+        <Coords points="2288,1875 2291,1943 2436,1938 2433,1870 2288,1875"/>
+        <Baseline points="2290,1925 2435,1920"/>
+        <TextEquiv conf="0.818">
+          <Unicode>100</Unicode>
+        </TextEquiv>
+      </TextLine>
+      <TextLine id="r016-l044" index="13" custom="heights_v2:[49.9,18.1]">
+        <Coords points="2438,1945 2290,1945 2290,2013 2440,2013 2440,1982 2438,1945"/>
+        <Baseline points="2290,1995 2440,1995"/>
+        <TextEquiv conf="0.656">
+          <Unicode>1 O0</Unicode>
+        </TextEquiv>
+      </TextLine>
+      <TextLine id="r016-l047" index="14" custom="heights_v2:[53.0,19.3]">
+        <Coords points="2442,2012 2357,2017 2277,2022 2281,2094 2361,2089 2446,2084 2442,2012"/>
+        <Baseline points="2280,2075 2360,2070 2445,2065"/>
+        <TextEquiv conf="0.516">
+          <Unicode>2 00</Unicode>
+        </TextEquiv>
+      </TextLine>
+      <TextLine id="r016-l050" index="15" custom="heights_v2:[53.7,20.5]">
+        <Coords points="2286,2176 2443,2171 2444,2129 2443,2096 2283,2101 2285,2162 2286,2176"/>
+        <Baseline points="2285,2155 2444,2150"/>
+        <TextEquiv conf="0.823">
+          <Unicode>2.00</Unicode>
+        </TextEquiv>
+      </TextLine>
+      <TextLine id="r016-l053" index="16" custom="heights_v2:[53.4,20.4]">
+        <Coords points="2440,2240 2440,2167 2290,2167 2290,2240 2440,2240"/>
+        <Baseline points="2290,2220 2440,2220"/>
+        <TextEquiv conf="0.512">
+          <Unicode>1.00</Unicode>
+        </TextEquiv>
+      </TextLine>
+    </TextRegion>
+    <TextRegion id="r012">
+      <Coords points="2055,2387 2055,2479 2125,2479 2181,2551 2466,2541 2460,2377 2250,2388 2055,2387"/>
+      <TextLine id="r012-l059" index="0" custom="heights_v2:[67.7,24.1]">
+        <Coords points="2055,2479 2125,2479 2190,2479 2257,2479 2322,2474 2385,2469 2460,2469 2460,2377 2250,2388 2055,2387 2055,2479"/>
+        <Baseline points="2055,2455 2125,2455 2190,2455 2255,2455 2320,2450 2385,2445 2460,2445"/>
+        <TextEquiv conf="0.521">
+          <Unicode>§ 131.20</Unicode>
+        </TextEquiv>
+      </TextLine>
+      <TextLine id="r012-l061" index="1" custom="heights_v2:[56.3,21.1]">
+        <Coords points="2466,2541 2461,2464 2381,2469 2320,2469 2255,2469 2176,2474 2181,2551 2255,2546 2320,2546 2323,2546 2466,2541"/>
+        <Baseline points="2180,2530 2255,2525 2320,2525 2385,2525 2465,2520"/>
+        <TextEquiv conf="0.912">
+          <Unicode>Bedrad</Unicode>
+        </TextEquiv>
+      </TextLine>
+    </TextRegion>
+    <TextRegion id="r001">
+      <Coords points="888,1018 884,1084 970,1089 1136,1084 1132,1018 888,1018"/>
+      <TextLine id="r001-l010" index="0" custom="heights_v2:[46.6,19.4]">
+        <Coords points="884,1084 970,1089 1136,1084 1132,1018 1042,1023 970,1023 888,1018 884,1084"/>
+        <Baseline points="885,1065 970,1070 1045,1070 1135,1065"/>
+        <TextEquiv conf="0.155">
+          <Unicode>† BIN</Unicode>
+        </TextEquiv>
+      </TextLine>
+    </TextRegion>
+    <TextRegion id="r013">
+      <Coords points="2230,2623 2230,2695 2245,2777 2465,2772 2465,2697 2420,2623 2230,2623"/>
+      <TextLine id="r013-l064" index="0" custom="heights_v2:[52.1,20.0]">
+        <Coords points="2230,2695 2325,2695 2420,2695 2420,2623 2325,2623 2230,2623 2230,2695"/>
+        <Baseline points="2230,2675 2325,2675 2420,2675"/>
+        <TextEquiv conf="0.476">
+          <Unicode>131.*</Unicode>
+        </TextEquiv>
+      </TextLine>
+      <TextLine id="r013-l066" index="1" custom="heights_v2:[53.2,22.1]">
+        <Coords points="2352,2775 2385,2772 2465,2772 2465,2697 2385,2697 2316,2702 2245,2702 2245,2777 2352,2775"/>
+        <Baseline points="2245,2755 2320,2755 2385,2750 2465,2750"/>
+        <TextEquiv conf="0.805">
+          <Unicode>Totaal</Unicode>
+        </TextEquiv>
+      </TextLine>
+    </TextRegion>
+    <TextRegion id="r003">
+      <Coords points="890,2949 905,3303 925,3449 910,3544 910,3622 1437,3617 1495,3528 1495,3448 1596,3162 2471,3142 2468,3033 1938,3048 1727,2860 1729,2716 1510,2711 1487,2870 1130,2944 1080,2875 955,2802 900,2802 890,2875 890,2949"/>
+      <TextLine id="r003-l067" index="0" custom="heights_v2:[54.2,22.7]">
+        <Coords points="1510,2711 1510,2788 1585,2788 1648,2788 1723,2793 1729,2716 1510,2711"/>
+        <Baseline points="1510,2765 1585,2765 1650,2765 1725,2770"/>
+        <TextEquiv conf="0.999">
+          <Unicode>Netto</Unicode>
+        </TextEquiv>
+      </TextLine>
+      <TextLine id="r003-l071" index="1" custom="heights_v2:[48.9,21.4]">
+        <Coords points="1493,2824 1496,2871 1570,2866 1635,2866 1715,2866 1715,2796 1635,2796 1570,2796 1497,2801 1493,2824"/>
+        <Baseline points="1495,2850 1570,2845 1635,2845 1715,2845"/>
+        <TextEquiv conf="0.949">
+          <Unicode>123//</Unicode>
+        </TextEquiv>
+      </TextLine>
+      <TextLine id="r003-l072" index="2" custom="heights_v2:[52.5,20.4]">
+        <Coords points="900,2802 900,2875 955,2875 955,2802 900,2802"/>
+        <Baseline points="900,2855 955,2855"/>
+        <TextEquiv conf="0.645">
+          <Unicode>6</Unicode>
+        </TextEquiv>
+      </TextLine>
+      <TextLine id="r003-l075" index="3" custom="heights_v2:[55.2,23.1]">
+        <Coords points="1642,2865 1570,2865 1487,2870 1491,2948 1570,2943 1646,2943 1731,2938 1727,2860 1642,2865"/>
+        <Baseline points="1490,2925 1570,2920 1645,2920 1730,2915"/>
+        <TextEquiv conf="0.999">
+          <Unicode>123.77</Unicode>
+        </TextEquiv>
+      </TextLine>
+      <TextLine id="r003-l076" index="4" custom="heights_v2:[55.0,21.2]">
+        <Coords points="890,2951 985,2951 1080,2951 1080,2875 985,2875 890,2875 890,2949 890,2951"/>
+        <Baseline points="890,2930 985,2930 1080,2930"/>
+        <TextEquiv conf="0.599">
+          <Unicode>BIW</Unicode>
+        </TextEquiv>
+      </TextLine>
+      <TextLine id="r003-l077" index="5" custom="heights_v2:[55.6,22.4]">
+        <Coords points="893,3027 971,3027 1045,3022 1130,3022 1130,2944 1045,2944 966,2950 890,2949 893,3027"/>
+        <Baseline points="892,3005 970,3005 1045,3000 1130,3000"/>
+        <TextEquiv conf="0.965">
+          <Unicode>totaal</Unicode>
+        </TextEquiv>
+      </TextLine>
+      <TextLine id="r003-l078" index="6" custom="heights_v2:[77.4,31.7]">
+        <Coords points="899,3167 1074,3162 1251,3167 1420,3162 1596,3162 1765,3157 1814,3157 2471,3142 2468,3033 1938,3048 1765,3048 1593,3053 1420,3053 1248,3058 1077,3053 895,3058 899,3167"/>
+        <Baseline points="898,3135 1075,3130 1250,3135 1420,3130 1595,3130 1765,3125 1940,3125 2110,3120 2285,3115 2470,3110"/>
+        <TextEquiv conf="0.784">
+          <Unicode>Bedankt voor uw bezoek</Unicode>
+        </TextEquiv>
+      </TextLine>
+      <TextLine id="r003-l079" index="7" custom="heights_v2:[50.8,22.7]">
+        <Coords points="972,3303 1025,3298 1080,3298 1135,3298 1190,3298 1245,3298 1298,3298 1355,3303 1420,3303 1420,3229 1355,3229 1305,3224 1245,3224 1190,3224 1135,3224 1080,3224 1025,3224 965,3229 905,3229 905,3303 972,3303"/>
+        <Baseline points="905,3280 970,3280 1025,3275 1080,3275 1135,3275 1190,3275 1245,3275 1300,3275 1355,3280 1420,3280"/>
+        <TextEquiv conf="0.995">
+          <Unicode>Frituur Marcel</Unicode>
+        </TextEquiv>
+      </TextLine>
+      <TextLine id="r003-l080" index="8" custom="heights_v2:[44.7,18.9]">
+        <Coords points="915,3374 985,3374 1050,3374 1110,3374 1175,3374 1235,3374 1310,3374 1310,3310 1235,3310 1175,3310 1110,3310 1050,3310 985,3310 915,3310 915,3374"/>
+        <Baseline points="915,3355 985,3355 1050,3355 1110,3355 1175,3355 1235,3355 1310,3355"/>
+        <TextEquiv conf="0.967">
+          <Unicode>Ter platen 4</Unicode>
+        </TextEquiv>
+      </TextLine>
+      <TextLine id="r003-l081" index="9" custom="heights_v2:[45.6,19.3]">
+        <Coords points="1000,3449 1065,3449 1130,3449 1195,3449 1270,3449 1270,3384 1195,3384 1130,3384 1065,3384 1000,3384 925,3384 925,3449 1000,3449"/>
+        <Baseline points="925,3430 1000,3430 1065,3430 1130,3430 1195,3430 1270,3430"/>
+        <TextEquiv conf="0.268">
+          <Unicode>SOOO Sent</Unicode>
+        </TextEquiv>
+      </TextLine>
+      <TextLine id="r003-l082" index="10" custom="heights_v2:[56.8,22.9]">
+        <Coords points="1495,3448 1420,3448 1360,3448 1300,3448 1240,3448 1175,3448 1110,3453 1055,3453 995,3453 925,3453 925,3533 995,3533 1055,3533 1117,3533 1175,3528 1240,3528 1300,3528 1360,3528 1420,3528 1495,3528 1495,3448"/>
+        <Baseline points="925,3510 995,3510 1055,3510 1115,3510 1175,3505 1240,3505 1300,3505 1360,3505 1420,3505 1495,3505"/>
+        <TextEquiv conf="0.942">
+          <Unicode>324 86 63 84 44</Unicode>
+        </TextEquiv>
+      </TextLine>
+      <TextLine id="r003-l083" index="11" custom="heights_v2:[56.4,22.5]">
+        <Coords points="910,3622 1106,3621 1140,3617 1200,3617 1253,3617 1271,3619 1437,3617 1431,3539 1361,3544 1310,3544 1260,3539 1200,3539 1140,3539 1080,3544 1030,3544 975,3544 910,3544 910,3622"/>
+        <Baseline points="910,3600 975,3600 1030,3600 1085,3600 1140,3595 1200,3595 1255,3595 1310,3600 1365,3600 1435,3595"/>
+        <TextEquiv conf="0.619">
+          <Unicode>BE0764827875</Unicode>
+        </TextEquiv>
+      </TextLine>
+    </TextRegion>
+    <TextRegion id="r011">
+      <Coords points="1945,2701 1852,2706 1856,2788 1880,2857 1885,2938 2050,2938 2050,2779 2040,2701 1945,2701"/>
+      <TextLine id="r011-l068" index="0" custom="heights_v2:[59.0,23.4]">
+        <Coords points="1852,2706 1856,2788 1945,2783 2040,2783 2040,2701 1945,2701 1852,2706"/>
+        <Baseline points="1855,2765 1945,2760 2040,2760"/>
+        <TextEquiv conf="0.977">
+          <Unicode>BTW</Unicode>
+        </TextEquiv>
+      </TextLine>
+      <TextLine id="r011-l070" index="1" custom="heights_v2:[55.6,21.8]">
+        <Coords points="2050,2779 1965,2779 1880,2779 1880,2857 1965,2857 2050,2857 2050,2779"/>
+        <Baseline points="1880,2835 1965,2835 2050,2835"/>
+        <TextEquiv conf="0.739">
+          <Unicode>7.43</Unicode>
+        </TextEquiv>
+      </TextLine>
+      <TextLine id="r011-l073" index="2" custom="heights_v2:[58.9,22.9]">
+        <Coords points="1965,2938 2050,2938 2050,2856 1965,2856 1885,2856 1885,2938 1965,2938"/>
+        <Baseline points="1885,2915 1965,2915 2050,2915"/>
+        <TextEquiv conf="0.998">
+          <Unicode>7.43</Unicode>
+        </TextEquiv>
+      </TextLine>
+    </TextRegion>
+    <TextRegion id="r014">
+      <Coords points="2330,2855 2240,2855 2240,2939 2330,2939 2330,2855"/>
+      <TextLine id="r014-l074" index="0" custom="heights_v2:[60.1,23.5]">
+        <Coords points="2240,2855 2240,2939 2330,2939 2330,2855 2240,2855"/>
+        <Baseline points="2240,2915 2330,2915"/>
+        <TextEquiv conf="1.000">
+          <Unicode>13</Unicode>
+        </TextEquiv>
+      </TextLine>
+    </TextRegion>
+    <TextRegion id="r015">
+      <Coords points="2290,2853 2290,2772 2245,2772 2245,2853 2290,2853"/>
+      <TextLine id="r015-l069" index="0" custom="heights_v2:[57.8,22.7]">
+        <Coords points="2290,2772 2245,2772 2245,2853 2290,2853 2290,2772"/>
+        <Baseline points="2245,2830 2290,2830"/>
+        <TextEquiv conf="0.998">
+          <Unicode>1</Unicode>
+        </TextEquiv>
+      </TextLine>
+    </TextRegion>
+    <TextRegion id="r007">
+      <Coords points="910,3679 910,3803 1097,3804 1094,3861 911,3861 910,3845 910,3916 1110,3916 1110,3859 1203,3744 1266,3749 1336,3744 1332,3679 1086,3684 910,3679"/>
+      <TextLine id="r007-l084" index="0" custom="heights_v2:[45.7,18.6]">
+        <Coords points="910,3744 975,3744 1033,3744 1092,3749 1150,3744 1203,3744 1266,3749 1336,3744 1332,3679 1262,3684 1231,3682 1086,3684 910,3679 910,3744"/>
+        <Baseline points="910,3725 975,3725 1035,3725 1090,3730 1150,3725 1205,3725 1265,3730 1335,3725"/>
+        <TextEquiv conf="0.247">
+          <Unicode>Controle gs gelella</Unicode>
+        </TextEquiv>
+      </TextLine>
+      <TextLine id="r007-l085" index="1" custom="heights_v2:[39.6,16.0]">
+        <Coords points="910,3796 990,3796 1075,3796 1075,3740 990,3740 910,3740 910,3796"/>
+        <Baseline points="910,3780 990,3780 1075,3780"/>
+        <TextEquiv conf="0.992">
+          <Unicode>Datum</Unicode>
+        </TextEquiv>
+      </TextLine>
+      <TextLine id="r007-l087" index="2" custom="heights_v2:[40.7,15.7]">
+        <Coords points="1094,3861 911,3861 911,3859 910,3859 910,3916 1010,3916 1110,3916 1110,3859 1094,3859 1094,3861"/>
+        <Baseline points="910,3900 1010,3900 1110,3900"/>
+        <TextEquiv conf="0.954">
+          <Unicode>Counter</Unicode>
+        </TextEquiv>
+      </TextLine>
+    </TextRegion>
+    <TextRegion id="r008">
+      <Coords points="910,3845 911,3861 1094,3861 1097,3804 1002,3799 908,3804 910,3845"/>
+      <TextLine id="r008-l086" index="0" custom="heights_v2:[41.6,16.5]">
+        <Coords points="911,3861 999,3856 1094,3861 1097,3804 1002,3799 908,3804 910,3845 911,3861"/>
+        <Baseline points="910,3845 1000,3840 1095,3845"/>
+        <TextEquiv conf="0.841">
+          <Unicode>Tijdstip</Unicode>
+        </TextEquiv>
+      </TextLine>
+    </TextRegion>
+    <TextRegion id="r010">
+      <Coords points="1755,3902 1682,3907 1686,3972 2130,3962 2130,3897 1755,3902"/>
+      <TextLine id="r010-l088" index="0" custom="heights_v2:[47.7,17.5]">
+        <Coords points="1682,3907 1686,3972 1755,3967 1815,3967 1876,3967 1935,3962 1995,3962 2055,3962 2130,3962 2130,3897 1896,3900 1871,3902 1815,3902 1755,3902 1682,3907"/>
+        <Baseline points="1685,3955 1755,3950 1815,3950 1875,3950 1935,3945 1995,3945 2055,3945 2130,3945"/>
+        <TextEquiv conf="0.162">
+          <Unicode>BEShE ЕБ65.</Unicode>
+        </TextEquiv>
+      </TextLine>
+    </TextRegion>
+    <TextRegion id="r000">
+      <Coords points="867,4378 871,4442 1041,4437 1131,4432 1190,4368 1236,4234 1232,4167 1145,3976 1145,3921 910,3921 910,3973 975,3973 975,4038 905,4038 905,4009 890,4108 894,4239 871,4307 867,4378"/>
+      <TextLine id="r000-l089" index="0" custom="heights_v2:[39.4,16.3]">
+        <Coords points="1145,3921 1060,3921 990,3921 910,3921 910,3973 975,3973 975,3976 990,3976 1060,3976 1145,3976 1145,3921"/>
+        <Baseline points="910,3960 990,3960 1060,3960 1145,3960"/>
+        <TextEquiv conf="0.639">
+          <Unicode>Signatenat</Unicode>
+        </TextEquiv>
+      </TextLine>
+      <TextLine id="r000-l091" index="1" custom="heights_v2:[42.8,16.6]">
+        <Coords points="925,4107 1010,4107 1100,4107 1100,4047 1010,4047 925,4047 925,4107"/>
+        <Baseline points="925,4090 1010,4090 1100,4090"/>
+        <TextEquiv conf="0.428">
+          <Unicode>aart l</Unicode>
+        </TextEquiv>
+      </TextLine>
+      <TextLine id="r000-l092" index="2" custom="heights_v2:[46.8,18.0]">
+        <Coords points="892,4173 975,4173 1051,4173 1141,4168 1137,4103 1047,4108 975,4108 890,4108 892,4173"/>
+        <Baseline points="891,4155 975,4155 1050,4155 1140,4150"/>
+        <TextEquiv conf="0.678">
+          <Unicode>FlUHash</Unicode>
+        </TextEquiv>
+      </TextLine>
+      <TextLine id="r000-l093" index="3" custom="heights_v2:[48.5,18.6]">
+        <Coords points="1232,4167 1157,4172 1095,4171 1030,4171 965,4171 892,4177 892,4183 896,4244 965,4239 1030,4239 1095,4239 1161,4239 1236,4234 1232,4167"/>
+        <Baseline points="895,4225 965,4220 1030,4220 1095,4220 1160,4220 1235,4215"/>
+        <TextEquiv conf="0.443">
+          <Unicode>lickel nmine/</Unicode>
+        </TextEquiv>
+      </TextLine>
+      <TextLine id="r000-l094" index="4" custom="heights_v2:[46.4,18.5]">
+        <Coords points="896,4303 1051,4298 1049,4234 894,4239 896,4303"/>
+        <Baseline points="895,4285 1050,4280"/>
+        <TextEquiv conf="0.538">
+          <Unicode>Versie</Unicode>
+        </TextEquiv>
+      </TextLine>
+      <TextLine id="r000-l095" index="5" custom="heights_v2:[47.7,18.2]">
+        <Coords points="1190,4302 1120,4302 1060,4302 1000,4302 940,4302 871,4307 876,4373 940,4368 1000,4368 1060,4368 1120,4368 1190,4368 1190,4302"/>
+        <Baseline points="875,4355 940,4350 1000,4350 1060,4350 1120,4350 1190,4350"/>
+        <TextEquiv conf="0.353">
+          <Unicode>Produclera</Unicode>
+        </TextEquiv>
+      </TextLine>
+      <TextLine id="r000-l096" index="6" custom="heights_v2:[46.6,16.6]">
+        <Coords points="871,4442 960,4437 1041,4437 1131,4432 1127,4368 1037,4373 960,4373 867,4378 871,4442"/>
+        <Baseline points="870,4425 960,4420 1040,4420 1130,4415"/>
+        <TextEquiv conf="0.476">
+          <Unicode>Device lD</Unicode>
+        </TextEquiv>
+      </TextLine>
+    </TextRegion>
+    <TextRegion id="r006">
+      <Coords points="905,4009 905,4038 975,4038 975,3973 905,3973 905,4009"/>
+      <TextLine id="r006-l090" index="0" custom="heights_v2:[46.6,17.9]">
+        <Coords points="905,4038 975,4038 975,3973 905,3973 905,4009 905,4038"/>
+        <Baseline points="905,4020 975,4020"/>
+        <TextEquiv conf="1.000">
+          <Unicode>
+          </Unicode>
+        </TextEquiv>
+      </TextLine>
+    </TextRegion>
+  </Page>
+</PcGts>
