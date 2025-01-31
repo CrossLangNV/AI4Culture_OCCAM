@@ -63,9 +63,12 @@ INSTALLED_APPS = [
 # Rest Framework
 REST_FRAMEWORK = {
     "DEFAULT_PERMISSION_CLASSES": [
-        "organisation.permissions.HasOrganisationAPIKey",
+        "organisation.permissions.IsAuthenticatedOrHasAPIKey",
+        #'organisation.permissions.IsAuthenticatedOrHasAPIKeyDebug',
     ],
-    "DEFAULT_AUTHENTICATION_CLASSES": (),
+    "DEFAULT_AUTHENTICATION_CLASSES": (
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
+    ),
     "DEFAULT_RENDERER_CLASSES": ("rest_framework.renderers.JSONRenderer",),
     "DEFAULT_SCHEMA_CLASS": "drf_spectacular.openapi.AutoSchema",
     "TEST_REQUEST_DEFAULT_FORMAT": "json",
@@ -217,14 +220,13 @@ CELERY_QUEUES = (
     Queue('translation_queue', Exchange('translation_queue'), routing_key='translation_queue'),
 )
 
-
 LOGGING = {
     "version": 1,
     "disable_existing_loggers": False,
     "formatters": {
         "default": {
             "format": "[DJANGO] %(levelname)s %(asctime)s %(module)s "
-            "%(name)s.%(funcName)s:%(lineno)s: %(message)s"
+                      "%(name)s.%(funcName)s:%(lineno)s: %(message)s"
         },
     },
     "handlers": {

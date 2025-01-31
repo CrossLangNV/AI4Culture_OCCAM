@@ -42,6 +42,10 @@ urlpatterns = [
         "api/evaluation/",
         include(("evaluation.urls", "evaluation"), namespace="evaluation"),
     ),
+    path(
+        "api/user/",
+        include(("core.user.urls", "core.user"), namespace="user"),
+    ),
     # Swagger + Redoc
     path("api/schema/", SpectacularAPIView.as_view(), name="schema"),
     path(

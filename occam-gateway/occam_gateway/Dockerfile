@@ -8,6 +8,8 @@ RUN apt-get update
 
 # PDF2Image package
 RUN apt-get install -y poppler-utils
+# SSH client
+RUN apt-get install -y openssh-client
 
 # Install needed packages specified in requirements.txt
 ADD ./requirements.txt .

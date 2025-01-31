@@ -2,7 +2,7 @@ from django.urls import path
 
 from ocr.views import OCREngineListView, OCRPipelineOptionsAPIView, \
     OCRJobStatusAPIView, OCRJobResultAPIView, OCRHealthCheckAPIView, \
-    CombinedOCRAPIView, CombinedOCRFromURLAPIView
+    CombinedOCRAPIView, CombinedOCRFromURLAPIView, OCRAPIGeoJSONView, TranscriptionToGeoJSONView
 
 urlpatterns = [
     path("health", OCRHealthCheckAPIView.as_view(), name="health"),
@@ -28,5 +28,6 @@ urlpatterns = [
     ),
     path("status/<task_id>/", OCRJobStatusAPIView.as_view(), name="ocr_status"),
     path("result/<task_id>/", OCRJobResultAPIView.as_view(), name="ocr_result"),
-
+    path("geojson", OCRAPIGeoJSONView.as_view(), name="geojson"),
+    path("transcription/geojson", TranscriptionToGeoJSONView.as_view(), name="transcription_geojson"),
 ]

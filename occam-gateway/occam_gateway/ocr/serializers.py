@@ -14,6 +14,7 @@ class UploadFileSerializer(serializers.Serializer):
     file = serializers.FileField()
     # OCREngineId
     engineId = serializers.IntegerField()
+    async_param = serializers.BooleanField(required=False, default=False)
 
 
 class UploadURLSerializer(serializers.Serializer):

@@ -1,5 +1,7 @@
+import json
 import logging
 import os
+import re
 import tempfile
 import traceback
 from functools import wraps
@@ -11,7 +13,7 @@ import requests
 from celery.result import AsyncResult
 from django.http import HttpResponse
 from drf_spectacular.utils import extend_schema
-from rest_framework.exceptions import ValidationError
+from lxml import etree
 from rest_framework.generics import GenericAPIView, ListAPIView
 from rest_framework.parsers import MultiPartParser
 from rest_framework.response import Response
@@ -19,13 +21,14 @@ from rest_framework.views import APIView
 
 from occam_gateway import settings
 from organisation.models import OrganisationAPIKey
-from organisation.permissions import HasOrganisationAPIKey
+from organisation.permissions import HasOrganisationAPIKey, IsAuthenticatedOrHasAPIKeyDebug
 from shared.models import StatusField
 from shared.pipeline import PipelineStepEnum
 from .models import OCREngine, UsageOCR
 from .ocr_correction import OCRCorrector
 from .ocr_engine_mapping import get_connector_for_engine
 from .ocr_postprocess_xml import add_custom_reading_order
+from .pagexml2geojson import main_from_xml_string
 from .serializers import (
     OCREngineSerializer,
     OCRPipelineSerializer,
@@ -75,6 +78,8 @@ class OCREngineListView(ListAPIView):
 
 
 class OCRHealthCheckAPIView(APIView):
+    permission_classes = [IsAuthenticatedOrHasAPIKeyDebug]
+
     @extend_schema(description="Check the health of the OCR service")
     def get(self, request, *args, **kwargs):
         try:
@@ -132,6 +137,56 @@ class BaseOCRAPIView(GenericAPIView):
             if usage:
                 usage.set_status(StatusField.FAILED)
             raise OCRFailedError("OCR processing failed") from e
+
+    def _xml2sentences(self, xml: str) -> str:
+        """
+        Helper function for task to convert xml to sentences using lxml.
+        """
+
+        # 1. Parse the XML using lxml
+        try:
+            parser = etree.XMLParser(recover=True)
+            root = etree.fromstring(xml.encode('utf-8'), parser=parser)
+        except etree.XMLSyntaxError as e:
+            logger.error(f"XML parsing error: {e}")
+            return ""
+
+        # 2. Extract paragraphs
+        paragraphs = []
+        # Adjust the XPath expression based on your XML structure
+        paragraph_elements = root.xpath('//p')  # Assuming paragraphs are within <p> tags
+        if not paragraph_elements:
+            # If no <p> tags, extract all text
+            paragraphs.append(''.join(root.itertext()))
+        else:
+            for elem in paragraph_elements:
+                paragraph_text = ''.join(elem.itertext())
+                paragraphs.append(paragraph_text)
+
+        # 3. Split paragraphs into sentences using regex
+        sentences_all = []
+        for paragraph in paragraphs:
+            try:
+                sentences = self._split_into_sentences(paragraph)
+            except Exception as e:
+                logger.error(f"Sentence segmentation failed: {e}")
+                sentences = [paragraph]
+
+            sentences_all.extend(sentences)
+
+        # 4. Join sentences into a single string
+        sentences_flat = "\n".join(sentences_all)
+
+        return sentences_flat
+
+    def _split_into_sentences(self, text):
+        """
+        Splits text into sentences using a regular expression.
+        """
+        # Regex pattern to split sentences at punctuation marks followed by whitespace
+        sentence_endings = re.compile(r'(?<=[.!?])\s+')
+        sentences = sentence_endings.split(text.strip())
+        return sentences
 
     def create_usage(self, api_key, engine: OCREngine, image_size: int):
         """
@@ -356,6 +411,74 @@ class OCRAPIView(BaseOCRAPIView):
         )
 
         return Response({"task_id": task.id, "status": "Processing"}, status=202)
+
+    def get_image(self, serializer):
+        _file = serializer.validated_data.get("file")
+        self.image_size = _file.size
+        return _file
+
+
+class OCRAPIGeoJSONView(BaseOCRAPIView):
+    """
+    OCR an uploaded image and return the GeoJSON.
+    Now supports async processing with async_param.
+    """
+
+    parser_classes = [MultiPartParser]
+    serializer_class = UploadFileSerializer
+
+    @handle_exceptions
+    def post(self, request, *args, **kwargs):
+        serializer = self.serializer_class(data=request.data)
+        if not serializer.is_valid():
+            return Response(serializer.errors, status=400)
+
+        _file = self.get_image(serializer)
+        engine = self.get_engine(serializer)
+        file_content = _file.read()
+
+        async_param = serializer.validated_data.get("async_param", False)
+
+        if async_param:
+            # Asynchronous: enqueue the job and return task_id
+            task = process_ocr_image_task.apply_async(args=[file_content, engine.id])
+            return Response({"task_id": task.id, "status": "Processing"}, status=202)
+        else:
+            # Synchronous: directly process
+            result = process_ocr_image_task(file_content, engine.id)
+            # result is {'result': json_string, 'content_type': 'application/json'}
+            # Parse the json_string to return as a proper response
+            result_data = json.loads(result['result'])
+            return Response(result_data)
+
+    def get_image(self, serializer):
+        _file = serializer.validated_data.get("file")
+        self.image_size = _file.size
+        return _file
+
+
+class TranscriptionToGeoJSONView(BaseOCRAPIView):
+    """Instead of OCR, use a transcription to generate GeoJSON"""
+
+    parser_classes = [MultiPartParser]
+    serializer_class = UploadFileSerializer
+
+    @handle_exceptions
+    def post(self, request, *args, **kwargs):
+        serializer = UploadFileSerializer(data=request.data)
+        if not serializer.is_valid():
+            return Response(serializer.errors, status=400)
+
+        _file = serializer.validated_data.get("file")
+        file_content = _file.read()
+
+        # Prepare the response
+        sentences = self._xml2sentences(file_content.decode("utf-8"))
+        geojson = main_from_xml_string(file_content.decode("utf-8"))
+
+        d = {"text": sentences, "geojson": geojson, "pagexml": file_content.decode("utf-8")}
+
+        return Response(d)
 
     def get_image(self, serializer):
         _file = serializer.validated_data.get("file")

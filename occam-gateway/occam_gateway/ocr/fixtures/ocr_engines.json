@@ -6,5 +6,13 @@
       "name": "PERO OCR - General",
       "description": "General-purpose OCR for European printed documents. See https://github.com/DCGM/pero-ocr"
     }
+  },
+  {
+    "model": "ocr.OCREngine",
+    "pk": 2,
+    "fields": {
+      "name": "Loghi HTR - General",
+      "description": "General-purpose HTR. See https://github.com/knaw-huc/loghi."
+    }
   }
 ]
