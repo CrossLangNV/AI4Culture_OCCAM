@@ -1,0 +1,47 @@
+{
+  "nav": {
+    "my_account": "My account",
+    "logout": "Logout",
+    "settings": "Settings"
+  },
+  "ui": {
+    "refresh": "Refresh",
+    "loading": "Loading",
+    "success": "Success",
+    "failed": "Failed",
+    "cancel": "Cancel",
+    "title": "Title",
+    "summary": "Summary",
+    "next": "Next",
+    "dont-show-me-again": "Don't show me again",
+    "preview": "Preview",
+    "state": "State",
+    "created-at": "Created at",
+    "actions": "Actions",
+    "publish": "Publish",
+    "type": "Type",
+    "last-updated": "Last updated",
+    "choose": "Choose",
+    "view": "View",
+    "save": "Save",
+    "no-results": "Sorry, we couldn't find any results.",
+    "suggested": "Suggested"
+  },
+  "test_set": {
+    "error": {
+      "NO_SOURCE_TARGET_LANGUAGE": "No source and target language specified.",
+      "NO_SOURCE_LANGUAGE": "No source language specified.",
+      "NO_TARGET_LANGUAGE": "No target language specified.",
+      "TEST_SET_SIZE_TOO_SMALL": "The provided file contains too few segments. Please provide a file of minimum {{min_segments}} segments and maximum {{max_segments}} segments.",
+      "TEST_SET_SIZE_TOO_LARGE": "The provided file contains too many segments. Please provide a file of minimum {{min_segments}} segments and maximum {{max_segments}} segments.",
+      "TEST_SET_FORMAT_NOT_SUPPORTED": "File format not supported. Please upload a file in one of the supported formats: {{allowed_formats}}.",
+      "TEST_SET_TMX_LANG_ATTRIBUTE_MISSING": "Language attribute {{lang_attribute}} is missing from the TMX tuv elements in the test set.",
+      "NO_ENGINES_AVAILABLE": "Unfortunately, no engines have been found to translate the provided file. Please provide a file with a different combination of source and target languages."
+    }
+  },
+  "language": {
+    "en": "English",
+    "fr": "Français",
+    "nl": "Nederlands"
+  }
+}

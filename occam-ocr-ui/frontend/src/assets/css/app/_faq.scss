@@ -1,0 +1,15 @@
+.faq {
+  // Default behavior, can be used as a fallback by setting className="faq__title"
+  .faq__title {
+    font-weight: 600;
+  }
+
+  h2 {
+    font-weight: 600;
+  }
+
+  // Set accordion headers. Use Specificity to override Material UI's default styling
+  .MuiAccordionSummary-root p {
+    font-weight: 600;
+  }
+}

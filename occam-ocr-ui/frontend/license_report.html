@@ -1,0 +1,508 @@
+<html>
+  <body>
+    <style>
+      /*
+    based on: https://codepen.io/DavidKern/pen/PwzYvv
+    */
+      @import url(https://fonts.googleapis.com/css?family=Lato:300,400,700);
+
+      body {
+        background: #fff;
+        color: #000;
+        font-family: "Lato", Arial, sans-serif;
+      }
+
+      h1 {
+        font-family: "proxima-nova", sans-serif;
+        letter-spacing: -0.01em;
+        font-weight: 700;
+        font-style: normal;
+        font-size: 60px;
+        margin-left: -3px;
+        line-height: 1em;
+        color: #000;
+        text-align: center;
+        margin-bottom: 8px;
+        text-rendering: optimizeLegibility;
+      }
+
+      table {
+        width: 80%;
+        margin: auto;
+      }
+
+      table,
+      th,
+      td {
+        border: 1px solid #000;
+        border-collapse: collapse;
+      }
+
+      th {
+        background-color: #ddd;
+      }
+
+      th,
+      td {
+        padding: 15px;
+      }
+    </style>
+    <table>
+      <thead>
+        <tr>
+          <th class="string">name</th>
+          <th class="string">license period</th>
+          <th class="string">license type</th>
+          <th class="string">link</th>
+          <th class="string">author</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="string">@emotion/react</td>
+          <td class="string">perpetual</td>
+          <td class="string">MIT</td>
+          <td class="string">
+            https://github.com/emotion-js/emotion/tree/main/packages/react
+          </td>
+          <td class="string">Emotion Contributors</td>
+        </tr>
+        <tr>
+          <td class="string">@emotion/styled</td>
+          <td class="string">perpetual</td>
+          <td class="string">MIT</td>
+          <td class="string">
+            https://github.com/emotion-js/emotion/tree/main/packages/styled
+          </td>
+          <td class="string"></td>
+        </tr>
+        <tr>
+          <td class="string">@mui/icons-material</td>
+          <td class="string">perpetual</td>
+          <td class="string">MIT</td>
+          <td class="string">git+https://github.com/mui/material-ui.git</td>
+          <td class="string">MUI Team</td>
+        </tr>
+        <tr>
+          <td class="string">@mui/material</td>
+          <td class="string">perpetual</td>
+          <td class="string">MIT</td>
+          <td class="string">git+https://github.com/mui/material-ui.git</td>
+          <td class="string">MUI Team</td>
+        </tr>
+        <tr>
+          <td class="string">@testing-library/jest-dom</td>
+          <td class="string">perpetual</td>
+          <td class="string">MIT</td>
+          <td class="string">
+            git+https://github.com/testing-library/jest-dom.git
+          </td>
+          <td class="string">
+            Ernesto Garcia gnapse@gmail.com http://gnapse.github.io
+          </td>
+        </tr>
+        <tr>
+          <td class="string">@testing-library/react</td>
+          <td class="string">perpetual</td>
+          <td class="string">MIT</td>
+          <td class="string">
+            git+https://github.com/testing-library/react-testing-library.git
+          </td>
+          <td class="string">
+            Kent C. Dodds me@kentcdodds.com https://kentcdodds.com
+          </td>
+        </tr>
+        <tr>
+          <td class="string">@testing-library/user-event</td>
+          <td class="string">perpetual</td>
+          <td class="string">MIT</td>
+          <td class="string">
+            git+https://github.com/testing-library/user-event.git
+          </td>
+          <td class="string">Giorgio Polvara polvara@gmail.com</td>
+        </tr>
+        <tr>
+          <td class="string">@textabledev/langs-flags-list</td>
+          <td class="string">perpetual</td>
+          <td class="string">GPL-3.0-or-later</td>
+          <td class="string">
+            git+https://github.com/martinsik/langs-flags-list.git
+          </td>
+          <td class="string">Martin Sikora</td>
+        </tr>
+        <tr>
+          <td class="string">axios</td>
+          <td class="string">perpetual</td>
+          <td class="string">MIT</td>
+          <td class="string">git+https://github.com/axios/axios.git</td>
+          <td class="string">Matt Zabriskie</td>
+        </tr>
+        <tr>
+          <td class="string">chart.js</td>
+          <td class="string">perpetual</td>
+          <td class="string">MIT</td>
+          <td class="string">git+https://github.com/chartjs/Chart.js.git</td>
+          <td class="string"></td>
+        </tr>
+        <tr>
+          <td class="string">chartjs-adapter-date-fns</td>
+          <td class="string">perpetual</td>
+          <td class="string">MIT</td>
+          <td class="string">
+            git+https://github.com/chartjs/chartjs-adapter-date-fns.git
+          </td>
+          <td class="string"></td>
+        </tr>
+        <tr>
+          <td class="string">cheerio</td>
+          <td class="string">perpetual</td>
+          <td class="string">MIT</td>
+          <td class="string">git://github.com/cheeriojs/cheerio.git</td>
+          <td class="string">Matt Mueller mattmuelle@gmail.com</td>
+        </tr>
+        <tr>
+          <td class="string">date-fns</td>
+          <td class="string">perpetual</td>
+          <td class="string">MIT</td>
+          <td class="string">git+https://github.com/date-fns/date-fns.git</td>
+          <td class="string"></td>
+        </tr>
+        <tr>
+          <td class="string">dompurify</td>
+          <td class="string">perpetual</td>
+          <td class="string">(MPL-2.0 OR Apache-2.0)</td>
+          <td class="string">git://github.com/cure53/DOMPurify.git</td>
+          <td class="string">
+            Mario Heiderich mario@cure53.de https://cure53.de/
+          </td>
+        </tr>
+        <tr>
+          <td class="string">formik</td>
+          <td class="string">perpetual</td>
+          <td class="string">Apache-2.0</td>
+          <td class="string">git+https://github.com/formium/formik.git</td>
+          <td class="string">
+            Jared Palmer jared@palmer.net https://jaredpalmer.com
+          </td>
+        </tr>
+        <tr>
+          <td class="string">history</td>
+          <td class="string">perpetual</td>
+          <td class="string">MIT</td>
+          <td class="string">git+https://github.com/remix-run/history.git</td>
+          <td class="string">Remix Software hello@remix.run</td>
+        </tr>
+        <tr>
+          <td class="string">html-react-parser</td>
+          <td class="string">perpetual</td>
+          <td class="string">MIT</td>
+          <td class="string">
+            git+https://github.com/remarkablemark/html-react-parser.git
+          </td>
+          <td class="string">Mark mark@remarkablemark.org</td>
+        </tr>
+        <tr>
+          <td class="string">i18next</td>
+          <td class="string">perpetual</td>
+          <td class="string">MIT</td>
+          <td class="string">git+https://github.com/i18next/i18next.git</td>
+          <td class="string">
+            Jan Mühlemann jan.muehlemann@gmail.com https://github.com/jamuhl
+          </td>
+        </tr>
+        <tr>
+          <td class="string">i18next-browser-languagedetector</td>
+          <td class="string">perpetual</td>
+          <td class="string">MIT</td>
+          <td class="string">
+            git+https://github.com/i18next/i18next-browser-languageDetector.git
+          </td>
+          <td class="string">
+            Jan Mühlemann jan.muehlemann@gmail.com https://github.com/jamuhl
+          </td>
+        </tr>
+        <tr>
+          <td class="string">i18next-http-backend</td>
+          <td class="string">perpetual</td>
+          <td class="string">MIT</td>
+          <td class="string">
+            git+ssh://git@github.com/i18next/i18next-http-backend.git
+          </td>
+          <td class="string"></td>
+        </tr>
+        <tr>
+          <td class="string">i18next-xhr-backend</td>
+          <td class="string">perpetual</td>
+          <td class="string">MIT</td>
+          <td class="string">
+            git+https://github.com/i18next/i18next-xhr-backend.git
+          </td>
+          <td class="string">
+            Jan Mühlemann jan.muehlemann@gmail.com https://github.com/jamuhl
+          </td>
+        </tr>
+        <tr>
+          <td class="string">js-file-download</td>
+          <td class="string">perpetual</td>
+          <td class="string">MIT</td>
+          <td class="string">
+            git+ssh://git@github.com/kennethjiang/js-file-download.git
+          </td>
+          <td class="string">Kenneth Jiang kenneth.jiang@gmail.com</td>
+        </tr>
+        <tr>
+          <td class="string">leaflet</td>
+          <td class="string">perpetual</td>
+          <td class="string">BSD-2-Clause</td>
+          <td class="string">git://github.com/Leaflet/Leaflet.git</td>
+          <td class="string"></td>
+        </tr>
+        <tr>
+          <td class="string">lodash</td>
+          <td class="string">perpetual</td>
+          <td class="string">MIT</td>
+          <td class="string">git+https://github.com/lodash/lodash.git</td>
+          <td class="string">John-David Dalton john.david.dalton@gmail.com</td>
+        </tr>
+        <tr>
+          <td class="string">moment</td>
+          <td class="string">perpetual</td>
+          <td class="string">MIT</td>
+          <td class="string">git+https://github.com/moment/moment.git</td>
+          <td class="string">
+            Iskren Ivov Chernev iskren.chernev@gmail.com
+            https://github.com/ichernev
+          </td>
+        </tr>
+        <tr>
+          <td class="string">node-sass</td>
+          <td class="string">perpetual</td>
+          <td class="string">MIT</td>
+          <td class="string">git+https://github.com/sass/node-sass.git</td>
+          <td class="string">
+            Andrew Nesbitt andrewnez@gmail.com http://andrew.github.com
+          </td>
+        </tr>
+        <tr>
+          <td class="string">primeflex</td>
+          <td class="string">perpetual</td>
+          <td class="string">MIT</td>
+          <td class="string">
+            git+https://github.com/primefaces/primeflex.git
+          </td>
+          <td class="string">PrimeTek</td>
+        </tr>
+        <tr>
+          <td class="string">primeicons</td>
+          <td class="string">perpetual</td>
+          <td class="string">MIT</td>
+          <td class="string">
+            git+https://github.com/primefaces/primeicons.git
+          </td>
+          <td class="string">PrimeTek</td>
+        </tr>
+        <tr>
+          <td class="string">primereact</td>
+          <td class="string">perpetual</td>
+          <td class="string">MIT</td>
+          <td class="string">
+            git+https://github.com/primefaces/primereact.git
+          </td>
+          <td class="string">PrimeTek Informatics</td>
+        </tr>
+        <tr>
+          <td class="string">prismjs</td>
+          <td class="string">perpetual</td>
+          <td class="string">MIT</td>
+          <td class="string">git+https://github.com/LeaVerou/prism.git</td>
+          <td class="string">Lea Verou</td>
+        </tr>
+        <tr>
+          <td class="string">react</td>
+          <td class="string">perpetual</td>
+          <td class="string">MIT</td>
+          <td class="string">git+https://github.com/facebook/react.git</td>
+          <td class="string"></td>
+        </tr>
+        <tr>
+          <td class="string">react-dom</td>
+          <td class="string">perpetual</td>
+          <td class="string">MIT</td>
+          <td class="string">git+https://github.com/facebook/react.git</td>
+          <td class="string"></td>
+        </tr>
+        <tr>
+          <td class="string">react-ga</td>
+          <td class="string">perpetual</td>
+          <td class="string">Apache-2.0</td>
+          <td class="string">git+ssh://git@github.com/react-ga/react-ga.git</td>
+          <td class="string">@adamlofting</td>
+        </tr>
+        <tr>
+          <td class="string">react-google-login</td>
+          <td class="string">perpetual</td>
+          <td class="string">MIT</td>
+          <td class="string">
+            git+https://github.com/anthonyjgrove/react-google-login.git
+          </td>
+          <td class="string">Anthony Grove anthony@th3legend.com</td>
+        </tr>
+        <tr>
+          <td class="string">react-i18next</td>
+          <td class="string">perpetual</td>
+          <td class="string">MIT</td>
+          <td class="string">
+            git+https://github.com/i18next/react-i18next.git
+          </td>
+          <td class="string">
+            Jan Mühlemann jan.muehlemann@gmail.com https://github.com/jamuhl
+          </td>
+        </tr>
+        <tr>
+          <td class="string">react-leaflet</td>
+          <td class="string">perpetual</td>
+          <td class="string">Hippocratic-2.1</td>
+          <td class="string">
+            git+https://github.com/PaulLeCam/react-leaflet.git
+          </td>
+          <td class="string">Paul Le Cam paul@ulem.net</td>
+        </tr>
+        <tr>
+          <td class="string">react-moment</td>
+          <td class="string">perpetual</td>
+          <td class="string">MIT</td>
+          <td class="string">
+            git+https://github.com/headzoo/react-moment.git
+          </td>
+          <td class="string">Sean Hickey http://headzoo.io</td>
+        </tr>
+        <tr>
+          <td class="string">react-paginate</td>
+          <td class="string">perpetual</td>
+          <td class="string">MIT</td>
+          <td class="string">
+            git+https://github.com/AdeleD/react-paginate.git
+          </td>
+          <td class="string">Adèle Delamarche</td>
+        </tr>
+        <tr>
+          <td class="string">react-redux</td>
+          <td class="string">perpetual</td>
+          <td class="string">MIT</td>
+          <td class="string">git+https://github.com/reduxjs/react-redux.git</td>
+          <td class="string">
+            Dan Abramov dan.abramov@me.com https://github.com/gaearon
+          </td>
+        </tr>
+        <tr>
+          <td class="string">react-router-dom</td>
+          <td class="string">perpetual</td>
+          <td class="string">MIT</td>
+          <td class="string">
+            git+https://github.com/remix-run/react-router.git
+          </td>
+          <td class="string">Remix Software hello@remix.run</td>
+        </tr>
+        <tr>
+          <td class="string">react-scripts</td>
+          <td class="string">perpetual</td>
+          <td class="string">MIT</td>
+          <td class="string">
+            git+https://github.com/facebook/create-react-app.git
+          </td>
+          <td class="string"></td>
+        </tr>
+        <tr>
+          <td class="string">react-select</td>
+          <td class="string">perpetual</td>
+          <td class="string">MIT</td>
+          <td class="string">
+            https://github.com/JedWatson/react-select/tree/master/packages/react-select
+          </td>
+          <td class="string">Jed Watson</td>
+        </tr>
+        <tr>
+          <td class="string">react-transition-group</td>
+          <td class="string">perpetual</td>
+          <td class="string">BSD-3-Clause</td>
+          <td class="string">
+            git+https://github.com/reactjs/react-transition-group.git
+          </td>
+          <td class="string"></td>
+        </tr>
+        <tr>
+          <td class="string">reactour</td>
+          <td class="string">perpetual</td>
+          <td class="string">MIT</td>
+          <td class="string">
+            git+https://github.com/elrumordelaluz/reactour.git
+          </td>
+          <td class="string">
+            Lionel T elrumordelaluz@hotmail.com https://elrumordelaluz.com/
+          </td>
+        </tr>
+        <tr>
+          <td class="string">redux</td>
+          <td class="string">perpetual</td>
+          <td class="string">MIT</td>
+          <td class="string">git+https://github.com/reduxjs/redux.git</td>
+          <td class="string"></td>
+        </tr>
+        <tr>
+          <td class="string">redux-devtools-extension</td>
+          <td class="string">perpetual</td>
+          <td class="string">MIT</td>
+          <td class="string">
+            git+https://github.com/zalmoxisus/redux-devtools-extension.git
+          </td>
+          <td class="string">
+            Mihail Diordiev zalmoxisus@gmail.com https://github.com/zalmoxisus
+          </td>
+        </tr>
+        <tr>
+          <td class="string">redux-thunk</td>
+          <td class="string">perpetual</td>
+          <td class="string">MIT</td>
+          <td class="string">git+https://github.com/reduxjs/redux-thunk.git</td>
+          <td class="string">Dan Abramov dan.abramov@me.com</td>
+        </tr>
+        <tr>
+          <td class="string">sass</td>
+          <td class="string">perpetual</td>
+          <td class="string">MIT</td>
+          <td class="string">git+https://github.com/sass/dart-sass.git</td>
+          <td class="string">
+            Natalie Weizenbaum nweiz@google.com https://github.com/nex3
+          </td>
+        </tr>
+        <tr>
+          <td class="string">styled-components</td>
+          <td class="string">perpetual</td>
+          <td class="string">MIT</td>
+          <td class="string">
+            git+https://github.com/styled-components/styled-components.git
+          </td>
+          <td class="string">Glen Maddern</td>
+        </tr>
+        <tr>
+          <td class="string">web-vitals</td>
+          <td class="string">perpetual</td>
+          <td class="string">Apache-2.0</td>
+          <td class="string">
+            git+https://github.com/GoogleChrome/web-vitals.git
+          </td>
+          <td class="string">
+            Philip Walton philip@philipwalton.com http://philipwalton.com
+          </td>
+        </tr>
+        <tr>
+          <td class="string">yup</td>
+          <td class="string">perpetual</td>
+          <td class="string">MIT</td>
+          <td class="string">git+https://github.com/jquense/yup.git</td>
+          <td class="string">@monasticpanic Jason Quense</td>
+        </tr>
+      </tbody>
+    </table>
+  </body>
+</html>

@@ -1,0 +1,35 @@
+{
+  "nav": {
+    "my_account": "Mijn account",
+    "logout": "Uitloggen",
+    "settings": "Instellingen"
+  },
+  "ui": {
+    "refresh": "Vernieuw",
+    "loading": "wordt geladen",
+    "success": "Succes",
+    "failed": "Mislukt",
+    "cancel": "Annuleren",
+    "title": "Titel",
+    "summary": "Samenvatting",
+    "next": "Volgende",
+    "dont-show-me-again": "Laat me niet meer zien",
+    "preview": "Preview",
+    "state": "Staat",
+    "created-at": "Aangemaakt op",
+    "actions": "Acties",
+    "publish": "Publiceren",
+    "type": "Type",
+    "last-updated": "Laatst bijgewerkt",
+    "choose": "Selecteer",
+    "view": "Bekijk",
+    "save": "Opslaan",
+    "no-results": "Sorry, we konden geen resultaten vinden.",
+    "suggested": "Aanbevolen"
+  },
+  "language": {
+    "en": "English",
+    "fr": "Français",
+    "nl": "Nederlands"
+  }
+}

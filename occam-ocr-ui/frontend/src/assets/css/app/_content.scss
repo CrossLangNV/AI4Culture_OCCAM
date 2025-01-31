@@ -1,0 +1,42 @@
+.layout-content {
+  padding: 2rem;
+}
+
+.badge-new {
+  border-radius: 4px;
+  padding: 0.25rem 0.5rem;
+  background-color: var(--green-500);
+  color: white;
+  margin-left: 1rem;
+  font-weight: 700;
+  font-size: 0.875rem;
+}
+
+@media screen and (max-width: 992px) {
+  .layout-content {
+    padding: 2rem 1rem;
+  }
+}
+
+dl {
+  margin-top: 3rem;
+  width: 29rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: auto;
+
+  @media screen and (max-width: 600px) {
+    display: block;
+    width: auto;
+  }
+}
+
+dt {
+  grid-column-start: 1;
+  margin: 1rem 0;
+}
+
+dd {
+  grid-column-start: 2;
+  margin: 1rem 0;
+}

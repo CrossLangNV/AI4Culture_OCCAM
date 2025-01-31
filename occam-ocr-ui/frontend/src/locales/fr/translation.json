@@ -1,0 +1,35 @@
+{
+  "nav": {
+    "my_account": "Mon compte",
+    "logout": "Déconnexion",
+    "settings": "Paramètres"
+  },
+  "ui": {
+    "refresh": "Rafraîchir",
+    "loading": "Chargement de",
+    "success": "Succès",
+    "failed": "Échec",
+    "cancel": "Annuler",
+    "title": "Titre",
+    "summary": "Résumé",
+    "next": "Suivant",
+    "dont-show-me-again": "Ne me montre pas encore",
+    "preview": "Aperçu",
+    "state": "État",
+    "created-at": "Créé à",
+    "actions": "Actions",
+    "publish": "Publier",
+    "type": "Type",
+    "last-updated": "Dernière mise à jour",
+    "choose": "Choisir",
+    "view": "Afficher",
+    "save": "Sauvegarder",
+    "no-results": "Désolé, nous n'avons pas pu trouver de résultats.",
+    "suggested": "Suggéré"
+  },
+  "language": {
+    "en": "English",
+    "fr": "Français",
+    "nl": "Nederlands"
+  }
+}

@@ -1,0 +1,42 @@
+.custom-engine-advisory-pricing-title {
+  &.price {
+    font-size: 2.5rem !important;
+
+    @media (max-width: 1100px) {
+      font-size: 2rem !important;
+    }
+
+    @media (max-width: 840px) {
+      font-size: 1.6rem !important;
+    }
+
+    @media (max-width: 370px) {
+      font-size: 0.9rem !important;
+    }
+  }
+
+  &.per-advisory {
+    font-size: 2.5rem !important;
+
+    @media (max-width: 1100px) {
+      font-size: 1rem !important;
+    }
+  }
+}
+
+.test-set-upload {
+  .p-button.p-fileupload-choose {
+    background-color: var(--primary-color) !important;
+    border-color: var(--primary-color) !important;
+  }
+}
+
+.confirm-advisory-dialog {
+}
+
+td.p-dt-tooltip-bleu.best-score,
+td.p-dt-tooltip-ed.best-score,
+td.p-dt-tooltip-ter.best-score,
+td.p-dt-tooltip-comet.best-score {
+  font-weight: bold;
+}

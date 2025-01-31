@@ -1,0 +1,21 @@
+# build environment
+# source: https://mherman.org/blog/dockerizing-a-react-app/
+FROM node:16.17.0-alpine
+
+RUN apk update && apk add bash
+
+WORKDIR /frontend
+ENV PATH /frontend/node_modules/.bin:$PATH
+COPY package*.json ./
+
+RUN NODE_OPTIONS=--max_old_space_size=1024 npm install
+
+RUN NODE_OPTIONS=--max_old_space_size=1024 npm install react-scripts@5.0.1 -g
+RUN NODE_OPTIONS=--max_old_space_size=1024 npm install sass -g
+
+# Bundle app source
+COPY . .
+COPY .env.debug .env
+
+# On port 3000
+CMD [ "npm", "start" ]
