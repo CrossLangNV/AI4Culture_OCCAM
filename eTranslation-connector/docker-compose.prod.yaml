@@ -1,0 +1,30 @@
+version: "3"
+services:
+  etranslation-connector:
+    build:
+      context: .
+      dockerfile: Dockerfile.prod
+    image: docker.crosslang.com/ai4europeana/cef-etranslation-connector:v2
+    ports:
+      - "80:80"
+    environment:
+      - ETRANSLATION_USERNAME=CEFAT4Cities_20200710
+      - ETRANSLATION_PASSWORD=jkvzFXNuUSV5JFVB
+      - SNIPPET_CALLBACK_URL=https://59feafaea8f224.localhost.run/hook/snippet
+      - DOCUMENT_CALLBACK_URL=https://59feafaea8f224.localhost.run/hook/document
+      - SNIPPET_TIMEOUT=20
+      - DOCUMENT_TIMEOUT=300
+    volumes:
+      - etranslation_connector:/app
+
+  minio:
+    image: minio/minio
+    command: server /data
+    ports:
+      - "19000:9000"
+    volumes:
+      - etranslation_minio:/data
+
+volumes:
+  etranslation_minio:
+  etranslation_connector:

@@ -1,0 +1,15 @@
+*.env
+
+MODELS/flair/*.pt
+MODELS/symspell/*.freq
+MODELS/tokenizers/*
+!MODELS/*/.gitkeep
+
+
+venv
+
+.idea
+# Jupyter Notebook Checkpoints
+.ipynb_checkpoints
+
+__pycache__

@@ -1,0 +1,5 @@
+sentence-splitter==1.4
+tika==2.6.0
+pydantic==1.10.12
+sacrebleu==2.3.2
+dkpro-cassis==0.8.0

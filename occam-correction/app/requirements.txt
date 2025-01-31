@@ -1,0 +1,7 @@
+uvicorn==0.11.3
+fastapi==0.100.1
+python-multipart==0.0.5
+requests==2.23.0
+pydantic==2.1.1
+pydantic-settings==2.0.0
+gunicorn==20.0.4

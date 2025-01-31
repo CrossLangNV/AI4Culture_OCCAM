@@ -1,0 +1,43 @@
+version: "3"
+services:
+  etranslation-connector:
+    build: .
+    ports:
+      - "8000:80"
+    environment:
+      - ETRANSLATION_USERNAME=CEF_AI4CULTURE_20240307
+      - ETRANSLATION_PASSWORD=zMAXgV4H3T8TquPJ
+      - CALLBACK_URL=https://93e9-213-136-30-90.ngrok-free.app
+      - SNIPPET_TIMEOUT=20
+      - DOCUMENT_TIMEOUT=3000
+    volumes:
+      - .:/app
+    command: /start-reload.sh
+    depends_on:
+      - minio
+      - tika
+
+  minio:
+    image: minio/minio
+    command: server /data
+    ports:
+      - "29000:9000"
+    volumes:
+      - etranslation_minio:/data
+
+  tika:
+    image: apache/tika
+    ports:
+      - "29998:9998"
+
+  ngrok:
+    image: wernight/ngrok
+    ports:
+      - "4040:4040"  # Ngrok web interface
+    command: [ "ngrok", "http", "etranslation-connector:80" ]  # Expose etranslation-connector:80
+    environment:
+      NGROK_AUTHTOKEN: ${NGROK_AUTH_TOKEN}
+      DOMAIN: ${NGROK_DOMAIN}
+
+volumes:
+  etranslation_minio:

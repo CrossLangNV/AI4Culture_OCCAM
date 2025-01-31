@@ -1,0 +1,4 @@
+# Models downloaded
+embeddings/*.pt
+symspell_flair/*.freq
+#tokenizers/

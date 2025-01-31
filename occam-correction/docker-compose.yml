@@ -1,0 +1,29 @@
+services:
+  notebook:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    env_file:
+      - .env
+    ports:
+      - "18888:8888"
+    volumes:
+      - ./notebooks:/lab
+    command: jupyter-lab --port=8888 --ip=0.0.0.0 --no-browser --allow-root #--NotebookApp.token=''
+
+  api:
+    build:
+      context: .
+      dockerfile: app.dockerfile
+    image: docker.crosslang.com/ai4europeana/ocr-correction-api
+    command: ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "80"]
+    env_file:
+      - .env
+    ports:
+      - "18100:80"
+    environment:
+      - PROJECT_NAME=Post-OCR correction API
+    volumes:
+      - ./MODELS/flair:/MODELS/flair
+      - ./MODELS/symspell:/MODELS/symspell
+      - ./MODELS/tokenizers:/MODELS/tokenizers

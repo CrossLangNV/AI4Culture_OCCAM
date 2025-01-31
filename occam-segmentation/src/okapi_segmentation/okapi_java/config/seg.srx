@@ -1,0 +1,2202 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<srx xmlns="http://www.lisa.org/srx20" xmlns:okpsrx="http://okapi.sf.net/srx-extensions" version="2.0">
+  <header cascade="yes" segmentsubflows="yes">
+    <formathandle include="no" type="start"/>
+    <formathandle include="yes" type="end"/>
+    <formathandle include="yes" type="isolated"/>
+    <okpsrx:options oneSegmentIncludesAll="no" trimLeadingWhitespaces="yes" trimTrailingWhitespaces="yes" useJavaRegex="no"/>
+    <okpsrx:sample language="en" useMappedRules="yes"/>
+    <okpsrx:rangeRule/>
+  </header>
+  <body>
+    <languagerules>
+      <languagerule languagerulename="Arabic">
+        <rule break="no">
+          <beforebreak>\s+[أي|اي|آي|بي|سي|دي|إي|اف|إف|جي|دجي|إتش|كي|إل|ال|ام|إم|ان|إن|أو|او|كيو|أر|ار|آر|اس|إس|تي|يو|في|دبليو|اكس|إكس|واي|زي|زيد]\.</beforebreak>
+          <afterbreak>\s+[أي|اي|آي|بي|سي|دي|إي|اف|إف|جي|دجي|إتش|كي|إل|ال|ام|إم|ان|إن|أو|او|كيو|أر|ار|آر|اس|إس|تي|يو|في|دبليو|اكس|إكس|واي|زي|زيد]</afterbreak>
+        </rule>
+        <rule break="no">
+          <beforebreak>\s+[ا‎أآاإب‎ت‎ث‎ج‎ح‎خ‎ده‎ذ‎ر‎ز‎س‎ش‎ص‎ض‎ط‎ظ‎ع‎ؤةغ‎ف‎ق‎ك‎ل‎م‎ن‎0-9يء]\.</beforebreak>
+          <afterbreak>\s+[ا‎أآاإب‎ت‎ث‎ج‎ح‎خ‎ده‎ذ‎ر‎زي‎س‎ش‎ص‎ض‎ط‎ظ‎ع‎غ‎ف‎ق‎ك‎ل‎م‎ن‎و‎0-9]</afterbreak>
+        </rule>
+        <rule break="yes">
+          <beforebreak>(^|\s+|[\(\[\،\:\؛\"\-])\.</beforebreak>
+          <afterbreak>\s+\"</afterbreak>
+        </rule>
+        <rule break="no">
+          <beforebreak>(^|\s+|[\(\[\،\:\؛\"\-])\.</beforebreak>
+          <afterbreak>\s+</afterbreak>
+        </rule>
+      </languagerule>
+      <languagerule languagerulename="Armenian">
+	<!-- Abbreviations -->      
+      <rule break="no">
+          <beforebreak>(^|\s+)(արլ|արմ|բն|բրբ|գլխ|դ|դդ|հզ|հզվդ|հնց|հս|հվ|մ\.թ|մ\.թ\.ա|մլն|մլրդ|պատմ)\.</beforebreak>
+          <afterbreak>\s+</afterbreak>
+        </rule>
+	<!-- Abbreviations followed by a number -->
+	<rule break="no">
+          <beforebreak>(^|\s+)(երկ)\.</beforebreak>
+          <afterbreak>\s+\d+</afterbreak>
+        </rule>
+        <!-- Initials Վ. Լ. -->
+        <rule break="no">
+	  <beforebreak>\s+[ՊպԲբՖֆՎվՄմՏտԴդԹթՁձՆնԿկԳգԽխՂղՍսԶզՇշԺժՃճՋջՒւՌռԼլՅյՀհԱաԷէԵեԸըԻիՅյՈոՈՈոոՒւՈՒուԱԻաիԱՒաւՈԻոիՕօԵԻեիԻԸիըՒԸւըՅՒյւԱԻԸաիըԱՒԸաւըՅՒԸյւըմնմեմի]\.</beforebreak>
+          <afterbreak>\s+</afterbreak>
+        </rule>
+        <rule break="no">
+          <beforebreak>\s+[ՊպԲբՖֆՎվՄմՏտԴդԹթՁձՆնԿկԳգԽխՂղՍսԶզՇշԺժՃճՋջՒւՌռԼլՅյՀհԱաԷէԵեԸըԻիՅյՈոՈՈոոՒւՈՒուԱԻաիԱՒաւՈԻոիՕօԵԻեիԻԸիըՒԸւըՅՒյւԱԻԸաիըԱՒԸաւըՅՒԸյւըմնմեմի]\.(\s+)?[ՊպԲբՖֆՎվՄմՏտԴդԹթՁձՆնԿկԳգԽխՂղՍսԶզՇշԺժՃճՋջՒւՌռԼլՅյՀհԱաԷէԵեԸըԻիՅյՈոՈՈոոՒւՈՒուԱԻաիԱՒաւՈԻոիՕօԵԻեիԻԸիըՒԸւըՅՒյւԱԻԸաիըԱՒԸաւըՅՒԸյւըմնմեմի]\.</beforebreak>
+          <afterbreak>\s+</afterbreak>
+        </rule>
+        <!-- Armenian full stop (not the same char between brackets) -->       
+	<rule break="yes">
+	  <beforebreak>.[\:։]</beforebreak>
+	  <afterbreak>\s+</afterbreak>
+       </rule>
+      </languagerule>
+      <languagerule languagerulename="Burmese">
+        <rule break="no">
+          <beforebreak>(^[၀၁၂၃၄၅၆၇၈၉]+[။])</beforebreak>
+          <afterbreak>.</afterbreak>
+        </rule>
+        <rule break="no">
+          <beforebreak>[။]</beforebreak>
+          <afterbreak>[\”\)]\s*</afterbreak>
+        </rule>
+        <rule break="yes">
+          <beforebreak>[။][”]*</beforebreak>
+          <afterbreak>.</afterbreak>
+        </rule>
+        <rule break="no">
+          <beforebreak>.[\.;]</beforebreak>
+          <afterbreak>\s+</afterbreak>
+        </rule>
+      </languagerule>
+      <languagerule languagerulename="Chinese">
+        <rule break="yes">
+          <!-- Empty space rules should be protected by '( )', otherwise some XML reader have trouble treating them correctly. -->
+          <beforebreak>( )</beforebreak>
+          <afterbreak>.</afterbreak>
+        </rule>
+        <rule break="yes">
+          <beforebreak>[…,；。！？，\?\!;\.﹔﹕﹖﹗][”」]</beforebreak>
+          <afterbreak>.</afterbreak>
+        </rule>
+        <rule break="yes">
+          <beforebreak>[…；。！？\?\!﹔﹕﹖﹗]+\s+</beforebreak>
+          <afterbreak>.</afterbreak>
+        </rule>
+        <rule break="yes">
+          <beforebreak>\p{Han}[…；。！？﹔﹕﹖﹗]</beforebreak>
+          <afterbreak>[^”」]</afterbreak>
+        </rule>
+        <rule break="yes">
+          <beforebreak>[…；。！？\?\!﹔﹕﹖﹗]</beforebreak>
+          <afterbreak>\p{Han}</afterbreak>
+        </rule>
+        <rule break="yes">
+          <afterbreak>\p{Han}</afterbreak>
+          <beforebreak>[︓︰﹕：]</beforebreak>
+        </rule>
+        <rule break="no">
+          <beforebreak>[\.．]</beforebreak>
+          <afterbreak>[0-9A-Za-z０１２３４５６７８９ＡＢＣＤＥＦＧＨＩＪＫＬＭＮＯＰＱＲＳＴＵＶＷＸＹＺ％ａｂｃｄｅｆｇｈｉｊｋｌｍｎｏｐｑｒｓｔｕｖｗｘｙｚ／\/]</afterbreak>
+        </rule>
+        <rule break="yes">
+          <beforebreak>[…；。！？﹔﹕﹖﹗]+</beforebreak>
+          <afterbreak>[^”」]</afterbreak>
+        </rule>
+        <rule break="yes">
+          <beforebreak>\p{Han}[\?\!;\|\]]</beforebreak>
+          <afterbreak>.</afterbreak>
+        </rule>
+        <rule break="yes">
+          <beforebreak>\p{Han}[\.]+</beforebreak>
+          <afterbreak>[^\.]</afterbreak>
+        </rule>
+        <rule break="yes">
+          <beforebreak>．</beforebreak>
+          <afterbreak>[^0-9A-Za-z０１２３４５６７８９]</afterbreak>
+        </rule>
+        <rule break="yes">
+          <beforebreak>[日专]电</beforebreak>
+          <afterbreak>[\s\(（]</afterbreak>
+        </rule>
+        <rule break="yes">
+          <beforebreak>(报道|电)】</beforebreak>
+          <afterbreak>.</afterbreak>
+        </rule>
+      </languagerule>
+      <languagerule languagerulename="Croatian">
+        <rule break="no">
+          <beforebreak>(^|\s+|[\(\[\,\:\;\"\-])(Jan|Feb|Mar|Apr|Maj|Jun|Jul|Avg|Sept|Okt|Nov|Dec|jan|feb|mar|apr|jun|jul|avg|sep|okt|nov|dec)\.</beforebreak>
+          <afterbreak>\s*[a-š0-9šđćžč]+</afterbreak>
+        </rule>
+        <rule break="no">
+          <beforebreak>(^|\s+|[\(\[\,\:\;\"\-])(Prof\.dr|prof\.dr|dr|Dr|gov|Gov|gđa|prof|Prof|tzv|TZV|Tzv|lat|eng|tur|srp|pol|fr|grč|tj|inž|sv|Sv|st|St|mr|Mr|akad|ing|Ing|sc|Bl|bl|BL|gosp|Gosp)\.</beforebreak>
+          <afterbreak>\s*[a-šA-ŠĐŽĆČ0-9šđćžč"]+</afterbreak>
+        </rule>
+        <rule break="no">
+          <beforebreak>(^|\s+|[\(\[\,\:\;\"\-])(npr|Npr|id|Id|ID|vs|Vs|N\.B|p\.s|P\.s|P\.S|mil|spec|Spec|SPEC|el|EL|reg|Reg|tel|Tel|TEL|tj|med|Med|mob|Mob|telef|podrazum|Podrazum|dipl|Dipl|i dr|ul|Ul|www|Ltd|ltd|op|Op|čl|Čl)\.</beforebreak>
+          <afterbreak>\s*[a-š0-9"]+</afterbreak>
+        </rule>
+        <rule break="no">
+          <beforebreak>(^|\s+|[\(\[\,\:\;\"\-])(fig|Fig|FIG|str|Str|STR|vol|Vol|VOL|br|Br|BR|god)\.</beforebreak>
+          <afterbreak>\s*[\da-š0-9šđćžč]</afterbreak>
+        </rule>
+        <rule break="no">
+          <beforebreak>(^|\s+|[\(\[\,\:\;\"\-])(Jan|Feb|Mar|Apr|Maj|Jun|Jul|Avg|Sept|Okt|Nov|Dec|jan|feb|mar|apr|jun|jul|avg|sep|okt|nov|dec)\.</beforebreak>
+          <afterbreak>\s*\d+</afterbreak>
+        </rule>
+        <rule break="no">
+          <beforebreak>\d+\.</beforebreak>
+          <afterbreak>(^|\s+|[\(\[\,\:\;\"\-])(Jan|Feb|Mar|Apr|Maj|Jun|Jul|Avg|Sept|Okt|Nov|Dec|jan|feb|mar|apr|jun|jul|avg|sep|okt|nov|dec)</afterbreak>
+        </rule>
+        <rule break="no">
+          <beforebreak>\d\.</beforebreak>
+          <afterbreak>\d</afterbreak>
+        </rule>
+        <rule break="no">
+          <beforebreak>\d\s?[g|G]\.</beforebreak>
+          <afterbreak>\s[a-šđćžč]</afterbreak>
+        </rule>
+        <rule break="no">
+          <beforebreak>[a-šа-ш]\s?[g|G]\.</beforebreak>
+          <afterbreak>\s[A-ŠĐŽĆČ]</afterbreak>
+        </rule>
+        <rule break="no">
+          <beforebreak>^[\dIVXLCMivxlcm]+\.</beforebreak>
+          <afterbreak>\s[a-šđćžč]+</afterbreak>
+        </rule>
+        <!--  T. Nikola -->
+        <rule break="no">
+          <beforebreak>(^|\s+|[\(\[\,\:\;\"\»\-\'\(])([A-Š])\.</beforebreak>
+          <afterbreak>\s[A-ŠĐŽĆČ][a-šđćžč]*</afterbreak>
+        </rule>
+        <!--  Tesla N. -->
+        <rule break="no">
+          <beforebreak>(^|\s+|[\(\[\,\:\;\"\»\-\'])[A-ŠĐŽĆČ][a-šđćžč]+\s([A-ŠĐŽĆČ])\.</beforebreak>
+          <afterbreak>\s</afterbreak>
+        </rule>
+        <!--  S.W.A.T. -->
+        <rule break="no">
+          <beforebreak>(^|\s+|[\(\[\,\:\;\"\»\-\'])([A-ŠĐŽĆČ]\.)+</beforebreak>
+          <afterbreak>\s*[a-šA-ŠđćžčŠĐŽĆČ]</afterbreak>
+        </rule>
+        <rule break="no">
+          <beforebreak>\d\s?\.</beforebreak>
+          <afterbreak>\s*[a-šđćžč]</afterbreak>
+        </rule>
+        <rule break="no">
+          <beforebreak>(^|\s+|[\(\[\,\:\;\"\.\»\-\'\(])[\dIVXLCM]+\.</beforebreak>
+          <afterbreak>\s*[a-šđćžčA-ŠĐŽĆČ]+</afterbreak>
+        </rule>
+        <rule break="no">
+          <beforebreak>\s?\.\.\.</beforebreak>
+          <afterbreak>\s*[a-šđćžč0-9]</afterbreak>
+        </rule>
+        <rule break="no">
+          <beforebreak>\s?[\:|\;]</beforebreak>
+          <afterbreak>\s*["a-šđćžčA-ŠĐŽĆČ0-9]</afterbreak>
+        </rule>
+        <rule break="no">
+          <beforebreak>(^|\s+|[\(\[\,\:\;\"\»\-\'])[a-š]+\.</beforebreak>
+          <afterbreak>\s([a-šđćžčA-ŠĐŽĆČ])\.\s([A-ŠĐŽĆČ])\.\s[A-ŠĐŽĆČ][a-šđćžč]</afterbreak>
+        </rule>
+        <rule break="no">
+          <beforebreak>[a-šđćžč]\.</beforebreak>
+          <afterbreak>com|rs|fr|org</afterbreak>
+        </rule>
+        <rule break="no">
+          <beforebreak>(^|\s+|[\(\[\,\:\;\"\»\-\'])(itd|i sl|i dr)\.</beforebreak>
+          <afterbreak>\s*[a-šđćžč]</afterbreak>
+        </rule>
+        <rule break="no">
+          <beforebreak>(^|\s+|[\(\[\,\:\;\"\»\-\'])(prof|Prof)\.</beforebreak>
+          <afterbreak>\s*dr\.[A-ŠĐŽĆČ]</afterbreak>
+        </rule>
+      </languagerule>
+      <languagerule languagerulename="Czech">
+        <rule break="no">
+          <beforebreak>(^|\s+|[\(\[\,\:\;\"\-])(odst|čl|písm|věst|s|např|č)\.</beforebreak>
+          <afterbreak>\s</afterbreak>
+        </rule>
+        <rule break="no">
+          <beforebreak>(^|\s+|[\(\[\,\:\;\"\-])(Ian|Jan|Jaan|Tam|Sau|Led|Feb|Veeb|Hel|Vas|Un|Mar|Mär|Maal|Kov|Břez|Már|Apr|Huht|bal|dub|ápr|Mai|Maj|Maijs|Touk|geguž|máj|Iun|Jun|Jūn|Juun|Kes|birž|jún|Iul|Jul|Jūl|Juul|Hein|liep|júl|Aot|Aug|Elok|rugp|srp|avg|Sept|Syysk|rugs|szept|Oct|Okt|Lok,spal|rij|Noi|Nov|Mar|lapk|list|Dec|Det|Joul|gruod|prosjan|Jan|feb|Feb|mar|Mar|apr|Apr|jun|Jun|jul|Jul|aug|Aug|sep|Sep|sept|Sept|oct|Oct|nov|Nov|dec|Dec|Mon|Tue|Tues|Wed|Thu|Thurs|Fri|Sat|Sun|capt|Capt|dr|Dr|gov|Gov|gen|Gen|Mr|Mrs|Ms|Mme|prof|Prof|sgt|Sgt|st|St|Col|Rev|Sen|b\.c|B\.c|B\.J|a\.c|A\.c|av|Av|Co|corp|Corp|dept|Dept|dir|esp|Esp|D\.C|D\.P\.R\.K|D\.S|Fla|F\.W|gov|Gov|govt|Govt|inc|Inc|J\.D|J\.R|J\.T|Jr|Sr|Snr|L\.A|ltd|Lt|Ltd|mfg|M|Mfg|M\.B|M\.C|McG|Mt|M\.T\.M|N\.Y|O\.K|P\.F\.E|Sdn|S\.A|S\.A\.R\.L|S\.O\.S|S\.G|T\.R|U\.K|U\.S|U\.S\.A|V\.W\.H|W\.V|a\.m|A\.m|ca|Ca|cf|Cf|e\.g|E\.g|al|Al|ca|Ca|A\.D|etc|Etc|id|Id|q\.e\.d|Q\.e\.d|vs|Vs|seq|Seq|ib|Ib|ibid|Ibid|i\.e|I\.e|cit|Cit|N\.B|p\.m|P\.m|p\.m|P\.m|p\.s|P\.s|q\.v|Q\.v|sc|Sc|v|V|viz|Viz|v\.v|V\.v|fig|Fig|chap|Chap|no|No|p|pg|Pg|pp|Pp|vol|Vol|C|W|approx|addt|addtl|incl|op|Op|Pr|Hr|E|Dž|ž|P|Dl|Dn|Dra|Ga|ga|p|e|ge|g)\.</beforebreak>
+          <afterbreak>\s*[A-ZÁÃÄÅÀÂÆÇČÊËÉÈÍÌÎÏÑŒÓÔÕØÖŠÙÚÜÛŸÝa-zçéèêëàâäáæîïíìôöòõóøœřšûüùúñÿý0-9]+</afterbreak>
+        </rule>
+        <rule break="no">
+          <beforebreak>(^|\s+|[\(\[\,\:\;\"\-])(capt|Capt|dr|Dr|gov|Gov|gen|Gen|Mr|Mrs|Ms|Me|Dir|prof|Prof|sgt|Sgt|st|St|Col|Rev|Sen|Lt)\.</beforebreak>
+          <afterbreak>\s*\W+</afterbreak>
+        </rule>
+	<rule break="no">
+          <beforebreak>(^|\s+|[\(\[\,\:\;\"\-])(a\.m|A\.m|c|C|ca|Ca|cf|Cf|e\.g|E\.g|al|Al|ca|Ca|A\.D|etc|Etc|id|Id|q\.e\.d|Q\.e\.d|vs|Vs|seq|Seq|ib|Ib|ibid|Ibid|i\.e|I\.e|cit|Cit|N\.B|p\.m|P\.m|p\.m|P\.m|p\.s|P\.s|q\.v|Q\.v|sc|Sc|v|V|viz|Viz|v\.v|V\.v|appr|approx|addt|incl)\.</beforebreak>
+          <afterbreak>\s*\W+</afterbreak>
+        </rule>
+        <rule break="no">
+          <beforebreak>(^|\s+|[\(\[\,\:\;\"\-])(fig|Fig|chap|Chap|no|No|p|P|pg|Pg|pp|Pp|vol|Vol|approx|addt|addtl|incl|art|Art|op|Op)\.</beforebreak>
+          <afterbreak>\s*[\dA-ZÁÃÄÅÀÂÆÇČÊËÉÈÍÌÎÏÑŒÓÔÕØÖŠÙÚÜÛŸÝa-zçéèêëàâäáæîïíìôöòõóøœřšûüùúñÿý]</afterbreak>
+        </rule>
+        <rule break="no">
+          <beforebreak>(^|\s+|[\(\[\,\:\;\"\-])(Ian|Jan|Jaan|Tam|Sau|Led|Feb|Veeb|Hel|Vas|Un|Mar|Mär|Maal|Kov|Břez|Már|Apr|Huht|bal|dub|ápr|Mai|Maj|Maijs|Touk|geguž|máj|Iun|Jun|Jūn|Juun|Kes|birž|jún|Iul|Jul|Jūl|Juul|Hein|liep|júl|Aot|Aug|Elok|rugp|srp|avg|Sept|Syysk|rugs|szept|Oct|Okt|Lok,spal|rij|Noi|Nov|Mar|lapk|list|Dec|Det|Joul|gruod|prosjan|jan|Jan|feb|Feb|mar|Mar|apr|Apr|jun|Jun|jul|Jul|aug|Aug|sep|Sep|sept|Sept|oct|Oct|nov|Nov|dec|Dec)\.</beforebreak>
+          <afterbreak>\s*\d+</afterbreak>
+        </rule>
+        <rule break="yes">
+          <beforebreak>(^|\s+|[\(\[\,\:\;\"\-])(b\.c|B\.c|B\.J|a\.c|A\.c|av|Av|Co|corp|Corp|dept|Dept|esp|Esp|D\.C|D\.P\.R\.K|D\.S|Fla|F\.W|gov|Gov|govt|Govt|inc|Inc|J\.D|J\.R|J\.T|Jr|Sr|Snr|L\.A|ltd|Ltd|mfg|Mfg|M\.B|M\.C|McG|Mt|M\.T\.M|N\.Y|O\.K|P\.F\.E|Sdn|S\.A|S\.A\.R\.L|S\.O\.S|S\.G|T\.R|U\.K|U\.S|U\.S\.A|V\.W\.H|W\.V|approx|addt|addtl|incl)\.</beforebreak>
+          <afterbreak>\s+\"</afterbreak>
+        </rule>
+        <rule break="no">
+          <beforebreak>(^|\s+|[\(\[\,\:\;\"\-])(b\.c|B\.c|B\.J|a\.c|A\.c|av|Av|Co|corp|Corp|dept|Dept|esp|Esp|D\.C|D\.P\.R\.K|D\.S|Fla|F\.W|gov|Gov|govt|Govt|inc|Inc|J\.D|J\.R|J\.T|Jr|Sr|Snr|L\.A|ltd|Ltd|mfg|Mfg|M\.B|M\.C|McG|Mt|M\.T\.M|N\.Y|O\.K|P\.F\.E|Sdn|S\.A|S\.A\.R\.L|S\.O\.S|S\.G|T\.R|U\.K|U\.S|U\.S\.A|V\.W\.H|W\.V|approx|addt|addtl|incl)\.</beforebreak>
+          <afterbreak>\s+</afterbreak>
+        </rule>
+        <rule break="no">
+          <beforebreak>\d+\.</beforebreak>
+          <afterbreak>(^|\s+|[\(\[\,\:\;\"\-])(Ian|Jan|Jaan|Tam|Sau|Led|Feb|Veeb|Hel|Vas|Un|Mar|Mär|Maal|Kov|Břez|Már|Apr|Huht|bal|dub|ápr|Mai|Maj|Maijs|Touk|geguž|máj|Iun|Jun|Jūn|Juun|Kes|birž|jún|Iul|Jul|Jūl|Juul|Hein|liep|júl|Aot|Aug|Elok|rugp|srp|avg|Sept|Syysk|rugs|szept|Oct|Okt|Lok,spal|rij|Noi|Nov|Mar|lapk|list|Dec|Det|Joul|gruod|prosjan|jan|Jan|feb|Feb|mar|Mar|apr|Apr|jun|Jun|jul|Jul|aug|Aug|sep|Sep|sept|Sept|oct|Oct|nov|Nov|dec|Dec)</afterbreak>
+        </rule>
+      </languagerule>
+      <languagerule languagerulename="Danish">
+        <rule break="no">
+          <beforebreak>(^|\s+|[\(\[\,\:\;\"\-])(Ian|Jan|Jaan|Tam|Sau|Led|Feb|Veeb|Hel|Vas|Un|Mar|Mär|Maal|Kov|Břez|Már|Apr|Huht|bal|dub|ápr|Mai|Maj|Maijs|Touk|geguž|máj|Iun|Jun|Jūn|Juun|Kes|birž|jún|Iul|Jul|Jūl|Juul|Hein|liep|júl|Aot|Aug|Elok|rugp|srp|avg|Sept|Syysk|rugs|szept|Oct|Okt|Lok,spal|rij|Noi|Nov|Mar|lapk|list|Dec|Det|Joul|gruod|prosjan|Jan|feb|Feb|mar|Mar|apr|Apr|jun|Jun|jul|Jul|aug|Aug|sep|Sep|sept|Sept|oct|Oct|nov|Nov|dec|Dec|Mon|Tue|Tues|Wed|Thu|Thurs|Fri|Sat|Sun|capt|Capt|dr|Dr|gov|Gov|gen|Gen|Mr|Mrs|Ms|Mme|prof|Prof|sgt|Sgt|st|St|Col|Rev|Sen|b\.c|B\.c|B\.J|a\.c|A\.c|av|Av|Co|corp|Corp|dept|Dept|dir|esp|Esp|D\.C|D\.P\.R\.K|D\.S|Fla|F\.W|gov|Gov|govt|Govt|inc|Inc|J\.D|J\.R|J\.T|Jr|Sr|Snr|L\.A|ltd|Lt|Ltd|mfg|M|Mfg|M\.B|M\.C|McG|Mt|M\.T\.M|N\.Y|O\.K|P\.F\.E|Sdn|S\.A|S\.A\.R\.L|S\.O\.S|S\.G|T\.R|U\.K|U\.S|U\.S\.A|V\.W\.H|W\.V|a\.m|A\.m|ca|Ca|cf|Cf|e\.g|E\.g|al|Al|ca|Ca|A\.D|etc|Etc|id|Id|q\.e\.d|Q\.e\.d|vs|Vs|seq|Seq|ib|Ib|ibid|Ibid|i\.e|I\.e|cit|Cit|N\.B|p\.m|P\.m|p\.m|P\.m|p\.s|P\.s|q\.v|Q\.v|sc|Sc|v|V|viz|Viz|v\.v|V\.v|fig|Fig|chap|Chap|no|No|p|pg|Pg|pp|Pp|vol|Vol|C|W|approx|addt|addtl|incl|op|Op|Pr|Hr|E|Dž|ž|P|Dl|Dn|Dra|Ga|ga|p|e|ge|g)\.</beforebreak>
+          <afterbreak>\s*[A-ZÁÃÄÅÀÂÆÇČÊËÉÈÍÌÎÏÑŒÓÔÕØÖŠÙÚÜÛŸÝa-zçéèêëàâäáæîïíìôöòõóøœřšûüùúñÿýðþ0-9]+</afterbreak>
+        </rule>
+        <rule break="no">
+          <beforebreak>(^|\s+|[\(\[\,\:\;\"\-])(capt|Capt|dr|Dr|gov|Gov|gen|Gen|Mr|Mrs|Ms|Me|Dir|prof|Prof|sgt|Sgt|st|St|Col|Rev|Sen|Lt)\.</beforebreak>
+          <afterbreak>\s*\W+</afterbreak>
+        </rule>
+        <rule break="no">
+          <beforebreak>(^|\s+|[\(\[\,\:\;\"\-])(a\.m|A\.m|c|C|ca|Ca|cf|Cf|e\.g|E\.g|al|Al|ca|Ca|A\.D|etc|Etc|id|Id|q\.e\.d|Q\.e\.d|vs|Vs|seq|Seq|ib|Ib|ibid|Ibid|i\.e|I\.e|cit|Cit|N\.B|p\.m|P\.m|p\.m|P\.m|p\.s|P\.s|q\.v|Q\.v|sc|Sc|v|V|viz|Viz|v\.v|V\.v|appr|approx|addt|incl|pkt|eks|stk|s)\.</beforebreak>
+          <afterbreak>\s*\W+</afterbreak>
+        </rule>
+        <rule break="no">
+          <beforebreak>(^|\s+|[\(\[\,\:\;\"\-])(fig|Fig|chap|Chap|no|No|p|P|pg|Pg|pp|Pp|vol|Vol|approx|addt|addtl|incl|art|Art|op|Op)\.</beforebreak>
+          <afterbreak>\s*[\dA-ZÁÃÄÅÀÂÆÇČÊËÉÈÍÌÎÏÑŒÓÔÕØÖŠÙÚÜÛŸÝa-zçéèêëàâäáæîïíìôöòõóøœřšûüùúñÿýðþ]</afterbreak>
+        </rule>
+        <rule break="no">
+          <beforebreak>(^|\s+|[\(\[\,\:\;\"\-])(Ian|Jan|Jaan|Tam|Sau|Led|Feb|Veeb|Hel|Vas|Un|Mar|Mär|Maal|Kov|Břez|Már|Apr|Huht|bal|dub|ápr|Mai|Maj|Maijs|Touk|geguž|máj|Iun|Jun|Jūn|Juun|Kes|birž|jún|Iul|Jul|Jūl|Juul|Hein|liep|júl|Aot|Aug|Elok|rugp|srp|avg|Sept|Syysk|rugs|szept|Oct|Okt|Lok,spal|rij|Noi|Nov|Mar|lapk|list|Dec|Det|Joul|gruod|prosjan|jan|Jan|feb|Feb|mar|Mar|apr|Apr|jun|Jun|jul|Jul|aug|Aug|sep|Sep|sept|Sept|oct|Oct|nov|Nov|dec|Dec)\.</beforebreak>
+          <afterbreak>\s*\d+</afterbreak>
+        </rule>
+        <rule break="yes">
+          <beforebreak>(^|\s+|[\(\[\,\:\;\"\-])(b\.c|B\.c|B\.J|a\.c|A\.c|av|Av|Co|corp|Corp|dept|Dept|esp|Esp|D\.C|D\.P\.R\.K|D\.S|Fla|F\.W|gov|Gov|govt|Govt|inc|Inc|J\.D|J\.R|J\.T|Jr|Sr|Snr|L\.A|ltd|Ltd|mfg|Mfg|M\.B|M\.C|McG|Mt|M\.T\.M|N\.Y|O\.K|P\.F\.E|Sdn|S\.A|S\.A\.R\.L|S\.O\.S|S\.G|T\.R|U\.K|U\.S|U\.S\.A|V\.W\.H|W\.V|approx|addt|addtl|incl)\.</beforebreak>
+          <afterbreak>\s+\"</afterbreak>
+        </rule>
+        <rule break="no">
+          <beforebreak>(^|\s+|[\(\[\,\:\;\"\-])(b\.c|B\.c|B\.J|a\.c|A\.c|av|Av|Co|corp|Corp|dept|Dept|esp|Esp|D\.C|D\.P\.R\.K|D\.S|Fla|F\.W|gov|Gov|govt|Govt|inc|Inc|J\.D|J\.R|J\.T|Jr|Sr|Snr|L\.A|ltd|Ltd|mfg|Mfg|M\.B|M\.C|McG|Mt|M\.T\.M|N\.Y|O\.K|P\.F\.E|Sdn|S\.A|S\.A\.R\.L|S\.O\.S|S\.G|T\.R|U\.K|U\.S|U\.S\.A|V\.W\.H|W\.V|approx|addt|addtl|incl)\.</beforebreak>
+          <afterbreak>\s+</afterbreak>
+        </rule>
+        <rule break="no">
+          <beforebreak>\d+\.</beforebreak>
+          <afterbreak>(^|\s+|[\(\[\,\:\;\"\-])(Ian|Jan|Jaan|Tam|Sau|Led|Feb|Veeb|Hel|Vas|Un|Mar|Mär|Maal|Kov|Břez|Már|Apr|Huht|bal|dub|ápr|Mai|Maj|Maijs|Touk|geguž|máj|Iun|Jun|Jūn|Juun|Kes|birž|jún|Iul|Jul|Jūl|Juul|Hein|liep|júl|Aot|Aug|Elok|rugp|srp|avg|Sept|Syysk|rugs|szept|Oct|Okt|Lok,spal|rij|Noi|Nov|Mar|lapk|list|Dec|Det|Joul|gruod|prosjan|jan|Jan|feb|Feb|mar|Mar|apr|Apr|jun|Jun|jul|Jul|aug|Aug|sep|Sep|sept|Sept|oct|Oct|nov|Nov|dec|Dec)</afterbreak>
+        </rule>
+      </languagerule>
+      <languagerule languagerulename="Dutch">
+        <rule break="no">
+          <beforebreak>(^|\s+|[\(\[\,\:\;\"\-])([Aa]dj|[Dd]hr|[Dd]ir|[Dd]r[as]?|[Ff]am|[Gg]ebr|[Gg]en|[Gg]ouv|H\.K\.H|H\.M|[Ii]ng|[Ii]r|[Jj]hr|[Kk]apt|[Kk]ol|[Kk]orp|[Ll]ic|[Ll]t|[Mm]ej|[Mm]evr|[Mm]gr|[Mm]r|[Mm]w|Pres|[Pp]rof|[Pp]rof\. ?[Ee]m|Secr|[Ss]gt|Voorz|Vz|Z\.H|Z\.K\.H|Z\.K\.M|Z\.M|[Pp]rof\.dr|[Pp]res)\.</beforebreak>
+          <afterbreak>\s*[A-Z]\w*</afterbreak>
+        </rule>
+        <rule break="no">
+          <beforebreak>(^|\s+|[\(\[\,\:\;\"\-])([Aa]\.d\.h\.v|[Aa]\.g\.v|[Dd]\.m\.v|[Ii]\.g\.v|[Ii]\.o\.v|[Ii]\.p\.v|[Ii]\.s\.m|[Ii]\.t\.t|[Ii]\.v\.m|[Mm]\.b\.t|[Mm]\.b\.v|[Mm]\.m\.v|[Nn]\.a\.v|[Oo]\.l\.v|[Tt]\.a\.v|[Tt]\.b\.v|[Tt]\.g\.v|[Tt]\.o\.v|[Aa]fb|[Aa]fd|[Aa]l|[Aa]rt|[Bb]\.v|[Bb]etr|[Bb]ijl|[Bb]ijv|[Bb]v|[Bb]vb|[Bb]lz|[Cc]a|[Cc]fr?|c\.q|[Dd]\.d|[Dd]\.i|[Dd]\.w\.z|[Dd]ept|[Dd]wz|[Ee]\.g|[Ee]v|[Ee]vt|[Ff]ig|[Gg]eb|[Ii]\.c|[Ii]\.e|[Mm]\.i|[Mm]\.n|[Nn]l|[Nn]rs?|[Oo]\.a|[Oo]\.i|[Oo]\.m|[Oo]ng|[Oo]ngev|[Pp]?p|[Pp]ag|[Pp]ar|[Pp]seud|[Rr]esp|[Ss]t|[Tt]\.e\.m|[Tt]el|[Vv]\.l\.n\.r|[Vv]gl|[Vv]nl|[Vv]ol|[Vv]s|[Aa]\.i|[Aa]fl|[Aa]rr|[Dd]\.d|[Ee]d|[Ee]rr|[Ee]\.a|B\.Prov\.R|[Pp]rov|Rb|Jeugdrb|Parl\.St|[Ii]\.o|o\.b\.v|o\.w\.v|plv|a\.h\.v|d\.o\.v|[Zz]gn|zg|v|t\.w|Corr|fisc|Doc|c\.l|e\.v\.a|ill|fa|ms|Pb\.L|afk|[Pp]\.[Vv]|w|ts)\.</beforebreak>
+          <afterbreak>\s*</afterbreak>
+        </rule>
+        <rule break="yes">
+          <beforebreak>(1|2)\d\d\d\.</beforebreak>
+          <afterbreak>\s+[A-Z]</afterbreak>
+        </rule>
+        <rule break="no">
+          <beforebreak>(^|\s+|[\(\[\,\:\;\"\-])([Aa]l|[Vv]ol)\.</beforebreak>
+          <afterbreak>\s*\d+</afterbreak>
+        </rule>
+        <rule break="no">
+          <beforebreak>(^|\s+|[\(\[\,\:\;\"\-])([Mm]aa?|[Dd]in?|[Ww]oe?|[Dd]on?|[Dd]ond|[Vv]rijd?|[Zz]at?|[Zz]on?|[Jj]an|[Ff]ebr?|[Aa]pr|[Aa]ug|[Ss]ept?|[Oo]kt|[Nn]ov|[Dd]ec|[Ee][Uu][Rr]|[Hh]?[Ff][Ll]|[Gg][Ll][Dd]|[Bb]?[Ff][Rr]|[Kk][Rr]|km|kg|cm|[dc]l|a\.d|A\.D|a\.h\.w|a\.m|[Aa]\.s|[Aa]\.u\.b|b\.t\.w|B\.T\.W|b\.v|B\.V|B\.W|[Cc]ie|ct|D\.C|e\.a|e\.d|e\.d\.m|[Ee]\.e\.a|e\.k|enz|et al|etc|e\.v|e\.v\.a|[Ee]xcl|G\.S|[Ii]d|[Ii]\.h\.a|[Ii]\.h\.b|[Ii]ncl|j\.l|jl|jr|K\.B|K\.M|kt|K\.v\.K|L\.A|ll|[Mm]\.a\.w|[Mm]ax|[Mm]in|mld|mln|n\. ?C|n\. ?Chr|N\.N|[Nn]\.o\.t\.k|[Nn]\.t\.b|n\.v|N\.V|[Nn]\.v\.t|o\.k|O\.K|O\.L\.V|pct|p\.m|p\.p|p\. ?st|P\.T\.T|[Ss]\.v\.p|[Tt]\.z\.t|U\.N\.O|U\.S|U\.S\.A|v\. ?C|v\. ?Chr|V\.S|[Ww]\.v\.t\.t\.k|zn|[Zz]\.o\.z|[Zz]\.s\.m|[Hh]fdst|Jur|Vl\.Parl|Jurispr|Cass|Verord|[Oo]pm|vlg|z\.a|rect|[Tt]elnr|[Rr]andnr|vn|[Zz]g|et seq|[v]Verord|[Aa]dv|[Aa]fk|[Aa]non|bg|dgl|d\.t\.p|e\.v\.a|b\.g|e\.v\.a|e\.w|f\.r|lj|n\.o\.m|ots|td|ts|[Tt]\.w\.v|t\.w\.k|m\.t\.k|v\.w\.b|t\.w|v\.z\.m|z\.i|[Dd]ecr|[Ff]acs|jrg|v\.m|w\.o|wd|i\.w\.tr|Stb|Arr\.Verbr|Decr\.Fr|Pas|d\.d |Corr|Arr\.Cass|[Jj]eugdrb|Hgrw|Jrg|[Vv]\.o\.f)\.</beforebreak>
+          <afterbreak>\s*([a-z]\w*|\d+)</afterbreak>
+        </rule>
+        <rule break="no">
+          <beforebreak>[\s|\s\(\[][A-Z]\.</beforebreak>
+          <afterbreak>\s[a-zçéèêëàâäáæîïíìôöòõóøœřšûüùúñÿý]+</afterbreak>
+        </rule>
+        <rule break="no">
+          <beforebreak>[\s|\s\(\[][A-Z]\.</beforebreak>
+          <afterbreak>\s[A-ZÁÃÄÅÀÂÆÇČÊËÉÈÍÌÎÏÑŒÓÔÕØÖŠÙÚÜÛŸÝ]{2,}</afterbreak>
+        </rule>
+      </languagerule>
+      <languagerule languagerulename="English">
+        <rule break="yes">
+          <beforebreak>(^|\s+|[\(\[\,\:\;\"\-])[A-Z][a-z]+\s+[A-Z]\.</beforebreak>
+          <afterbreak>\s+(Adjournment|After|All|An|Analysis|And|As|At|Both|But|By|Chambers|Changes|Clinical|Coming|Comparison|Daughter|Die|Dietary|During|Early|Effect|Effects|English|Exposure|For|Free|From|Genetic|He|Health|High|His|How|Identification|If|In|Influence|Influenza|Is|Isolation|It|Maternal|More|My|New|Nice|No|Occupational|Of|On|One|Participated|Plan|Plant|Public|Reduced|Risk|See|Sexual|She|So|Some|Sometimes|Spontaneous|Still|Studies|That|The|Then|There|They|This|To|Two|Use|Vitamin|We|Weeks|What|When|While|With|Women|Work|You)(\s+|[\(\[\,\:\;\"\-])</afterbreak>
+        </rule>
+        <rule break="yes">
+          <beforebreak>(^|\s+|[\(\[\,\:\;\"\-])[0-9]{4}\.</beforebreak>
+          <afterbreak>\s+[A-Z]</afterbreak>
+        </rule>
+        <rule break="no">
+          <beforebreak>(^|\s+|[\(\[\,\:\;\"\-])[A-Z][a-z]+\s+[A-Z]\.</beforebreak>
+          <afterbreak>\s+[A-Z][a-z]+</afterbreak>
+        </rule>
+        <rule break="no">
+          <beforebreak>(^|\s+|[\(\[\,\:\;\"\-])(etc|et al)\.</beforebreak>
+          <afterbreak>\s+([^A-Z])</afterbreak>
+        </rule>
+        <rule break="no">
+          <beforebreak>(^|\s+|[\(\[\,\:\;\"\-\/])(jan|Jan|feb|Feb|mar|Mar|apr|Apr|jun|Jun|jul|Jul|aug|Aug|sep|Sep|sept|Sept|oct|Oct|nov|Nov|dec|Dec|Mon|Tue|Tues|Wed|Thu|Thurs|Fri|Sat|Sun|capt|Capt|dr|Dr|gov|Gov|gen|Gen|Mr|Mrs|Ms|Mme|prof|Prof|sgt|Sgt|st|St|Col|Rev|Sen|Rep|b\.c|B\.c|B\.J|a\.c|A\.c|av|Av|Co|corp|Corp|dept|Dept|dir|esp|Esp|D\.C|D\.P\.R\.K|D\.S|Fla|F\.W|gov|Gov|govt|Govt|inc|Inc|J\.D|J\.R|J\.T|Jr|Sr|Snr|L\.A|ltd|Lt|Ltd|mfg|M|Mfg|M\.B|M\.C|McG|Mt|M\.T\.M|N\.Y|O\.K|P\.F\.E|Sdn|S\.A|S\.A\.R\.L|S\.O\.S|S\.G|T\.R|U\.K|U\.S|U\.S\.A|V\.W\.H|W\.V|a\.m|A\.m|ca|Ca|cf|Cf|e\.g|E\.g|Al|ca|Ca|A\.D|Etc|id|Id|q\.e\.d|Q\.e\.d|vs|Vs|seq|Seq|ib|Ib|ibid|Ibid|i\.e|I\.e|cit|Cit|N\.B|p\.m|P\.m|p\.m|P\.m|p\.s|P\.s|q\.v|Q\.v|sc|Sc|v|V|viz|Viz|v\.v|V\.v|fig|Fig|chap|Chap|no|No|p|pg|Pg|pp|Pp|vol|Vol|C|W|approx|addt|addtl|incl|op|Op|U\.N|A\.C|G\.D\.P|ed|O\.A\.S|VS|B\.C|E\.U)\.</beforebreak>
+          <afterbreak>\s*[A-ZÁÃÄÅÀÂÆÇČÊËÉÈÍÌÎÏÑŒÓÔÕØÖŠÙÚÜÛŸÝa-zçéèêëàâäáæîïíìôöòõóøœřšûüùúñÿý0-9]+</afterbreak>
+        </rule>
+        <rule break="no">
+          <beforebreak>(^|\s+|[\(\[\,\:\;\"\-])(capt|Capt|dr|Dr|gov|Gov|gen|Gen|Mr|Mrs|Ms|Me|Dir|prof|Prof|sgt|Sgt|st|St|Col|Rev|Sen|Lt|Maj|Gen|Adm|Atty)\.</beforebreak>
+          <afterbreak>\s*[A-ZÁÃÄÅÀÂÆÇČÊËÉÈÍÌÎÏÑŒÓÔÕØÖŠÙÚÜÛŸÝ]+</afterbreak>
+        </rule>
+        <rule break="no">
+          <beforebreak>(^|\s+|[\(\[\,\:\;\"\-])(a\.m|A\.m|c|C|ca|Ca|cf|Cf|e\.g|E\.g|Al|ca|Ca|A\.D|Etc|id|Id|q\.e\.d|Q\.e\.d|vs|Vs|seq|Seq|ib|Ib|ibid|Ibid|i\.e|I\.e|cit|Cit|N\.B|p\.m|P\.m|p\.m|P\.m|p\.s|P\.s|q\.v|Q\.v|sc|Sc|v|V|viz|Viz|v\.v|V\.v|appr|approx|addt|incl|Lt\. ?Col)\.</beforebreak>
+          <afterbreak>\s*[A-ZÁÃÄÅÀÂÆÇČÊËÉÈÍÌÎÏÑŒÓÔÕØÖŠÙÚÜÛŸÝ]+</afterbreak>
+        </rule>
+        <rule break="no">
+          <beforebreak>(^|\s+|[\(\[\,\:\;\"\-])(fig|Fig|chap|Chap|no|No|p|P|pg|Pg|pp|Pp|vol|Vol|approx|addt|addtl|incl|art|Art|op|Op|Sec)\.</beforebreak>
+          <afterbreak>\s*[\dA-ZÁÃÄÅÀÂÆÇČÊËÉÈÍÌÎÏÑŒÓÔÕØÖŠÙÚÜÛŸÝa-zçéèêëàâäáæîïíìôöòõóøœřšûüùúñÿý]</afterbreak>
+        </rule>
+        <rule break="no">
+          <beforebreak>(^|\s+|[\(\[\,\:\;\"\-])(jan|Jan|feb|Feb|mar|Mar|apr|Apr|jun|Jun|jul|Jul|aug|Aug|sep|Sep|sept|Sept|oct|Oct|nov|Nov|dec|Dec|Ex)\.</beforebreak>
+          <afterbreak>\s*\d+</afterbreak>
+        </rule>
+        <rule break="yes">
+          <beforebreak>(^|\s+|[\(\[\,\:\;\"\-])(b\.c|B\.c|B\.J|a\.c|A\.c|av|Av|Co|corp|Corp|dept|Dept|esp|Esp|D\.C|D\.P\.R\.K|D\.S|Fla|F\.W|gov|Gov|govt|Govt|inc|Inc|J\.D|J\.R|J\.T|Jr|Sr|Snr|L\.A|ltd|Ltd|mfg|Mfg|M\.B|M\.C|McG|Mt|M\.T\.M|N\.Y|O\.K|P\.F\.E|Sdn|S\.A|S\.A\.R\.L|S\.O\.S|S\.G|T\.R|U\.K|U\.S|U\.S\.A|V\.W\.H|W\.V|approx|addt|addtl|incl)\.</beforebreak>
+          <afterbreak>\s+\"</afterbreak>
+        </rule>
+        <rule break="no">
+          <beforebreak>(^|\s+|[\(\[\,\:\;\"\-])(b\.c|B\.c|B\.J|a\.c|A\.c|av|Av|Co|corp|Corp|dept|Dept|esp|Esp|D\.C|D\.P\.R\.K|D\.S|Fla|F\.W|gov|Gov|govt|Govt|inc|Inc|J\.D|J\.R|J\.T|Jr|Sr|Snr|L\.A|ltd|Ltd|mfg|Mfg|M\.B|M\.C|McG|Mt|M\.T\.M|N\.Y|O\.K|P\.F\.E|Sdn|S\.A|S\.A\.R\.L|S\.O\.S|S\.G|T\.R|U\.K|U\.S|U\.S\.A|V\.W\.H|W\.V|approx|addt|addtl|incl|a\.k\.a)\.</beforebreak>
+          <afterbreak>\s+</afterbreak>
+        </rule>
+        <rule break="no">
+          <beforebreak>\d+\.</beforebreak>
+          <afterbreak>(^|\s+|[\(\[\,\:\;\"\-])(jan|Jan|feb|Feb|mar|Mar|apr|Apr|jun|Jun|jul|Jul|aug|Aug|sep|Sep|sept|Sept|oct|Oct|nov|Nov|dec|Dec)</afterbreak>
+        </rule>
+        <rule break="no">
+          <beforebreak>^[0-9]{1,3}\.</beforebreak>
+          <afterbreak>\s+[A-Z]</afterbreak>
+        </rule>
+        <rule break="no">
+          <beforebreak>(^|\s+|[\(\[\,\:\;\"\-])([A-Z]\.){3,}</beforebreak>
+          <afterbreak>\s*\w+</afterbreak>
+        </rule>
+        <rule break="no">
+          <beforebreak>(^|\s+|[\(\[\,\:\;\"\-])\d+ [NESW]+\.</beforebreak>
+          <afterbreak>\s+([A-Z]|\d+)</afterbreak>
+        </rule>
+        <rule break="no">
+          <beforebreak>(^|\s+|[\(\[\,\:\;\"\-])([A-Z]\.)+</beforebreak>
+          <afterbreak>\s+et al\.</afterbreak>
+        </rule>
+        <rule break="no">
+          <beforebreak>(^|\s+|[\(\[\,\:\;\"\-])P\.O\.</beforebreak>
+          <afterbreak>\s+Box</afterbreak>
+        </rule>
+        <rule break="yes">
+          <beforebreak>\.\[[0-9]+\]</beforebreak>
+          <afterbreak>\s+[A-Z]</afterbreak>
+        </rule>
+        <rule break="no">
+          <beforebreak>(^|\s+|[\(\[\,\:\;\"\-])([A-Z]\.)+</beforebreak>
+          <afterbreak>\s+and</afterbreak>
+        </rule>
+        <rule break="no">
+          <beforebreak>(^|\s+|[\(\[\,\:\;\"\-])U\.</beforebreak>
+          <afterbreak>\s+of\s+[A-Z]+</afterbreak>
+        </rule>
+        <rule break="no">
+          <beforebreak>\s(?i)(n|nr)\.</beforebreak>
+          <afterbreak>\s\d</afterbreak>
+        </rule>
+      </languagerule>
+      <languagerule languagerulename="Estonian">
+        <rule break="no">
+          <beforebreak>(^|\s+|[\(\[\,\:\;\"\-])(Ian|Jan|Jaan|Tam|Sau|Led|Feb|Veeb|Hel|Vas|Un|Mar|Mär|Maal|Kov|Břez|Már|Apr|Huht|bal|dub|ápr|Mai|Maj|Maijs|Touk|geguž|máj|Iun|Jun|Jūn|Juun|Kes|birž|jún|Iul|Jul|Jūl|Juul|Hein|liep|júl|Aot|Aug|Elok|rugp|srp|avg|Sept|Syysk|rugs|szept|Oct|Okt|Lok,spal|rij|Noi|Nov|Mar|lapk|list|Dec|Det|Joul|gruod|prosjan|Jan|feb|Feb|mar|Mar|apr|Apr|jun|Jun|jul|Jul|aug|Aug|sep|Sep|sept|Sept|oct|Oct|nov|Nov|dec|Dec|Mon|Tue|Tues|Wed|Thu|Thurs|Fri|Sat|Sun|capt|Capt|dr|Dr|gov|Gov|gen|Gen|Mr|Mrs|Ms|Mme|prof|Prof|sgt|Sgt|st|St|Col|Rev|Sen|b\.c|B\.c|B\.J|a\.c|A\.c|av|Av|Co|corp|Corp|dept|Dept|dir|esp|Esp|D\.C|D\.P\.R\.K|D\.S|Fla|F\.W|gov|Gov|govt|Govt|inc|Inc|J\.D|J\.R|J\.T|Jr|Sr|Snr|L\.A|ltd|Lt|Ltd|mfg|M|Mfg|M\.B|M\.C|McG|Mt|M\.T\.M|N\.Y|O\.K|P\.F\.E|Sdn|S\.A|S\.A\.R\.L|S\.O\.S|S\.G|T\.R|U\.K|U\.S|U\.S\.A|V\.W\.H|W\.V|a\.m|A\.m|ca|Ca|cf|Cf|e\.g|E\.g|al|Al|ca|Ca|A\.D|etc|Etc|id|Id|q\.e\.d|Q\.e\.d|vs|Vs|seq|Seq|ib|Ib|ibid|Ibid|i\.e|I\.e|cit|Cit|N\.B|p\.m|P\.m|p\.m|P\.m|p\.s|P\.s|q\.v|Q\.v|sc|Sc|v|V|viz|Viz|v\.v|V\.v|fig|Fig|chap|Chap|no|No|p|pg|Pg|pp|Pp|vol|Vol|C|W|approx|addt|addtl|incl|op|Op|Pr|Hr|E|Dž|ž|P|Dl|Dn|Dra|Ga|ga|p|e|ge|g)\.</beforebreak>
+          <afterbreak>\s*[A-ZÁÃÄÅÀÂÆÇČÊËÉÈÍÌÎÏÑŒÓÔÕØÖŠÙÚÜÛŸÝa-zçéèêëàâäáæîïíìôöòõóøœřšûüùúñÿýðþ0-9]+</afterbreak>
+        </rule>
+        <rule break="no">
+          <beforebreak>(^|\s+|[\(\[\,\:\;\"\-])(capt|Capt|dr|Dr|gov|Gov|gen|Gen|Mr|Mrs|Ms|Me|Dir|prof|Prof|sgt|Sgt|st|St|Col|Rev|Sen|Lt)\.</beforebreak>
+          <afterbreak>\s*\W+</afterbreak>
+        </rule>
+        <rule break="no">
+          <beforebreak>(^|\s+|[\(\[\,\:\;\"\-])(a\.m|A\.m|c|C|ca|Ca|cf|Cf|e\.g|E\.g|al|Al|ca|Ca|A\.D|etc|Etc|id|Id|q\.e\.d|Q\.e\.d|vs|Vs|seq|Seq|ib|Ib|ibid|Ibid|i\.e|I\.e|cit|Cit|N\.B|p\.m|P\.m|p\.m|P\.m|p\.s|P\.s|q\.v|Q\.v|sc|Sc|v|V|viz|Viz|v\.v|V\.v|appr|approx|addt|incl)\.</beforebreak>
+          <afterbreak>\s*\W+</afterbreak>
+        </rule>
+        <rule break="no">
+          <beforebreak>(^|\s+|[\(\[\,\:\;\"\-])(fig|Fig|chap|Chap|no|No|p|P|pg|Pg|pp|Pp|vol|Vol|approx|addt|addtl|incl|art|Art|op|Op)\.</beforebreak>
+          <afterbreak>\s*[\dA-ZÁÃÄÅÀÂÆÇČÊËÉÈÍÌÎÏÑŒÓÔÕØÖŠÙÚÜÛŸÝa-zçéèêëàâäáæîïíìôöòõóøœřšûüùúñÿý]</afterbreak>
+        </rule>
+        <rule break="no">
+          <beforebreak>(^|\s+|[\(\[\,\:\;\"\-])(Ian|Jan|Jaan|Tam|Sau|Led|Feb|Veeb|Hel|Vas|Un|Mar|Mär|Maal|Kov|Břez|Már|Apr|Huht|bal|dub|ápr|Mai|Maj|Maijs|Touk|geguž|máj|Iun|Jun|Jūn|Juun|Kes|birž|jún|Iul|Jul|Jūl|Juul|Hein|liep|júl|Aot|Aug|Elok|rugp|srp|avg|Sept|Syysk|rugs|szept|Oct|Okt|Lok,spal|rij|Noi|Nov|Mar|lapk|list|Dec|Det|Joul|gruod|prosjan|jan|Jan|feb|Feb|mar|Mar|apr|Apr|jun|Jun|jul|Jul|aug|Aug|sep|Sep|sept|Sept|oct|Oct|nov|Nov|dec|Dec)\.</beforebreak>
+          <afterbreak>\s*\d+</afterbreak>
+        </rule>
+        <rule break="yes">
+          <beforebreak>(^|\s+|[\(\[\,\:\;\"\-])(b\.c|B\.c|B\.J|a\.c|A\.c|av|Av|Co|corp|Corp|dept|Dept|esp|Esp|D\.C|D\.P\.R\.K|D\.S|Fla|F\.W|gov|Gov|govt|Govt|inc|Inc|J\.D|J\.R|J\.T|Jr|Sr|Snr|L\.A|ltd|Ltd|mfg|Mfg|M\.B|M\.C|McG|Mt|M\.T\.M|N\.Y|O\.K|P\.F\.E|Sdn|S\.A|S\.A\.R\.L|S\.O\.S|S\.G|T\.R|U\.K|U\.S|U\.S\.A|V\.W\.H|W\.V|approx|addt|addtl|incl)\.</beforebreak>
+          <afterbreak>\s+\"</afterbreak>
+        </rule>
+        <rule break="no">
+          <beforebreak>(^|\s+|[\(\[\,\:\;\"\-])(b\.c|B\.c|B\.J|a\.c|A\.c|av|Av|Co|corp|Corp|dept|Dept|esp|Esp|D\.C|D\.P\.R\.K|D\.S|Fla|F\.W|gov|Gov|govt|Govt|inc|Inc|J\.D|J\.R|J\.T|Jr|Sr|Snr|L\.A|ltd|Ltd|mfg|Mfg|M\.B|M\.C|McG|Mt|M\.T\.M|N\.Y|O\.K|P\.F\.E|Sdn|S\.A|S\.A\.R\.L|S\.O\.S|S\.G|T\.R|U\.K|U\.S|U\.S\.A|V\.W\.H|W\.V|approx|addt|addtl|incl)\.</beforebreak>
+          <afterbreak>\s+</afterbreak>
+        </rule>
+        <rule break="no">
+          <beforebreak>\d+\.</beforebreak>
+          <afterbreak>(^|\s+|[\(\[\,\:\;\"\-])(Ian|Jan|Jaan|Tam|Sau|Led|Feb|Veeb|Hel|Vas|Un|Mar|Mär|Maal|Kov|Břez|Már|Apr|Huht|bal|dub|ápr|Mai|Maj|Maijs|Touk|geguž|máj|Iun|Jun|Jūn|Juun|Kes|birž|jún|Iul|Jul|Jūl|Juul|Hein|liep|júl|Aot|Aug|Elok|rugp|srp|avg|Sept|Syysk|rugs|szept|Oct|Okt|Lok,spal|rij|Noi|Nov|Mar|lapk|list|Dec|Det|Joul|gruod|prosjan|jan|Jan|feb|Feb|mar|Mar|apr|Apr|jun|Jun|jul|Jul|aug|Aug|sep|Sep|sept|Sept|oct|Oct|nov|Nov|dec|Dec)</afterbreak>
+        </rule>
+      </languagerule>
+      <languagerule languagerulename="Finnish">
+        <rule break="no">
+          <beforebreak>(^|\s+|[\(\[\,\:\;\"\-])(Ian|Jan|Jaan|Tam|Sau|Led|Feb|Veeb|Hel|Vas|Un|Mar|Mär|Maal|Kov|Břez|Már|Apr|Huht|bal|dub|ápr|Mai|Maj|Maijs|Touk|geguž|máj|Iun|Jun|Jūn|Juun|Kes|birž|jún|Iul|Jul|Jūl|Juul|Hein|liep|júl|Aot|Aug|Elok|rugp|srp|avg|Sept|Syysk|rugs|szept|Oct|Okt|Lok,spal|rij|Noi|Nov|Mar|lapk|list|Dec|Det|Joul|gruod|prosjan|Jan|feb|Feb|mar|Mar|apr|Apr|jun|Jun|jul|Jul|aug|Aug|sep|Sep|sept|Sept|oct|Oct|nov|Nov|dec|Dec|Mon|Tue|Tues|Wed|Thu|Thurs|Fri|Sat|Sun|capt|Capt|dr|Dr|gov|Gov|gen|Gen|Mr|Mrs|Ms|Mme|prof|Prof|sgt|Sgt|st|St|Col|Rev|Sen|b\.c|B\.c|B\.J|a\.c|A\.c|av|Av|Co|corp|Corp|dept|Dept|dir|esp|Esp|D\.C|D\.P\.R\.K|D\.S|Fla|F\.W|gov|Gov|govt|Govt|inc|Inc|J\.D|J\.R|J\.T|Jr|Sr|Snr|L\.A|ltd|Lt|Ltd|mfg|M|Mfg|M\.B|M\.C|McG|Mt|M\.T\.M|N\.Y|O\.K|P\.F\.E|Sdn|S\.A|S\.A\.R\.L|S\.O\.S|S\.G|T\.R|U\.K|U\.S|U\.S\.A|V\.W\.H|W\.V|a\.m|A\.m|ca|Ca|cf|Cf|e\.g|E\.g|al|Al|ca|Ca|A\.D|etc|Etc|id|Id|q\.e\.d|Q\.e\.d|vs|Vs|seq|Seq|ib|Ib|ibid|Ibid|i\.e|I\.e|cit|Cit|N\.B|p\.m|P\.m|p\.m|P\.m|p\.s|P\.s|q\.v|Q\.v|sc|Sc|v|V|viz|Viz|v\.v|V\.v|fig|Fig|chap|Chap|no|No|p|pg|Pg|pp|Pp|vol|Vol|C|W|approx|addt|addtl|incl|op|Op|Pr|Hr|E|Dž|ž|P|Dl|Dn|Dra|Ga|ga|p|e|ge|g)\.</beforebreak>
+          <afterbreak>\s*[A-ZÁÃÄÅÀÂÆÇČÊËÉÈÍÌÎÏÑŒÓÔÕØÖŠÙÚÜÛŸÝa-zçéèêëàâäáæîïíìôöòõóøœřšûüùúñÿý0-9]+</afterbreak>
+        </rule>
+        <rule break="no">
+          <beforebreak>(^|\s+|[\(\[\,\:\;\"\-])(capt|Capt|dr|Dr|gov|Gov|gen|Gen|Mr|Mrs|Ms|Me|Dir|prof|Prof|sgt|Sgt|st|St|Col|Rev|Sen|Lt)\.</beforebreak>
+          <afterbreak>\s*\W+</afterbreak>
+        </rule>
+        <rule break="no">
+          <beforebreak>(^|\s+|[\(\[\,\:\;\"\-])(a\.m|A\.m|c|C|ca|Ca|cf|Cf|e\.g|E\.g|al|Al|ca|Ca|A\.D|etc|Etc|id|Id|q\.e\.d|Q\.e\.d|vs|Vs|seq|Seq|ib|Ib|ibid|Ibid|i\.e|I\.e|cit|Cit|N\.B|p\.m|P\.m|p\.m|P\.m|p\.s|P\.s|q\.v|Q\.v|sc|Sc|v|V|viz|Viz|v\.v|V\.v|appr|approx|addt|incl)\.</beforebreak>
+          <afterbreak>\s*\W+</afterbreak>
+        </rule>
+        <rule break="no">
+          <beforebreak>(^|\s+|[\(\[\,\:\;\"\-])(fig|Fig|chap|Chap|no|No|p|P|pg|Pg|pp|Pp|vol|Vol|approx|addt|addtl|incl|art|Art|op|Op)\.</beforebreak>
+          <afterbreak>\s*[\dA-ZÁÃÄÅÀÂÆÇČÊËÉÈÍÌÎÏÑŒÓÔÕØÖŠÙÚÜÛŸÝa-zçéèêëàâäáæîïíìôöòõóøœřšûüùúñÿý]</afterbreak>
+        </rule>
+        <rule break="no">
+          <beforebreak>(^|\s+|[\(\[\,\:\;\"\-])(Ian|Jan|Jaan|Tam|Sau|Led|Feb|Veeb|Hel|Vas|Un|Mar|Mär|Maal|Kov|Břez|Már|Apr|Huht|bal|dub|ápr|Mai|Maj|Maijs|Touk|geguž|máj|Iun|Jun|Jūn|Juun|Kes|birž|jún|Iul|Jul|Jūl|Juul|Hein|liep|júl|Aot|Aug|Elok|rugp|srp|avg|Sept|Syysk|rugs|szept|Oct|Okt|Lok,spal|rij|Noi|Nov|Mar|lapk|list|Dec|Det|Joul|gruod|prosjan|jan|Jan|feb|Feb|mar|Mar|apr|Apr|jun|Jun|jul|Jul|aug|Aug|sep|Sep|sept|Sept|oct|Oct|nov|Nov|dec|Dec)\.</beforebreak>
+          <afterbreak>\s*\d+</afterbreak>
+        </rule>
+        <rule break="yes">
+          <beforebreak>(^|\s+|[\(\[\,\:\;\"\-])(b\.c|B\.c|B\.J|a\.c|A\.c|av|Av|Co|corp|Corp|dept|Dept|esp|Esp|D\.C|D\.P\.R\.K|D\.S|Fla|F\.W|gov|Gov|govt|Govt|inc|Inc|J\.D|J\.R|J\.T|Jr|Sr|Snr|L\.A|ltd|Ltd|mfg|Mfg|M\.B|M\.C|McG|Mt|M\.T\.M|N\.Y|O\.K|P\.F\.E|Sdn|S\.A|S\.A\.R\.L|S\.O\.S|S\.G|T\.R|U\.K|U\.S|U\.S\.A|V\.W\.H|W\.V|approx|addt|addtl|incl)\.</beforebreak>
+          <afterbreak>\s+\"</afterbreak>
+        </rule>
+        <rule break="no">
+          <beforebreak>(^|\s+|[\(\[\,\:\;\"\-])(b\.c|B\.c|B\.J|a\.c|A\.c|av|Av|Co|corp|Corp|dept|Dept|esp|Esp|D\.C|D\.P\.R\.K|D\.S|Fla|F\.W|gov|Gov|govt|Govt|inc|Inc|J\.D|J\.R|J\.T|Jr|Sr|Snr|L\.A|ltd|Ltd|mfg|Mfg|M\.B|M\.C|McG|Mt|M\.T\.M|N\.Y|O\.K|P\.F\.E|Sdn|S\.A|S\.A\.R\.L|S\.O\.S|S\.G|T\.R|U\.K|U\.S|U\.S\.A|V\.W\.H|W\.V|approx|addt|addtl|incl)\.</beforebreak>
+          <afterbreak>\s+</afterbreak>
+        </rule>
+        <rule break="no">
+          <beforebreak>\d+\.</beforebreak>
+          <afterbreak>(^|\s+|[\(\[\,\:\;\"\-])(Ian|Jan|Jaan|Tam|Sau|Led|Feb|Veeb|Hel|Vas|Un|Mar|Mär|Maal|Kov|Břez|Már|Apr|Huht|bal|dub|ápr|Mai|Maj|Maijs|Touk|geguž|máj|Iun|Jun|Jūn|Juun|Kes|birž|jún|Iul|Jul|Jūl|Juul|Hein|liep|júl|Aot|Aug|Elok|rugp|srp|avg|Sept|Syysk|rugs|szept|Oct|Okt|Lok,spal|rij|Noi|Nov|Mar|lapk|list|Dec|Det|Joul|gruod|prosjan|jan|Jan|feb|Feb|mar|Mar|apr|Apr|jun|Jun|jul|Jul|aug|Aug|sep|Sep|sept|Sept|oct|Oct|nov|Nov|dec|Dec)</afterbreak>
+        </rule>
+      </languagerule>
+      <languagerule languagerulename="French">
+        <rule break="no">
+          <beforebreak>(^|\s+|[\(\[\,\:\;\"\-])(jan|Jan|feb|Feb|mar|Mar|apr|Apr|jun|Jun|jul|Jul|aug|Aug|sep|Sep|sept|Sept|oct|Oct|nov|Nov|dec|Dec|janv|Janv|fév|fev|Fév|Fev|Avr|Avr|jui|juil|aoû|aou|déc|Jui|Juil|Aoû|Aou|Déc|Mon|Tue|Tues|Wed|Thu|Thurs|Fri|Sat|Sun|capt|Capt|dr|Dr|gov|Gov|gen|Gen|Mr|Mrs|Ms|Mme|Mlle|Me|prof|Prof|sgt|Sgt|st|St|Col|Rev|Sen|b\.c|B\.c|B\.J|a\.c|A\.c|av|Av|Co|corp|Corp|dept|Dept|dir|esp|Esp|D\.C|D\.P\.R\.K|D\.S|Fla|F\.W|gov|Gov|govt|Govt|inc|Inc|J\.D|J\.R|J\.T|Jr|Sr|Snr|L\.A|ltd|Lt|Ltd|mfg|M|Mfg|M\.B|M\.C|McG|Mt|M\.T\.M|N\.Y|O\.K|P\.F\.E|Sdn|S\.A|S\.A\.R\.L|S\.O\.S|S\.G|T\.R|U\.K|U\.S|U\.S\.A|V\.W\.H|W\.V|a\.m|A\.m|ca|Ca|cf|Cf|e\.g|E\.g|al|Al|ca|Ca|A\.D|etc|Etc|id|Id|q\.e\.d|Q\.e\.d|vs|Vs|seq|Seq|ib|Ib|ibid|Ibid|i\.e|I\.e|cit|Cit|N\.B|p\.m|P\.m|p\.m|P\.m|p\.s|P\.s|q\.v|Q\.v|sc|Sc|v|V|viz|Viz|v\.v|V\.v|fig|Fig|chap|Chap|no|No|p|pg|Pg|pp|Pp|vol|Vol|C|W|appr|approx|addt|incl|op|Op)\.</beforebreak>
+          <afterbreak>\s*[A-ZÁÃÄÅÀÂÆÇČÊËÉÈÍÌÎÏÑŒÓÔÕØÖŠÙÚÜÛŸÝa-zçéèêëàâäáæîïíìôöòõóøœřšûüùúñÿý0-9]+</afterbreak>
+        </rule>
+        <rule break="yes">
+          <beforebreak>[\.\!\?]\s*[\»]</beforebreak>
+          <afterbreak>\s+[A-ZÁÃÄÅÀÂÆÇČÊËÉÈÍÌÎÏÑŒÓÔÕØÖŠÙÚÜÛŸÝАБВГДЕЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯЀЁЂЃЄЅІЇЈЉЊЋЌЍЎЏҒӢҚӮҲҶ]</afterbreak>
+        </rule>
+        <rule break="no">
+          <beforebreak>(^|\s+|[\(\[\,\:\;\"\-])(capt|Capt|dr|Dr|gov|Gov|gen|Gen|Mr|Mrs|Ms|Mme|Mlle|Me|Dir|prof|Prof|sgt|Sgt|st|St|Col|Rev|Sen|Lt)\.</beforebreak>
+          <afterbreak>\s*\W+</afterbreak>
+        </rule>
+        <rule break="no">
+          <beforebreak>(^|\s+|[\(\[\,\:\;\"\-])(a\.m|A\.m|c|C|ca|Ca|cf|Cf|e\.g|E\.g|al|Al|ca|Ca|A\.D|etc|Etc|id|Id|q\.e\.d|Q\.e\.d|vs|Vs|seq|Seq|ib|Ib|ibid|Ibid|i\.e|I\.e|cit|Cit|N\.B|p\.m|P\.m|p\.m|P\.m|p\.s|P\.s|q\.v|Q\.v|sc|Sc|v|V|viz|Viz|v\.v|V\.v|appr|approx|addt|incl)\.</beforebreak>
+          <afterbreak>\s*\W+</afterbreak>
+        </rule>
+        <rule break="no">
+          <beforebreak>(^|\s+|[\(\[\,\:\;\"\-])(fig|Fig|chap|Chap|no|No|p|P|pg|Pg|pp|Pp|vol|Vol|appr|approx|addt|incl|art|Art|op|Op)\.</beforebreak>
+          <afterbreak>\s*[\dA-ZÁÃÄÅÀÂÆÇČÊËÉÈÍÌÎÏÑŒÓÔÕØÖŠÙÚÜÛŸÝa-zçéèêëàâäáæîïíìôöòõóøœřšûüùúñÿý]</afterbreak>
+        </rule>
+        <rule break="no">
+          <beforebreak>(^|\s+|[\(\[\,\:\;\"\-])(jan|Jan|feb|Feb|mar|Mar|apr|Apr|jun|Jun|jul|Jul|aug|Aug|sep|Sep|sept|Sept|oct|Oct|nov|Nov|dec|Dec|janv|Janv|fév|fev|Fév|Fev|Avr|Avr|jui|juil|aoû|aou|déc|Jui|Juil|Aoû|Aou|Déc)\.</beforebreak>
+          <afterbreak>\s*\d+</afterbreak>
+        </rule>
+        <rule break="yes">
+          <beforebreak>(^|\s+|[\(\[\,\:\;\"\-])(b\.c|B\.c|B\.J|a\.c|A\.c|av|Av|Co|corp|Corp|dept|Dept|esp|Esp|D\.C|D\.P\.R\.K|D\.S|Fla|F\.W|gov|Gov|govt|Govt|inc|Inc|J\.D|J\.R|J\.T|Jr|Sr|Snr|L\.A|ltd|Ltd|mfg|Mfg|M\.B|M\.C|McG|Mt|M\.T\.M|N\.Y|O\.K|P\.F\.E|Sdn|S\.A|S\.A\.R\.L|S\.O\.S|S\.G|T\.R|U\.K|U\.S|U\.S\.A|V\.W\.H|W\.V|appr|approx|addt|incl)\.</beforebreak>
+          <afterbreak>\s+\"</afterbreak>
+        </rule>
+        <rule break="no">
+          <beforebreak>(^|\s+|[\(\[\,\:\;\"\-\'])(b\.c|B\.c|B\.J|a\.c|A\.c|av|Av|Co|corp|Corp|dept|Dept|esp|Esp|D\.C|D\.P\.R\.K|D\.S|Fla|F\.W|gov|Gov|govt|Govt|inc|Inc|J\.D|J\.R|J\.T|Jr|Sr|Snr|L\.A|ltd|Ltd|mfg|Mfg|M\.B|M\.C|McG|Mt|M\.T\.M|N\.Y|O\.K|P\.F\.E|Sdn|S\.A|S\.A\.R\.L|S\.O\.S|S\.G|T\.R|U\.K|U\.S|U\.S\.A|V\.W\.H|W\.V|appr|approx|addt|incl|c\.\-à\-d|S\.A|s\.p\.a|U\.m\.p|P\.s|C\.p\.e|O\.n\.g|b\.a\.s)\.</beforebreak>
+          <afterbreak>\s+</afterbreak>
+        </rule>
+        <rule break="no">
+          <beforebreak>\d+\.</beforebreak>
+          <afterbreak>(^|\s+|[\(\[\,\:\;\"\-])(jan|Jan|feb|Feb|mar|Mar|apr|Apr|jun|Jun|jul|Jul|aug|Aug|sep|Sep|sept|Sept|oct|Oct|nov|Nov|dec|Dec|janv|Janv|fév|fev|Fév|Fev|Avr|Avr|jui|juil|aoû|aou|déc|Jui|Juil|Aoû|Aou|Déc)</afterbreak>
+        </rule>
+        <rule break="yes">
+          <beforebreak>(^|\s+|[\(\[\,\:\;\"\-])[0-9]{4}\.</beforebreak>
+          <afterbreak>\s+[A-Z|«|\"]</afterbreak>
+        </rule>
+        <rule break="no">
+          <beforebreak>(\d+|\:)\s+\d+\.</beforebreak>
+          <afterbreak>\s*[A-ZÁÃÄÅÀÂÆÇČÊËÉÈÍÌÎÏÑŒÓÔÕØÖŠÙÚÜÛŸÝАБВГДЕЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯЀЁЂЃЄЅІЇЈЉЊЋЌЍЎЏҒӢҚӮҲҶ]</afterbreak>
+        </rule>
+        <rule break="yes">
+          <beforebreak>\s+\d+\.</beforebreak>
+          <afterbreak>\s*[A-ZÁÃÄÅÀÂÆÇČÊËÉÈÍÌÎÏÑŒÓÔÕØÖŠÙÚÜÛŸÝАБВГДЕЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯЀЁЂЃЄЅІЇЈЉЊЋЌЍЎЏҒӢҚӮҲҶ]</afterbreak>
+        </rule>
+        <rule break="no">
+          <beforebreak>\.</beforebreak>
+          <afterbreak>\s+»</afterbreak>
+        </rule>
+        <rule break="no">
+          <beforebreak>\s(?i)(n|nr)\.</beforebreak>
+          <afterbreak>\s\d</afterbreak>
+        </rule>
+      </languagerule>
+      <languagerule languagerulename="Georgian">
+        <rule break="no">
+          <beforebreak>(^|\s+|[\(\[\,\:\;\"\-])ა\.</beforebreak>
+          <afterbreak>\s+(გ\.|ე\.|სთ|შ\.|წ\.)</afterbreak>
+        </rule>
+        <rule break="no">
+          <beforebreak>(^|\s+|[\(\[\,\:\;\"\-])ადმ\.</beforebreak>
+          <afterbreak>\s+ც\.</afterbreak>
+        </rule>
+        <rule break="no">
+          <beforebreak>(^|\s+|[\(\[\,\:\;\"\-])აკად\.</beforebreak>
+          <afterbreak>\s+წ/კ</afterbreak>
+        </rule>
+        <rule break="no">
+          <beforebreak>(^|\s+|[\(\[\,\:\;\"\-])ახ\.</beforebreak>
+          <afterbreak>\s+(სტ|წ)\.</afterbreak>
+        </rule>
+        <rule break="no">
+          <beforebreak>(^|\s+|[\(\[\,\:\;\"\-])დ\.</beforebreak>
+          <afterbreak>\s+გ\.</afterbreak>
+        </rule>
+        <rule break="no">
+          <beforebreak>(^|\s+|[\(\[\,\:\;\"\-])ე\.</beforebreak>
+          <afterbreak>\s+(ი|წ)\.</afterbreak>
+        </rule>
+        <rule break="no">
+          <beforebreak>(^|\s+|[\(\[\,\:\;\"\-])ზ\.</beforebreak>
+          <afterbreak>\s+(დ\.|მილ)</afterbreak>
+        </rule>
+        <rule break="no">
+          <beforebreak>(^|\s+|[\(\[\,\:\;\"\-])კვ\.</beforebreak>
+          <afterbreak>\s+მ\.</afterbreak>
+        </rule>
+        <rule break="no">
+          <beforebreak>(^|\s+|[\(\[\,\:\;\"\-])მმ ვ+წყ|\.</beforebreak>
+          <afterbreak>\s+სვ\.</afterbreak>
+        </rule>
+        <rule break="no">
+          <beforebreak>(^|\s+|[\(\[\,\:\;\"\-])ს\.</beforebreak>
+          <afterbreak>\s+გ\.</afterbreak>
+        </rule>
+        <rule break="no">
+          <beforebreak>(^|\s+|[\(\[\,\:\;\"\-])სინ\.</beforebreak>
+          <afterbreak>\s+წ\.</afterbreak>
+        </rule>
+        <rule break="no">
+          <beforebreak>(^|\s+|[\(\[\,\:\;\"\-])ჩ\.</beforebreak>
+          <afterbreak>\s+გ\.</afterbreak>
+        </rule>
+        <rule break="no">
+          <beforebreak>(^|\s+|[\(\[\,\:\;\"\-])ც\.</beforebreak>
+          <afterbreak>\s+ძ\.</afterbreak>
+        </rule>
+        <rule break="no">
+          <beforebreak>(^|\s+|[\(\[\,\:\;\"\-])ძვ\.</beforebreak>
+          <afterbreak>\s+(სტ|წ)\.</afterbreak>
+        </rule>
+        <rule break="no">
+          <beforebreak>(^|\s+|[\(\[\,\:\;\"\-])(ა\. გ|ა\. ე|ა\. შ|ა\. წ|ა\.შ|აგვ|ადმ\. ც|ადმ\.-ტერ|ავტ|ათასწლ|აკად|ალპ|აპრ|არქ|ატმ|აღმ|ახ\. სტ|ახ\. წ|ახ\.წ|გ|გვ|გვიანდ|დ\. გ|დას|დეკ|დმ|დოც|ე\. ი|ე\. წ|ე\.ი|ე\.წ|ექ|ზ\. დ|თ|თებ|თხზ|იანვ|ივლ|ივნ|ინჟ|იხ|კ|კგ|კვ\. მ|კმ|ლაბ|მაგ|მასწ|მგ|მდ|მისთ|მმ ვწყ\. სვ|მმ წყ\. სვ|მმ|მცხ|მწვ|ნ|ნ\.-კ|ნაწ|ნახ|ნოემბ|ოკ|პრეზ|პროფ|რესპ|ს|ს\. გ|სამხრ|სამხრ\.-აღმ|სამხრ\.-დას|სექტ|სთ|სინ\. წ|სმ|სს|სუბალპ|სუბტროპ|სქ|სხვ|ტ|ტროპ|უღელტ|ქ|შდრ|შრ|ჩ\. გ|ჩრდ|ჩრდ\.-აღმ|ჩრდ\.-დას|ც|ც\. ძ|ძვ\. სტ|ძვ\. წ|ძვ\.წ|წ|წთ|წმ|წყალსაც|წწ|წ\. აღ|თბ|ივ|ძვ|ა\.წ|ცხრ|ინგ|რუს|იტალ|ლათ|არაბ|ფრანგ|სახ|სოფ|საქ)\.</beforebreak>
+          <afterbreak>\s+</afterbreak>
+        </rule>
+        <rule break="no">
+          <beforebreak>(^|\s+|[\(\[\,\:\;\"\-])[აბგდევზთიკლმნოპჟრსტუფქღყშჩცძწჭხჯჰ]\.</beforebreak>
+          <afterbreak>\s+</afterbreak>
+        </rule>
+      </languagerule>
+      <languagerule languagerulename="German">
+        <rule break="no">
+          <beforebreak>[0-9]+\.</beforebreak>
+          <afterbreak>\s+(Drittel|Drittels|Fiebertag|Finger|Fingers|Gestationswoche|Herzton|Hirnnerv|Hirnnerven|Hirnnervs|Hälfte|Interkostalraum|Krankheitswoche|Lebensdekade|Lebensmonat|Lebensmonats|Lebenswoche|Nervs|Perzentil|Perzentile|Rippe|SSW|Schlag|Schwangerschaftsdrittel|Schwangerschaftsdrittels|Schwangerschaftswoche|Stadium|Stadiums|Stufe|Trimenon|Trimenons|Trimester|Trimesters|Ventrikels|Woche|Zeh|Zehen)\b</afterbreak>
+        </rule>
+        <rule break="no">
+          <beforebreak>(^|\s+|[\(\[\,\:\;\"\-])(jan|Jan|feb|Feb|mar|Mar|apr|Apr|jun|Jun|jul|Jul|aug|Aug|sep|Sep|sept|Sept|o[ck]t|O[ck]t|nov|Nov|dec|Dec|Dez|Mon|Tue|Tues|Wed|Thu|Thurs|Fri|Sat|Sun|Mo|Di|Mi|Do|Fr|Sa|So|capt|Capt|dr|Dr|gov|Gov|gen|Gen|Mr|Mrs|Ms|Mme|prof|Prof|sgt|Sgt|st|St|Col|Rev|Sen|Gef|Hr|Frl|Dok|Dipl|geb|Ing|Hrn|b\.c|B\.c|B\.J|a\.c|A\.c|av|Av|Co|corp|Corp|dept|Dept|dir|esp|Esp|D\.C|D\.P\.R\.K|D\.S|Fla|F\.W|gov|Gov|govt|Govt|inc|Inc|J\.D|J\.R|J\.T|Jr|Sr|Snr|L\.A|ltd|Lt|Ltd|mfg|M|Mfg|M\.B|M\.C|McG|Mt|M\.T\.M|N\.Y|O\.K|P\.F\.E|Sdn|S\.A|S\.A\.R\.L|S\.O\.S|S\.G|T\.R|U\.K|U\.S|U\.S\.A|V\.W\.H|W\.V|a\.m|A\.m|ca|Ca|cf|Cf|e\.g|E\.g|al|Al|ca|Ca|A\.D|etc|Etc|id|Id|q\.e\.d|Q\.e\.d|vs|Vs|seq|Seq|ib|Ib|ibid|Ibid|i\.e|I\.e|cit|Cit|N\.B|p\.m|P\.m|p\.m|P\.m|p\.s|P\.s|q\.v|Q\.v|sc|Sc|v|V|viz|Viz|v\.v|V\.v|fig|Fig|no|No|Num|op|Op|Kap|Nr|S|Bd|Tel|a\.d|Abf|Abt|abzgl|Adr|amtl|Anh|Ank|Anl|Aufl|a\.a\.O|Abb|Abg|ABl|Abk|Abs|allg|a\.o|A\.T|Bev|[Bb]zw|bes|Betr|Bhf|b\.w|bzgl|Ct|d\.h|d\. h|Dipl|dgl|Dir|Dtzd|e\.G|e\.V|ev|e\.h|ehem|einschl|entspr|erw|evtl|e\.Wz|exkl|Fa|F\.f|Forts\.f|gegr|ggf|Gebr|gedr|gek|Ges|gest|gez|gesch|ggfs|habil|Hbf|hist|Hptm|hvst|hpts|Hptst|Hrsg|i\.A|i\.d\.R|I\.K|I\.L|inkl|i\.S\.v|i\.V|i\.b|i\.H|i\.J|I\.R|Inh|Jh|jmd|Jt|jew|jhrl|kath|kfm|kgl|led|max|med|m\.E|m\.W|MwSt|Mill|Mio|Mrd|min|naeml|n\.Chr|n\.u\.Z|A\.T|N\.T|o\.O|od|p\.a|Pfd|prot|Qual|Quant|reg|rer|Rdn|Std|svw|s\.a|s\.o|sog|St|s\.u|taegl|Tel|u\.a|u\.ae|u\.a\.m|u\.v\.a|ugs|urspr|u\.U|v\.Chr|v\.H|vgl|vorm|v\.R\.w|v\.T|v\.u\.Z|z\.B|z\. B|Zbl|z\.d\.A|z\.Hd|usw|z\.T|Ztr|zw|z\.V|z\.Z|z\.Zt|zzgl|amerik|chin|dt|engl|franz|ital|jap|lat|span|oesterr|roem|suedd|bezgl|bezügl|gem|dergl|ges|insbes|s)\.</beforebreak>
+          <afterbreak>\s*[A-ZÁÃÄÅÀÂÆÇČÊËÉÈÍÌÎÏÑŒÓÔÕØÖŠÙÚÜÛŸÝa-zçéèêëàâäáæîïíìôöòõóøœřšûüùúñÿý0-9]+</afterbreak>
+        </rule>
+        <rule break="no">
+          <beforebreak>(^|\s+|[\(\[\,\:\;\"\-])(capt|Capt|dr|Dr|gov|Gov|gen|Gen|Mr|Mrs|Ms|Mme|Mlle|Me|Dir|prof|Prof|sgt|Sgt|st|St|Col|Rev|Sen|Lt|Fr|Dok|Dipl|Gef|Hr|Frl|geb|Ing|Hrn)\.</beforebreak>
+          <afterbreak>\s*\W+</afterbreak>
+        </rule>
+        <rule break="no">
+          <beforebreak>(^|\s+|[\(\[\,\:\;\"\-])(a\.m|A\.m|c|C|ca|Ca|cf|Cf|e\.g|E\.g|al|Al|ca|Ca|A\.D|etc|Etc|id|Id|q\.e\.d|Q\.e\.d|vs|Vs|seq|Seq|ib|Ib|ibid|Ibid|i\.e|I\.e|cit|Cit|N\.B|p\.m|P\.m|p\.m|P\.m|p\.s|P\.s|q\.v|Q\.v|sc|Sc|v|V|viz|Viz|v\.v|V\.v|a\.d|Abf|Abt|abzgl|Adr|amtl|Anh|Ank|Anl|Aufl|a\.a\.O|Abb|Abg|ABl|Abk|Abs|allg|a\.o|A\.T|Bev|[Bb]zw|bes|Betr|Bhf|b\.w|bzgl|Ct|d\.h|d\. h|Dipl|dgl|Dir|Dtzd|e\.G|e\.V|ev|e\.h|ehem|einschl|entspr|erw|evtl|e\.Wz|exkl|Fa|F\.f|Forts\.f|gegr|ggf|Gebr|gedr|gek|Ges|gest|gez|gesch|ggfs|habil|Hbf|hist|Hptm|hvst|hpts|Hptst|Hrsg|i\.A|i\.d\.R|I\.K|I\.L|inkl|i\.S\.v|i\.V|i\.b|i\.H|i\.J|I\.R|Inh|Jh|jmd|Jt|jew|jhrl|kath|kfm|kgl|led|max|med|m\.E|m\.W|MwSt|Mill|Mio|Mrd|min|naeml|n\.Chr|n\.u\.Z|A\.T|N\.T|o\.O|od|p\.a|Pfd|prot|Qual|Quant|reg|rer|Rdn|Std|svw|s\.a|s\.o|sog|St|s\.u|taegl|Tel|u\.a|u\.ae|u\.a\.m|u\.v\.a|ugs|urspr|u\.U|v\.Chr|v\.H|vgl|vorm|v\.R\.w|v\.T|v\.u\.Z|z\.B|z\. B|Zbl|z\.d\.A|z\.Hd|usw|z\.T|Ztr|zw|z\.V|z\.Z|z\.Zt|zzgl|amerik|chin|dt|engl|franz|ital|jap|lat|span|oesterr|roem|suedd|bezgl|bezügl|gem|dergl|ges|insbes|s)\.</beforebreak>
+          <afterbreak>\s*\W+</afterbreak>
+        </rule>
+        <rule break="no">
+          <beforebreak>(^|\s+|[\(\[\,\:\;\"\-])(fig|Fig|Num|art|Art|op|Op|Kap|Nr|S|Bd|Tel)\.</beforebreak>
+          <afterbreak>\s*[\dA-ZÁÃÄÅÀÂÆÇČÊËÉÈÍÌÎÏÑŒÓÔÕØÖŠÙÚÜÛŸÝa-zçéèêëàâäáæîïíìôöòõóøœřšûüùúñÿý]</afterbreak>
+        </rule>
+        <rule break="no">
+          <beforebreak>(^|\s+|[\(\[\,\:\;\"\-])(jan|Jan|febr?|Febr?|mär|Mär|apr|Apr|mai|Mai|jun|Jun|jul|Jul|aug|Aug|sep|Sep|sept|Sept|o[ck]t|O[ck]t|nov|Nov|dec|Dec|Dez|Kap|Nr|S|Bd|Tel|Mo|Di|Mi|Do|Fr|Sa|So|Bauj|Nrn|Fn|Randnr|Slg|Pkt|Rn|Rs|Tab|Abs)\.</beforebreak>
+          <afterbreak>\s*\d+</afterbreak>
+        </rule>
+        <rule break="yes">
+          <beforebreak>(^|\s+|[\(\[\,\:\;\"\-])(b\.c|B\.c|B\.J|a\.c|A\.c|av|Av|Co|corp|Corp|dept|Dept|esp|Esp|D\.C|D\.P\.R\.K|D\.S|Fla|F\.W|gov|Gov|govt|Govt|inc|Inc|J\.D|J\.R|J\.T|Jr|Sr|Snr|L\.A|ltd|Ltd|mfg|Mfg|M\.B|M\.C|McG|Mt|M\.T\.M|N\.Y|O\.K|P\.F\.E|Sdn|S\.A|S\.A\.R\.L|S\.O\.S|S\.G|T\.R|U\.K|U\.S|U\.S\.A|V\.W\.H|W\.V)\.</beforebreak>
+          <afterbreak>\s+\"</afterbreak>
+        </rule>
+        <rule break="no">
+          <beforebreak>(^|\s+|[\(\[\,\:\;\"\-])(b\.c|B\.c|B\.J|a\.c|A\.c|av|Av|Co|corp|Corp|dept|Dept|esp|Esp|D\.C|D\.P\.R\.K|D\.S|Fla|F\.W|gov|Gov|govt|Govt|inc|Inc|J\.D|J\.R|J\.T|Jr|Sr|Snr|L\.A|ltd|Ltd|mfg|Mfg|M\.B|M\.C|McG|Mt|M\.T\.M|N\.Y|O\.K|P\.F\.E|Sdn|S\.A|S\.A\.R\.L|S\.O\.S|S\.G|T\.R|U\.K|U\.S|U\.S\.A|V\.W\.H|W\.V|a\.d|Abf|Abt|abzgl|Adr|amtl|Anh|Ank|Anl|Aufl|a\.a\.O|Abb|Abg|ABl|Abk|Abs|allg|a\.o|A\.T|Bev|[Bb]zw|bes|Betr|Bhf|b\.w|bzgl|Ct|d\.h|d\. h|Dipl|dgl|Dir|Dtzd|e\.G|e\.V|ev|e\.h|ehem|einschl|entspr|erw|evtl|e\.Wz|exkl|Fa|F\.f|Forts\.f|gegr|ggf|Gebr|gedr|gek|Ges|gest|gez|gesch|ggfs|habil|Hbf|hist|Hptm|hvst|hpts|Hptst|Hrsg|i\.A|i\.d\.R|I\.K|I\.L|inkl|i\.S\.v|i\.V|i\.b|i\.H|i\.J|I\.R|Inh|Jh|jmd|Jt|jew|jhrl|kath|kfm|kgl|led|max|med|m\.E|m\.W|MwSt|Mill|Mio|Mrd|min|naeml|n\.Chr|n\.u\.Z|A\.T|N\.T|o\.O|od|p\.a|Pfd|prot|Qual|Quant|reg|rer|Rdn|Std|svw|s\.a|s\.o|sog|St|s\.u|taegl|Tel|u\.a|u\.ae|u\.a\.m|u\.v\.a|ugs|urspr|u\.U|v\.Chr|v\.H|vgl|vorm|v\.R\.w|v\.T|v\.u\.Z|z\.B|z\. B|Zbl|z\.d\.A|z\.Hd|usw|z\.T|Ztr|zw|z\.V|z\.Z|z\.Zt|zzgl|amerik|chin|dt|engl|franz|ital|jap|lat|span|oesterr|roem|suedd|bezgl|bezügl|gem|dergl|ges|insbes|s|a\.A|abds|Buchst|Unterabs|[i\.]?[Aa]llg|Antw|betr|versch|Mag|mtl|versch|d|Übers|Ab[hkst]|ahd|Akk|aktual|alltagsspr|altdt|alttest|amerikan|Anm|Art|Az|Bat|bayr|Bde?|bearb|Bed|Bem|[Bb]ez|Bhf|bspw|btto|bw|[Dd]\.M|od?\.dgl|o\.ä|dh|Doz|Dr\.h\.c|eigtl|ff|[Vv]gl|geschl|G\.U|i\.d\.S|u\.a|i\.V\.m|insb|bzgl|Insp|Inst|int|inzw|Jh\. v \. Chr|[Kk]\.u\.[Kk]|Kath|kompl|Dopl\.\-Kfm|kfm|Kpt|Ldkr|[Nn]\.F|NR|Rspr|Sek|tägl|Tsd|u\. a|u\.E|u\.u|v\.a|v\.H|Vorb|zB|zz|i\.d\.F|Kpt|[Uu]\.[Aa]|[Uu]\. [Aa]|[Zz]\.[Bb]|[Zz]\. [Bb]|[Mm]\. [E]|[a]\. [D]|[e]\. [V]|o\.g|o\. g|i\.v|v\. a|i\.m|p\.o)\.</beforebreak>
+          <afterbreak>\s+</afterbreak>
+        </rule>
+        <rule break="yes">
+          <beforebreak>(1|2)\d\d\d\.</beforebreak>
+          <afterbreak>\s+[A-ZÄÖÜ]</afterbreak>
+        </rule>
+        <rule break="no">
+          <beforebreak>\d+\.</beforebreak>
+          <afterbreak>(^|\s+|[\(\[\,\:\;\"\-])(jan|Jan|feb|Feb|[Ff]ebr|mär|Mär|apr|Apr|mai|Mai|jun|Jun|jul|Jul|aug|Aug|sep|Sep|sept|Sept|o[ck]t|O[ck]t|nov|Nov|dec|Dec|Dez|Mo|Di|Mi|Do|Fr|Sa|So|Aufl\.|Mal|Jahrhundert|Jahr|Januar|Jänner|Februar|März|April|Mai|Ju[ln]i|August|September|Oktober|November|Dezember|Amtsperiode|Breitengrads?|Breitengrades|Jubiläum|Jhd?|Jhdts?|Konferenz|(Jahres|Partei)(-K|k)onferenz|Längengrade?s?|Tags?|Tages|(Jahres|Spiel|Partei|Geburts|Todes)tag|(Jahres|Spiel|Partei|Geburts|Todes|Weihnachtsfeier)tages|(Jahres|Spiel|Partei|Geburts|Todes|Weihnachtsfeier)tags|Jahrhunderts?|Jahrtausend|Platz|Platzes|(Lebens|Halb|Schul|Studien)jahrs?|(Lebens|Halb|Schul|Studien)jahres|Lochs?|Loches|Grads|Grades|Obergeschoss|Stock(werk)?s?|Etage|Klasse|Runde|Bezirk|Etappe|Staffel|Sinfonie|Weltkriegs?|Weltkrieges|Halbzeit|Quartals?|Advent|Generation|Gruppe|Punkt|Phase|Vorsitzender?|Vorsitzenden|[Dd]\.M)</afterbreak>
+        </rule>
+        <rule break="no">
+          <beforebreak>[1-3]\.</beforebreak>
+          <afterbreak>\s(Liga|Bundesliga|Fußball(-B|b)undesliga)</afterbreak>
+        </rule>
+        <rule break="no">
+          <beforebreak>(^|\s+|[\(\[\,\:\;\"\-])d\.</beforebreak>
+          <afterbreak>\s*h\.\s*\W+</afterbreak>
+        </rule>
+        <rule break="no">
+          <beforebreak>u\.v\.m\.</beforebreak>
+          <afterbreak>(\s?[\(\[\,\:\;\"\-\)\]a-z])</afterbreak>
+        </rule>
+        <rule break="no">
+          <beforebreak>[Uu]\.</beforebreak>
+          <afterbreak>\s?([Aa]\.)\s+</afterbreak>
+        </rule>
+        <rule break="no">
+          <beforebreak>[Uu]\.</beforebreak>
+          <afterbreak>\s?U\.\s+</afterbreak>
+        </rule>
+        <rule break="no">
+          <beforebreak>i\.</beforebreak>
+          <afterbreak>\s[Aa]llg\.</afterbreak>
+        </rule>
+        <rule break="no">
+          <beforebreak>(^|\s+|[\(\[\,\:\;\"\-])[Zz]\.</beforebreak>
+          <afterbreak>\s?([Bb]\.)\s*</afterbreak>
+        </rule>
+        <rule break="no">
+          <beforebreak>(^|\s+|[\(\[\,\:\;\"\-])i\.</beforebreak>
+          <afterbreak>\s(m\.|d\. R.)\s</afterbreak>
+        </rule>
+        <rule break="no">
+          <beforebreak>o\.</beforebreak>
+          <afterbreak>\s(dgl|g)\.</afterbreak>
+        </rule>
+        <rule break="no">
+          <beforebreak>\d\s(Abs|Jh\. v\. Chr)\.</beforebreak>
+          <afterbreak>\s+[a-zçéèêëàâäáæîïíìôöòõóøœřšûüùúñÿý0-9]+</afterbreak>
+        </rule>
+        <rule break="no">
+          <beforebreak>[0-9]+\.</beforebreak>
+          <afterbreak>\s(und|oder|bis)\s+</afterbreak>
+        </rule>
+        <rule break="no">
+          <beforebreak>d\.</beforebreak>
+          <afterbreak>\s?(Red\.|Übers\.|Übersetzers)</afterbreak>
+        </rule>
+        <rule break="no">
+          <beforebreak>\sE\.</beforebreak>
+          <afterbreak>\scoli</afterbreak>
+        </rule>
+        <rule break="no">
+          <beforebreak>\s[Mm]\.</beforebreak>
+          <afterbreak>\sE\.</afterbreak>
+        </rule>
+        <rule break="no">
+          <beforebreak>\sa\.</beforebreak>
+          <afterbreak>\sD\.</afterbreak>
+        </rule>
+        <rule break="no">
+          <beforebreak>\se\.</beforebreak>
+          <afterbreak>\sV\.</afterbreak>
+        </rule>
+        <rule break="no">
+          <beforebreak>\s[Oo]\.</beforebreak>
+          <afterbreak>\s*[Kk]\.</afterbreak>
+        </rule>
+        <rule break="no">
+          <beforebreak>\s[Oo]\.\s*[Kk]\.</beforebreak>
+          <afterbreak>(\s?[\(\[\,\:\;\"\-\)\]a-z])</afterbreak>
+        </rule>
+        <rule break="no">
+          <beforebreak>1\.</beforebreak>
+          <afterbreak>\sFC</afterbreak>
+        </rule>
+        <rule break="no">
+          <beforebreak>\s(?i)(n|nr)\.</beforebreak>
+          <afterbreak>\s\d</afterbreak>
+        </rule>
+      </languagerule>
+      <languagerule languagerulename="Greek">
+        <!-- Fix κ. (Mr.) and κα. (Mrs.) segmentation -->
+        <rule break="no">
+          <beforebreak>(^|\s+)[κΚ][α]?\.</beforebreak>
+          <afterbreak>\s+</afterbreak>
+        </rule>
+      </languagerule>
+      <languagerule languagerulename="Hungarian">
+        <rule break="no">
+          <beforebreak>(^|\s+|[\(\[\,\:\;\"\-])(Ian|Jan|Jaan|Tam|Sau|Led|Feb|Veeb|Hel|Vas|Un|Mar|Mär|Maal|Kov|Břez|Már|Apr|Huht|bal|dub|ápr|Mai|Maj|Maijs|Touk|geguž|máj|Iun|Jun|Jūn|Juun|Kes|birž|jún|Iul|Jul|Jūl|Juul|Hein|liep|júl|Aot|Aug|Elok|rugp|srp|avg|Sept|Syysk|rugs|szept|Oct|Okt|Lok,spal|rij|Noi|Nov|Mar|lapk|list|Dec|Det|Joul|gruod|prosjan|Jan|feb|Feb|mar|Mar|apr|Apr|jun|Jun|jul|Jul|aug|Aug|sep|Sep|sept|Sept|oct|Oct|nov|Nov|dec|Dec|Mon|Tue|Tues|Wed|Thu|Thurs|Fri|Sat|Sun|capt|Capt|dr|Dr|gov|Gov|gen|Gen|Mr|Mrs|Ms|Mme|prof|Prof|sgt|Sgt|st|St|Col|Rev|Sen|b\.c|B\.c|B\.J|a\.c|A\.c|av|Av|Co|corp|Corp|dept|Dept|dir|esp|Esp|D\.C|D\.P\.R\.K|D\.S|Fla|F\.W|gov|Gov|govt|Govt|inc|Inc|J\.D|J\.R|J\.T|Jr|Sr|Snr|L\.A|ltd|Lt|Ltd|mfg|M|Mfg|M\.B|M\.C|McG|Mt|M\.T\.M|N\.Y|O\.K|P\.F\.E|Sdn|S\.A|S\.A\.R\.L|S\.O\.S|S\.G|T\.R|U\.K|U\.S|U\.S\.A|V\.W\.H|W\.V|a\.m|A\.m|ca|Ca|cf|Cf|e\.g|E\.g|al|Al|ca|Ca|A\.D|etc|Etc|id|Id|q\.e\.d|Q\.e\.d|vs|Vs|seq|Seq|ib|Ib|ibid|Ibid|i\.e|I\.e|cit|Cit|N\.B|p\.m|P\.m|p\.m|P\.m|p\.s|P\.s|q\.v|Q\.v|sc|Sc|v|V|viz|Viz|v\.v|V\.v|fig|Fig|chap|Chap|no|No|p|pg|Pg|pp|Pp|vol|Vol|C|W|approx|addt|addtl|incl|op|Op|Pr|Hr|E|Dž|ž|P|Dl|Dn|Dra|Ga|ga|p|e|ge|g)\.</beforebreak>
+          <afterbreak>\s*[A-ZÁÃÄÅÀÂÆÇČÊËÉÈÍÌÎÏÑŒÓÔÕØÖŠÙÚÜÛŸÝa-zçéèêëàâäáæîïíìôöòõóøœřšûüùúñÿýðþ0-9]+</afterbreak>
+        </rule>
+        <rule break="no">
+          <beforebreak>(^|\s+|[\(\[\,\:\;\"\-])(capt|Capt|dr|Dr|gov|Gov|gen|Gen|Mr|Mrs|Ms|Me|Dir|prof|Prof|sgt|Sgt|st|St|Col|Rev|Sen|Lt)\.</beforebreak>
+          <afterbreak>\s*\W+</afterbreak>
+        </rule>
+        <rule break="no">
+          <beforebreak>(^|\s+|[\(\[\,\:\;\"\-])(a\.m|A\.m|c|C|ca|Ca|cf|Cf|e\.g|E\.g|al|Al|ca|Ca|A\.D|etc|Etc|id|Id|q\.e\.d|Q\.e\.d|vs|Vs|seq|Seq|ib|Ib|ibid|Ibid|i\.e|I\.e|cit|Cit|N\.B|p\.m|P\.m|p\.m|P\.m|p\.s|P\.s|q\.v|Q\.v|sc|Sc|v|V|viz|Viz|v\.v|V\.v|appr|approx|addt|incl)\.</beforebreak>
+          <afterbreak>\s*\W+</afterbreak>
+        </rule>
+        <rule break="no">
+          <beforebreak>(^|\s+|[\(\[\,\:\;\"\-])(fig|Fig|chap|Chap|no|No|p|P|pg|Pg|pp|Pp|vol|Vol|approx|addt|addtl|incl|art|Art|op|Op)\.</beforebreak>
+          <afterbreak>\s*[\dA-ZÁÃÄÅÀÂÆÇČÊËÉÈÍÌÎÏÑŒÓÔÕØÖŠÙÚÜÛŸÝa-zçéèêëàâäáæîïíìôöòõóøœřšûüùúñÿýðþ]</afterbreak>
+        </rule>
+        <rule break="no">
+          <beforebreak>(^|\s+|[\(\[\,\:\;\"\-])(Ian|Jan|Jaan|Tam|Sau|Led|Feb|Veeb|Hel|Vas|Un|Mar|Mär|Maal|Kov|Břez|Már|Apr|Huht|bal|dub|ápr|Mai|Maj|Maijs|Touk|geguž|máj|Iun|Jun|Jūn|Juun|Kes|birž|jún|Iul|Jul|Jūl|Juul|Hein|liep|júl|Aot|Aug|Elok|rugp|srp|avg|Sept|Syysk|rugs|szept|Oct|Okt|Lok,spal|rij|Noi|Nov|Mar|lapk|list|Dec|Det|Joul|gruod|prosjan|jan|Jan|feb|Feb|mar|Mar|apr|Apr|jun|Jun|jul|Jul|aug|Aug|sep|Sep|sept|Sept|oct|Oct|nov|Nov|dec|Dec)\.</beforebreak>
+          <afterbreak>\s*\d+</afterbreak>
+        </rule>
+        <rule break="yes">
+          <beforebreak>(^|\s+|[\(\[\,\:\;\"\-])(b\.c|B\.c|B\.J|a\.c|A\.c|av|Av|Co|corp|Corp|dept|Dept|esp|Esp|D\.C|D\.P\.R\.K|D\.S|Fla|F\.W|gov|Gov|govt|Govt|inc|Inc|J\.D|J\.R|J\.T|Jr|Sr|Snr|L\.A|ltd|Ltd|mfg|Mfg|M\.B|M\.C|McG|Mt|M\.T\.M|N\.Y|O\.K|P\.F\.E|Sdn|S\.A|S\.A\.R\.L|S\.O\.S|S\.G|T\.R|U\.K|U\.S|U\.S\.A|V\.W\.H|W\.V|approx|addt|addtl|incl)\.</beforebreak>
+          <afterbreak>\s+\"</afterbreak>
+        </rule>
+        <rule break="no">
+          <beforebreak>(^|\s+|[\(\[\,\:\;\"\-])(b\.c|B\.c|B\.J|a\.c|A\.c|av|Av|Co|corp|Corp|dept|Dept|esp|Esp|D\.C|D\.P\.R\.K|D\.S|Fla|F\.W|gov|Gov|govt|Govt|inc|Inc|J\.D|J\.R|J\.T|Jr|Sr|Snr|L\.A|ltd|Ltd|mfg|Mfg|M\.B|M\.C|McG|Mt|M\.T\.M|N\.Y|O\.K|P\.F\.E|Sdn|S\.A|S\.A\.R\.L|S\.O\.S|S\.G|T\.R|U\.K|U\.S|U\.S\.A|V\.W\.H|W\.V|approx|addt|addtl|incl)\.</beforebreak>
+          <afterbreak>\s+</afterbreak>
+        </rule>
+        <rule break="no">
+          <beforebreak>\d+\.</beforebreak>
+          <afterbreak>(^|\s+|[\(\[\,\:\;\"\-])(Ian|Jan|Jaan|Tam|Sau|Led|Feb|Veeb|Hel|Vas|Un|Mar|Mär|Maal|Kov|Břez|Már|Apr|Huht|bal|dub|ápr|Mai|Maj|Maijs|Touk|geguž|máj|Iun|Jun|Jūn|Juun|Kes|birž|jún|Iul|Jul|Jūl|Juul|Hein|liep|júl|Aot|Aug|Elok|rugp|srp|avg|Sept|Syysk|rugs|szept|Oct|Okt|Lok,spal|rij|Noi|Nov|Mar|lapk|list|Dec|Det|Joul|gruod|prosjan|jan|Jan|feb|Feb|mar|Mar|apr|Apr|jun|Jun|jul|Jul|aug|Aug|sep|Sep|sept|Sept|oct|Oct|nov|Nov|dec|Dec)</afterbreak>
+        </rule>
+      </languagerule>
+      <languagerule languagerulename="Italian">
+        <rule break="no">
+          <beforebreak>(^|\s+|[\(\[\,\:\;\"\-])(A.c|A.C|a\.c|a\.C|A\.c|A\.D|a\.m|A\.m|addt|addtl|ago|Ago|al|Al|amm|Amm|app|App|approx|apr|Apr|Arch|av|Av|Avv|b\.c|B\.c|B\.J|C|c.c.p|C.c.p|c\.a\.p|C\.A\.P|C\.P|c\.s|C\.s|ca|Ca|capt|Capt|cf|Cf|chap|Chap|cit|Cit|cl|Cl|cm|cmc|Cmc|cmq|Cmq|Co|Col|cons|Cons|coop|corp|Corp|d\.C|D\.C|D\.L|D\.P\.R|D\.P\.R\.K|D\.S|dept|Dept|dic|Dic|dir|Dir|dl|dls|dm|dom|Dom|dott|Dott|dr|Dr|dz|e\.g|E\.g|es|esp|Esp|etc|Etc|F\.O\.B|F\.W|feb|Feb|FF\.AA|FF\.SS|fig|Fig|Fla|gen|Gen|genn|Genn|gio|Gio|giov|Giov|giu|Giu|gov|Gov|govt|Govt|gr|i\.e|I\.e|ib|Ib|ibid|Ibid|id|Id|inc|Inc|incl|ing|J\.D|J\.R|J\.T|Jr|K|kg|Kg|km|Km|L\.A|Lt|ltd|Ltd|lug|Lug|lun|Lun|M|M\.B|M\.C|M\.T\.M|mag|Mag|mar|Mar|mart|Mart|McG|mer|Mer|merc|Merc|mfg|Mfg|mg|Mg|mm|Mm|Mme|Mr|Mrs|Ms|Mt|N\.B|N\.Y|naz|Naz|no|No|nov|Nov|O\.K|Oo\.PP|op|Op|ott|Ott|p|p\.e|P\.e|P\.E|p\.es|P\.es|P\.F\.E|p\.m|P\.m|p\.m|P\.m|p\.s|P\.s|par|Par|pg|Pg|Pol|pp|Pp|Pp\.TT|PP\.TT|prof|Prof|prov|Prov|q\.e\.d|Q\.e\.d|q\.v|Q\.v|r.s.v.p|R\.I|ref|Ref|reg|Reg|Rep|Rev|S\.A|S\.A\.R\.L|s\.d|S\.d|S\.G|S\.O\.S|S\.p\.A|S\.R\.C|S\.r\.l|sab|Sab|sc|Sc|Sdn|sec|Sec|seg|Seg|segr|Segr|Sen|seq|Seq|serg|Serg|sett|Sett|sgt|Sgt|sig|Sig|Snr|Soc|Spett|Sr|st|St|str|Str|T\.R|ted|Ted|tel|Tel|U\.K|U\.S|U\.S\.A|v|V|v\.v|V\.v|V\.W\.H|ven|Ven|vic|Vic|viz|Viz|vol|Vol|vs|Vs|W|W\.V)\.</beforebreak>
+          <afterbreak>\s*[A-ZÁÃÄÅÀÂÆÇČÊËÉÈÍÌÎÏÑŒÓÔÕØÖŠÙÚÜÛŸÝa-zçéèêëàâäáæîïíìôöòõóøœřšûüùúñÿý0-9]+</afterbreak>
+        </rule>
+        <rule break="no">
+          <beforebreak>(^|\s+|[\(\[\,\:\;\"\-])(capt|Capt|dr|Dr|gov|Gov|gen|Gen|Mr|Mrs|Ms|Me|Dir|prof|Prof|profs|Profs|Sig|sig|Dir|Dott|dott|sgt|Sgt|st|St|Col|Rev|Sen|Lt|Ing|Ispett|Pres|Arch|arch|Geom)\.</beforebreak>
+          <afterbreak>\s*\W+</afterbreak>
+        </rule>
+        <rule break="no">
+          <beforebreak>(^|\s+|[\(\[\,\:\;\"\-])(a\.m|A\.m|c|C|ca|Ca|cf|Cf|e\.g|E\.g|fig|Fig|al|Al|ca|Ca|A\.D|etc|Etc|ecc|Ecc|id|Id|q\.e\.d|Q\.e\.d|vs|Vs|seq|Seq|ib|Ib|ibid|Ibid|i\.e|I\.e|cit|Cit|N\.B|p\.m|P\.m|p\.m|P\.m|p\.s|P\.s|q\.v|Q\.v|sc|Sc|v|V|viz|Viz|v\.v|V\.v|appr|approx|addt|incl|spec)\.</beforebreak>
+          <afterbreak>\s*\W+</afterbreak>
+        </rule>
+        <rule break="no">
+          <beforebreak>(^|\s+|[\(\[\,\:\;\"\-])(fig|Fig|cap|Cap|no|No|p|P|pg|Pg|pag|Pag|Fig|fig|pp|Pp|vol|Vol|appros|incl|art|Art|op|Op|spec|App|app)\.</beforebreak>
+          <afterbreak>\s*[\dA-ZÁÃÄÅÀÂÆÇČÊËÉÈÍÌÎÏÑŒÓÔÕØÖŠÙÚÜÛŸÝa-zçéèêëàâäáæîïíìôöòõóøœřšûüùúñÿý]</afterbreak>
+        </rule>
+        <rule break="no">
+          <beforebreak>(^|\s+|[\(\[\,\:\;\"\-])(jan|Jan|feb|Feb|mar|Mar|apr|Apr|jun|Jun|jul|Jul|aug|Aug|sep|Sep|sept|Sept|oct|Oct|nov|Nov|dec|Dec|gen|Gen|ago|Ago|apr|dic|Dic|lug|Lug|ott|Ott|genn|Genn|giu|Giu|lug|Lug|mag|Mag|sett|Sett|dic|Dic|dom|Dom|giov|Giov|mar|Mar|mer|Mer|gio|Gio|lun|Lun|mart|Mart|merc|Merc|sab|Sab|ven|Ven|inf|Inf)\.</beforebreak>
+          <afterbreak>\s*\d+</afterbreak>
+        </rule>
+        <rule break="yes">
+          <beforebreak>(^|\s+|[\(\[\,\:\;\"\-])(b\.c|B\.c|B\.J|a\.c|A\.c|av|Av|Co|corp|Corp|dept|Dept|esp|Esp|D\.C|D\.P\.R\.K|D\.S|Fla|F\.W|gov|Gov|govt|Govt|inc|Inc|J\.D|J\.R|J\.T|Jr|Sr|Snr|L\.A|ltd|Ltd|mfg|Mfg|M\.B|M\.C|McG|Mt|M\.T\.M|N\.Y|O\.K|P\.F\.E|Sdn|S\.A|S\.A\.R\.L|S\.O\.S|S\.G|T\.R|U\.K|U\.S|U\.S\.A|V\.W\.H|W\.V|approx|addt|addtl|incl)\.</beforebreak>
+          <afterbreak>\s+\"</afterbreak>
+        </rule>
+        <rule break="no">
+          <beforebreak>(^|\s+|[\(\[\,\:\;\"\-])(b\.c|B\.c|B\.J|a\.c|A\.c|av|Av|Co|corp|Corp|dept|Dept|esp|Esp|D\.C|D\.P\.R\.K|D\.S|Fla|F\.W|gov|Gov|govt|Govt|inc|Inc|J\.D|J\.R|J\.T|Jr|Sr|Snr|L\.A|ltd|Ltd|mfg|Mfg|M\.B|M\.C|McG|Mt|M\.T\.M|N\.Y|O\.K|P\.F\.E|Sdn|S\.A|S\.A\.R\.L|S\.O\.S|S\.G|T\.R|U\.K|U\.S|U\.S\.A|V\.W\.H|W\.V|approx|addt|addtl|incl)\.</beforebreak>
+          <afterbreak>\s+</afterbreak>
+        </rule>
+        <rule break="no">
+          <beforebreak>\d+\.</beforebreak>
+          <afterbreak>(^|\s+|[\(\[\,\:\;\"\-])(gen|Gen|ago|Ago|apr|Apr|dic|Dic|feb|Feb|lug|Lug|ott|Ott|genn|Genn|giu|Giu|lug|Lug|mag|Mag|mar|Mar|nov|Nov|sett|Sett|dic|Dic|dom|Dom|giov|Giov|mar|Mar|mer|Mer|gio|Gio|lun|Lun|mart|Mart|merc|Merc|sab|Sab|ven|Ven)</afterbreak>
+        </rule>
+      </languagerule>
+      <languagerule languagerulename="Korean">
+        <rule break="no">
+          <beforebreak>\d+\.</beforebreak>
+          <afterbreak>\s\d+</afterbreak>
+        </rule>
+        <rule break="no">
+          <beforebreak>\d([0-9]{1,})\.+\s</beforebreak>
+          <afterbreak>[가-힣A-Za-z]</afterbreak>
+        </rule>
+        <rule break="no">
+          <beforebreak>\s[A-Z]\.</beforebreak>
+          <afterbreak>\s</afterbreak>
+        </rule>
+        <rule break="yes">
+          <beforebreak>(^|\s+|[\(\[\,\:\;\"\-])[A-Z][a-z]+\s+[A-Z]\.</beforebreak>
+          <afterbreak>\s+(Adjournment|After|All|An|Analysis|And|As|At|Both|But|By|Chambers|Changes|Clinical|Coming|Comparison|Daughter|Die|Dietary|During|Early|Effect|Effects|English|Exposure|For|Free|From|Genetic|He|Health|High|His|How|Identification|If|In|Influence|Influenza|Is|Isolation|It|Maternal|More|My|New|Nice|No|Occupational|Of|On|One|Participated|Plan|Plant|Public|Reduced|Risk|See|Sexual|She|So|Some|Sometimes|Spontaneous|Still|Studies|That|The|Then|There|They|This|To|Two|Use|Vitamin|We|Weeks|What|When|While|With|Women|Work|You)(\s+|[\(\[\,\:\;\"\-])</afterbreak>
+        </rule>
+        <rule break="yes">
+          <beforebreak>(^|\s+|[\(\[\,\:\;\"\-])[0-9]{4}\.</beforebreak>
+          <afterbreak>\s+[A-Z가-힣]</afterbreak>
+        </rule>
+        <rule break="no">
+          <beforebreak>(^|\s+|[\(\[\,\:\;\"\-])[A-Z][a-z]+\s+[A-Z]\.</beforebreak>
+          <afterbreak>\s+[A-Z][a-z]+</afterbreak>
+        </rule>
+        <rule break="no">
+          <beforebreak>(^|\s+|[\(\[\,\:\;\"\-])[A-Z][a-z]+\s+[A-Z]\.</beforebreak>
+          <afterbreak>\s+[가-힣]+</afterbreak>
+        </rule>
+        <rule break="no">
+          <beforebreak>(^|\s+|[\(\[\,\:\;\"\-])(etc|et al)\.</beforebreak>
+          <afterbreak>\s+([^A-Z])</afterbreak>
+        </rule>
+        <rule break="no">
+          <beforebreak>(^|\s+|[\(\[\,\:\;\"\-\/])(jan|Jan|feb|Feb|mar|Mar|apr|Apr|jun|Jun|jul|Jul|aug|Aug|sep|Sep|sept|Sept|oct|Oct|nov|Nov|dec|Dec|Mon|Tue|Tues|Wed|Thu|Thurs|Fri|Sat|Sun|capt|Capt|dr|Dr|gov|Gov|gen|Gen|Mr|Mrs|Ms|Mme|prof|Prof|sgt|Sgt|st|St|Col|Rev|Sen|Rep|b\.c|B\.c|B\.J|a\.c|A\.c|av|Av|Co|corp|Corp|dept|Dept|dir|esp|Esp|D\.C|D\.P\.R\.K|D\.S|Fla|F\.W|gov|Gov|govt|Govt|inc|Inc|J\.D|J\.R|J\.T|Jr|Sr|Snr|L\.A|ltd|Lt|Ltd|mfg|M|Mfg|M\.B|M\.C|McG|Mt|M\.T\.M|N\.Y|O\.K|P\.F\.E|Sdn|S\.A|S\.A\.R\.L|S\.O\.S|S\.G|T\.R|U\.K|U\.S|U\.S\.A|V\.W\.H|W\.V|a\.m|A\.m|ca|Ca|cf|Cf|e\.g|E\.g|Al|ca|Ca|A\.D|Etc|id|Id|q\.e\.d|Q\.e\.d|vs|Vs|seq|Seq|ib|Ib|ibid|Ibid|i\.e|I\.e|cit|Cit|N\.B|p\.m|P\.m|p\.m|P\.m|p\.s|P\.s|q\.v|Q\.v|sc|Sc|v|V|viz|Viz|v\.v|V\.v|fig|Fig|chap|Chap|no|No|p|pg|Pg|pp|Pp|vol|Vol|C|W|approx|addt|addtl|incl|op|Op|U\.N|A\.C|G\.D\.P|ed|O\.A\.S|VS|B\.C|E\.U)\.</beforebreak>
+          <afterbreak>\s*[가-힣A-ZÁÃÄÅÀÂÆÇČÊËÉÈÍÌÎÏÑŒÓÔÕØÖŠÙÚÜÛŸÝa-zçéèêëàâäáæîïíìôöòõóøœřšûüùúñÿý0-9]+</afterbreak>
+        </rule>
+        <rule break="no">
+          <beforebreak>(^|\s+|[\(\[\,\:\;\"\-])(capt|Capt|dr|Dr|gov|Gov|gen|Gen|Mr|Mrs|Ms|Me|Dir|prof|Prof|sgt|Sgt|st|St|Col|Rev|Sen|Lt|Maj|Gen|Adm|Atty)\.</beforebreak>
+          <afterbreak>\s*[가-힣A-ZÁÃÄÅÀÂÆÇČÊËÉÈÍÌÎÏÑŒÓÔÕØÖŠÙÚÜÛŸÝ]+</afterbreak>
+        </rule>
+        <rule break="no">
+          <beforebreak>(^|\s+|[\(\[\,\:\;\"\-])(a\.m|A\.m|c|C|ca|Ca|cf|Cf|e\.g|E\.g|Al|ca|Ca|A\.D|Etc|id|Id|q\.e\.d|Q\.e\.d|vs|Vs|seq|Seq|ib|Ib|ibid|Ibid|i\.e|I\.e|cit|Cit|N\.B|p\.m|P\.m|p\.m|P\.m|p\.s|P\.s|q\.v|Q\.v|sc|Sc|v|V|viz|Viz|v\.v|V\.v|appr|approx|addt|incl|Lt\. ?Col)\.</beforebreak>
+          <afterbreak>\s*[가-힣A-ZÁÃÄÅÀÂÆÇČÊËÉÈÍÌÎÏÑŒÓÔÕØÖŠÙÚÜÛŸÝ]+</afterbreak>
+        </rule>
+        <rule break="no">
+          <beforebreak>(^|\s+|[\(\[\,\:\;\"\-])(fig|Fig|chap|Chap|no|No|p|P|pg|Pg|pp|Pp|vol|Vol|approx|addt|addtl|incl|art|Art|op|Op|Sec)\.</beforebreak>
+          <afterbreak>\s*[가-힣\dA-ZÁÃÄÅÀÂÆÇČÊËÉÈÍÌÎÏÑŒÓÔÕØÖŠÙÚÜÛŸÝa-zçéèêëàâäáæîïíìôöòõóøœřšûüùúñÿý]</afterbreak>
+        </rule>
+        <rule break="no">
+          <beforebreak>(^|\s+|[\(\[\,\:\;\"\-])(jan|Jan|feb|Feb|mar|Mar|apr|Apr|jun|Jun|jul|Jul|aug|Aug|sep|Sep|sept|Sept|oct|Oct|nov|Nov|dec|Dec|Ex)\.</beforebreak>
+          <afterbreak>\s*\d+</afterbreak>
+        </rule>
+        <rule break="yes">
+          <beforebreak>(^|\s+|[\(\[\,\:\;\"\-])(b\.c|B\.c|B\.J|a\.c|A\.c|av|Av|Co|corp|Corp|dept|Dept|esp|Esp|D\.C|D\.P\.R\.K|D\.S|Fla|F\.W|gov|Gov|govt|Govt|inc|Inc|J\.D|J\.R|J\.T|Jr|Sr|Snr|L\.A|ltd|Ltd|mfg|Mfg|M\.B|M\.C|McG|Mt|M\.T\.M|N\.Y|O\.K|P\.F\.E|Sdn|S\.A|S\.A\.R\.L|S\.O\.S|S\.G|T\.R|U\.K|U\.S|U\.S\.A|V\.W\.H|W\.V|approx|addt|addtl|incl)\.</beforebreak>
+          <afterbreak>\s+\"</afterbreak>
+        </rule>
+        <rule break="no">
+          <beforebreak>(^|\s+|[\(\[\,\:\;\"\-])(b\.c|B\.c|B\.J|a\.c|A\.c|av|Av|Co|corp|Corp|dept|Dept|esp|Esp|D\.C|D\.P\.R\.K|D\.S|Fla|F\.W|gov|Gov|govt|Govt|inc|Inc|J\.D|J\.R|J\.T|Jr|Sr|Snr|L\.A|ltd|Ltd|mfg|Mfg|M\.B|M\.C|McG|Mt|M\.T\.M|N\.Y|O\.K|P\.F\.E|Sdn|S\.A|S\.A\.R\.L|S\.O\.S|S\.G|T\.R|U\.K|U\.S|U\.S\.A|V\.W\.H|W\.V|approx|addt|addtl|incl|a\.k\.a)\.</beforebreak>
+          <afterbreak>\s+</afterbreak>
+        </rule>
+        <rule break="no">
+          <beforebreak>\d+\.</beforebreak>
+          <afterbreak>(^|\s+|[\(\[\,\:\;\"\-])(jan|Jan|feb|Feb|mar|Mar|apr|Apr|jun|Jun|jul|Jul|aug|Aug|sep|Sep|sept|Sept|oct|Oct|nov|Nov|dec|Dec)</afterbreak>
+        </rule>
+        <rule break="no">
+          <beforebreak>^[0-9]{1,3}\.</beforebreak>
+          <afterbreak>\s+[A-Z가-힣]</afterbreak>
+        </rule>
+        <rule break="no">
+          <beforebreak>(^|\s+|[\(\[\,\:\;\"\-])([A-Z]\.){3,}</beforebreak>
+          <afterbreak>\s*\w+</afterbreak>
+        </rule>
+        <rule break="no">
+          <beforebreak>(^|\s+|[\(\[\,\:\;\"\-])\d+ [NESW]+\.</beforebreak>
+          <afterbreak>\s+([A-Z]|\d+)</afterbreak>
+        </rule>
+        <rule break="no">
+          <beforebreak>(^|\s+|[\(\[\,\:\;\"\-])([A-Z]\.)+</beforebreak>
+          <afterbreak>\s+et al\.</afterbreak>
+        </rule>
+        <rule break="no">
+          <beforebreak>(^|\s+|[\(\[\,\:\;\"\-])P\.O\.</beforebreak>
+          <afterbreak>\s+Box</afterbreak>
+        </rule>
+        <rule break="yes">
+          <beforebreak>\.\[[0-9]+\]</beforebreak>
+          <afterbreak>\s+[A-Z]</afterbreak>
+        </rule>
+        <rule break="no">
+          <beforebreak>(^|\s+|[\(\[\,\:\;\"\-])([A-Z]\.)+</beforebreak>
+          <afterbreak>\s+and</afterbreak>
+        </rule>
+        <rule break="no">
+          <beforebreak>(^|\s+|[\(\[\,\:\;\"\-])U\.</beforebreak>
+          <afterbreak>\s+of\s+[A-Z]+</afterbreak>
+        </rule>
+        <rule break="no">
+          <beforebreak>[a-zA-Z0-9]+\.</beforebreak>
+          <afterbreak>\s(com|org)[\s|\)]</afterbreak>
+        </rule>
+        <rule break="no">
+          <beforebreak>[\.]</beforebreak>
+          <afterbreak>\"\s+(고|라고)</afterbreak>
+        </rule>
+        <rule break="no">
+          <beforebreak>[\.]+\"</beforebreak>
+          <afterbreak>\s+(고|라고)</afterbreak>
+        </rule>
+        <rule break="no">
+          <beforebreak>[\.]</beforebreak>
+          <afterbreak>\s+\"(고|라고)</afterbreak>
+        </rule>
+        <rule break="no">
+          <beforebreak>[\.]+\s</beforebreak>
+          <afterbreak>\"+(고|라고)</afterbreak>
+        </rule>
+        <rule break="no">
+          <beforebreak>[\.]</beforebreak>
+          <afterbreak>\s+(고|라고)</afterbreak>
+        </rule>
+        <rule break="no">
+          <beforebreak>[A-Za-z]\.[A-Za-z]\.</beforebreak>
+          <afterbreak>\s+[a-zA-Z]</afterbreak>
+        </rule>
+        <rule break="yes">
+          <beforebreak>\.</beforebreak>
+          <afterbreak>\s{1,}</afterbreak>
+        </rule>
+        <rule break="yes">
+          <beforebreak>다(?|!|.|\s||)</beforebreak>
+          <afterbreak>&lt;</afterbreak>
+        </rule>
+        <rule break="yes">
+          <beforebreak>\]+(\s)</beforebreak>
+          <afterbreak>\[([가-힣0-9.,\s]+)\](\s|$)</afterbreak>
+        </rule>
+        <rule break="yes">
+          <beforebreak>\]</beforebreak>
+          <afterbreak>\[([가-힣0-9.,\s]+)\](\s|$)</afterbreak>
+        </rule>
+        <rule break="yes">
+          <beforebreak>([가-힣])(\s)</beforebreak>
+          <afterbreak>&lt;([가-힣0-9.\s]+)&gt;$</afterbreak>
+        </rule>
+        <rule break="yes">
+          <beforebreak>([가-힣])</beforebreak>
+          <afterbreak>&lt;([가-힣0-9.\s]+)&gt;$</afterbreak>
+        </rule>
+        <rule break="yes">
+          <beforebreak>\:\s*\n</beforebreak>
+          <afterbreak>\.</afterbreak>
+        </rule>
+        <rule break="no">
+          <beforebreak>\:</beforebreak>
+          <afterbreak>.</afterbreak>
+        </rule>
+        <rule break="yes">
+          <beforebreak>[다]\.</beforebreak>
+          <afterbreak>[가-힣A-Za-z0-9\'\"]</afterbreak>
+        </rule>
+        <rule break="no">
+          <beforebreak>\,</beforebreak>
+          <afterbreak>\n</afterbreak>
+        </rule>
+        <rule break="no">
+          <beforebreak>[있|되|없|않|했|았|었|였]</beforebreak>
+          <afterbreak>\n</afterbreak>
+        </rule>
+      </languagerule>
+      <languagerule languagerulename="Latvian">
+        <rule break="no">
+          <beforebreak>(^|\s+|[\(\[\,\:\;\"\-])(Ian|Jan|Jaan|Tam|Sau|Led|Feb|Veeb|Hel|Vas|Un|Mar|Mär|Maal|Kov|Břez|Már|Apr|Huht|bal|dub|ápr|Mai|Maj|Maijs|Touk|geguž|máj|Iun|Jun|Jūn|Juun|Kes|birž|jún|Iul|Jul|Jūl|Juul|Hein|liep|júl|Aot|Aug|Elok|rugp|srp|avg|Sept|Syysk|rugs|szept|Oct|Okt|Lok,spal|rij|Noi|Nov|Mar|lapk|list|Dec|Det|Joul|gruod|prosjan|Jan|feb|Feb|mar|Mar|apr|Apr|jun|Jun|jul|Jul|aug|Aug|sep|Sep|sept|Sept|oct|Oct|nov|Nov|dec|Dec|Mon|Tue|Tues|Wed|Thu|Thurs|Fri|Sat|Sun|capt|Capt|dr|Dr|gov|Gov|gen|Gen|Mr|Mrs|Ms|Mme|prof|Prof|sgt|Sgt|st|St|Col|Rev|Sen|b\.c|B\.c|B\.J|a\.c|A\.c|av|Av|Co|corp|Corp|dept|Dept|dir|esp|Esp|D\.C|D\.P\.R\.K|D\.S|Fla|F\.W|gov|Gov|govt|Govt|inc|Inc|J\.D|J\.R|J\.T|Jr|Sr|Snr|L\.A|ltd|Lt|Ltd|mfg|M|Mfg|M\.B|M\.C|McG|Mt|M\.T\.M|N\.Y|O\.K|P\.F\.E|Sdn|S\.A|S\.A\.R\.L|S\.O\.S|S\.G|T\.R|U\.K|U\.S|U\.S\.A|V\.W\.H|W\.V|a\.m|A\.m|ca|Ca|cf|Cf|e\.g|E\.g|al|Al|ca|Ca|A\.D|etc|Etc|id|Id|q\.e\.d|Q\.e\.d|vs|Vs|seq|Seq|ib|Ib|ibid|Ibid|i\.e|I\.e|cit|Cit|N\.B|p\.m|P\.m|p\.m|P\.m|p\.s|P\.s|q\.v|Q\.v|sc|Sc|v|V|viz|Viz|v\.v|V\.v|fig|Fig|chap|Chap|no|No|p|pg|Pg|pp|Pp|vol|Vol|C|W|approx|addt|addtl|incl|op|Op|Pr|Hr|E|Dž|ž|P|Dl|Dn|Dra|Ga|ga|p|e|ge|g)\.</beforebreak>
+          <afterbreak>\s*[A-ZÁÃÄÅÀÂÆÇČÊËÉÈÍÌÎÏÑŒÓÔÕØÖŠÙÚÜÛŸÝa-zçéèêëàâäáæîïíìôöòõóøœřšûüùúñÿý0-9]+</afterbreak>
+        </rule>
+        <rule break="no">
+          <beforebreak>(^|\s+|[\(\[\,\:\;\"\-])(capt|Capt|dr|Dr|gov|Gov|gen|Gen|Mr|Mrs|Ms|Me|Dir|prof|Prof|sgt|Sgt|st|St|Col|Rev|Sen|Lt)\.</beforebreak>
+          <afterbreak>\s*\W+</afterbreak>
+        </rule>
+        <rule break="no">
+          <beforebreak>(^|\s+|[\(\[\,\:\;\"\-])(a\.m|A\.m|c|C|ca|Ca|cf|Cf|e\.g|E\.g|al|Al|ca|Ca|A\.D|etc|Etc|id|Id|q\.e\.d|Q\.e\.d|vs|Vs|seq|Seq|ib|Ib|ibid|Ibid|i\.e|I\.e|cit|Cit|N\.B|p\.m|P\.m|p\.m|P\.m|p\.s|P\.s|q\.v|Q\.v|sc|Sc|v|V|viz|Viz|v\.v|V\.v|appr|approx|addt|incl)\.</beforebreak>
+          <afterbreak>\s*\W+</afterbreak>
+        </rule>
+        <rule break="no">
+          <beforebreak>(^|\s+|[\(\[\,\:\;\"\-])(fig|Fig|chap|Chap|no|No|p|P|pg|Pg|pp|Pp|vol|Vol|approx|addt|addtl|incl|art|Art|op|Op)\.</beforebreak>
+          <afterbreak>\s*[\dA-ZÁÃÄÅÀÂÆÇČÊËÉÈÍÌÎÏÑŒÓÔÕØÖŠÙÚÜÛŸÝa-zçéèêëàâäáæîïíìôöòõóøœřšûüùúñÿý]</afterbreak>
+        </rule>
+        <rule break="no">
+          <beforebreak>(^|\s+|[\(\[\,\:\;\"\-])(Ian|Jan|Jaan|Tam|Sau|Led|Feb|Veeb|Hel|Vas|Un|Mar|Mär|Maal|Kov|Břez|Már|Apr|Huht|bal|dub|ápr|Mai|Maj|Maijs|Touk|geguž|máj|Iun|Jun|Jūn|Juun|Kes|birž|jún|Iul|Jul|Jūl|Juul|Hein|liep|júl|Aot|Aug|Elok|rugp|srp|avg|Sept|Syysk|rugs|szept|Oct|Okt|Lok,spal|rij|Noi|Nov|Mar|lapk|list|Dec|Det|Joul|gruod|prosjan|jan|Jan|feb|Feb|mar|Mar|apr|Apr|jun|Jun|jul|Jul|aug|Aug|sep|Sep|sept|Sept|oct|Oct|nov|Nov|dec|Dec)\.</beforebreak>
+          <afterbreak>\s*\d+</afterbreak>
+        </rule>
+        <rule break="yes">
+          <beforebreak>(^|\s+|[\(\[\,\:\;\"\-])(b\.c|B\.c|B\.J|a\.c|A\.c|av|Av|Co|corp|Corp|dept|Dept|esp|Esp|D\.C|D\.P\.R\.K|D\.S|Fla|F\.W|gov|Gov|govt|Govt|inc|Inc|J\.D|J\.R|J\.T|Jr|Sr|Snr|L\.A|ltd|Ltd|mfg|Mfg|M\.B|M\.C|McG|Mt|M\.T\.M|N\.Y|O\.K|P\.F\.E|Sdn|S\.A|S\.A\.R\.L|S\.O\.S|S\.G|T\.R|U\.K|U\.S|U\.S\.A|V\.W\.H|W\.V|approx|addt|addtl|incl)\.</beforebreak>
+          <afterbreak>\s+\"</afterbreak>
+        </rule>
+        <rule break="no">
+          <beforebreak>(^|\s+|[\(\[\,\:\;\"\-])(b\.c|B\.c|B\.J|a\.c|A\.c|av|Av|Co|corp|Corp|dept|Dept|esp|Esp|D\.C|D\.P\.R\.K|D\.S|Fla|F\.W|gov|Gov|govt|Govt|inc|Inc|J\.D|J\.R|J\.T|Jr|Sr|Snr|L\.A|ltd|Ltd|mfg|Mfg|M\.B|M\.C|McG|Mt|M\.T\.M|N\.Y|O\.K|P\.F\.E|Sdn|S\.A|S\.A\.R\.L|S\.O\.S|S\.G|T\.R|U\.K|U\.S|U\.S\.A|V\.W\.H|W\.V|approx|addt|addtl|incl)\.</beforebreak>
+          <afterbreak>\s+</afterbreak>
+        </rule>
+        <rule break="no">
+          <beforebreak>\d+\.</beforebreak>
+          <afterbreak>(^|\s+|[\(\[\,\:\;\"\-])(Ian|Jan|Jaan|Tam|Sau|Led|Feb|Veeb|Hel|Vas|Un|Mar|Mär|Maal|Kov|Břez|Már|Apr|Huht|bal|dub|ápr|Mai|Maj|Maijs|Touk|geguž|máj|Iun|Jun|Jūn|Juun|Kes|birž|jún|Iul|Jul|Jūl|Juul|Hein|liep|júl|Aot|Aug|Elok|rugp|srp|avg|Sept|Syysk|rugs|szept|Oct|Okt|Lok,spal|rij|Noi|Nov|Mar|lapk|list|Dec|Det|Joul|gruod|prosjan|jan|Jan|feb|Feb|mar|Mar|apr|Apr|jun|Jun|jul|Jul|aug|Aug|sep|Sep|sept|Sept|oct|Oct|nov|Nov|dec|Dec)</afterbreak>
+        </rule>
+      </languagerule>
+      <languagerule languagerulename="Lithuanian">
+        <rule break="no">
+          <beforebreak>(^|\s+|[\(\[\,\:\;\"\-])(Ian|Jan|Jaan|Tam|Sau|Led|Feb|Veeb|Hel|Vas|Un|Mar|Mär|Maal|Kov|Břez|Már|Apr|Huht|bal|dub|ápr|Mai|Maj|Maijs|Touk|geguž|máj|Iun|Jun|Jūn|Juun|Kes|birž|jún|Iul|Jul|Jūl|Juul|Hein|liep|júl|Aot|Aug|Elok|rugp|srp|avg|Sept|Syysk|rugs|szept|Oct|Okt|Lok,spal|rij|Noi|Nov|Mar|lapk|list|Dec|Det|Joul|gruod|prosjan|Jan|feb|Feb|mar|Mar|apr|Apr|jun|Jun|jul|Jul|aug|Aug|sep|Sep|sept|Sept|oct|Oct|nov|Nov|dec|Dec|Mon|Tue|Tues|Wed|Thu|Thurs|Fri|Sat|Sun|capt|Capt|dr|Dr|gov|Gov|gen|Gen|Mr|Mrs|Ms|Mme|prof|Prof|sgt|Sgt|st|St|Col|Rev|Sen|b\.c|B\.c|B\.J|a\.c|A\.c|av|Av|Co|corp|Corp|dept|Dept|dir|esp|Esp|D\.C|D\.P\.R\.K|D\.S|Fla|F\.W|gov|Gov|govt|Govt|inc|Inc|J\.D|J\.R|J\.T|Jr|Sr|Snr|L\.A|ltd|Lt|Ltd|mfg|M|Mfg|M\.B|M\.C|McG|Mt|M\.T\.M|N\.Y|O\.K|P\.F\.E|Sdn|S\.A|S\.A\.R\.L|S\.O\.S|S\.G|T\.R|U\.K|U\.S|U\.S\.A|V\.W\.H|W\.V|a\.m|A\.m|ca|Ca|cf|Cf|e\.g|E\.g|al|Al|ca|Ca|A\.D|etc|Etc|id|Id|q\.e\.d|Q\.e\.d|vs|Vs|seq|Seq|ib|Ib|ibid|Ibid|i\.e|I\.e|cit|Cit|N\.B|p\.m|P\.m|p\.m|P\.m|p\.s|P\.s|q\.v|Q\.v|sc|Sc|v|V|viz|Viz|v\.v|V\.v|fig|Fig|chap|Chap|no|No|p|pg|Pg|pp|Pp|vol|Vol|C|W|approx|addt|addtl|incl|op|Op|Pr|Hr|E|Dž|ž|P|Dl|Dn|Dra|Ga|ga|p|e|ge|g)\.</beforebreak>
+          <afterbreak>\s*[A-ZÁÃÄÅÀÂÆÇČÊËÉÈÍÌÎÏÑŒÓÔÕØÖŠÙÚÜÛŸÝa-zçéèêëàâäáæîïíìôöòõóøœřšûüùúñÿý0-9]+</afterbreak>
+        </rule>
+        <rule break="no">
+          <beforebreak>(^|\s+|[\(\[\,\:\;\"\-])(capt|Capt|dr|Dr|gov|Gov|gen|Gen|Mr|Mrs|Ms|Me|Dir|prof|Prof|sgt|Sgt|st|St|Col|Rev|Sen|Lt)\.</beforebreak>
+          <afterbreak>\s*\W+</afterbreak>
+        </rule>
+        <rule break="no">
+          <beforebreak>(^|\s+|[\(\[\,\:\;\"\-])(a\.m|A\.m|c|C|ca|Ca|cf|Cf|e\.g|E\.g|al|Al|ca|Ca|A\.D|etc|Etc|id|Id|q\.e\.d|Q\.e\.d|vs|Vs|seq|Seq|ib|Ib|ibid|Ibid|i\.e|I\.e|cit|Cit|N\.B|p\.m|P\.m|p\.m|P\.m|p\.s|P\.s|q\.v|Q\.v|sc|Sc|v|V|viz|Viz|v\.v|V\.v|appr|approx|addt|incl)\.</beforebreak>
+          <afterbreak>\s*\W+</afterbreak>
+        </rule>
+        <rule break="no">
+          <beforebreak>(^|\s+|[\(\[\,\:\;\"\-])(fig|Fig|chap|Chap|no|No|p|P|pg|Pg|pp|Pp|vol|Vol|approx|addt|addtl|incl|art|Art|op|Op)\.</beforebreak>
+          <afterbreak>\s*[\dA-ZÁÃÄÅÀÂÆÇČÊËÉÈÍÌÎÏÑŒÓÔÕØÖŠÙÚÜÛŸÝa-zçéèêëàâäáæîïíìôöòõóøœřšûüùúñÿý]</afterbreak>
+        </rule>
+        <rule break="no">
+          <beforebreak>(^|\s+|[\(\[\,\:\;\"\-])(Ian|Jan|Jaan|Tam|Sau|Led|Feb|Veeb|Hel|Vas|Un|Mar|Mär|Maal|Kov|Břez|Már|Apr|Huht|bal|dub|ápr|Mai|Maj|Maijs|Touk|geguž|máj|Iun|Jun|Jūn|Juun|Kes|birž|jún|Iul|Jul|Jūl|Juul|Hein|liep|júl|Aot|Aug|Elok|rugp|srp|avg|Sept|Syysk|rugs|szept|Oct|Okt|Lok,spal|rij|Noi|Nov|Mar|lapk|list|Dec|Det|Joul|gruod|prosjan|jan|Jan|feb|Feb|mar|Mar|apr|Apr|jun|Jun|jul|Jul|aug|Aug|sep|Sep|sept|Sept|oct|Oct|nov|Nov|dec|Dec)\.</beforebreak>
+          <afterbreak>\s*\d+</afterbreak>
+        </rule>
+        <rule break="yes">
+          <beforebreak>(^|\s+|[\(\[\,\:\;\"\-])(b\.c|B\.c|B\.J|a\.c|A\.c|av|Av|Co|corp|Corp|dept|Dept|esp|Esp|D\.C|D\.P\.R\.K|D\.S|Fla|F\.W|gov|Gov|govt|Govt|inc|Inc|J\.D|J\.R|J\.T|Jr|Sr|Snr|L\.A|ltd|Ltd|mfg|Mfg|M\.B|M\.C|McG|Mt|M\.T\.M|N\.Y|O\.K|P\.F\.E|Sdn|S\.A|S\.A\.R\.L|S\.O\.S|S\.G|T\.R|U\.K|U\.S|U\.S\.A|V\.W\.H|W\.V|approx|addt|addtl|incl)\.</beforebreak>
+          <afterbreak>\s+\"</afterbreak>
+        </rule>
+        <rule break="no">
+          <beforebreak>(^|\s+|[\(\[\,\:\;\"\-])(b\.c|B\.c|B\.J|a\.c|A\.c|av|Av|Co|corp|Corp|dept|Dept|esp|Esp|D\.C|D\.P\.R\.K|D\.S|Fla|F\.W|gov|Gov|govt|Govt|inc|Inc|J\.D|J\.R|J\.T|Jr|Sr|Snr|L\.A|ltd|Ltd|mfg|Mfg|M\.B|M\.C|McG|Mt|M\.T\.M|N\.Y|O\.K|P\.F\.E|Sdn|S\.A|S\.A\.R\.L|S\.O\.S|S\.G|T\.R|U\.K|U\.S|U\.S\.A|V\.W\.H|W\.V|approx|addt|addtl|incl)\.</beforebreak>
+          <afterbreak>\s+</afterbreak>
+        </rule>
+        <rule break="no">
+          <beforebreak>\d+\.</beforebreak>
+          <afterbreak>(^|\s+|[\(\[\,\:\;\"\-])(Ian|Jan|Jaan|Tam|Sau|Led|Feb|Veeb|Hel|Vas|Un|Mar|Mär|Maal|Kov|Břez|Már|Apr|Huht|bal|dub|ápr|Mai|Maj|Maijs|Touk|geguž|máj|Iun|Jun|Jūn|Juun|Kes|birž|jún|Iul|Jul|Jūl|Juul|Hein|liep|júl|Aot|Aug|Elok|rugp|srp|avg|Sept|Syysk|rugs|szept|Oct|Okt|Lok,spal|rij|Noi|Nov|Mar|lapk|list|Dec|Det|Joul|gruod|prosjan|jan|Jan|feb|Feb|mar|Mar|apr|Apr|jun|Jun|jul|Jul|aug|Aug|sep|Sep|sept|Sept|oct|Oct|nov|Nov|dec|Dec)</afterbreak>
+        </rule>
+      </languagerule>
+      <languagerule languagerulename="Persian">
+        <rule break="no">
+          <beforebreak>(\sا\.\.\.)</beforebreak>
+          <afterbreak>\s</afterbreak>
+        </rule>
+        <rule break="no">
+          <beforebreak>(\s*[٠١٢۳٤۴٥۵٦۶٧٨٩]+\:)</beforebreak>
+          <afterbreak>(\x{200F}[٠۱٢۳٤٥۵٦۶٧٨٩]+\x{200F}\s*)</afterbreak>
+        </rule>
+        <rule break="no">
+          <beforebreak>\s\d+[\.-]</beforebreak>
+          <afterbreak>\s+[آأابپتسشجچحخدذرزژسشصضطظعغفقکگلمنوهیئي]</afterbreak>
+        </rule>
+        <rule break="no">
+          <beforebreak>[\؟\!\.]</beforebreak>
+          <afterbreak>\s*»</afterbreak>
+        </rule>
+        <rule break="yes">
+          <beforebreak>[\.]\s*»</beforebreak>
+          <afterbreak>\s</afterbreak>
+        </rule>
+        <rule break="no">
+          <beforebreak>(\s+[م]\.)</beforebreak>
+          <afterbreak>\s</afterbreak>
+        </rule>
+        <rule break="no">
+          <beforebreak>([آأابپتسشجچحخدذرزژسشصضطظعغفقکگلمنوهیئي]\.){2,}</beforebreak>
+          <afterbreak>\s</afterbreak>
+        </rule>
+        <rule break="yes">
+          <beforebreak>([آأابپتسشجچحخدذرزژسشصضطظعغفقکگلمنوهیئي]\s\.)</beforebreak>
+          <afterbreak>([آأابپتسشجچحخدذرزژسشصضطظعغفقکگلمنوهیئي])</afterbreak>
+        </rule>
+        <rule break="yes">
+          <beforebreak>(\s+[آأابپتسشجچحخدذرزژسشصضطظعغفقکگلمنوهیئي]{2,}\.)</beforebreak>
+          <afterbreak>([آأابپتسشجچحخدذرزژسشصضطظعغفقکگلمنوهیئي]{2,}\s+)</afterbreak>
+        </rule>
+        <rule break="yes">
+          <beforebreak>[\.\;\!\?\؟\؛]</beforebreak>
+          <afterbreak>[\s+\x{200F}*]</afterbreak>
+        </rule>
+        <rule break="no">
+          <beforebreak>[\:]</beforebreak>
+          <afterbreak>\s*[A-Za-z]</afterbreak>
+        </rule>
+      </languagerule>
+      <languagerule languagerulename="Polish">
+        <rule break="no">
+          <beforebreak>(^|\s+|[\(\[\,\:\;\"\-\„\/])(p\.n\.e|art|Art|ags|alb|ang|aor|av|Av|bałt|blm|blp|bojkow|br|bret|brus|bsł|bułg|cdn|celt|chor|chorw|cf|cs|czakaw|czes|d|daw|dawek|dk|dł|dłuż|dniem|dn|dor|dosł|dubrow|dawek|dr|ds|dot|dt|Dr|ekaw|est|fiń|franc|gal|germ|gł|głęb|głuż|gniem|goc|godz|Gorzów Wlkp|gr|hebr|het|hiszp|hr|hol|ie|ikaw|im|Inc|irań|irl|islandz|itd|itp|jekaw|j\.m|j|kajkaw|kasz|kirg|km|koni|lit|lp|łac|lat|łot|maced|maks|Maks|mar|mies|młpol|moraw|m\.in|ml|n\.e\.i|Np|ngr|niem|nieodm|nord|norw|np|nt|m\.c|o|odc|ok|oo|orm|oset|osk|p\.n|p\.n\.e|p\.o|pc|pchor|pers|pie|pl|płd|płn|pkt|podhal|pol|przyp|połab|por|port|pot|pow|poz|ppłk|pp|ppor|Por|prekm|proc|prof|Prof|ps|pseud|pskow|psł|r|rez|rom|roztwór|rum|rus|Rys|s|sas|sch|scs|spp|Spp|str|sek|serb|stóp|zob|sierż|sła|słe|słow|spol|st|St|stbułg|stind|stpol|stpr|strus|stwniem|szer|sztokaw|szwedz|śl|śp|śrdniem|śr|śrgniem|śrirl|św|t|tj|toch|tow|tur|tydz|tys|tzn|ukr|tel|ul|umbr|ur|ust|vs|wed|węg|wlkp|wlkpol|Wg|wg|właśc|włos|wsch|wsp|ww|wyj|wyr|zm|zach|zakarp|z d|mc|zob|Zob|zdj|Ltd)\.</beforebreak>
+          <afterbreak>\s*[\+aąbcćdeęfghijklłmnńoóprsśtuwvyzźż0-9\(\„]+</afterbreak>
+        </rule>
+        <rule break="no">
+          <beforebreak>(^|\s+|[\(\[\,\:\;\"\-\„])(m\.in|dr|Dr|ds|p|Dz\.U|Dz\. U|Dz\.c|ul|Ul|im|tzw|fot|prof|Prof)\.</beforebreak>
+          <afterbreak>\s*[AaĄąBbCcĆćDdEeĘęFfGgHhIiJjKkLlŁłMmNnŃńOoÓóPpRrSsŚśTtUuWwYyZzŹźŻżvV0-9"]+</afterbreak>
+        </rule>
+        <rule break="no">
+          <beforebreak>(^|\s+|[\(\[\,\:\;\"\-\„])(stycz|luty|mar|kwiec|maj|czerw|lip|sierp|wrzes|pazdz|listop|grudz)\.</beforebreak>
+          <afterbreak>\s*[\+aąbcćdeęfghijklłmnńoóprsśtuwvyzźż0-9\(\„]+</afterbreak>
+        </rule>
+        <rule break="no">
+          <beforebreak>(^|\s+|[\(\[\,\:\;\"\-\„\/])(tel|Tel|kom)\.</beforebreak>
+          <afterbreak>\s*[\(0-9\+\:]+</afterbreak>
+        </rule>
+        <rule break="no">
+          <beforebreak>\d\.</beforebreak>
+          <afterbreak>\d+</afterbreak>
+        </rule>
+        <rule break="no">
+          <beforebreak>(^|\s+|[\(\[\,\:\;\"\-\„\/])[AaĄąBbCcĆćDdEeĘęFfGgHhIiJjKkLlŁłMmNnŃńOoÓóPpRrSsŚśTtUuWwYyZzŹźŻżvV]\.</beforebreak>
+          <afterbreak>\s*\(\d+\)</afterbreak>
+        </rule>
+        <rule break="no">
+          <beforebreak>(^|\s+|[\(\[\,\:\;\"\-\„\/])[AaĄąBbCcĆćDdEeĘęFfGgHhIiJjKkLlŁłMmNnŃńOoÓóPpRrSsŚśTtUuWwYyZzŹźŻżvV]\.</beforebreak>
+          <afterbreak>\(\d+</afterbreak>
+        </rule>
+        <rule break="no">
+          <beforebreak>(^|\s+|[\(\[\,\:\;\"\-\„\/])[AaĄąBbCcĆćDdEeĘęFfGgHhIiJjKkLlŁłMmNnŃńOoÓóPpRrSsŚśTtUuWwYyZzŹźŻżvV]\.</beforebreak>
+          <afterbreak>\s*[\aąbcćdeęfghijklłmnńoóprsśtuwvyzźż]+</afterbreak>
+        </rule>
+        <rule break="no">
+          <beforebreak>(^)(\d)\.</beforebreak>
+          <afterbreak>\s*[AaĄąBbCcĆćDdEeĘęFfGgHhIiJjKkLlŁłMmNnŃńOoÓóPpRrSsŚśTtUuWwYyZzŹźŻżvV0-9]+</afterbreak>
+        </rule>
+        <rule break="no">
+          <beforebreak>(^|\s+|[\(\[\,\:\;\"\-\„\/])(Sp|z|sp)\.</beforebreak>
+          <afterbreak>\s*[AaĄąBbCcĆćDdEeĘęFfGgHhIiJjKkLlŁłMmNnŃńOoÓóPpRrSsŚśTtUuWwYyZzŹźŻżvV0-9]+</afterbreak>
+        </rule>
+        <rule break="no">
+          <beforebreak>\.</beforebreak>
+          <afterbreak>[^\s]</afterbreak>
+        </rule>
+        <!-- N. Tesla -->
+        <rule break="no">
+          <beforebreak>(^|\s+|[\(\[\,\:\;\"\»\-\'\(])([AĄBCĆDEĘFGHIJKLŁMNŃOÓPQRSŚTUVWXYZŹŻ])\.</beforebreak>
+          <afterbreak>\s[AĄBCĆDEĘFGHIJKLŁMNŃOÓPQRSŚTUVWXYZŹŻ][aąbcćdeęfghijklłmnńoópqrsśtuvwxyzźż]*</afterbreak>
+        </rule>
+        <!-- Tesla N. -->
+        <rule break="no">
+          <beforebreak>(^|\s+|[\(\[\,\:\;\"\»\-\'])[AĄBCĆDEĘFGHIJKLŁMNŃOÓPQRSŚTUVWXYZŹŻ][aąbcćdeęfghijklłmnńoópqrsśtuvwxyzźż]+\s([AĄBCĆDEĘFGHIJKLŁMNŃOÓPQRSŚTUVWXYZŹŻ])\.</beforebreak>
+          <afterbreak>\s</afterbreak>
+        </rule>
+        <!-- S.W.A.T. -->
+        <rule break="no">
+          <beforebreak>(^|\s+|[\(\[\,\:\;\"\»\-\'])([AĄBCĆDEĘFGHIJKLŁMNŃOÓPQRSŚTUVWXYZŹŻ])+\.</beforebreak>
+          <afterbreak>\s*[AĄBCĆDEĘFGHIJKLŁMNŃOÓPQRSŚTUVWXYZŹŻaąbcćdeęfghijklłmnńoópqrsśtuvwxyzźż]</afterbreak>
+        </rule>
+        <rule break="yes">
+          <beforebreak>(\s+|[\(\[\,\:\;\"\»\-\'\.])([0-9])+\.</beforebreak>
+          <afterbreak>\s*[AĄBCĆDEĘFGHIJKLŁMNŃOÓPQRSŚTUVWXYZŹŻ]</afterbreak>
+        </rule>
+      </languagerule>
+      <languagerule languagerulename="Portuguese">
+        <rule break="no">
+          <beforebreak>(^|\s+|[\(\[\,\:\;\"\-])(jan|Jan|fev|Fev|mar|Mar|abr|Abr|jun|Jun|jul|Jul|ago|Ago|set|Set|sett|Sett|oct|Out|nov|Nov|dez|Dez|Seg|Ter|Ters|Qua|Qui|Quirs|Sex|Sáb|Dom|capt|Capt|dr|Dr|gov|Gov|gen|Gen|Mr|Mrs|Ms|Mme|prof|Prof|sgt|Sgt|st|St|Col|Rev|Sen|b\.c|B\.c|B\.J|a\.c|A\.c|av|Av|Co|corp|Corp|dept|Dept|dir|esp|Esp|D\.C|D\.P\.R\.K|D\.S|Fla|F\.W|gov|Gov|govt|Govt|inc|Inc|J\.D|J\.R|J\.T|Jr|Sr|Snr|L\.A|ltd|Lt|Ltd|mfg|M|Mfg|M\.B|M\.C|McG|Mt|M\.T\.M|N\.Y|O\.K|P\.F\.E|Sdn|S\.A|S\.A\.R\.L|S\.O\.S|S\.G|T\.R|U\.K|U\.S|U\.S\.A|V\.W\.H|W\.V|a\.m|A\.m|ca|Ca|cf|Cf|e\.g|E\.g|al|Al|ca|Ca|A\.D|etc|Etc|id|Id|q\.e\.d|Q\.e\.d|vs|Vs|seq|Seq|ib|Ib|ibid|Ibid|i\.e|I\.e|cit|Cit|N\.B|p\.m|P\.m|p\.m|P\.m|p\.s|P\.s|q\.v|Q\.v|sc|Sc|v|V|viz|Viz|v\.v|V\.v|fig|Fig|chap|Chap|no|No|p|pg|Pg|pp|Pp|vol|Vol|C|W|approx|addt|addtl|incl|op|Op|C\.E\.C\.A|C\.E\.E\.A|C\.E\.S|D\.N\.I|E\.U\.A|O\.T\.A\.N|S\.A|S\.I\.M|S\.N\.C|S\.R\.L|a\.c|J\.C)\.</beforebreak>
+          <afterbreak>\s*[A-ZÁÃÄÅÀÂÆÇČÊËÉÈÍÌÎÏÑŒÓÔÕØÖŠÙÚÜÛŸÝa-zçéèêëàâäáæîïíìôöòõóøœřšûüùúñÿý0-9]+</afterbreak>
+        </rule>
+        <rule break="no">
+          <beforebreak>(^|\s+|[\(\[\,\:\;\"\-])(capt|Capt|dr|Dr|gov|Gov|gen|Gen|Mr|Mrs|Ms|Me|Dir|prof|Prof|sgt|Sgt|st|St|Col|Rev|Sen|Lt)\.</beforebreak>
+          <afterbreak>\s*\W+</afterbreak>
+        </rule>
+        <rule break="no">
+          <beforebreak>(^|\s+|[\(\[\,\:\;\"\-])(a\.m|A\.m|c|C|ca|Ca|cf|Cf|e\.g|E\.g|al|Al|ca|Ca|A\.D|etc|Etc|id|Id|q\.e\.d|Q\.e\.d|vs|Vs|seq|Seq|ib|Ib|ibid|Ibid|i\.e|I\.e|cit|Cit|N\.B|p\.m|P\.m|p\.m|P\.m|p\.s|P\.s|q\.v|Q\.v|sc|Sc|v|V|viz|Viz|v\.v|V\.v|appr|approx|addt|incl)\.</beforebreak>
+          <afterbreak>\s*\W+</afterbreak>
+        </rule>
+        <rule break="no">
+          <beforebreak>(^|\s+|[\(\[\,\:\;\"\-])(fig|Fig|chap|Chap|no|No|p|P|pg|Pg|pp|Pp|pág|Pág|vol|Vol|addtl|incl|art|Art|op|Op)\.</beforebreak>
+          <afterbreak>\s*[\dA-ZÁÃÄÅÀÂÆÇČÊËÉÈÍÌÎÏÑŒÓÔÕØÖŠÙÚÜÛŸÝa-zçéèêëàâäáæîïíìôöòõóøœřšûüùúñÿý]</afterbreak>
+        </rule>
+        <rule break="no">
+          <beforebreak>(^|\s+|[\(\[\,\:\;\"\-])(jan|Jan|fev|Fev|mar|Mar|abr|Abr|jun|Jun|jul|Jul|ago|Ago|set|Set|sett|Sett|oct|Out|nov|Nov|dez|Dez)\.</beforebreak>
+          <afterbreak>\s*\d+</afterbreak>
+        </rule>
+        <rule break="yes">
+          <beforebreak>(^|\s+|[\(\[\,\:\;\"\-])(b\.c|B\.c|B\.J|a\.c|A\.c|av|Av|Co|corp|Corp|dept|Dept|esp|Esp|D\.C|D\.P\.R\.K|D\.S|Fla|F\.W|gov|Gov|govt|Govt|inc|Inc|J\.D|J\.R|J\.T|Jr|Sr|Snr|L\.A|ltd|Ltd|mfg|Mfg|M\.B|M\.C|McG|Mt|M\.T\.M|N\.Y|O\.K|P\.F\.E|Sdn|S\.A|S\.A\.R\.L|S\.O\.S|S\.G|T\.R|U\.K|U\.S|U\.S\.A|V\.W\.H|W\.V|approx|addt|addtl|incl)\.</beforebreak>
+          <afterbreak>\s+\"</afterbreak>
+        </rule>
+        <rule break="no">
+          <beforebreak>(^|\s+|[\(\[\,\:\;\"\-])(b\.c|B\.c|B\.J|a\.c|A\.c|av|Av|Co|corp|Corp|dept|Dept|esp|Esp|D\.C|D\.P\.R\.K|D\.S|Fla|F\.W|gov|Gov|govt|Govt|inc|Inc|J\.D|J\.R|J\.T|Jr|Sr|Snr|L\.A|ltd|Ltd|mfg|Mfg|M\.B|M\.C|McG|Mt|M\.T\.M|N\.Y|O\.K|P\.F\.E|Sdn|S\.A|S\.A\.R\.L|S\.O\.S|S\.G|T\.R|U\.K|U\.S|U\.S\.A|V\.W\.H|W\.V|C\.E\.C\.A|C\.E\.E\.A|C\.E\.S|D\.N\.I|E\.U\.A|O\.T\.A\.N|S\.A|S\.I\.M|S\.N\.C|S\.R\.L|a\.c|J\.C|approx|addt|addtl|incl)\.</beforebreak>
+          <afterbreak>\s+</afterbreak>
+        </rule>
+        <rule break="no">
+          <beforebreak>\d+\.</beforebreak>
+          <afterbreak>(^|\s+|[\(\[\,\:\;\"\-])(jan|Jan|fev|Fev|mar|Mar|abr|Abr|jun|Jun|jul|Jul|ago|Ago|set|Set|sett|Sett|oct|Out|nov|Nov|dez|Dez)</afterbreak>
+        </rule>
+      </languagerule>
+      <languagerule languagerulename="Romanian">
+        <rule break="no">
+          <beforebreak>^\d\.</beforebreak>
+          <afterbreak>\s+[A-ZÁÃÄÅÀÂÆÇČÊËÉÈÍÌÎÏÑŒÓÔÕØÖŠÙÚÜÛŸÝ„]</afterbreak>
+        </rule>
+        <rule break="no">
+          <beforebreak>(^|\s+|[\(\[\,\:\;\"\-\„])(Ian|Jan|Jaan|Tam|Sau|Led|Feb|Veeb|Hel|Vas|Un|Mar|Mär|Maal|Kov|Břez|Már|Apr|Huht|bal|dub|ápr|Mai|Maj|Maijs|Touk|geguž|máj|Iun|Jun|Jūn|Juun|Kes|birž|jún|Iul|Jul|Jūl|Juul|Hein|liep|júl|Aot|Aug|Elok|rugp|srp|avg|Sept|Syysk|rugs|szept|Oct|Okt|Lok,spal|rij|Noi|Nov|Mar|lapk|list|Dec|Det|Joul|gruod|prosjan|Jan|feb|Feb|mar|Mar|apr|Apr|jun|Jun|jul|Jul|aug|Aug|sep|Sep|sept|Sept|oct|Oct|nov|Nov|dec|Dec|Mon|Tue|Tues|Wed|Thu|Thurs|Fri|Sat|Sun|capt|Capt|dr|Dr|gov|Gov|gen|Gen|Mr|Mrs|Ms|Mme|prof|Prof|sgt|Sgt|st|St|Col|Rev|Sen|b\.c|B\.c|B\.J|a\.c|A\.c|av|Av|Co|corp|Corp|dept|Dept|dir|esp|Esp|D\.C|D\.P\.R\.K|D\.S|Fla|F\.W|gov|Gov|govt|Govt|inc|Inc|J\.D|J\.R|J\.T|Jr|Sr|Snr|L\.A|ltd|Lt|Ltd|mfg|M|Mfg|M\.B|M\.C|McG|Mt|M\.T\.M|N\.Y|O\.K|P\.F\.E|Sdn|S\.A|S\.A\.R\.L|S\.O\.S|S\.G|T\.R|U\.K|U\.S|U\.S\.A|V\.W\.H|W\.V|a\.m|A\.m|ca|Ca|cf|Cf|e\.g|E\.g|al|Al|ca|Ca|A\.D|etc|Etc|id|Id|q\.e\.d|Q\.e\.d|vs|Vs|seq|Seq|ib|Ib|ibid|Ibid|i\.e|I\.e|cit|Cit|N\.B|p\.m|P\.m|p\.m|P\.m|p\.s|P\.s|q\.v|Q\.v|sc|Sc|v|V|viz|Viz|v\.v|V\.v|fig|Fig|chap|Chap|no|No|p|pg|Pg|pp|Pp|vol|Vol|C|W|approx|addt|addtl|incl|op|Op|Pr|Hr|E|Dž|ž|P|Dl|Dn|Dra|Ga|ga|p|e|ge|g|nr|Nr)\.</beforebreak>
+          <afterbreak>\s*[A-ZÁÃÄÅÀÂÆÇČÊËÉÈÍÌÎÏÑŒÓÔÕØÖŠÙÚÜÛŸÝa-zçéèêëàâäáæîïíìôöòõóøœřšûüùúñÿýðþ0-9]+</afterbreak>
+        </rule>
+        <rule break="no">
+          <beforebreak>(^|\s+|[\(\[\,\:\;\"\-\„\“])(capt|Capt|dr|Dr|gov|Gov|gen|Gen|Mr|Mrs|Ms|Me|Dir|prof|Prof|sgt|Sgt|st|St|Col|Rev|Sen|Lt)\.</beforebreak>
+          <afterbreak>\s*\W+</afterbreak>
+        </rule>
+        <rule break="no">
+          <beforebreak>(^|\s+|[\(\[\,\:\;\"\-])(a\.m|A\.m|c|C|ca|Ca|cf|Cf|e\.g|E\.g|al|Al|ca|Ca|A\.D|etc|Etc|id|Id|q\.e\.d|Q\.e\.d|vs|Vs|seq|Seq|ib|Ib|ibid|Ibid|i\.e|I\.e|cit|Cit|N\.B|p\.m|P\.m|p\.m|P\.m|p\.s|P\.s|q\.v|Q\.v|sc|Sc|v|V|viz|Viz|v\.v|V\.v|appr|approx|addt|incl)\.</beforebreak>
+          <afterbreak>\s*\W+</afterbreak>
+        </rule>
+        <rule break="no">
+          <beforebreak>(^|\s+|[\(\[\,\:\;\"\-\„])(fig|Fig|chap|Chap|no|No|p|P|pg|Pg|pp|Pp|vol|Vol|approx|addt|addtl|incl|art|Art|op|Op|Bd|Co|Dl|Ed|Sf|Tg|str|Str)\.</beforebreak>
+          <afterbreak>\s*[\dA-ZÁÃÄÅÀÂÆÇČÊËÉÈÍÌÎÏÑŒÓÔÕØÖŠÙÚÜÛŸÝa-zçéèêëàâäáæîïíìôöòõóøœřšûüùúñÿý]</afterbreak>
+        </rule>
+        <rule break="no">
+          <beforebreak>(^|\s+|[\(\[\,\:\;\"\-])(Ian|Jan|Jaan|Tam|Sau|Led|Feb|Veeb|Hel|Vas|Un|Mar|Mär|Maal|Kov|Břez|Már|Apr|Huht|bal|dub|ápr|Mai|Maj|Maijs|Touk|geguž|máj|Iun|Jun|Jūn|Juun|Kes|birž|jún|Iul|Jul|Jūl|Juul|Hein|liep|júl|Aot|Aug|Elok|rugp|srp|avg|Sept|Syysk|rugs|szept|Oct|Okt|Lok,spal|rij|Noi|Nov|Mar|lapk|list|Dec|Det|Joul|gruod|prosjan|jan|Jan|feb|Feb|mar|Mar|apr|Apr|jun|Jun|jul|Jul|aug|Aug|sep|Sep|sept|Sept|oct|Oct|nov|Nov|dec|Dec)\.</beforebreak>
+          <afterbreak>\s*\d+</afterbreak>
+        </rule>
+        <rule break="yes">
+          <beforebreak>(^|\s+|[\(\[\,\:\;\"\-])(b\.c|B\.c|B\.J|a\.c|A\.c|av|Av|Co|corp|Corp|dept|Dept|esp|Esp|D\.C|D\.P\.R\.K|D\.S|Fla|F\.W|gov|Gov|govt|Govt|inc|Inc|J\.D|J\.R|J\.T|Jr|Sr|Snr|L\.A|ltd|Ltd|mfg|Mfg|M\.B|M\.C|McG|Mt|M\.T\.M|N\.Y|O\.K|P\.F\.E|Sdn|S\.A|S\.A\.R\.L|S\.O\.S|S\.G|T\.R|U\.K|U\.S|U\.S\.A|V\.W\.H|W\.V|approx|addt|addtl|incl)\.</beforebreak>
+          <afterbreak>\s+\"</afterbreak>
+        </rule>
+        <rule break="no">
+          <beforebreak>(^|\s+|[\(\[\,\:\;\"\-])(b\.c|B\.c|B\.J|a\.c|A\.c|av|Av|Co|corp|Corp|dept|Dept|esp|Esp|D\.C|D\.P\.R\.K|D\.S|Fla|F\.W|gov|Gov|govt|Govt|inc|Inc|J\.D|J\.R|J\.T|Jr|Sr|Snr|L\.A|ltd|Ltd|mfg|Mfg|M\.B|M\.C|McG|Mt|M\.T\.M|N\.Y|O\.K|P\.F\.E|Sdn|S\.A|S\.A\.R\.L|S\.O\.S|S\.G|T\.R|U\.K|U\.S|U\.S\.A|V\.W\.H|W\.V|approx|addt|addtl|incl)\.</beforebreak>
+          <afterbreak>\s+</afterbreak>
+        </rule>
+        <rule break="no">
+          <beforebreak>\d+\.</beforebreak>
+          <afterbreak>(^|\s+|[\(\[\,\:\;\"\-])(Ian|Jan|Jaan|Tam|Sau|Led|Feb|Veeb|Hel|Vas|Un|Mar|Mär|Maal|Kov|Břez|Már|Apr|Huht|bal|dub|ápr|Mai|Maj|Maijs|Touk|geguž|máj|Iun|Jun|Jūn|Juun|Kes|birž|jún|Iul|Jul|Jūl|Juul|Hein|liep|júl|Aot|Aug|Elok|rugp|srp|avg|Sept|Syysk|rugs|szept|Oct|Okt|Lok,spal|rij|Noi|Nov|Mar|lapk|list|Dec|Det|Joul|gruod|prosjan|jan|Jan|feb|Feb|mar|Mar|apr|Apr|jun|Jun|jul|Jul|aug|Aug|sep|Sep|sept|Sept|oct|Oct|nov|Nov|dec|Dec)</afterbreak>
+        </rule>
+        <!-- Break after Number+Period if it is followed by UPPERCASE letter or opening quote -->
+        <rule break="no">
+          <beforebreak>(^[0-9\.]+)\.</beforebreak>
+          <afterbreak>\s+[A-ZÁÃÄÅÀÂÆÇČÊËÉÈÍÌÎÏÑŒÓÔÕØÖŠÙÚÜÛŸÝ„]</afterbreak>
+        </rule>
+        <rule break="yes">
+          <beforebreak>(.[0-9])\.</beforebreak>
+          <afterbreak>\s+[A-ZÁÃÄÅÀÂÆÇČÊËÉÈÍÌÎÏÑŒÓÔÕØÖŠÙÚÜÛŸÝ„]</afterbreak>
+        </rule>
+      </languagerule>
+      <languagerule languagerulename="Russian">
+        <!-- Библиотека им. В. И. Ленина -->
+        <rule break="no">
+          <beforebreak>[\s\(\[\,\:\;\"\»\-]им\.</beforebreak>
+          <afterbreak>\s(Дж|[A-ZА-ЯЁ])\.\s(Дж|[A-ZА-ЯЁ])\.\s[A-ZА-ЯЁ][a-zа-яё]</afterbreak>
+        </rule>
+        <!-- и. о. Президента -->
+        <rule break="no">
+          <beforebreak>[Ии]\.\s?[Оо]\.</beforebreak>
+          <afterbreak>\s</afterbreak>
+        </rule>
+        <!-- 3.14 -->
+        <rule break="no">
+          <beforebreak>\d\.</beforebreak>
+          <afterbreak>\d</afterbreak>
+        </rule>
+        <!-- в 1961 г. выпустили свой первый альбом -->
+        <rule break="no">
+          <beforebreak>\d\s?г\.</beforebreak>
+          <afterbreak>\s[а-яёa-z]</afterbreak>
+        </rule>
+        <!-- в 80-х гг. прошлого века -->
+        <rule break="no">
+          <beforebreak>гг\.</beforebreak>
+          <afterbreak>\s[а-яёa-z]</afterbreak>
+        </rule>
+        <!-- XI-XIIвв. оказались вообще -->
+        <rule break="no">
+          <beforebreak>[IVXivx]+\s?в?в\.</beforebreak>
+          <afterbreak>\s[а-яёa-z]</afterbreak>
+        </rule>
+        <!-- 1. Введение -->
+        <rule break="no">
+          <beforebreak>^[\dIVXLCMivxlcm]+\.</beforebreak>
+          <afterbreak>\s</afterbreak>
+        </rule>
+        <!-- 2а. Подпункт -->
+        <rule break="no">
+          <beforebreak>^\d+[а-яa-z]\.</beforebreak>
+          <afterbreak>\s</afterbreak>
+        </rule>
+        <!-- школа № 315 г. Москвы, например -->
+        <rule break="no">
+          <beforebreak>(№|N°?)\s\d+\s(г|с|пос)\.</beforebreak>
+          <afterbreak>\s[A-ZА-ЯЁ\d\"\«\(\{\[&lt;―-]</afterbreak>
+        </rule>
+        <!-- в г. Новосибирске находится она -->
+        <rule break="no">
+          <beforebreak>[^\d]\s(г|с|пос)\.</beforebreak>
+          <afterbreak>\s[A-ZА-ЯЁ][a-zа-яё]</afterbreak>
+        </rule>
+        <rule break="yes">
+          <beforebreak>[\.\?!][\"\»][\.\?!]</beforebreak>
+          <afterbreak>\s</afterbreak>
+        </rule>
+        <!-- "Старуха! А, старуха!" Старуха так и покатилась. -->
+        <rule break="yes">
+          <beforebreak>[\.\?!][\"\»]</beforebreak>
+          <afterbreak>\s[A-ZА-ЯЁ\d\"\\«(\{\[&lt;―-]</afterbreak>
+        </rule>
+        <rule break="yes">
+          <beforebreak>[\»\"%]\.</beforebreak>
+          <afterbreak>\s</afterbreak>
+        </rule>
+        <rule break="no">
+          <beforebreak>(^|\s+|[\(\[\,\:\;\"\»\-])долл\.</beforebreak>
+          <afterbreak>\s?(США|[а-яё0-9])</afterbreak>
+        </rule>
+        <!-- Months -->
+        <rule break="no">
+          <beforebreak>(^|\s+|[\(\[\,\:\;\"\»\-])([Яя]нв?|[Фф]евр?|[Мм]ар|[Аа]пр|[Ии]юн|[Ии]юл|[Аа]вг|[Сс]ент?|[Оо]кт|[Нн]ояб?|[Дд]ек)\.</beforebreak>
+          <afterbreak>\s[а-яёa-z0-9]</afterbreak>
+        </rule>
+        <!-- Days -->
+        <rule break="no">
+          <beforebreak>(^|\s+|[\(\[\,\:\;\"\»\-])([Пп]н|[Вв]т|[Сс]р|[Чч]т|[Пп]т|[Сс]б|[Вв]с)\.</beforebreak>
+          <afterbreak>\s[а-яёa-z0-9]</afterbreak>
+        </rule>
+        <!-- Common -->
+        <rule break="no">
+          <beforebreak>(^|\s+|[\(\[\,\:\;\"\»\-])([Сс]м|т\.\s?н|т\.\s?ч|[Нн]апр|[Пп]р|[Пп]роч|[Сс]лед|[Пп]ред|[Оо]б|[Пп]рим|[Аа]вт|[Пп]ер|[Пп]ерев|[Нн]\. ?э|[Нн]аст\. вр|[Сс]\. ?г|[Шш]т|[Зз]ав|[Зз]ам|[Пп]ом|[Кк]анд|[Тт]ех|[Мм]ед|[Пп]ед|[Сс]т|[Мм]л|[Сс]отр|[Нн]ач|[Рр]ук|[Сс]пец|[Нн]ац|[Оо]тв|[Хх]оз|[Рр]усск|[Аа]мер|[Ии]сп|[Ии]тал|[Нн]ем|[Лл]ат|[Бб]рит|[Ее]вр|[Сс]лав|[Ии]зд|руб|коп|р|к|н\. ?ст|ст\. ?ст|[Жж]\.-?д|[Аа]\. ?л|[Гг]ос|[Жж]|[Жж]ен|[Мм]|[Мм]уж|[Ии]н|[Ии]ностр|[Ии]нст|[Зз]аруб|[Мм]иним|[Сс]ек|[Мм]ин)\.</beforebreak>
+          <afterbreak>\s[а-яёa-z0-9]</afterbreak>
+        </rule>
+        <!-- preceded by a number -->
+        <rule break="no">
+          <beforebreak>(\d|\s)([Сс]м|[Нн]\. ?э|[Сс]\. ?г|[Шш]т|[Сс]тр?|[Мм]л|[Рр]уб|[Кк]оп|[Рр]|[Кк]|н\. ?ст|ст\. ?ст|[Аа]\. ?л|[Мм]|[Мм]иним|[Сс]ек|[Мм]ин|[Чч])\.</beforebreak>
+          <afterbreak>\s[а-яёa-z0-9]</afterbreak>
+        </rule>
+        <rule break="no">
+          <beforebreak>(^|\s+|[\(\[\,\:\;\"\»\-])(и т\.\s?д|и т\.\s?п|т\.\s?к|[Тт]\.\s?о|[Тт]\.\s?е|м\.?\s?б|мн|др|мн\.\s?др|пр|проч)\.</beforebreak>
+          <afterbreak>\s[а-яёa-z0-9'"]</afterbreak>
+        </rule>
+        <rule break="yes">
+          <beforebreak>(^|\s+|[\(\[\,\:\;\"\»\-])(и т\.\s?д|и т\.\s?п|мн\.\s?др|пр|проч)\.</beforebreak>
+          <afterbreak>\s[A-ZА-ЯЁ]</afterbreak>
+        </rule>
+        <!-- title -->
+        <rule break="no">
+          <beforebreak>(^|\s+|[\(\[\,\:\;\"\»\-])(тов|г-н|г-жа|д\.\s?т\.\s?н|к\.\s?т\.\s?н|ак|акад|чл\.-корр|член-корр|проф|доц|преп|ст\.\s?преп|адм|св|о|прот|урожд|кн|реж)\.</beforebreak>
+          <afterbreak>\s</afterbreak>
+        </rule>
+        <!-- title -->
+        <rule break="no">
+          <beforebreak>(Тов|Г-н|Г-жа|Д\.\s?т\.\s?н|К\.\s?т\.\s?н|Ак|Акад|Чл\.-корр|Член-корр|Проф|Доц|Преп|Ст\.\s?преп|Адм|Св|О|Прот|Урожд|Кн|Реж)\.</beforebreak>
+          <afterbreak>\s</afterbreak>
+        </rule>
+        <!-- addresses -->
+        <rule break="no">
+          <beforebreak>(^|\s+|[\(\[\,\:\;\"\»\-])(﻿респ|кр|нас\. ?п|дер|обл|р-н|пос|пер|наб|пл|корп|кор|стр|д|кв|ул|пр|пр-т|просп|б-р|бр|бул|буль|бульв|ш)\.</beforebreak>
+          <afterbreak>.</afterbreak>
+        </rule>
+        <!-- addresses -->
+        <rule break="no">
+          <beforebreak>(Респ|Кр|Нас\. ?п|Дер|Обл|Р-н|Пос|Пер|Наб|Пл|Корп|Кор|Стр|Д|Кв|Ул|Пр|Пр-т|Просп|Б-р|Бр|Бул|Буль|Бульв|Ш)\.</beforebreak>
+          <afterbreak>.</afterbreak>
+        </rule>
+        <!-- bibliography -->
+        <rule break="no">
+          <beforebreak>(^|\s+|[\(\[\,\:\;\"\»\-])(с|сс|ч|т|тт|вып|под|эт|стр|п|гл|пар|разд|абз|рис|илл|фиг|см|таб|табл|ст)\.</beforebreak>
+          <afterbreak>.</afterbreak>
+        </rule>
+        <!-- bibliography -->
+        <rule break="no">
+          <beforebreak>(^|\s+|[\(\[\,\:\;\"\»\-])(С|Сс|Ч|Т|Тт|Вып|Под|Эт|Стр|П|Гл|Пар|Разд|Абз|Рис|Илл|Фиг|См|Таб|Табл|Ст)\.</beforebreak>
+          <afterbreak>.</afterbreak>
+        </rule>
+        <!-- вот А. С. Пушкин -->
+        <rule break="no">
+          <beforebreak>(^|\s+|[\(\[\,\:\;\"\»\-])[а-яё]+\s([А-ЯЁ]|Дж)\.\s?([А-ЯЁ]|Дж)\.</beforebreak>
+          <afterbreak>\s[А-ЯЁ][a-zа-яё]</afterbreak>
+        </rule>
+        <!-- А. С. Пушкин -->
+        <rule break="no">
+          <beforebreak>(^|\s+|[\(\[\,\:\;\"\»\-])([А-ЯЁ]|Дж)\.\s?([А-ЯЁ]|Дж)\.</beforebreak>
+          <afterbreak>\s[А-ЯЁ][a-zа-яё]</afterbreak>
+        </rule>
+        <!-- *Выступление В.В. // Путина - bad segmentation
+Пушкин А. С. // Круть крутенная    - good segmentation. rare examples
+move up if needed -->
+        <rule break="yes">
+          <beforebreak>(^|\s+|[\(\[\,\:\;\"\»\-])[А-ЯЁ][а-яё]+\s([А-ЯЁ]|Дж)\.\s?([А-ЯЁ]|Дж)\.</beforebreak>
+          <afterbreak>\s[А-ЯЁ][а-яё]</afterbreak>
+        </rule>
+        <!--Пушкин А. С. молодец -->
+        <rule break="no">
+          <beforebreak>[А-ЯЁ][а-яё]+\s([А-ЯЁ]|Дж)\.\s?([А-ЯЁ]|Дж)\.</beforebreak>
+          <afterbreak>\s[а-яё]</afterbreak>
+        </rule>
+        <!-- А. Пушкин -->
+        <rule break="no">
+          <beforebreak>(^|\s+|[\(\[\,\:\;\"\»\-])([А-ЯЁ]|Дж)\.</beforebreak>
+          <afterbreak>\s[А-ЯЁ][а-яё]+</afterbreak>
+        </rule>
+        <!-- Пушкин А. -->
+        <rule break="no">
+          <beforebreak>(^|\s+|[\(\[\,\:\;\"\»\-])[А-ЯЁ][а-яё]+\s([А-ЯЁ]|Дж)\.</beforebreak>
+          <afterbreak>\s</afterbreak>
+        </rule>
+        <!-- S.W.A.T. -->
+        <rule break="no">
+          <beforebreak>(^|\s+|[\(\[\,\:\;\"\»\-])([A-ZА-ЯЁ]\.)+</beforebreak>
+          <afterbreak>\s[a-zа-я-ё]</afterbreak>
+        </rule>
+        <rule break="yes">
+          <beforebreak>[\da-zа-яё\)\]\}\"\'\»]\.</beforebreak>
+          <afterbreak>\s[A-ZА-ЯЁ\d\"\«\(\{\[&lt;―-]</afterbreak>
+        </rule>
+        <!-- астероид 2002 ЕМ7. -->
+        <rule break="yes">
+          <beforebreak>[A-ZА-ЯЁ\d][A-ZА-ЯЁ\d]\.</beforebreak>
+          <afterbreak>\s[A-ZА-ЯЁ\d\"\«\(\{\[&lt;―-]</afterbreak>
+        </rule>
+        <rule break="yes">
+          <beforebreak>(…|\.\.\.)</beforebreak>
+          <afterbreak>\s</afterbreak>
+        </rule>
+        <rule break="yes">
+          <beforebreak>[\?\!]</beforebreak>
+          <afterbreak>\s</afterbreak>
+        </rule>
+        <rule break="no">
+          <beforebreak>\.</beforebreak>
+          <afterbreak>\s[а-яёa-z]</afterbreak>
+        </rule>
+        <!-- www.systran.com
+файл .doc -->
+        <rule break="no">
+          <beforebreak>\.</beforebreak>
+          <afterbreak>[^\s]</afterbreak>
+        </rule>
+      </languagerule>
+      <languagerule languagerulename="Serbian">
+        <rule break="no">
+          <beforebreak>(^|\s+|[\(\[\,\:\;\"\-])(Jan|Feb|Mar|Apr|Maj|Jun|Jul|Avg|Sept|Okt|Nov|Dec|jan|feb|mar|apr|jun|jul|avg|sep|okt|nov|dec|Јан|Феб|Мар|Апр|Мај|Јун|Јул|Авг|Септ|Окт|Нов|Дец|јан|феб|мар|апр|јун|јул|авг|сеп|окт|нов|дец)\.</beforebreak>
+          <afterbreak>\s*[a-šа-ш0-9šđćžč]+</afterbreak>
+        </rule>
+        <rule break="no">
+          <beforebreak>(^|\s+|[\(\[\,\:\;\"\-])(vs|Vs|prof\.dr|Prof\.dr|dr|Dr|gov|Gov|gđa|prof|Prof|tzv|TZV|Tzv|lat|eng|tur|srp|pol|fr|grč|tj|inž|sv|Sv|st|St|mr|Mr|akad|ing|Ing|sc|gosp|Gosp|вс|Вс|ВС|проф\.др|Проф\.др|др|Др|ДР|гов|Гов|гђа|проф|Проф|ТЗВ|Тзв|лат|енг|тур|срп|пол|фр|грч|тј|госп|Госп|спец|инж|св|Св|ст|Ст|мр|Мр|акад|инг|Инг)\.</beforebreak>
+          <afterbreak>\s*[a-šA-Šа-шА-Ш0-9ŠĐŽĆČšđćžč"]+</afterbreak>
+        </rule>
+        <rule break="no">
+          <beforebreak>(^|\s+|[\(\[\,\:\;\"\-])(npr|Npr|id|Id|ID|N\.B|p\.s|P\.s|P\.S|mil|spec|Spec|SPEC|el|EL|reg|Reg||tel|Tel|TEL|tj|med|Med|mob|Mob|telef|podrazum||Podrazum|dipl|Dipl|ul|Ul|www|čl|Čl|op|Op|нпр|Нпр|НПР|ид|Ид|ИД|Н\.Б|п\.с|П\.с|П\.С|тзв|ТЗВ|Тзв|лат|енг|тур|срп|пол|фр|мил|госп|спец|Спец|СПЕЦ|ел|ЕЛ|рег|Рег|тел|Тел|ТЕЛ|тј|Тј|мед|Мед|моб|Моб|телеф|подразум|Подразум|дипл|Дипл|ул|Ул|оп|Оп|чл|Чл)\.</beforebreak>
+          <afterbreak>\s*[a-šа-ш0-9"šđćžč]+</afterbreak>
+        </rule>
+        <rule break="no">
+          <beforebreak>(^|\s+|[\(\[\,\:\;\"\-])(fig|Fig|str|Str|vol|Vol|br|Br|god|v|фиг|Фиг|ФИГ|стр|Стр|СТР|вол|Вол|ВОЛ|бр|Бр|БР|год|в)\.</beforebreak>
+          <afterbreak>\s*[\da-šа-ш0-9šđćžč]</afterbreak>
+        </rule>
+        <rule break="no">
+          <beforebreak>(^|\s+|[\(\[\,\:\;\"\-])(Jan|Feb|Mar|Apr|Maj|Jun|Jul|Avg|Sept|Okt|Nov|Dec|jan|feb|mar|apr|jun|jul|avg|sep|okt|nov|dec|Јан|Феб|Мар|Апр|Мај|Јун|Јул|Авг|Септ|Окт|Нов|Дец|јан|феб|мар|апр|јун|јул|авг|сеп|окт|нов|дец)\.</beforebreak>
+          <afterbreak>\s*\d+</afterbreak>
+        </rule>
+        <rule break="no">
+          <beforebreak>\d+\.</beforebreak>
+          <afterbreak>(^|\s+|[\(\[\,\:\;\"\-])(Jan|Feb|Mar|Apr|Maj|Jun|Jul|Avg|Sept|Okt|Nov|Dec|jan|feb|mar|apr|jun|jul|avg|sep|okt|nov|dec|Јан|Феб|Мар|Апр|Мај|Јун|Јул|Авг|Септ|Окт|Нов|Дец|јан|феб|мар|апр|јун|јул|авг|сеп|окт|нов|дец)</afterbreak>
+        </rule>
+        <rule break="no">
+          <beforebreak>\d\.</beforebreak>
+          <afterbreak>\d</afterbreak>
+        </rule>
+        <rule break="no">
+          <beforebreak>\d\s?[г|g|Г|G]\.</beforebreak>
+          <afterbreak>\s[a-šа-шšđćžč]</afterbreak>
+        </rule>
+        <rule break="no">
+          <beforebreak>[a-šа-ш]\s?[г|g|Г|G]\.</beforebreak>
+          <afterbreak>\s[A-ŠА-ШŠĐŽĆČ]</afterbreak>
+        </rule>
+        <rule break="no">
+          <beforebreak>^[\dIVXLCMivxlcm]+\.</beforebreak>
+          <afterbreak>\s[a-šа-шšđćžč]+</afterbreak>
+        </rule>
+        <!--  N. Tesla -->
+        <rule break="no">
+          <beforebreak>(^|\s+|[\(\[\,\:\;\"\»\-\'\(])([A-ŠА-ШŠĐŽĆČ])\.</beforebreak>
+          <afterbreak>\s[A-ŠА-ШŠĐŽĆČ][a-šа-шšđćžč]*</afterbreak>
+        </rule>
+        <!--  Tesla N. -->
+        <rule break="no">
+          <beforebreak>(^|\s+|[\(\[\,\:\;\"\»\-\'])[A-ŠА-ШŠĐŽĆČ][a-šа-шšđćžč]+\s([A-ŠА-ШŠĐŽĆČ])\.</beforebreak>
+          <afterbreak>\s</afterbreak>
+        </rule>
+        <!--  S.W.A.T. -->
+        <rule break="no">
+          <beforebreak>(^|\s+|[\(\[\,\:\;\"\»\-\'])([A-ŠА-ШŠĐŽĆČ]\.)+</beforebreak>
+          <afterbreak>\s*[a-šA-Šа-шА-ШŠĐŽĆČšđćžč]</afterbreak>
+        </rule>
+        <rule break="no">
+          <beforebreak>\d\s?\.</beforebreak>
+          <afterbreak>\s*[a-šа-шšđćžč]</afterbreak>
+        </rule>
+        <rule break="no">
+          <beforebreak>(^|\s+|[\(\[\,\:\;\"\.\»\-\'\(])[\dIVXLCM]+\.</beforebreak>
+          <afterbreak>\s*[a-šđćžčA-ŠĐŽĆČ]+</afterbreak>
+        </rule>
+        <rule break="no">
+          <beforebreak>\s?\.\.\.</beforebreak>
+          <afterbreak>\s*[a-šа-ш0-9šđćžč]</afterbreak>
+        </rule>
+        <rule break="no">
+          <beforebreak>\s?[\:|\;]</beforebreak>
+          <afterbreak>\s*["a-šA-Šа-шА-Ш0-9šđćžčŠĐŽĆČ]</afterbreak>
+        </rule>
+        <rule break="no">
+          <beforebreak>(^|\s+|[\(\[\,\:\;\"\»\-\'])[a-šа-ш]+\.</beforebreak>
+          <afterbreak>\s([a-šA-Šа-шА-ШšđćžčŠĐŽĆČ])\.\s([A-ŠА-ШŠĐŽĆČ])\.\s[A-ŠА-ШŠĐŽĆČ][a-šа-шšđćžč]</afterbreak>
+        </rule>
+        <rule break="no">
+          <beforebreak>[a-šа-шšđćžč]\.</beforebreak>
+          <afterbreak>com|rs|fr|org</afterbreak>
+        </rule>
+        <rule break="no">
+          <beforebreak>(^|\s+|[\(\[\,\:\;\"\»\-\'])(itd|i sl|i dr|итд|и др|и сл)\.</beforebreak>
+          <afterbreak>\s*[a-šа-шšđćžč]</afterbreak>
+        </rule>
+      </languagerule>
+      <languagerule languagerulename="Slovenian">
+        <rule break="no">
+          <beforebreak>(^|\s+|[\(\[\,\:\;\"\-])(Ian|Jan|Jaan|Tam|Sau|Led|Feb|Veeb|Hel|Vas|Un|Mar|Mär|Maal|Kov|Břez|Már|Apr|Huht|bal|dub|ápr|Mai|Maj|Maijs|Touk|geguž|máj|Iun|Jun|Jūn|Juun|Kes|birž|jún|Iul|Jul|Jūl|Juul|Hein|liep|júl|Aot|Aug|Elok|rugp|srp|avg|Sept|Syysk|rugs|szept|Oct|Okt|Lok,spal|rij|Noi|Nov|Mar|lapk|list|Dec|Det|Joul|gruod|prosjan|Jan|feb|Feb|mar|Mar|apr|Apr|jun|Jun|jul|Jul|aug|Aug|sep|Sep|sept|Sept|oct|Oct|nov|Nov|dec|Dec|Mon|Tue|Tues|Wed|Thu|Thurs|Fri|Sat|Sun|capt|Capt|dr|Dr|gov|Gov|gen|Gen|Mr|Mrs|Ms|Mme|prof|Prof|sgt|Sgt|st|St|Col|Rev|Sen|b\.c|B\.c|B\.J|a\.c|A\.c|av|Av|Co|corp|Corp|dept|Dept|dir|esp|Esp|D\.C|D\.P\.R\.K|D\.S|Fla|F\.W|gov|Gov|govt|Govt|inc|Inc|J\.D|J\.R|J\.T|Jr|Sr|Snr|L\.A|ltd|Lt|Ltd|mfg|M|Mfg|M\.B|M\.C|McG|Mt|M\.T\.M|N\.Y|O\.K|P\.F\.E|Sdn|S\.A|S\.A\.R\.L|S\.O\.S|S\.G|T\.R|U\.K|U\.S|U\.S\.A|V\.W\.H|W\.V|a\.m|A\.m|ca|Ca|cf|Cf|e\.g|E\.g|al|Al|ca|Ca|A\.D|etc|Etc|id|Id|q\.e\.d|Q\.e\.d|vs|Vs|seq|Seq|ib|Ib|ibid|Ibid|i\.e|I\.e|cit|Cit|N\.B|p\.m|P\.m|p\.m|P\.m|p\.s|P\.s|q\.v|Q\.v|sc|Sc|v|V|viz|Viz|v\.v|V\.v|fig|Fig|chap|Chap|no|No|p|pg|Pg|pp|Pp|vol|Vol|C|W|approx|addt|addtl|incl|op|Op|Pr|Hr|E|Dž|ž|P|Dl|Dn|Dra|Ga|ga|p|e|ge|g)\.</beforebreak>
+          <afterbreak>\s*[A-ZÁÃÄÅÀÂÆÇČÊËÉÈÍÌÎÏÑŒÓÔÕØÖŠÙÚÜÛŸÝa-zçéèêëàâäáæîïíìôöòõóøœřšûüùúñÿý0-9]+</afterbreak>
+        </rule>
+        <rule break="no">
+          <beforebreak>(^|\s+|[\(\[\,\:\;\"\-])(capt|Capt|dr|Dr|gov|Gov|gen|Gen|Mr|Mrs|Ms|Me|Dir|prof|Prof|sgt|Sgt|st|St|Col|Rev|Sen|Lt)\.</beforebreak>
+          <afterbreak>\s*\W+</afterbreak>
+        </rule>
+        <rule break="no">
+          <beforebreak>(^|\s+|[\(\[\,\:\;\"\-])(a\.m|A\.m|c|C|ca|Ca|cf|Cf|e\.g|E\.g|al|Al|ca|Ca|A\.D|etc|Etc|id|Id|q\.e\.d|Q\.e\.d|vs|Vs|seq|Seq|ib|Ib|ibid|Ibid|i\.e|I\.e|cit|Cit|N\.B|p\.m|P\.m|p\.m|P\.m|p\.s|P\.s|q\.v|Q\.v|sc|Sc|v|V|viz|Viz|v\.v|V\.v|appr|approx|addt|incl)\.</beforebreak>
+          <afterbreak>\s*\W+</afterbreak>
+        </rule>
+        <rule break="no">
+          <beforebreak>(^|\s+|[\(\[\,\:\;\"\-])(fig|Fig|chap|Chap|no|No|p|P|pg|Pg|pp|Pp|vol|Vol|approx|addt|addtl|incl|art|Art|op|Op)\.</beforebreak>
+          <afterbreak>\s*[\dA-ZÁÃÄÅÀÂÆÇČÊËÉÈÍÌÎÏÑŒÓÔÕØÖŠÙÚÜÛŸÝa-zçéèêëàâäáæîïíìôöòõóøœřšûüùúñÿý]</afterbreak>
+        </rule>
+        <rule break="no">
+          <beforebreak>(^|\s+|[\(\[\,\:\;\"\-])(Ian|Jan|Jaan|Tam|Sau|Led|Feb|Veeb|Hel|Vas|Un|Mar|Mär|Maal|Kov|Břez|Már|Apr|Huht|bal|dub|ápr|Mai|Maj|Maijs|Touk|geguž|máj|Iun|Jun|Jūn|Juun|Kes|birž|jún|Iul|Jul|Jūl|Juul|Hein|liep|júl|Aot|Aug|Elok|rugp|srp|avg|Sept|Syysk|rugs|szept|Oct|Okt|Lok,spal|rij|Noi|Nov|Mar|lapk|list|Dec|Det|Joul|gruod|prosjan|jan|Jan|feb|Feb|mar|Mar|apr|Apr|jun|Jun|jul|Jul|aug|Aug|sep|Sep|sept|Sept|oct|Oct|nov|Nov|dec|Dec)\.</beforebreak>
+          <afterbreak>\s*\d+</afterbreak>
+        </rule>
+        <rule break="yes">
+          <beforebreak>(^|\s+|[\(\[\,\:\;\"\-])(b\.c|B\.c|B\.J|a\.c|A\.c|av|Av|Co|corp|Corp|dept|Dept|esp|Esp|D\.C|D\.P\.R\.K|D\.S|Fla|F\.W|gov|Gov|govt|Govt|inc|Inc|J\.D|J\.R|J\.T|Jr|Sr|Snr|L\.A|ltd|Ltd|mfg|Mfg|M\.B|M\.C|McG|Mt|M\.T\.M|N\.Y|O\.K|P\.F\.E|Sdn|S\.A|S\.A\.R\.L|S\.O\.S|S\.G|T\.R|U\.K|U\.S|U\.S\.A|V\.W\.H|W\.V|approx|addt|addtl|incl)\.</beforebreak>
+          <afterbreak>\s+\"</afterbreak>
+        </rule>
+        <rule break="no">
+          <beforebreak>(^|\s+|[\(\[\,\:\;\"\-])(b\.c|B\.c|B\.J|a\.c|A\.c|av|Av|Co|corp|Corp|dept|Dept|esp|Esp|D\.C|D\.P\.R\.K|D\.S|Fla|F\.W|gov|Gov|govt|Govt|inc|Inc|J\.D|J\.R|J\.T|Jr|Sr|Snr|L\.A|ltd|Ltd|mfg|Mfg|M\.B|M\.C|McG|Mt|M\.T\.M|N\.Y|O\.K|P\.F\.E|Sdn|S\.A|S\.A\.R\.L|S\.O\.S|S\.G|T\.R|U\.K|U\.S|U\.S\.A|V\.W\.H|W\.V|approx|addt|addtl|incl)\.</beforebreak>
+          <afterbreak>\s+</afterbreak>
+        </rule>
+        <rule break="no">
+          <beforebreak>\d+\.</beforebreak>
+          <afterbreak>(^|\s+|[\(\[\,\:\;\"\-])(Ian|Jan|Jaan|Tam|Sau|Led|Feb|Veeb|Hel|Vas|Un|Mar|Mär|Maal|Kov|Břez|Már|Apr|Huht|bal|dub|ápr|Mai|Maj|Maijs|Touk|geguž|máj|Iun|Jun|Jūn|Juun|Kes|birž|jún|Iul|Jul|Jūl|Juul|Hein|liep|júl|Aot|Aug|Elok|rugp|srp|avg|Sept|Syysk|rugs|szept|Oct|Okt|Lok,spal|rij|Noi|Nov|Mar|lapk|list|Dec|Det|Joul|gruod|prosjan|jan|Jan|feb|Feb|mar|Mar|apr|Apr|jun|Jun|jul|Jul|aug|Aug|sep|Sep|sept|Sept|oct|Oct|nov|Nov|dec|Dec)</afterbreak>
+        </rule>
+      </languagerule>
+      <languagerule languagerulename="Spanish">
+        <rule break="no">
+          <beforebreak>EE\.</beforebreak>
+          <afterbreak>\s*UU</afterbreak>
+        </rule>
+        <rule break="no">
+          <beforebreak>\d+\.</beforebreak>
+          <afterbreak>(^|\s+|[\(\[\,\:\;\"\-])(jan|Jan|feb|Feb|mar|Mar|apr|Apr|jun|Jun|jul|Jul|aug|Aug|sep|Sep|sept|Sept|oct|Oct|nov|Nov|dec|Dec|Abr|Ag|Dic|Ene|May|Sept|Dom|Juev|Lun|Mart|Miér|Sáb|Viern|Abr|Ag|Dic|Ene|Mar|May|Dom|Juev|Lun|Mart|Miér|Sáb|Viern)</afterbreak>
+        </rule>
+        <rule break="no">
+          <beforebreak>(^|\s+|[\(\[\,\:\;\"\-])(jan|Jan|feb|Feb|mar|Mar|apr|Apr|jun|Jun|jul|Jul|aug|Aug|sep|Sep|sept|Sept|oct|Oct|nov|Nov|dec|Dec|Mon|Tue|Tues|Wed|Thu|Thurs|Fri|Sat|Sun|capt|Capt|dr|Dr|gov|Gov|gen|Gen|Mr|Mrs|Ms|Mme|prof|Prof|sgt|Sgt|st|St|Col|Rev|Sen|b\.c|B\.c|B\.J|a\.c|A\.c|av|Av|Co|corp|Corp|dept|Dept|dir|esp|Esp|D\.C|D\.P\.R\.K|D\.S|Fla|F\.W|gov|Gov|govt|Govt|inc|Inc|J\.D|J\.R|J\.T|Jr|Sr|Snr|L\.A|ltd|Lt|Ltd|mfg|M|Mfg|M\.B|M\.C|McG|Mt|M\.T\.M|N\.Y|O\.K|P\.F\.E|Sdn|S\.A|S\.A\.R\.L|S\.O\.S|S\.G|T\.R|U\.K|U\.S|U\.S\.A|V\.W\.H|W\.V|a\.m|A\.m|ca|Ca|cf|Cf|e\.g|E\.g|al|Al|ca|Ca|A\.D|etc|Etc|id|Id|q\.e\.d|Q\.e\.d|vs|Vs|seq|Seq|ib|Ib|ibid|Ibid|i\.e|I\.e|cit|Cit|N\.B|p\.m|P\.m|p\.m|P\.m|p\.s|P\.s|q\.v|Q\.v|sc|Sc|v|V|viz|Viz|v\.v|V\.v|fig|Fig|chap|Chap|no|No|p|pg|Pg|pp|Pp|vol|Vol|C|W|approx|addt|addtl|incl|op|Op|Abr|Ag|Dic|Ene|Feb|Jun|Jul|Mar|May|Nov|Oct|Sept|Dom|Juev|Lun|Mart|Miér|Sáb|Viern|Capt|Col|Dir|Dir\.Gen|Dr|Mr|Mrs|Ms|Prof|Sgt|Sr|Sra|Sras|Sres|Srs|St|D|Da|Exca|Excma|Excmo|Exma|Ilma|Ilmo|Iltre|abrev|a\.de\.J\.C|a\.de\.C|a/c|art|arts|Attn|atto|aux|Av|Avda|ayte|BB\.DD|B\.O\.C\.G|Bs\.As|Cap\.Fed|C\.D\.S\.U|C\.E|C\.E\.E|cents|Cia|Ci'a|cm|D|D\.F|dC|dcha|dcho|Dls|Doc|Dom|Dra|Ed|Ej|Etc|etc|excmo|excma|E\.U|E\.E\.U\.U|EE\.UU|F\.O\.B|FF\.AA|F\.F\.A\.A|Fcos|fmdo|fra|gnte|Gral|Gte|i\.e|incl|Inc|Ing|izq|izqda|Kg|Km|Kms|Km\/h|Km\/s|Lt|Ltd|Ltda|Lun|m|m\/n|Max|Min|mg|ml|mm|Mons|N\.de\.T|N\.de\.R|N\.de\.E|N\.U|ntop|num|p\.ej|pdo|prof|ps|Pta|Ptas|Pts|Pza|Pzas|Rep|Ref|Rte|Rev|S\.A|S\.L|S\.M|SS\.TT|Sen|Serg|Soc|Ten|Ten\.Col|Ten\.Gen|Ud|Uds|u\.g\.m|U\.E|Vd|Vds|Vra|Vras|Vro|Vros|aprox|Apdo|Apt|Aptdo|Art|cc|cm|C\.P|Ctra|dic|Dls|Fcos|No|Of|p|Pdte|Ptas|sec|tab|Tel|Tom|Dra|e\.g|Gen|Gob|Hnos|Lic|Soc|Srta|Sta|Sto|Ten|Ten\.Col|Ten\.Gen|Vra|Vras|Vro|Vros|Cap|Fig|Graf|Num|pag|pags|pa'g|pa'gs|Tfno|Vol|r\.f\.a|C\.A\.D\.E\.M|C\.S\.R|CM|DR|EE_MM|e\.u|FIG|HTML_2\.0|HTML_3\.2|JR|KG|KM|L\.A\.E\.C|LTDA|MD|NO|O\.E\.A|O\.T\.A\.N|P\.M\.G|p\.m|R\.F\.A|S\.A|S\.A|S\.I\.M|S\.M\.O|S\.N\.C|S\.R\.L|T\.N\.T|a\.t\.s|aa_ee|c\.a|cc_aa|c\.a\.d\.e\.m|c\.e|c\.e\.e|c\.e\.s|c\.f|c\.p|cc_oo|c\.c\.e|d\.n\.i|dña|f\.a\.o|ff_aa|ff_cc|i\.v\.a|jr|l\.a\.e\.c|l\.o\.p\.j|o\.a\.c\.t|o\.m\.c|nn_uu|p\.m\.g|p\.e|p\.i\.b|p\.y\.m\.e|r\.d\.a|r\.u|s\.a|s\.n\.c|u\.r\.s\.s|u\.e|u\.e\.|ud)\.</beforebreak>
+          <afterbreak>\s*[A-ZÁÃÄÅÀÂÆÇČÊËÉÈÍÌÎÏÑŒÓÔÕØÖŠÙÚÜÛŸÝa-zçéèêëàâäáæîïíìôöòõóøœřšûüùúñÿý0-9]+</afterbreak>
+        </rule>
+        <rule break="no">
+          <beforebreak>(^|\s+|[\(\[\,\:\;\"\-])(capt|Capt|dr|Dr|gov|Gov|gen|Gen|Mr|Mrs|Ms|Me|Dir|prof|Prof|sgt|Sgt|st|St|Col|Rev|Sen|Lt|Col|Dir\.Gen|Sr|Sra|Sras|Sres|Srs)\.</beforebreak>
+          <afterbreak>\s*\W+</afterbreak>
+        </rule>
+        <rule break="no">
+          <beforebreak>(^|\s+|[\(\[\,\:\;\"\-])(a\.m|A\.m|c|C|ca|Ca|cf|Cf|e\.g|E\.g|al|Al|ca|Ca|A\.D|etc|Etc|id|Id|q\.e\.d|Q\.e\.d|vs|Vs|seq|Seq|ib|Ib|ibid|Ibid|i\.e|I\.e|cit|Cit|N\.B|p\.m|P\.m|p\.m|P\.m|p\.s|P\.s|q\.v|Q\.v|sc|Sc|v|V|viz|Viz|v\.v|V\.v|appr|approx|addt|incl|D|Da|Exca|Excma|Excmo|Exma|Ilma|Ilmo|Iltre|abrev|a\.de\.J\.C|a\.de\.C|a\/c|art|arts|Attn|atto|aux|Av|Avda|ayte|BB\.DD|B\.O\.C\.G|Bs\.As|Cap\.Fed|C\.D\.S\.U|C\.E|C\.E\.E|cents|Cia|Ci'a|cm|D|D\.F|dC|dcha|dcho|Dls|Doc|Dom|Dra|Ed|Ej|Etc|etc|excmo|excma|E\.U|E\.E\.U\.U|EE\.UU|F\.O\.B|FF\.AA|F\.F\.A\.A|Fcos|fmdo|fra|gnte|Gral|Gte|i\.e|incl|Inc|Ing|izq|izqda|Kg|Km|Kms|Km\/h|Km\/s|Lt|Ltd|Ltda|Lun|m|m\/n|Max|Min|mg|ml|mm|Mons|N\.de\.T|N\.de\.R|N\.de\.E|N\.U|ntop|num|p\.ej|pdo|prof|ps|Pta|Ptas|Pts|Pza|Pzas|Rep|Ref|Rte|Rev|S\.A|S\.L|S\.M|SS\.TT|Sen|Serg|Soc|Ten|Ten\.Col|Ten\.Gen|Ud|Uds|u\.g\.m|U\.E|Vd|Vds|Vra|Vras|Vro|Vros|aprox|Apdo|Apt|Aptdo|Art|cc|cm|C\.P|Ctra|dic|Dls|Fcos|No|Of|p|Pdte|Ptas|sec|tab|Tel|Tom|r\.f\.a\.)\.</beforebreak>
+          <afterbreak>\s*\W+</afterbreak>
+        </rule>
+        <rule break="no">
+          <beforebreak>(^|\s+|[\(\[\,\:\;\"\-])(fig|Fig|chap|Chap|no|No|p|P|pg|Pg|pp|Pp|vol|Vol|approx|addt|addtl|incl|art|Art|op|Op|Cap|Fig|Graf|Num|pag|pags|pa'g|pa'gs|Tfno|Vol|aprox|Apdo|Apt|Aptdo|Art|cc|cm|C\.P|Ctra|dic|Dls|Fcos|No|Of|p|Pdte|Ptas|sec|tab|Tel|Tom)\.</beforebreak>
+          <afterbreak>\s*[\dA-ZÁÃÄÅÀÂÆÇČÊËÉÈÍÌÎÏÑŒÓÔÕØÖŠÙÚÜÛŸÝa-zçéèêëàâäáæîïíìôöòõóøœřšûüùúñÿý]</afterbreak>
+        </rule>
+        <rule break="no">
+          <beforebreak>(^|\s+|[\(\[\,\:\;\"\-])(jan|Jan|feb|Feb|mar|Mar|apr|Apr|jun|Jun|jul|Jul|aug|Aug|sep|Sep|sept|Sept|oct|Oct|nov|Nov|dec|Dec|Abr|Ag|Dic|Ene|May|Sept|Dom|Juev|Lun|Mart|Miér|Sáb|Viern|Abr|Ag|Dic|Ene|Mar|May|Dom|Juev|Lun|Mart|Miér|Sáb|Viern)\.</beforebreak>
+          <afterbreak>\s*\d+</afterbreak>
+        </rule>
+        <rule break="yes">
+          <beforebreak>(^|\s+|[\(\[\,\:\;\"\-])(b\.c|B\.c|B\.J|a\.c|A\.c|av|Av|Co|corp|Corp|dept|Dept|esp|Esp|D\.C|D\.P\.R\.K|D\.S|Fla|F\.W|gov|Gov|govt|Govt|inc|Inc|J\.D|J\.R|J\.T|Jr|Sr|Snr|L\.A|ltd|Ltd|mfg|Mfg|M\.B|M\.C|McG|Mt|M\.T\.M|N\.Y|O\.K|P\.F\.E|Sdn|S\.A|S\.A\.R\.L|S\.O\.S|S\.G|T\.R|U\.K|U\.S|U\.S\.A|V\.W\.H|W\.V|approx|addt|addtl|incl)\.</beforebreak>
+          <afterbreak>\s+\"</afterbreak>
+        </rule>
+        <rule break="no">
+          <beforebreak>(^|\s+|[\(\[\,\:\;\"\-])(b\.c|B\.c|B\.J|a\.c|A\.c|av|Av|Co|corp|Corp|dept|Dept|esp|Esp|D\.C|D\.P\.R\.K|D\.S|Fla|F\.W|gov|Gov|govt|Govt|inc|Inc|J\.D|J\.R|J\.T|Jr|Sr|Snr|L\.A|ltd|Ltd|mfg|Mfg|M\.B|M\.C|McG|Mt|M\.T\.M|N\.Y|O\.K|P\.F\.E|Sdn|S\.A|S\.A\.R\.L|S\.O\.S|S\.G|T\.R|U\.K|U\.S|U\.S\.A|V\.W\.H|W\.V|approx|addt|addtl|incl|Dra|e.g|Gen|Gob|Hnos|Lic|Soc|Srta|Sta|Sto|Ten|Ten.Col|Ten.Gen|Vra|Vras|Vro|Vros)\.</beforebreak>
+          <afterbreak>\s+</afterbreak>
+        </rule>
+        <rule break="no">
+          <beforebreak>\s(?i)(n|nr)\.</beforebreak>
+          <afterbreak>\s\d</afterbreak>
+        </rule>
+      </languagerule>
+      <languagerule languagerulename="Swedish">
+        <rule break="no">
+          <beforebreak>(^|\s+|[\(\[\,\:\;\"\-])(ä|äkt|akust|åld|alt|am\. eng|amer|Amer|amir|anat|ang|anm|ansl|anspr|antrop|anv|Apg|app|apr|arab|arb|arkit|årl|astrol|astron|åtf|Atl|Atlant|åtm|aug|austr\. eng|äv|avd|avledn|avs|b|baj|bar|befälh|belg|bem|bergsbr|bergsv|besl|best|bet|betr|betyd|bibet|bibl|bifl|bil|bildh|bildl|bilj|biokem|biol|bisk|bl|bl\.a|blomstersk|bokb|boktr|bot|boxn|br|brit\. eng|brukl|b\.v\.s\.a|byg|bygg|byggn|c|civ\.ek|civ\.ing|d|da|d\. ä|d\.ä|Danz|dat|datal|dåv|d\. b|dec|def|dekl|dent|dep|deput|desp|determ|dial|diktat|dipl|dir|disk|disp|div|d\. o|doc|Dom|dr|dram|D\.S|dul|d\.v\.s|dvs|d\. y|d\.y|e|e\.d|e\.dyl|eg|eg\. v|egypt|e\. K|ekol|ekon|e\.Kr|el|el\.dyl|elektr|e\.m|em|enb|eng|enl|enst|entomol|e\.o|Esr|etc|etym|e\.u|ev|e\.v\.t|ex|exkl|f|fackspr|fäkt|fångv|farm|farmakol|f\.d|feb|febr|fem|ff|fi|fig|fil|Fil|fil\.dr|fil\.kand|fil\.lic|f\.k|f\. Kr|f\.Kr|fl|flyg|f\.m|fm|f\.n|f\. ö|f\.ö|följ|fonet|föråldr|förb|föreg|förek|förf|förh|förk|forngrek|fornsv|försäkr|forts|förvaltn|fr|fr\.a|framl|fre|Fre|Fred|fris|fr\. o\. m|fr\.o\.m|fr\.o\.om|fsax|fslav|fsv|fut|f\.v\.b|fvn|f\.v\.t|fyrväs|fyrverk|fys|fysiol|g|gam|gem|gen|genit|geogr|geol|g\.m|gr|gradf|grek|grf|grundt|Hamb|hebr|herald|hist|högtidl|i allm|ibl|imper|imperf|inb|indoeur|inf|inkl|innehållsobj|interj|interr|intr|inv|i o\.f\.s|i o\.m|ipf|irl\. eng|iron|isl|i st\.f|ist\.f|ita|ital|jäg|Jämtl|jan|jap|järnv|Jer|Jes|jfr|Joh|Jos|jul|jun|jur|Jyll|kam|kand|kap|kelt|kem|keram|kines|kl|Klag|K\.O|kok|koll|komb|komm|komp|Kon|konj|korr|kortsp|kr|Kr|kred|Krön|kungl|kup|kur|kyrkl|l|lågty|lat|litt|lör|Lör|lörd|Lörd|Luk|m|mån|Mån|månd|Månd|manl|m\.a\.o|m\.a\.p|mar|marg|Mark|Matt|medl|meteorol|m\.fl|m\.h\.a|m\.h\.t|milj|miner|m\.m|m\.ö\.h|möjl|Mos|mots|motst|motsv|mska|mytol|nästk|naturvetenskapl|nederl|nedsätt|Neh|neutr|n\.ö|nord|nordamer|nov|Nr|nuv|n\.v|o|o\.a|obest|oböjl|o\.d|o\.dyl|oeg|öfv|okt|omg|omkr|ons|Ons|onsd|Onsd|Ords|örlog|o\.s\.a|o\.s\.v|osv|övers|övs|pedag|perf\. part|p\.g\.a|pl|plur|Pred|prep|pres|pron|prot|prov|Ps|p\.s\.s|psykol|r|recipr|red|ref|reg|rel|relig|resp|retor|ridk|riksspr|rst|ry|s|säkerl|Sam|särsk|s\.a\.s|sbst|sek|sep|sept|sg|sing|sistl|s\.k|sk|skogsv|skol|skolm|skolv|skom|skrädd|snick|s\.ö|sociol|sock|sockerbag|s\.o\.h|sön|Sön|sönd|Sönd|sp|spec|spelt|spirit|spr|språkl|språkvet|sp\. v|ss|st|statsk|statsm|statsvet|superl|s\.v|sv|sydamer|Syr|t|tandläk|tekn|tel|teol|t\.ex|tf|t\.h|tillf|tis|Tis|tisd|Tisd|tjurf|t\.o\.m|tor|Tor|tors|Tors|torsd|Torsd|trad|t\.v|ty|typogr|u\.p\.a|Upp|uppl|urspr|utr|uttr|v|vån|vanl|vard|vävn|v\.b|vbalsbst|vetensk|v\.g\.v|v\.s\.b|v\.t|vulg|w\.o|y|zool|capt|Capt|dr|Dr|gov|Gov|gen|Gen|Mr|Mrs|Ms|Mme|prof|Prof|sgt|Sgt|st|St|Col|Rev|Sen|Gef|Hr|b\.c|B\.c|B\.J|a\.c|A\.c|av|Av|Co|corp|Corp|dept|Dept|dir|esp|Esp|D\.C|D\.P\.R\.K|D\.S|Fla|F\.W|gov|Gov|govt|Govt|inc|Inc|J\.D|J\.R|J\.T|Jr|Sr|Snr|L\.A|ltd|Lt|Ltd|M|M\.B|M\.C|McG|Mt|M\.T\.M|N\.Y|O\.K|P\.F\.E|Sdn|S\.A|S\.A\.R\.L|S\.O\.S|S\.G|T\.R|U\.K|U\.S|U\.S\.A|V\.W\.H|W\.V|a\.m|A\.m|ca|Ca|cf|Cf|e\.g|E\.g|al|Al|ca|Ca|A\.D|etc|Etc|id|Id|q\.e\.d|Q\.e\.d|vs|Vs|seq|Seq|ib|Ib|ibid|Ibid|i\.e|I\.e|cit|Cit|N\.B|p\.m|P\.m|p\.m|P\.m|p\.s|P\.s|q\.v|Q\.v|sc|Sc|v|V|viz|Viz|v\.v|V\.v|fig|Fig|Art|op|Op|kap|Kap|nr|Nr|s|S|tel|Tel)\.</beforebreak>
+          <afterbreak>\s*[A-ZÁÃÄÅÀÂÆÇČÊËÉÈÍÌÎÏÑŒÓÔÕØÖŠÙÚÜÛŸÝa-zçéèêëàâäáæîïíìôöòõóøœřšûüùúñÿý0-9]+</afterbreak>
+        </rule>
+        <rule break="no">
+          <beforebreak>(^|\s+|[\(\[\,\:\;\"\-])(capt|Capt|dr|Dr|gov|Gov|gen|Gen|Mr|Mrs|Ms|Mme|Mlle|Me|Dir|prof|Prof|sgt|Sgt|st|St|Col|Rev|Sen|Lt|Hr)\.</beforebreak>
+          <afterbreak>\s*\W+</afterbreak>
+        </rule>
+        <rule break="no">
+          <beforebreak>(^|\s+|[\(\[\,\:\;\"\-])(a\.m|A\.m|c|C|ca|Ca|cf|Cf|e\.g|E\.g|al|Al|ca|Ca|A\.D|etc|Etc|id|Id|q\.e\.d|Q\.e\.d|vs|Vs|seq|Seq|ib|Ib|ibid|Ibid|i\.e|I\.e|cit|Cit|N\.B|p\.m|P\.m|p\.m|P\.m|p\.s|P\.s|q\.v|Q\.v|sc|Sc|v|V|viz|Viz|v\.v|V\.v|ä|äkt|akust|åld|alt|am\. eng|amer|Amer|amir|anat|ang|anm|ansl|anspr|antrop|anv|Apg|app|apr|arab|arb|arkit|årl|astrol|astron|åtf|Atl|Atlant|åtm|aug|austr\. eng|äv|avd|avledn|avs|b|baj|bar|befälh|belg|bem|bergsbr|bergsv|besl|best|bet|betr|betyd|bibet|bibl|bifl|bil|bildh|bildl|bilj|biokem|biol|bisk|bl|bl\.a|blomstersk|bokb|boktr|bot|boxn|br|brit\. eng|brukl|b\.v\.s\.a|byg|bygg|byggn|c|civ\.ek|civ\.ing|d|da|d\. ä|d\.ä|Danz|dat|datal|dåv|d\. b|dec|def|dekl|dent|dep|deput|desp|determ|dial|diktat|dipl|dir|disk|disp|div|d\. o|doc|Dom|dr|dram|D\.S|dul|d\.v\.s|dvs|d\. y|d\.y|e|e\.d|e\.dyl|eg|eg\. v|egypt|e\. K|ekol|ekon|e\.Kr|el|el\.dyl|elektr|e\.m|em|enb|eng|enl|enst|entomol|e\.o|Esr|etc|etym|e\.u|ev|e\.v\.t|ex|exkl|f|fackspr|fäkt|fångv|farm|farmakol|f\.d|feb|febr|fem|ff|fi|fig|fil|Fil|fil\.dr|fil\.kand|fil\.lic|f\.k|f\. Kr|f\.Kr|fl|flyg|f\.m|fm|f\.n|f\. ö|f\.ö|följ|fonet|föråldr|förb|föreg|förek|förf|förh|förk|forngrek|fornsv|försäkr|forts|förvaltn|fr|fr\.a|framl|fre|Fre|Fred|fris|fr\. o\. m|fr\.o\.m|fr\.o\.om|fsax|fslav|fsv|fut|f\.v\.b|fvn|f\.v\.t|fyrväs|fyrverk|fys|fysiol|g|gam|gem|gen|genit|geogr|geol|g\.m|gr|gradf|grek|grf|grundt|Hamb|hebr|herald|hist|högtidl|i allm|ibl|imper|imperf|inb|indoeur|inf|inkl|innehållsobj|interj|interr|intr|inv|i o\.f\.s|i o\.m|ipf|irl\. eng|iron|isl|i st\.f|ist\.f|ita|ital|jäg|Jämtl|jan|jap|järnv|Jer|Jes|jfr|Joh|Jos|jul|jun|jur|Jyll|kam|kand|kap|kelt|kem|keram|kines|kl|Klag|K\.O|kok|koll|komb|komm|komp|Kon|konj|korr|kortsp|kr|Kr|kred|Krön|kungl|kup|kur|kyrkl|l|lågty|lat|litt|lör|Lör|lörd|Lörd|Luk|m|mån|Mån|månd|Månd|manl|m\.a\.o|m\.a\.p|mar|marg|Mark|Matt|medl|meteorol|m\.fl|m\.h\.a|m\.h\.t|milj|miner|m\.m|m\.ö\.h|möjl|Mos|mots|motst|motsv|mska|mytol|nästk|naturvetenskapl|nederl|nedsätt|Neh|neutr|n\.ö|nord|nordamer|nov|Nr|nuv|n\.v|o|o\.a|obest|oböjl|o\.d|o\.dyl|oeg|öfv|okt|omg|omkr|ons|Ons|onsd|Onsd|Ords|örlog|o\.s\.a|o\.s\.v|osv|övers|övs|pedag|perf\. part|p\.g\.a|pl|plur|Pred|prep|pres|pron|prot|prov|Ps|p\.s\.s|psykol|r|recipr|red|ref|reg|rel|relig|resp|retor|ridk|riksspr|rst|ry|s|säkerl|Sam|särsk|s\.a\.s|sbst|sek|sep|sept|sg|sing|sistl|s\.k|sk|skogsv|skol|skolm|skolv|skom|skrädd|snick|s\.ö|sociol|sock|sockerbag|s\.o\.h|sön|Sön|sönd|Sönd|sp|spec|spelt|spirit|spr|språkl|språkvet|sp\. v|ss|st|statsk|statsm|statsvet|superl|s\.v|sv|sydamer|Syr|t|tandläk|tekn|tel|teol|t\.ex|tf|t\.h|tillf|tis|Tis|tisd|Tisd|tjurf|t\.o\.m|tor|Tor|tors|Tors|torsd|Torsd|trad|t\.v|ty|typogr|u\.p\.a|Upp|uppl|urspr|utr|uttr|v|vån|vanl|vard|vävn|v\.b|vbalsbst|vetensk|v\.g\.v|v\.s\.b|v\.t|vulg|w\.o|y|zool)\.</beforebreak>
+          <afterbreak>\s*\W+</afterbreak>
+        </rule>
+        <rule break="no">
+          <beforebreak>(^|\s+|[\(\[\,\:\;\"\-])(fig|Fig|Art|op|Op|kap|nr|s|tel|Tel)\.</beforebreak>
+          <afterbreak>\s*[\dA-ZÁÃÄÅÀÂÆÇČÊËÉÈÍÌÎÏÑŒÓÔÕØÖŠÙÚÜÛŸÝa-zçéèêëàâäáæîïíìôöòõóøœřšûüùúñÿý]</afterbreak>
+        </rule>
+        <rule break="no">
+          <beforebreak>(^|\s+|[\(\[\,\:\;\"\-])(jan|Jan|feb|Feb|apr|Apr|aug|sep|Sep|sept|Sept|okt|Okt|nov|Nov|dec|Dec|mån|Mån|månd|Månd|tis|Tis|tisd|Tisd|ons|Ons|onsd|Onsd|tor|Tor|tors|Tors|torsd|Torsd|fre|Fre|fred|Fred|lör|Lör|lörd|Lörd|sön|Sön|sönd|Sönd|kap|Kap|s|S|nr|Nr|tel|Tel|ung)\.</beforebreak>
+          <afterbreak>\s*\d+</afterbreak>
+        </rule>
+        <rule break="yes">
+          <beforebreak>(^|\s+|[\(\[\,\:\;\"\-])(b\.c|B\.c|B\.J|a\.c|A\.c|av|Av|Co|corp|Corp|dept|Dept|esp|Esp|D\.C|D\.P\.R\.K|D\.S|Fla|F\.W|gov|Gov|govt|Govt|inc|Inc|J\.D|J\.R|J\.T|Jr|Sr|Snr|L\.A|ltd|Ltd|mfg|Mfg|M\.B|M\.C|McG|Mt|M\.T\.M|N\.Y|O\.K|P\.F\.E|Sdn|S\.A|S\.A\.R\.L|S\.O\.S|S\.G|T\.R|U\.K|U\.S|U\.S\.A|V\.W\.H|W\.V)\.</beforebreak>
+          <afterbreak>\s+\"</afterbreak>
+        </rule>
+        <rule break="no">
+          <beforebreak>(^|\s+|[\(\[\,\:\;\"\-])(b\.c|B\.c|B\.J|a\.c|A\.c|av|Av|Co|corp|Corp|dept|Dept|esp|Esp|D\.C|D\.P\.R\.K|D\.S|Fla|F\.W|gov|Gov|govt|Govt|inc|Inc|J\.D|J\.R|J\.T|Jr|Sr|Snr|L\.A|ltd|Ltd|mfg|Mfg|M\.B|M\.C|McG|Mt|M\.T\.M|N\.Y|O\.K|P\.F\.E|Sdn|S\.A|S\.A\.R\.L|S\.O\.S|S\.G|T\.R|U\.K|U\.S|U\.S\.A|V\.W\.H|W\.V|ä|äkt|akust|åld|alt|am\. eng|amer|Amer|amir|anat|ang|anm|ansl|anspr|antrop|anv|Apg|app|apr|arab|arb|arkit|årl|astrol|astron|åtf|Atl|Atlant|åtm|aug|austr\. eng|äv|avd|avledn|avs|b|baj|bar|befälh|belg|bem|bergsbr|bergsv|besl|best|bet|betr|betyd|bibet|bibl|bifl|bil|bildh|bildl|bilj|biokem|biol|bisk|bl|bl\.a|blomstersk|bokb|boktr|bot|boxn|br|brit\. eng|brukl|b\.v\.s\.a|byg|bygg|byggn|c|civ\.ek|civ\.ing|d|da|d\. ä|d\.ä|Danz|dat|datal|dåv|d\. b|dec|def|dekl|dent|dep|deput|desp|determ|dial|diktat|dipl|dir|disk|disp|div|d\. o|doc|Dom|dr|dram|D\.S|dul|d\.v\.s|dvs|d\. y|d\.y|e|e\.d|e\.dyl|eg|eg\. v|egypt|e\. K|ekol|ekon|e\.Kr|el|el\.dyl|elektr|e\.m|em|enb|eng|enl|enst|entomol|e\.o|Esr|etc|etym|e\.u|ev|e\.v\.t|ex|exkl|f|fackspr|fäkt|fångv|farm|farmakol|f\.d|feb|febr|fem|ff|fi|fig|fil|Fil|fil\.dr|fil\.kand|fil\.lic|f\.k|f\. Kr|f\.Kr|fl|flyg|f\.m|fm|f\.n|f\. ö|f\.ö|följ|fonet|föråldr|förb|föreg|förek|förf|förh|förk|forngrek|fornsv|försäkr|forts|förvaltn|fr|fr\.a|framl|fre|Fre|Fred|fris|fr\. o\. m|fr\.o\.m|fr\.o\.om|fsax|fslav|fsv|fut|f\.v\.b|fvn|f\.v\.t|fyrväs|fyrverk|fys|fysiol|g|gam|gem|gen|genit|geogr|geol|g\.m|gr|gradf|grek|grf|grundt|Hamb|hebr|herald|hist|högtidl|i allm|ibl|imper|imperf|inb|indoeur|inf|inkl|innehållsobj|interj|interr|intr|inv|i o\.f\.s|i o\.m|ipf|irl\. eng|iron|isl|i st\.f|ist\.f|ita|ital|jäg|Jämtl|jan|jap|järnv|Jer|Jes|jfr|Joh|Jos|jul|jun|jur|Jyll|kam|kand|kap|kelt|kem|keram|kines|kl|Klag|K\.O|kok|koll|komb|komm|komp|Kon|konj|korr|kortsp|kr|Kr|kred|Krön|kungl|kup|kur|kyrkl|l|lågty|lat|litt|lör|Lör|lörd|Lörd|Luk|m|mån|Mån|månd|Månd|manl|m\.a\.o|m\.a\.p|mar|marg|Mark|Matt|medl|meteorol|m\.fl|m\.h\.a|m\.h\.t|milj|miner|m\.m|m\.ö\.h|möjl|Mos|mots|motst|motsv|mska|mytol|nästk|naturvetenskapl|nederl|nedsätt|Neh|neutr|n\.ö|nord|nordamer|nov|Nr|nuv|n\.v|o|o\.a|obest|oböjl|o\.d|o\.dyl|oeg|öfv|okt|omg|omkr|ons|Ons|onsd|Onsd|Ords|örlog|o\.s\.a|o\.s\.v|osv|övers|övs|pedag|perf\. part|p\.g\.a|pl|plur|Pred|prep|pres|pron|prot|prov|Ps|p\.s\.s|psykol|r|recipr|red|ref|reg|rel|relig|resp|retor|ridk|riksspr|rst|ry|s|säkerl|Sam|särsk|s\.a\.s|sbst|sek|sep|sept|sg|sing|sistl|s\.k|sk|skogsv|skol|skolm|skolv|skom|skrädd|snick|s\.ö|sociol|sock|sockerbag|s\.o\.h|sön|Sön|sönd|Sönd|sp|spec|spelt|spirit|spr|språkl|språkvet|sp\. v|ss|st|statsk|statsm|statsvet|superl|s\.v|sv|sydamer|Syr|t|tandläk|tekn|tel|teol|t\.ex|tf|t\.h|tillf|tis|Tis|tisd|Tisd|tjurf|t\.o\.m|tor|Tor|tors|Tors|torsd|Torsd|trad|t\.v|ty|typogr|u\.p\.a|Upp|uppl|urspr|utr|uttr|v|vån|vanl|vard|vävn|v\.b|vbalsbst|vetensk|v\.g\.v|v\.s\.b|v\.t|vulg|w\.o|y|zool)\.</beforebreak>
+          <afterbreak>\s+</afterbreak>
+        </rule>
+        <rule break="yes">
+          <beforebreak>(1|2)\d\d\d\.</beforebreak>
+          <afterbreak>\s+[A-ZÁÃÄÅÀÂÆÇČÊËÉÈÍÌÎÏÑŒÓÔÕØÖŠÙÚÜÛŸÝ]</afterbreak>
+        </rule>
+        <rule break="no">
+          <beforebreak>\d+\.</beforebreak>
+          <afterbreak>(^|\s+|[\(\[\,\:\;\"\-])(jan|Jan|feb|Feb|apr|Apr|aug|sep|Sep|sept|Sept|okt|Okt|nov|Nov|dec|Dec|mån|Mån|månd|Månd|tis|Tis|tisd|Tisd|ons|Ons|onsd|Onsd|tor|Tor|tors|Tors|torsd|Torsd|fre|Fre|Fred|lör|Lör|lörd|Lörd|sön|Sön|sönd|Sönd)</afterbreak>
+        </rule>
+      </languagerule>
+      <languagerule languagerulename="TajikCyr">
+        <rule break="no">
+          <beforebreak>(^|\s+|[\(\[\,\:\;\"\-])(с|ингл|тоҷ|узб|ғ|ҳ|ҳаз|млн|млрд|трлн|саҳ|мод|ш|кӯч|тел|вил|деҳ|хиёб|дол|долл|кв)\.</beforebreak>
+          <afterbreak>\s+[^АБВГДЕЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯЀЁЂЃЄЅІЇЈЉЊЋЌЍЎЏҒӢҚӮҲҶ]</afterbreak>
+        </rule>
+      </languagerule>
+      <languagerule languagerulename="Tamil">
+        <!-- Do not break after No. or Rs. if followed by digit -->
+        <rule break="no">
+          <beforebreak>(^|\s+)(ரூ|எண்)\.</beforebreak>
+          <afterbreak>\s*\d+</afterbreak>
+        </rule>
+        <!-- Do not break after Mr. or Dr.-->
+        <rule break="no">
+          <beforebreak>(திரு|டாக்டர்)\.</beforebreak>
+          <afterbreak>.</afterbreak>
+        </rule>
+        <!-- Do not break after a single letter (followed by a vowel or not) ending in period-->
+        <rule break="no">
+          <beforebreak>(^|\s+)(அ|ஆ|இ|ஈ|உ|ஊ|எ|ஏ|ஐ|ஒ|ஓ|ஔ|க|ங|ச|ஜ|ஞ|ட|ண|த|ந|ன|ப|ம|ய|ர|ற|ல|ள|ழ|வ|ஷ|ஸ|ஹ)(ா|ி|ீ|ு|ூ|ெ|ே|ை|ொ|ோ|ௌ|்)*\.</beforebreak>
+          <afterbreak>\s+</afterbreak>
+        </rule>
+        <!-- Break if virama (u0bcd) is followed by period -->
+        <rule break="yes">
+          <beforebreak>([்ு\)]\.)</beforebreak>
+          <afterbreak>\s+</afterbreak>
+        </rule>
+        <rule break="no">
+          <beforebreak>\p{P}</beforebreak>
+          <afterbreak>\p{P}</afterbreak>
+        </rule>
+      </languagerule>
+      <languagerule languagerulename="Turkish">
+        <rule break="no">
+          <beforebreak>(^|\s+|[\(\[\,\:\;\"\-])(Ian|Jan|Jaan|Tam|Sau|Led|Feb|Veeb|Hel|Vas|Un|Mar|Mär|Maal|Kov|Břez|Már|Apr|Huht|bal|dub|ápr|Mai|Maj|Maijs|Touk|geguž|máj|Iun|Jun|Jūn|Juun|Kes|birž|jún|Iul|Jul|Jūl|Juul|Hein|liep|júl|Aot|Aug|Elok|rugp|srp|avg|Sept|Syysk|rugs|szept|Oct|Okt|Lok,spal|rij|Noi|Nov|Mar|lapk|list|Dec|Det|Joul|gruod|prosjan|Jan|feb|Feb|mar|Mar|apr|Apr|jun|Jun|jul|Jul|aug|Aug|sep|Sep|sept|Sept|oct|Oct|nov|Nov|dec|Dec|Mon|Tue|Tues|Wed|Thu|Thurs|Fri|Sat|Sun|capt|Capt|dr|Dr|gov|Gov|gen|Gen|Mr|Mrs|Ms|Mme|prof|Prof|sgt|Sgt|st|St|Col|Rev|Sen|b\.c|B\.c|B\.J|a\.c|A\.c|av|Av|Co|corp|Corp|dept|Dept|dir|esp|Esp|D\.C|D\.P\.R\.K|D\.S|Fla|F\.W|gov|Gov|govt|Govt|inc|Inc|J\.D|J\.R|J\.T|Jr|Sr|Snr|L\.A|ltd|Lt|Ltd|mfg|M|Mfg|M\.B|M\.C|McG|Mt|M\.T\.M|N\.Y|O\.K|P\.F\.E|Sdn|S\.A|S\.A\.R\.L|S\.O\.S|S\.G|T\.R|U\.K|U\.S|U\.S\.A|V\.W\.H|W\.V|a\.m|A\.m|ca|Ca|cf|Cf|e\.g|E\.g|al|Al|ca|Ca|A\.D|etc|Etc|id|Id|q\.e\.d|Q\.e\.d|vs|Vs|seq|Seq|ib|Ib|ibid|Ibid|i\.e|I\.e|cit|Cit|N\.B|p\.m|P\.m|p\.m|P\.m|p\.s|P\.s|q\.v|Q\.v|sc|Sc|v|V|viz|Viz|v\.v|V\.v|fig|Fig|chap|Chap|no|No|p|pg|Pg|pp|Pp|vol|Vol|C|W|approx|addt|addtl|incl|op|Op|Pr|Hr|E|Dž|ž|P|Dl|Dn|Dra|Ga|ga|p|e|ge|g)\.</beforebreak>
+          <afterbreak>\s*[A-ZÁÃÄÅÀÂÆÇÊËÉÈĞİÍÌÎÏÑŒÓÔÕØÖŠŞÙÚÜÛŸÝa-zçéèêëàâäáæğıîïíìôöòõóøœšşûüùúñÿý0-9]+</afterbreak>
+        </rule>
+        <rule break="no">
+          <beforebreak>(^|\s+|[\(\[\,\:\;\"\-])(capt|Capt|dr|Dr|gov|Gov|gen|Gen|Mr|Mrs|Ms|Me|Dir|prof|Prof|sgt|Sgt|st|St|Col|Rev|Sen|Lt)\.</beforebreak>
+          <afterbreak>\s*[^\wÇŞĞİÖÜÂÎÛçşğıöüâîû]+</afterbreak>
+        </rule>
+        <rule break="no">
+          <beforebreak>(^|\s+|[\(\[\,\:\;\"\-])(a\.m|A\.m|c|C|ca|Ca|cf|Cf|e\.g|E\.g|al|Al|ca|Ca|A\.D|etc|Etc|id|Id|q\.e\.d|Q\.e\.d|vs|Vs|seq|Seq|ib|Ib|ibid|Ibid|i\.e|I\.e|cit|Cit|N\.B|p\.m|P\.m|p\.m|P\.m|p\.s|P\.s|q\.v|Q\.v|sc|Sc|v|V|viz|Viz|v\.v|V\.v|appr|approx|addt|incl)\.</beforebreak>
+          <afterbreak>\s*[^\wÇŞĞİÖÜÂÎÛçşğıöüâîû]+</afterbreak>
+        </rule>
+        <rule break="no">
+          <beforebreak>(^|\s+|[\(\[\,\:\;\"\-])(fig|Fig|chap|Chap|no|No|p|P|pg|Pg|pp|Pp|vol|Vol|approx|addt|addtl|incl|art|Art|op|Op)\.</beforebreak>
+          <afterbreak>\s*[\dA-ZÁÃÄÅÀÂÆÇÊËÉÈĞİÍÌÎÏÑŒÓÔÕØÖŠŞÙÚÜÛŸÝa-zçéèêëàâäáæğıîïíìôöòõóøœšşûüùúñÿý]</afterbreak>
+        </rule>
+        <rule break="no">
+          <beforebreak>(^|\s+|[\(\[\,\:\;\"\-])(Ian|Jan|Jaan|Tam|Sau|Led|Feb|Veeb|Hel|Vas|Un|Mar|Mär|Maal|Kov|Břez|Már|Apr|Huht|bal|dub|ápr|Mai|Maj|Maijs|Touk|geguž|máj|Iun|Jun|Jūn|Juun|Kes|birž|jún|Iul|Jul|Jūl|Juul|Hein|liep|júl|Aot|Aug|Elok|rugp|srp|avg|Sept|Syysk|rugs|szept|Oct|Okt|Lok,spal|rij|Noi|Nov|Mar|lapk|list|Dec|Det|Joul|gruod|prosjan|jan|Jan|feb|Feb|mar|Mar|apr|Apr|jun|Jun|jul|Jul|aug|Aug|sep|Sep|sept|Sept|oct|Oct|nov|Nov|dec|Dec)\.</beforebreak>
+          <afterbreak>\s*\d+</afterbreak>
+        </rule>
+        <rule break="yes">
+          <beforebreak>(^|\s+|[\(\[\,\:\;\"\-])(b\.c|B\.c|B\.J|a\.c|A\.c|av|Av|Co|corp|Corp|dept|Dept|esp|Esp|D\.C|D\.P\.R\.K|D\.S|Fla|F\.W|gov|Gov|govt|Govt|inc|Inc|J\.D|J\.R|J\.T|Jr|Sr|Snr|L\.A|ltd|Ltd|mfg|Mfg|M\.B|M\.C|McG|Mt|M\.T\.M|N\.Y|O\.K|P\.F\.E|Sdn|S\.A|S\.A\.R\.L|S\.O\.S|S\.G|T\.R|U\.K|U\.S|U\.S\.A|V\.W\.H|W\.V|approx|addt|addtl|incl)\.</beforebreak>
+          <afterbreak>\s+\"</afterbreak>
+        </rule>
+        <rule break="no">
+          <beforebreak>(^|\s+|[\(\[\,\:\;\"\-])(b\.c|B\.c|B\.J|a\.c|A\.c|av|Av|Co|corp|Corp|dept|Dept|esp|Esp|D\.C|D\.P\.R\.K|D\.S|Fla|F\.W|gov|Gov|govt|Govt|inc|Inc|J\.D|J\.R|J\.T|Jr|Sr|Snr|L\.A|ltd|Ltd|mfg|Mfg|M\.B|M\.C|McG|Mt|M\.T\.M|N\.Y|O\.K|P\.F\.E|Sdn|S\.A|S\.A\.R\.L|S\.O\.S|S\.G|T\.R|U\.K|U\.S|U\.S\.A|V\.W\.H|W\.V|approx|addt|addtl|incl)\.</beforebreak>
+          <afterbreak>\s+</afterbreak>
+        </rule>
+        <rule break="no">
+          <beforebreak>\d+\.</beforebreak>
+          <afterbreak>(^|\s+|[\(\[\,\:\;\"\-])(Ian|Jan|Jaan|Tam|Sau|Led|Feb|Veeb|Hel|Vas|Un|Mar|Mär|Maal|Kov|Břez|Már|Apr|Huht|bal|dub|ápr|Mai|Maj|Maijs|Touk|geguž|máj|Iun|Jun|Jūn|Juun|Kes|birž|jún|Iul|Jul|Jūl|Juul|Hein|liep|júl|Aot|Aug|Elok|rugp|srp|avg|Sept|Syysk|rugs|szept|Oct|Okt|Lok,spal|rij|Noi|Nov|Mar|lapk|list|Dec|Det|Joul|gruod|prosjan|jan|Jan|feb|Feb|mar|Mar|apr|Apr|jun|Jun|jul|Jul|aug|Aug|sep|Sep|sept|Sept|oct|Oct|nov|Nov|dec|Dec)</afterbreak>
+        </rule>
+        <rule break="no">
+          <beforebreak>(^|\s+|[\(\[\,\:\;\"\-])([IVXivx]+|\d+)\.</beforebreak>
+          <afterbreak>\s+[A-ZÇŞĞIİÖÜÂÎÛa-zçşğıiöüâîû]+</afterbreak>
+        </rule>
+      </languagerule>
+      <languagerule languagerulename="Ukrainian">
+        <rule break="no"> 
+          <beforebreak>\s+(тел|ч\.ч)\.</beforebreak>
+          <afterbreak>\s*[0-9]+</afterbreak>
+        </rule>
+<!-- 	\d м. upper case: segment
+        \d м. lower case: do not segment
+        letter м. upper case: do not segment -->
+        <rule break="no">
+          <beforebreak>([0-9"]\s+)м\.\s+</beforebreak>
+          <afterbreak>[абвгґдеєжзиіїйклмнопрстуфхцчшщьюя]+</afterbreak>
+        </rule>
+        <rule break="no">
+          <beforebreak>(^|[АБВГҐДЕЄЖЗИІЇЙКЛМНОПРСТУФХЦЧШЩЬЮЯ0абвгґдеєжзиіїйклмнопрстуфхцчшщьюя,]+\s+)м\.</beforebreak>
+          <afterbreak>\s+[АБВГҐДЕЄЖЗИІЇЙКЛМНОПРСТУФХЦЧШЩЬЮЯ0]+</afterbreak>
+        </rule>
+        <rule break="no">
+          <beforebreak>\.</beforebreak>
+          <afterbreak>\s*\/\s*[абвгґдеєжзиіїйклмнопрстуфхцчшщьюя]+</afterbreak>
+        </rule>
+        <rule break="no">
+          <beforebreak>(Просп|просп|\s+о|бульв|Бульв)\.</beforebreak> 
+          <afterbreak>\s*[АБВГҐДЕЄЖЗИІЇЙКЛМНОПРСТУФХЦЧШЩЬЮЯ0-9A-Z]+</afterbreak> 
+        </rule>
+        <rule break="no">
+          <beforebreak>(ст\.\s*м\.)</beforebreak>
+          <afterbreak>.</afterbreak> 
+        </rule>
+        <rule break="no">
+          <beforebreak>(Ст\.\s*м\.)</beforebreak>
+          <afterbreak>.</afterbreak> 
+        </rule>
+        <rule break="no">
+          <beforebreak>(^|\s+)ст\.</beforebreak>
+          <afterbreak>\s*(«|[АБВГҐДЕЄЖЗИІЇЙКЛМНОПРСТУФХЦЧШЩЬЮЯ0-9A-Z])+</afterbreak> 
+        </rule>
+        <rule break="no">
+          <beforebreak>\.</beforebreak>
+          <afterbreak>\s*[–|—|\)]\s*[,абвгґдеєжзиіїйклмнопрстуфхцчшщьюя№0-9]</afterbreak>
+        </rule>
+        <rule break="no">
+          <beforebreak>\.\.\.</beforebreak>
+          <afterbreak>[»\.;”\/]</afterbreak>
+        </rule>
+        <rule break="no">
+          <beforebreak>(\.|\!|\?)+</beforebreak>
+          <afterbreak>\s*🐻+</afterbreak>
+        </rule>
+        <rule break="no">
+          <beforebreak>(\.|\!|\?)+</beforebreak>
+          <afterbreak>\s*(\(*|,|-|–|—)\s*[абвгґдеєжзиіїйклмнопрстуфхцчшщьюя№]</afterbreak>
+        </rule>
+        <rule break="no">
+          <beforebreak>.</beforebreak>
+          <afterbreak>\s*([-\–])\s*(Ред|ред|О\.Р|Авт|авт)\.</afterbreak> 
+        </rule>
+        <rule break="no">
+          <beforebreak>(^|\s+|([\(\[\,\:\;\"\-\–])*\s+)(м|Ред|ред|проф|Проф|с|ім|реж|Реж|вул|Вул|сл|св|Св|тов|Тов|д-р|Д-р|п|Пл|Пров|пл|пров|в\.о|р|рр|н\.п|т\.зв|dr|Dr|gov|Gov|gen|Gen|Mr|Mrs|Ms|Mme|prof|Prof|sgt|Sgt|v|no|No|Nos)\.</beforebreak>
+          <afterbreak>\s*[&amp;\(\)«абвгґдеєжзиіїйклмнопрстуфхцчшщьюяАБВГҐДЕЄЖЗИІЇЙКЛМНОПРСТУФХЦЧШЩЬЮЯ0-9A-Z]+</afterbreak> 
+        </rule>
+        <rule break="no">
+          <beforebreak>(^|\s+|[\(\[\,\:\;\"\-\–])(\s*)(тис|п|мін|год|хв|буд|р|ор|кв|с|міс|ц\.р|ч|пр-т|Пр-т|пл\. прих|Пл\. прих)\.</beforebreak>
+          <afterbreak>\s*[0-9]+</afterbreak> 
+        </rule>
+        <rule break="no">
+          <beforebreak>(^|\s+|[\(\[\,\:\;\"\-\–])(\s*)(дол\.|США)</beforebreak>
+          <afterbreak>.</afterbreak> 
+        </rule>
+        <rule break="no">
+          <beforebreak>(^[0-9]+)\.</beforebreak>
+          <afterbreak>\s*[АБВГҐДЕЄЖЗИІЇЙКЛМНОПРСТУФХЦЧШЩЬЮЯA-Z«]</afterbreak>
+        </rule>
+        <rule break="yes">
+          <beforebreak>\.</beforebreak>
+          <afterbreak>\s*«\s*[АБВГҐДЕЄЖЗИІЇЙКЛМНОПРСТУФХЦЧШЩЬЮЯ]</afterbreak>
+        </rule>
+        <rule break="no">
+          <beforebreak>(\s+[абвгґдеєжзиіїйклмнопрстуфхцчшщьюя])\.\s*</beforebreak>
+          <afterbreak>[АБВГҐДЕЄЖЗИІЇЙКЛМНОПРСТУФХЦЧШЩЬЮЯ]</afterbreak>
+        </rule>
+		<!-- Do not segment if a single upper case character is followed by period and space (no matter what follows after) -->
+        <rule break="no"> 
+          <beforebreak>(\s+[АБВГҐДЕЄЖЗИІЇЙКЛМНОПРСТУФХЦЧШЩЬЮЯ])\.</beforebreak>
+          <afterbreak>\s+.</afterbreak>
+        </rule>
+      </languagerule>
+      <languagerule languagerulename="Vietnamese">
+        <rule break="yes">
+          <beforebreak>\w\.\)</beforebreak>
+          <afterbreak>\s+[ÀẰẦÈỀÌÒỒỜÙỪỲÁẮẤÉẾÍÓỐỚÚỨÝẢẲẨẺỂỈỎỔỞỦỬỶÃẴẪẼỄĨÕỖỠŨỮỸẠẶẬẸỆỊỌỘỢỤỰỴAĂÂBCDĐEÊGHIKLMNOÔƠPQRSTUƯVXY0-9]\w</afterbreak>
+        </rule>
+        <rule break="no">
+          <beforebreak>(^|\s+|[\(\[\,\:\;\"\-])(jan|Jan|feb|Feb|mar|Mar|apr|Apr|jun|Jun|jul|Jul|aug|Aug|sep|Sep|sept|Sept|oct|Oct|nov|Nov|dec|Dec|Mon|Tue|Tues|Wed|Thu|Thurs|Fri|Sat|Sun|capt|Capt|dr|Dr|gov|Gov|gen|Gen|Mr|Mrs|Ms|Mme|prof|Prof|sgt|Sgt|st|St|tr|Tr|Col|Rev|Sen|Rep|b\.c|B\.c|B\.J|a\.c|A\.c|av|Av|Co|corp|Corp|dept|Dept|dir|esp|Esp|D\.C|D\.P\.R\.K|D\.S|Fla|F\.W|gov|Gov|govt|Govt|inc|Inc|J\.D|J\.R|J\.T|Jr|Sr|Snr|L\.A|ltd|Lt|Ltd|mfg|M|Mfg|M\.B|M\.C|McG|Mt|M\.T\.M|N\.Y|O\.K|P\.F\.E|Sdn|S\.A|S\.A\.R\.L|S\.O\.S|S\.G|T\.R|U\.K|U\.S|U\.S\.A|V\.W\.H|W\.V|a\.m|A\.m|ca|Ca|cf|Cf|e\.g|E\.g|al|Al|ca|Ca|A\.D|etc|Etc|id|Id|q\.e\.d|Q\.e\.d|vs|Vs|seq|Seq|ib|Ib|ibid|Ibid|i\.e|I\.e|cit|Cit|N\.B|p\.m|P\.m|p\.m|P\.m|p\.s|P\.s|q\.v|Q\.v|sc|Sc|v|V|viz|Viz|v\.v|V\.v|fig|Fig|chap|Chap|no|No|p|pg|Pg|pp|Pp|vol|Vol|C|W|approx|addt|addtl|incl|op|Op)\.</beforebreak>
+          <afterbreak>\s*[ÀàẰằẦầÈèỀềÌìÒòỒồỜờÙùỪừỲỳÁáẮắẤấÉéẾếÍíÓóỐốỚớÚúỨứÝýẢảẲẳẨẩẺẻỂểỈỉỎỏỔổỞởỦủỬửỶỷÃãẴẵẪẫẼẽỄễĨĩÕõỖỗỠỡŨũỮữỸỹẠạẶặẬậẸẹỆệỊịỌọỘộỢợỤụỰựỴỵAĂÂBCDĐEÊGHIKLMNOÔƠPQRSTUƯVXYaăâbcdđeêghiklmnoôơpqrstuưvxy0-9]+</afterbreak>
+        </rule>
+        <rule break="no">
+          <beforebreak>(^|\s+|[\(\[\,\:\;\"\-])(capt|Capt|dr|Dr|gov|Gov|gen|Gen|Mr|Mrs|Ms|Me|Dir|prof|Prof|Ths|Ts|PGS|GS|sgt|Sgt|st|St|Col|Rev|Sen|Lt)\.</beforebreak>
+          <afterbreak>\s*\W+</afterbreak>
+        </rule>
+        <rule break="no">
+          <beforebreak>(^|\s+|[\(\[\,\:\;\"\-])(a\.m|A\.m|c|C|ca|Ca|cf|Cf|e\.g|E\.g|al|Al|ca|Ca|A\.D|etc|Etc|id|Id|q\.e\.d|Q\.e\.d|vs|Vs|seq|Seq|ib|Ib|ibid|Ibid|i\.e|I\.e|cit|Cit|N\.B|p\.m|P\.m|p\.m|P\.m|p\.s|P\.s|q\.v|Q\.v|sc|Sc|v|V|viz|Viz|v\.v|V\.v|v\.v[\.]*|appr|approx|addt|incl)\.</beforebreak>
+          <afterbreak>\s*\W+</afterbreak>
+        </rule>
+        <rule break="no">
+          <beforebreak>(^|\s+|[\(\[\,\:\;\"\-])(fig|Fig|chap|Chap|Ch|no|No|p|P|pg|Pg|pp|Pp|vol|Vol|approx|addt|addtl|incl|art|Art|op|Op)\.</beforebreak>
+          <afterbreak>\s*[\dÀàẰằẦầÈèỀềÌìÒòỒồỜờÙùỪừỲỳÁáẮắẤấÉéẾếÍíÓóỐốỚớÚúỨứÝýẢảẲẳẨẩẺẻỂểỈỉỎỏỔổỞởỦủỬửỶỷÃãẴẵẪẫẼẽỄễĨĩÕõỖỗỠỡŨũỮữỸỹẠạẶặẬậẸẹỆệỊịỌọỘộỢợỤụỰựỴỵAĂÂBCDĐEÊGHIKLMNOÔƠPQRSTUƯVXYaăâbcdđeêghiklmnoôơpqrstuưvxy]</afterbreak>
+        </rule>
+        <rule break="no">
+          <beforebreak>(^|\s+|[\(\[\,\:\;\"\-])(jan|Jan|feb|Feb|mar|Mar|apr|Apr|jun|Jun|jul|Jul|aug|Aug|sep|Sep|sept|Sept|oct|Oct|nov|Nov|dec|Dec)\.</beforebreak>
+          <afterbreak>\s*\d+</afterbreak>
+        </rule>
+        <rule break="yes">
+          <beforebreak>(^|\s+|[\(\[\,\:\;\"\-])(b\.c|B\.c|B\.J|a\.c|A\.c|av|Av|Co|corp|Corp|dept|Dept|esp|Esp|D\.C|D\.P\.R\.K|D\.S|Fla|F\.W|gov|Gov|govt|Govt|inc|Inc|J\.D|J\.R|J\.T|Jr|Sr|Snr|L\.A|ltd|Ltd|mfg|Mfg|M\.B|M\.C|McG|Mt|M\.T\.M|N\.Y|O\.K|P\.F\.E|Sdn|S\.A|S\.A\.R\.L|S\.O\.S|S\.G|T\.R|U\.K|U\.S|U\.S\.A|V\.W\.H|W\.V|approx|addt|addtl|incl)\.</beforebreak>
+          <afterbreak>\s+\"</afterbreak>
+        </rule>
+        <rule break="no">
+          <beforebreak>(^|\s+|[\(\[\,\:\;\"\-])(b\.c|B\.c|B\.J|a\.c|A\.c|av|Av|Co|corp|Corp|dept|Dept|esp|Esp|D\.C|D\.P\.R\.K|D\.S|Fla|F\.W|gov|Gov|govt|Govt|inc|Inc|J\.D|J\.R|J\.T|Jr|Sr|Snr|L\.A|ltd|Ltd|mfg|Mfg|M\.B|M\.C|McG|Mt|M\.T\.M|N\.Y|O\.K|P\.F\.E|Sdn|S\.A|S\.A\.R\.L|S\.O\.S|S\.G|T\.R|U\.K|U\.S|U\.S\.A|V\.W\.H|W\.V|approx|addt|addtl|incl|T[Pp]|TS|GS|PGS)\.</beforebreak>
+          <afterbreak>\s+</afterbreak>
+        </rule>
+        <rule break="no">
+          <beforebreak>\d+\.</beforebreak>
+          <afterbreak>(^|\s+|[\(\[\,\:\;\"\-])(jan|Jan|feb|Feb|mar|Mar|apr|Apr|jun|Jun|jul|Jul|aug|Aug|sep|Sep|sept|Sept|oct|Oct|nov|Nov|dec|Dec)</afterbreak>
+        </rule>
+        <!-- Break after Number+Period if it is followed by UPPERCASE letter or opening quote -->
+        <rule break="no">
+          <beforebreak>^([0-9]+\.)+</beforebreak>
+          <afterbreak>\s+[ÀẰẦÈỀÌÒỒỜÙỪỲÁẮẤÉẾÍÓỐỚÚỨÝẢẲẨẺỂỈỎỔỞỦỬỶÃẴẪẼỄĨÕỖỠŨỮỸẠẶẬẸỆỊỌỘỢỤỰỴAĂÂBCDĐEÊGHIKLMNOÔƠPQRSTUƯVXY„]</afterbreak>
+        </rule>
+        <rule break="yes">
+          <beforebreak>.([0-9]+\.)+</beforebreak>
+          <afterbreak>\s+[ÀẰẦÈỀÌÒỒỜÙỪỲÁẮẤÉẾÍÓỐỚÚỨÝẢẲẨẺỂỈỎỔỞỦỬỶÃẴẪẼỄĨÕỖỠŨỮỸẠẶẬẸỆỊỌỘỢỤỰỴAĂÂBCDĐEÊGHIKLMNOÔƠPQRSTUƯVXY„]</afterbreak>
+        </rule>
+      </languagerule>
+      <languagerule languagerulename="Default">
+        <rule break="no">
+          <beforebreak>^(?i)(i|v|x){1,4}\.</beforebreak>
+          <afterbreak>\s</afterbreak>
+        </rule>
+        <rule break="no">
+          <beforebreak>\([A-ZÁÃÄÅÀÂÆÇČÊËÉÈÍÌÎÏÑŒÓÔÕØÖŠÙÚÜÛŸÝАБВГДЕЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯЀЁЂЃЄЅІЇЈЉЊЋЌЍЎЏҒӢҚӮҲҶa-zçéèêëàâäáæîïíìôöòõóøœřšûüùúñÿýðþабвгдежзийклмнопрстуфхцчшщъыьэюяѐёђѓєѕіїјљњћќѝўџғӣқӯҳҷ]+\.</beforebreak>
+          <afterbreak>\s</afterbreak>
+        </rule>
+        <rule break="no">
+          <beforebreak>(^|\s+|[\(\[\,\:\;])([A-ZÁÃÄÅÀÂÆÇČÊËÉÈÍÌÎÏÑŒÓÔÕØÖŠÙÚÜÛŸÝАБВГДЕЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯЀЁЂЃЄЅІЇЈЉЊЋЌЍЎЏҒӢҚӮҲҶ]\.)*[A-ZÁÃÄÅÀÂÆÇČÊËÉÈÍÌÎÏÑŒÓÔÕØÖŠÙÚÜÛŸÝАБВГДЕЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯЀЁЂЃЄЅІЇЈЉЊЋЌЍЎЏҒӢҚӮҲҶ]\.</beforebreak>
+          <afterbreak>\s+[A-ZÁÃÄÅÀÂÆÇČÊËÉÈÍÌÎÏÑŒÓÔÕØÖŠÙÚÜÛŸÝАБВГДЕЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯЀЁЂЃЄЅІЇЈЉЊЋЌЍЎЏҒӢҚӮҲҶ]</afterbreak>
+        </rule>
+        <rule break="no">
+          <beforebreak>[^a-zçéèêëàâäáæîïíìôöòõóøœřšûüùúñÿýðþабвгдежзийклмнопрстуфхцчшщъыьэюяѐёђѓєѕіїјљњћќѝўџғӣқӯҳҷ]{2,1000}\.</beforebreak>
+          <afterbreak>\s+[^A-ZÁÃÄÅÀÂÆÇČÊËÉÈÍÌÎÏÑŒÓÔÕØÖŠÙÚÜÛŸÝАБВГДЕЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯЀЁЂЃЄЅІЇЈЉЊЋЌЍЎЏҒӢҚӮҲҶ]</afterbreak>
+        </rule>
+        <rule break="no">
+          <beforebreak>\.</beforebreak>
+          <afterbreak>\d+</afterbreak>
+        </rule>
+        <rule break="no">
+          <beforebreak>\.</beforebreak>
+          <afterbreak>[,\)\]]</afterbreak>
+        </rule>
+        <!-- to be verified -->
+        <rule break="yes">
+          <beforebreak>[\)]</beforebreak>
+          <afterbreak>\s+\[A-ZÁÃÄÅÀÂÆÇČÊËÉÈÍÌÎÏÑŒÓÔÕØÖŠÙÚÜÛŸÝАБВГДЕЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯЀЁЂЃЄЅІЇЈЉЊЋЌЍЎЏҒӢҚӮҲҶ]\w+</afterbreak>
+        </rule>
+        <rule break="no">
+          <beforebreak>\d+\.</beforebreak>
+          <afterbreak>\s*\d+</afterbreak>
+        </rule>
+        <rule break="no">
+          <beforebreak>^(\d+\.)+</beforebreak>
+          <afterbreak>\s</afterbreak>
+        </rule>
+        <rule break="no">
+          <beforebreak>\d+\.</beforebreak>
+          <afterbreak>[^A-ZÁÃÄÅÀÂÆÇČÊËÉÈÍÌÎÏÑŒÓÔÕØÖŠÙÚÜÛŸÝАБВГДЕЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯЀЁЂЃЄЅІЇЈЉЊЋЌЍЎЏҒӢҚӮҲҶ\s]+</afterbreak>
+        </rule>
+        <rule break="no">
+          <beforebreak>[\(\[]\.\.\.[\)\]]</beforebreak>
+          <afterbreak/>
+        </rule>
+        <rule break="yes">
+          <beforebreak>\.\.\.\.</beforebreak>
+          <afterbreak>\s</afterbreak>
+        </rule>
+        <rule break="yes">
+          <beforebreak>[\. ][\. ]+</beforebreak>
+          <afterbreak>\s+</afterbreak>
+        </rule>
+        <rule break="no">
+          <beforebreak>\.\.\.</beforebreak>
+          <afterbreak>[\&gt;\)\}\]\:!\?\)]</afterbreak>
+        </rule>
+        <rule break="no">
+          <beforebreak>\.\.\.</beforebreak>
+          <afterbreak>\s*[\"\']</afterbreak>
+        </rule>
+        <rule break="no">
+          <beforebreak>\.\.\.</beforebreak>
+          <afterbreak>[^A-ZÁÃÄÅÀÂÆÇČÊËÉÈÍÌÎÏÑŒÓÔÕØÖŠÙÚÜÛŸÝАБВГДЕЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯЀЁЂЃЄЅІЇЈЉЊЋЌЍЎЏҒӢҚӮҲҶ\s]+</afterbreak>
+        </rule>
+        <rule break="yes">
+          <beforebreak>\.\.\.</beforebreak>
+          <afterbreak>\s*[^A-ZÁÃÄÅÀÂÆÇČÊËÉÈÍÌÎÏÑŒÓÔÕØÖŠÙÚÜÛŸÝАБВГДЕЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯЀЁЂЃЄЅІЇЈЉЊЋЌЍЎЏҒӢҚӮҲҶ]</afterbreak>
+        </rule>
+        <rule break="no">
+          <beforebreak>\"[^\"]*[\.\!\?]</beforebreak>
+          <afterbreak>\"</afterbreak>
+        </rule>
+        <rule break="no">
+          <beforebreak>\'[^\']*[\.\!\?]</beforebreak>
+          <afterbreak>\'</afterbreak>
+        </rule>
+        <rule break="yes">
+          <beforebreak>[\.\!\?][\"\'”’]</beforebreak>
+          <afterbreak>\s+[A-ZÁÃÄÅÀÂÆÇČÊËÉÈÍÌÎÏÑŒÓÔÕØÖŠÙÚÜÛŸÝАБВГДЕЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯЀЁЂЃЄЅІЇЈЉЊЋЌЍЎЏҒӢҚӮҲҶ]</afterbreak>
+        </rule>
+        <rule break="no">
+          <beforebreak>[\.\:\;\!\?\)]</beforebreak>
+          <afterbreak>[\&gt;\)\}\]\:\!\?]</afterbreak>
+        </rule>
+        <rule break="yes">
+          <beforebreak>\w\.\)</beforebreak>
+          <afterbreak>\s+[A-ZÁÃÄÅÀÂÆÇČÊËÉÈÍÌÎÏÑŒÓÔÕØÖŠÙÚÜÛŸÝАБВГДЕЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯЀЁЂЃЄЅІЇЈЉЊЋЌЍЎЏҒӢҚӮҲҶ]\w</afterbreak>
+        </rule>
+        <rule break="yes">
+          <beforebreak>\w\.\)\s+</beforebreak>
+          <afterbreak>\"[A-ZÁÃÄÅÀÂÆÇČÊËÉÈÍÌÎÏÑŒÓÔÕØÖŠÙÚÜÛŸÝАБВГДЕЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯЀЁЂЃЄЅІЇЈЉЊЋЌЍЎЏҒӢҚӮҲҶ]</afterbreak>
+        </rule>
+        <rule break="no">
+          <beforebreak>\.</beforebreak>
+          <afterbreak>\-[a-zçéèêëàâäáæîïíìôöòõóøœřšûüùúñÿýабвгдежзийклмнопрстуфхцчшщъыьэюяѐёђѓєѕіїјљњћќѝўџғӣқӯҳҷ]+</afterbreak>
+        </rule>
+        <!--
+       -->
+        <rule break="no">
+          <beforebreak>[\.\!\?](\x{00A0})+</beforebreak>
+          <afterbreak>\s*[\»\›\’a-zçéèêëàâäáæîïíìôöòõóøœřšûüùúñÿýабвгдежзийклмнопрстуфхцчшщъыьэюяѐёђѓєѕіїјљњћќѝўџғӣқӯҳҷ]</afterbreak>
+        </rule>
+        <rule break="yes">
+          <beforebreak>[\.\!\?](\x{00A0})+</beforebreak>
+          <afterbreak>\s*[^\»\›\’]</afterbreak>
+        </rule>
+        <rule break="no">
+          <beforebreak>[\.\!\?]</beforebreak>
+          <afterbreak>\s+[\»\›\’a-zçéèêëàâäáæîïíìôöòõóøœřšûüùúñÿýабвгдежзийклмнопрстуфхцчшщъыьэюяѐёђѓєѕіїјљњћќѝўџғӣқӯҳҷ]</afterbreak>
+        </rule>
+        <rule break="yes">
+          <beforebreak>[\.\!\?]</beforebreak>
+          <afterbreak>\s+[^\»\›\’]</afterbreak>
+        </rule>
+        <rule break="yes">
+          <beforebreak>[।۔؛؟]</beforebreak>
+          <afterbreak>.</afterbreak>
+        </rule>
+        <rule break="yes">
+          <beforebreak>(\t|\r?\n)</beforebreak>
+          <afterbreak/>
+        </rule>
+        <rule break="yes">
+          <beforebreak>\s</beforebreak>
+          <afterbreak>\|</afterbreak>
+        </rule>
+        <rule break="yes">
+          <beforebreak>\| </beforebreak>
+          <afterbreak/>
+        </rule>
+        <rule break="yes">
+          <beforebreak>[^ÁÃÄÅÀÂÆÇČÊËÉÈÍÌÎÏÑŒÓÔÕØÖŠÙÚÜÛŸÝАБВГДЕЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯЀЁЂЃЄЅІЇЈЉЊЋЌЍЎЏҒӢҚӮҲҶa-zçéèêëàâäáæîïíìôöòõóøœřšûüùúñÿýабвгдежзийклмнопрстуфхцчшщъыьэюяѐёђѓєѕіїјљњћќѝўџғӣқӯҳҷ][\"\'\)] *\. +</beforebreak>
+          <afterbreak>[ÁÃÄÅÀÂÆÇČÊËÉÈÍÌÎÏÑŒÓÔÕØÖŠÙÚÜÛŸÝАБВГДЕЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯЀЁЂЃЄЅІЇЈЉЊЋЌЍЎЏҒӢҚӮҲҶa-zçéèêëàâäáæîïíìôöòõóøœřšûüùúñÿýабвгдежзийклмнопрстуфхцчшщъыьэюяѐёђѓєѕіїјљњћќѝўџғӣқӯҳҷ]</afterbreak>
+        </rule>
+        <rule break="yes">
+          <beforebreak>[^ÁÃÄÅÀÂÆÇČÊËÉÈÍÌÎÏÑŒÓÔÕØÖŠÙÚÜÛŸÝАБВГДЕЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯЀЁЂЃЄЅІЇЈЉЊЋЌЍЎЏҒӢҚӮҲҶa-zçéèêëàâäáæîïíìôöòõóøœřšûüùúñÿýабвгдежзийклмнопрстуфхцчшщъыьэюяѐёђѓєѕіїјљњћќѝўџғӣқӯҳҷ][\"\'\)] *\. +</beforebreak>
+          <afterbreak>[\(\"\']</afterbreak>
+        </rule>
+        <rule break="yes">
+          <beforebreak> {3,}</beforebreak>
+          <afterbreak/>
+        </rule>
+        <!-- Default before -->
+        <rule break="no">
+          <beforebreak>^\s*[0-9]+\.</beforebreak>
+          <afterbreak>\s</afterbreak>
+        </rule>
+        <rule break="yes">
+          <beforebreak/>
+          <afterbreak>\n</afterbreak>
+        </rule>
+      </languagerule>
+      <languagerule languagerulename="Somali">
+        <rule break="no">
+          <beforebreak>(^|\s+|[\(\[\,\:\;\"\-])(Jan|Feb|Mar|Apr|Jun|Jul|Aug|Sep|Sept|Oct|Nov|Dec|Mon|Tue|Tues|Wed|Thu|Thurs|Fri|Sat|Sun|capt|Capt|dr|Dr|gov|Gov|gen|Gen|Mr|Mrs|Ms|Mme|prof|Prof|sgt|Sgt|t|Col|Rev|Sen|Rep|b\.c|B\.c|B\.J|a\.c|A\.c|Av|Co|Corp|dept|Dept|Esp|D\.C|D\.P\.R\.K|D\.S|Fla|F\.W|gov|Gov|govt|Govt|inc|Inc|J\.D|J\.R|J\.T|Jr|Sr|Snr|L\.A|ltd|Lt|Ltd|M|Mfg|M\.B|M\.C|McG|Mt|M\.T\.M|N\.Y|O\.K|P\.F\.E|Sdn|S\.A|S\.A\.R\.L|S\.O\.S|S\.G|T\.R|U\.K|U\.S|U\.S\.A|V\.W\.H|W\.V|a\.m|A\.m|ca|Ca|cf|Cf|e\.g|E\.g|al|Al|ca|Ca|A\.D|etc|Etc|id|Id|q\.e\.d|Q\.e\.d|vs|Vs|Seq|Ib|Ibid|i\.e|I\.e|cit|Cit|N\.B|p\.m|P\.m|p\.m|P\.m|p\.s|P\.s|q\.v|Q\.v|sc|Sc|v|V|viz|Viz|v\.v|V\.v|fig|Fig|Chap|no|No|p|pg|Pg|pp|Pp|vol|Vol|C|W|approx|incl|Op)\.</beforebreak>
+          <afterbreak>\s*[A-ZÁÃÄÅÀÂÆÇČÊËÉÈÍÌÎÏÑŒÓÔÕØÖŠÙÚÜÛŸÝa-zçéèêëàâäáæîïíìôöòõóøœřšûüùúñÿýðþ0-9]+</afterbreak>
+        </rule>
+        <rule break="no">
+          <beforebreak>(^|\s+|[\(\[\,\:\;\"\-])(capt|Capt|dr|Dr|gov|Gov|gen|Gen|Mr|Mrs|Ms|Me|Dir|prof|Prof|sgt|Sgt|st|St|Col|Rev|Sen|Lt)\.</beforebreak>
+          <afterbreak>\s*\W+</afterbreak>
+        </rule>
+        <rule break="no">
+          <beforebreak>(^|\s+|[\(\[\,\:\;\"\-])(a\.m|A\.m|c|C|Ca|cf|Cf|e\.g|E\.g|al|Al|ca|Ca|A\.D|etc|Etc|Id|q\.e\.d|Q\.e\.d|vs|Vs|Seq|ibid|Ibid|i\.e|I\.e|Cit|N\.B|p\.m|P\.m|p\.m|P\.m|p\.s|P\.s|q\.v|Q\.v|sc|Sc|v|V|viz|Viz|v\.v|V\.v|appr|approx|addt|incl)\.</beforebreak>
+          <afterbreak>\s*\W+</afterbreak>
+        </rule>
+        <rule break="no">
+          <beforebreak>(^|\s+|[\(\[\,\:\;\"\-])(fig|Fig|chap|Chap|no|No|p|P|pg|Pg|pp|Pp|vol|Vol|approx|addt|addtl|incl|art|Art|op|Op)\.</beforebreak>
+          <afterbreak>\s*[\dA-ZÁÃÄÅÀÂÆÇČÊËÉÈÍÌÎÏÑŒÓÔÕØÖŠÙÚÜÛŸÝa-zçéèêëàâäáæîïíìôöòõóøœřšûüùúñÿýðþ]</afterbreak>
+        </rule>
+        <rule break="no">
+          <beforebreak>(^|\s+|[\(\[\,\:\;\"\-])(jan|Jan|feb|Feb|mar|Mar|apr|Apr|jun|Jun|jul|Jul|aug|Aug|sep|Sep|sept|Sept|oct|Oct|nov|Nov|dec|Dec)\.</beforebreak>
+          <afterbreak>\s*\d+</afterbreak>
+        </rule>
+        <rule break="yes">
+          <beforebreak>(^|\s+|[\(\[\,\:\;\"\-])(b\.c|B\.c|B\.J|a\.c|A\.c|av|Av|Co|corp|Corp|dept|Dept|esp|Esp|D\.C|D\.P\.R\.K|D\.S|Fla|F\.W|gov|Gov|govt|Govt|inc|Inc|J\.D|J\.R|J\.T|Jr|Sr|Snr|L\.A|ltd|Ltd|mfg|Mfg|M\.B|M\.C|McG|Mt|M\.T\.M|N\.Y|O\.K|P\.F\.E|Sdn|S\.A|S\.A\.R\.L|S\.O\.S|S\.G|T\.R|U\.K|U\.S|U\.S\.A|V\.W\.H|W\.V|approx|addt|addtl|incl)\.</beforebreak>
+          <afterbreak>\s+\"</afterbreak>
+        </rule>
+        <rule break="no">
+          <beforebreak>(^|\s+|[\(\[\,\:\;\"\-])(b\.c|B\.c|B\.J|a\.c|A\.c|av|Av|Co|corp|Corp|dept|Dept|esp|Esp|D\.C|D\.P\.R\.K|D\.S|Fla|F\.W|gov|Gov|govt|Govt|inc|Inc|J\.D|J\.R|J\.T|Jr|Sr|Snr|L\.A|ltd|Ltd|mfg|Mfg|M\.B|M\.C|McG|Mt|M\.T\.M|N\.Y|O\.K|P\.F\.E|Sdn|S\.A|S\.A\.R\.L|S\.O\.S|S\.G|T\.R|U\.K|U\.S|U\.S\.A|V\.W\.H|W\.V|approx|addt|addtl|incl)\.</beforebreak>
+          <afterbreak>\s+</afterbreak>
+        </rule>
+        <rule break="no">
+          <beforebreak>\d+\.</beforebreak>
+          <afterbreak>(^|\s+|[\(\[\,\:\;\"\-])(jan|Jan|feb|Feb|mar|Mar|apr|Apr|jun|Jun|jul|Jul|aug|Aug|sep|Sep|sept|Sept|oct|Oct|nov|Nov|dec|Dec)</afterbreak>
+        </rule>
+      </languagerule>
+      <languagerule languagerulename="Slovak">
+        <rule break="no">
+          <beforebreak>(^|\s+|[\(\[\,\:\;\"\-])(písm|Ú\. v|ods|tzv|atď)\.</beforebreak>
+          <afterbreak>\s</afterbreak>
+        </rule>
+        <rule break="no">
+          <beforebreak>(^|\s+|[\(\[\,\:\;\"\-])(s|č)\.</beforebreak>
+          <afterbreak>\s\d</afterbreak>
+        </rule>
+        <rule break="no">
+          <beforebreak>\s(?i)(n|nr)\.</beforebreak>
+          <afterbreak>\s\d</afterbreak>
+        </rule>
+      </languagerule>
+      <languagerule languagerulename="Swahili">
+        <rule break="no">
+          <beforebreak>(b\.c|B\.c|B\.J|a\.c|A\.c|Co|corp|Corp|dept|Dept|esp|Esp|gov|Gov|govt|Govt|Jr|Sr|Snr|L\.A|ltd|Ltd|Dr|St|Mr|Maj|Brig|Lt|Gen|Adv|Sgt|Rev|Col|Dk|Dkt|Mhe|Mwl|n\.k|Bw|Bi|Sh|Tsh)\.</beforebreak>
+          <afterbreak>\s+</afterbreak>
+        </rule>
+        <rule break="no">
+          <beforebreak>(Na\.)</beforebreak>
+          <afterbreak>\s\d+</afterbreak>
+        </rule>
+        <!-- Break after Number+Period if it is followed by UPPERCASE letter unless it is enumeration at the beginning of the sentence -->
+        <rule break="no">
+          <beforebreak>(^[0-9\.]+)\.</beforebreak>
+          <afterbreak>\s+[A-Z"]</afterbreak>
+        </rule>
+        <rule break="yes">
+          <beforebreak>(.[0-9])\.</beforebreak>
+          <afterbreak>\s+[A-Z]</afterbreak>
+        </rule>
+      </languagerule>
+      <languagerule languagerulename="Japanese">
+        <rule break="no">
+          <beforebreak>[…,；。！？，\?\!;\.][”｣」）]</beforebreak>
+          <afterbreak>.</afterbreak>
+        </rule>
+        <rule break="yes">
+          <beforebreak>[…；。！？\?\!]+\s+</beforebreak>
+          <afterbreak>.</afterbreak>
+        </rule>
+        <rule break="yes">
+          <beforebreak>\p{Han}[…；。！？]</beforebreak>
+          <afterbreak>[^”」｣）]</afterbreak>
+        </rule>
+        <rule break="yes">
+          <beforebreak>[…；。！？\?\!]</beforebreak>
+          <afterbreak>\p{Han}</afterbreak>
+        </rule>
+        <rule break="no">
+          <beforebreak>[\.．]</beforebreak>
+          <afterbreak>[0-9A-Za-z\/，．０１２３４５６７８９ＡＢＣＤＥＦＧＨＩＪＫＬＭＮＯＰＱＲＳＴＵＶＷＸＹＺ％ａｂｃｄｅｆｇｈｉｊｋｌｍｎｏｐｑｒｓｔｕｖｗｘｙｚ（）／\/]</afterbreak>
+        </rule>
+        <rule break="yes">
+          <beforebreak>[…；。！？]+</beforebreak>
+          <afterbreak>[^”」｣）]</afterbreak>
+        </rule>
+        <rule break="yes">
+          <beforebreak>\p{Han}[\?\!;\|\]]</beforebreak>
+          <afterbreak>.</afterbreak>
+        </rule>
+        <rule break="yes">
+          <beforebreak>\p{Han}[\.]+</beforebreak>
+          <afterbreak>[^\.]</afterbreak>
+        </rule>
+        <rule break="yes">
+          <beforebreak>[^0-9A-Za-z，．０１２３４５６７８９ＡＢＣＤＥＦＧＨＩＪＫＬＭＮＯＰＱＲＳＴＵＶＷＸＹＺ％ａｂｃｄｅｆｇｈｉｊｋｌｍｎｏｐｑｒｓｔｕｖｗｘｙｚ（）]．</beforebreak>
+          <afterbreak>[^0-9A-Za-z，．０１２３４５６７８９ＡＢＣＤＥＦＧＨＩＪＫＬＭＮＯＰＱＲＳＴＵＶＷＸＹＺ％ａｂｃｄｅｆｇｈｉｊｋｌｍｎｏｐｑｒｓｔｕｖｗｘｙｚ（）]</afterbreak>
+        </rule>
+      </languagerule>
+      <languagerule languagerulename="Tagalog">
+        <rule break="yes">
+          <beforebreak>(^|\s+|[\(\[\,\:\;\"\-])(jan|Jan|feb|Feb|mar|Mar|apr|Apr|jun|Jun|jul|Jul|aug|Aug|sep|Sep|sept|Sept|oct|Oct|nov|Nov|dec|Dec|Mon|Tue|Tues|Wed|Thu|Thurs|Fri|Sat|Sun|capt|Capt|dr|Dr|gov|Gov|gen|Gen|Mr|Mrs|Ms|Mme|prof|Prof|sgt|Sgt|st|St|Col|Rev|Sen|Rep|b\.c|B\.c|B\.J|a\.c|A\.c|av|Av|Co|corp|Corp|dept|Dept|dir|esp|Esp|D\.C|D\.P\.R\.K|D\.S|Fla|F\.W|gov|Gov|govt|Govt|inc|Inc|J\.D|J\.R|J\.T|Jr|Sr|Snr|L\.A|ltd|Lt|Ltd|mfg|M|Mfg|M\.B|M\.C|McG|Mt|M\.T\.M|N\.Y|O\.K|P\.F\.E|Sdn|S\.A|S\.A\.R\.L|S\.O\.S|S\.G|T\.R|U\.K|U\.S|U\.S\.A|V\.W\.H|W\.V|a\.m|A\.m|ca|Ca|cf|Cf|e\.g|E\.g|al|Al|ca|Ca|A\.D|etc|Etc|id|Id|q\.e\.d|Q\.e\.d|vs|Vs|seq|Seq|ib|Ib|ibid|Ibid|i\.e|I\.e|cit|Cit|N\.B|p\.m|P\.m|p\.m|P\.m|p\.s|P\.s|q\.v|Q\.v|sc|Sc|v|V|viz|Viz|v\.v|V\.v|fig|Fig|chap|Chap|no|No|p|pg|Pg|pp|Pp|vol|Vol|C|W|approx|addt|addtl|incl|op|Op)\.</beforebreak>
+          <afterbreak>\s*(Sa|Ang|Hindi|Pero)</afterbreak>
+        </rule>
+        <rule break="no">
+          <beforebreak>(^|\s+|[\(\[\,\:\;\"\-])(govt|Sta|Sto|Blk|Supt|Bgy|Sec|Fr|Msgr|jan|Jan|feb|Feb|mar|Mar|apr|Apr|jun|Jun|jul|Jul|aug|Aug|sep|Sep|sept|Sept|oct|Oct|nov|Nov|dec|Dec|Mon|Tue|Tues|Wed|Thu|Thurs|Fri|Sat|Sun|capt|Capt|dr|Dr|gov|Gov|gen|Gen|Mr|Mrs|Ms|Mme|prof|Prof|sgt|Sgt|st|St|Col|Rev|Sen|Rep|b\.c|B\.c|B\.J|a\.c|A\.c|av|Av|Co|corp|Corp|dept|Dept|dir|esp|Esp|D\.C|D\.P\.R\.K|D\.S|Fla|F\.W|gov|Gov|govt|Govt|inc|Inc|J\.D|J\.R|J\.T|Jr|Sr|Snr|L\.A|ltd|Lt|Ltd|mfg|M|Mfg|M\.B|M\.C|McG|Mt|M\.T\.M|N\.Y|O\.K|P\.F\.E|Sdn|S\.A|S\.A\.R\.L|S\.O\.S|S\.G|T\.R|U\.K|U\.S|U\.S\.A|V\.W\.H|W\.V|a\.m|A\.m|ca|Ca|cf|Cf|e\.g|E\.g|al|Al|ca|Ca|A\.D|etc|Etc|id|Id|q\.e\.d|Q\.e\.d|vs|Vs|seq|Seq|ib|Ib|ibid|Ibid|i\.e|I\.e|cit|Cit|N\.B|p\.m|P\.m|p\.m|P\.m|p\.s|P\.s|q\.v|Q\.v|sc|Sc|v|V|viz|Viz|v\.v|V\.v|fig|Fig|chap|Chap|no|No|p|pg|Pg|pp|Pp|vol|Vol|C|W|approx|addt|addtl|incl|op|Op)\.</beforebreak>
+          <afterbreak>\s*[A-Z0-9]+</afterbreak>
+        </rule>
+        <rule break="no">
+          <beforebreak>(^|\s+|[\(\[\,\:\;\"\-])(capt|Capt|dr|Dr|gov|Gov|gen|Gen|Mr|Mrs|Ms|Me|Dir|prof|Prof|sgt|Sgt|st|St|Col|Rev|Sen|Lt)\.</beforebreak>
+          <afterbreak>\s*\W+</afterbreak>
+        </rule>
+        <rule break="no">
+          <beforebreak>(^|\s+|[\(\[\,\:\;\"\-])(a\.m|A\.m|c|C|ca|Ca|cf|Cf|e\.g|E\.g|al|Al|ca|Ca|A\.D|etc|Etc|id|Id|q\.e\.d|Q\.e\.d|vs|Vs|seq|Seq|ib|Ib|ibid|Ibid|i\.e|I\.e|cit|Cit|N\.B|p\.m|P\.m|p\.m|P\.m|p\.s|P\.s|q\.v|Q\.v|sc|Sc|v|V|viz|Viz|v\.v|V\.v|appr|approx|addt|incl)\.</beforebreak>
+          <afterbreak>\s*\W+</afterbreak>
+        </rule>
+        <rule break="no">
+          <beforebreak>(^|\s+|[\(\[\,\:\;\"\-])(fig|Fig|chap|Chap|no|No|p|P|pg|Pg|pp|Pp|vol|Vol|approx|addt|addtl|incl|art|Art|op|Op)\.</beforebreak>
+          <afterbreak>\s*[\dA-ZÁÃÄÅÀÂÆÇČÊËÉÈÍÌÎÏÑŒÓÔÕØÖŠÙÚÜÛŸÝa-zçéèêëàâäáæîïíìôöòõóøœřšûüùúñÿý]</afterbreak>
+        </rule>
+        <rule break="no">
+          <beforebreak>(^|\s+|[\(\[\,\:\;\"\-])(jan|Jan|feb|Feb|mar|Mar|apr|Apr|jun|Jun|jul|Jul|aug|Aug|sep|Sep|sept|Sept|oct|Oct|nov|Nov|dec|Dec)\.</beforebreak>
+          <afterbreak>\s*\d+</afterbreak>
+        </rule>
+        <rule break="yes">
+          <beforebreak>(^|\s+|[\(\[\,\:\;\"\-])(b\.c|B\.c|B\.J|a\.c|A\.c|av|Av|Co|corp|Corp|dept|Dept|esp|Esp|D\.C|D\.P\.R\.K|D\.S|Fla|F\.W|gov|Gov|govt|Govt|inc|Inc|J\.D|J\.R|J\.T|Jr|Sr|Snr|L\.A|ltd|Ltd|mfg|Mfg|M\.B|M\.C|McG|Mt|M\.T\.M|N\.Y|O\.K|P\.F\.E|Sdn|S\.A|S\.A\.R\.L|S\.O\.S|S\.G|T\.R|U\.K|U\.S|U\.S\.A|V\.W\.H|W\.V|approx|addt|addtl|incl)\.</beforebreak>
+          <afterbreak>\s+\"</afterbreak>
+        </rule>
+        <rule break="no">
+          <beforebreak>(^|\s+|[\(\[\,\:\;\"\-])(b\.c|B\.c|B\.J|a\.c|A\.c|av|Av|Co|corp|Corp|dept|Dept|esp|Esp|D\.C|D\.P\.R\.K|D\.S|Fla|F\.W|gov|Gov|govt|Govt|inc|Inc|J\.D|J\.R|J\.T|Jr|Sr|Snr|L\.A|ltd|Ltd|mfg|Mfg|M\.B|M\.C|McG|Mt|M\.T\.M|N\.Y|O\.K|P\.F\.E|Sdn|S\.A|S\.A\.R\.L|S\.O\.S|S\.G|T\.R|U\.K|U\.S|U\.S\.A|V\.W\.H|W\.V|approx|addt|addtl|incl)\.</beforebreak>
+          <afterbreak>\s+</afterbreak>
+        </rule>
+        <rule break="no">
+          <beforebreak>\d+\.</beforebreak>
+          <afterbreak>(^|\s+|[\(\[\,\:\;\"\-])(jan|Jan|feb|Feb|mar|Mar|apr|Apr|jun|Jun|jul|Jul|aug|Aug|sep|Sep|sept|Sept|oct|Oct|nov|Nov|dec|Dec)</afterbreak>
+        </rule>
+      </languagerule>
+      <languagerule languagerulename="Icelandic">
+        <!-- money -->
+        <rule break="no">
+          <beforebreak>(^|\s+|[\(\[\,\:\;\"\-])(ma|millj|þús|mö|m)\.</beforebreak>
+          <afterbreak>\s(kr|EUR|DKK|ISK|NOK|Bandaríkja)</afterbreak>
+        </rule>
+        <rule break="no">
+          <beforebreak>(\s|.)(kr)\.</beforebreak>
+          <afterbreak>\s[a-zçéèêëàâäáæîïíìôöòõóøœřšûüùúñÿýðþ0-9\(\)\-]</afterbreak>
+        </rule>
+        <!-- Months -->
+        <rule break="no">
+          <beforebreak>\d+\. (jan|feb|mars|apr|maí|jún|júl|ág|sept|sep|okt|nóv|des)\. (n\.k\. kl\.|nk\. kl\.|n\.k\.|nk\.|kl\.|sl\.)</beforebreak>
+          <afterbreak>\s*?[a-zçéèêëàâäáæîïíìôöòõóøœřšûüùúñÿýðþ0-9\(\)\-]</afterbreak>
+        </rule>
+        <!-- weekdays -->
+        <rule break="no">
+          <beforebreak>(sunnud|mánud|þriðjud|miðvikud|fimmtud|föstud|laugard|sun|mán|þri|mið|fim|fös|lau)\. (sl|n\.k\. kl\.|nk\. kl\.|n\.k\.|nk\.|kl\.)</beforebreak>
+          <afterbreak>\s*?[a-zçéèêëàâäáæîïíìôöòõóøœřšûüùúñÿýðþ0-9\(\)\-]</afterbreak>
+        </rule>
+        <!-- Days -->
+        <rule break="no">
+          <beforebreak>\d+\.</beforebreak>
+          <afterbreak>(\s+)(janúar|febrúar|mars|apríl|maí|júní|júlí|ágúst|september|október|nóvember|desember|jan|feb|mars|apr|maí|jún|júl|ág|sept|sep|okt|nóv|des)</afterbreak>
+        </rule>
+        <!-- also before MAJ (proper nouns etc) -->
+        <rule break="no">
+          <beforebreak>(^|\s+|[\(\[\,\:\;\"\-])(Þýð|þýð|Þ\.m\.t|þ\.m\.t|Þ\.e\.a\.s|þ\.e\.a\.s|Þ\.e|þ\.e|Þ\.á m|þ\.á m|Þ|v|t\. d|T\.d|t\.d|T\.a\.m|t\.a\.m|St|st|S\.s|s\.s|Sr|sr|Skv|skv|S\.k|s\.k|sbr\. t\.d|Sbr|sbr|Próf|próf|Nr|nr|M\.t\.t|m\.t\.t|M\.ö\.o|m\.ö\.o|m\.h|M\.a\.s|m\.a\.s|M\.a|m\.a|Kr|K\.h|k\.h|Hrl|hrl|Hr|hr|h|Fr|fr|F\.h|f\.h|E\.t\.v|e\.t\.v|E|e|Dr|dr|A\.m\.k|a\.m\.k|m\. a|a\. m)\.</beforebreak>
+          <afterbreak>\s*?[A-ZÁÃÄÅÀÂÆÇČÊËÉÈÍÌÎÏÑŒÓÔÕØÖŠÙÚÜÛŸÝÐÞa-zçéèêëàâäáæîïíìôöòõóøœřšûüùúñÿýðþðþ0-9]</afterbreak>
+        </rule>
+        <!-- only before MIN -->
+        <rule break="no">
+          <beforebreak>(^|\s+|[\(\[\,\:\;\"\-])(Þvíl|þvíl|Þús\.kr|þús\.kr|Þús|þús|Þuml|þuml|Þ\.u\.l|þ\.u\.l|Þt|þt|Þskj|þskj|þ\.s|þriðjud|þri|Þrd|þrd|Þml|þml|Þm|Þ\.m|þm|þ\.m|Þlt|þlt|Þjskjs|Þjs|þjs|Þjms|Þing|Þ\.h|þ\.h|Þgf|þgf|Þf|þf|Þd|Þ\.d|þd|þ\.d|þáv|Þ\. á m|þ\.ám|þ\.á\.m|þ\. á m|Þál|þál|þ\.a\.l|það|Þ\.á|þ\.á|þ\.a|þ|Yfirl|yfirl|V\.-Skaft|vsk|vs|Vmf|vmf|Vm|vm|Vlf|vlf|Vl|V\.l|vl|v\.l|Vkm|vkm|Viðsk|viðsk|Vh|vh|Vfr|vfr|Vf|Vestm|V\.b|v\.b|U\.þ\.b|u\.þ\.b|Útv|útsv|Útg|útg|Útfl|útfl|Utd|Utanrmn|utanrmn|Us|us|Uppr|uppr|Uppl|uppl|Ungv|ungv|Umr|umr|Umfl|umfl|Umf|umf|Uh|uh|Tyrkn|tyrkn|Tvfn|tvfn|T\.v|t\.v|Tsk|tsk|tölul|To|to|tl|Till|till|T\.h|t\.h|Tfn|tfn|t\.f|Tékkn|tékkn|Teg|teg|td|t\.d|Tbl|tbl|T|t|S\.-Þing|S\.Þ|Sþ|sþ|sýslum|Svh|svh|svf|S\.U\.S|sunnud|sun|S\.U\.J|S\.U\.F|Stud|stud|Stk|stk|Stj\.tíð|Stjt|Stjskr|stjskr|St\.f|st\.f|S\.st|s\.st|ss|Sp|sp|So|so|S\.-Múl|sml|Sl|S\.l|sl|s\.l|skv\. meðf|Skt|skt|Skst|skst|Skrststj|skrststj|Skr|skr|Skál|skál|Skag|Skaft|Sk|sk|Sign|sign|Siglf|Sig|Síðarn|síðarn|Shlj|shlj|S\.hl|s\.hl|S\.H|Sg|Sfn|sfn|Sf|sf|sept|sept|sep|Sennil|sennil|Sek|sek|Sd|S\.d|sd|s\.d|S\.br|sbr|s\.br|S\.b|s\.b|Samþ|samþ|Sams|sams|Samkv|samkv|sam|Sál|sál|Sæ|sæ|S\.á|s\.á|S|s|Rvk|Rv|Rússn|rússn|Rúmm|rúmm|Rúml|rúml|Rn|rn|Rh|rh|Rgj|rgj|rd|Rang|Ráðh|ráðh|R|Pt|pt|P\.S|P\.s|p\.s|Prsm|prsm|Pr\.pr|pr\.pr|Prós|prós|Pr|pr|Port|port|Pól|pól|Plc|plc|pk|Pfn|pfn|p.\fm|P|p|O\.þl|O\.þ\.l|o\.þl|o\.þ\.l|O\.þ\.h|o\.þ\.h|O\.s\.frv|o\.s\.frv|Örn|örn|Óp|óp|O\.m\.fl|o\.m\.fl|Ókv|ókv|okt|okt|ohf|Óg|óg|Ófn|ófn|O\.fl|ofl|o\.fl|ódags|Ób|ób|Óákv|óákv|O\.áfr|o\.áfr|O\.á|o\.á|O\.a|o\.a|o|N\.-Þing|Núv|núv|N\.T|Nt|N\.t|nt|nóv|nóv|Norr|norr|Nor|No|no|Nnr|nnr|N\.-Múl|Nmgr|nmgr|Nm|N\.m|nm|n\.m|Nlt|nlt|Nl|nl|Nk|N\.k|nk|n\.k|N-Ís|Nh|nh|Nfl|nfl|Nf|nf|Nd|N\.br|n\.br|Nál|nál|N\.á|n\.á|N|n|Mýr|Mvd|mvd|M\.v|m\.v|Múl|Mst|mst|Msk|msk|M\.Sc|Ms|M\.s|ms|m\.s|Mm|M\.m|mm|m\.m|ml|Mkr|mkr|m\.kr|mín|Millj|millj|miðvikud|mið|Mgr|mgr|M\.fl|mfl|m\.fl|Mbl|Mb|M\.b|mb|m\.b|mars|M\.a\.o|m\.a\.o|mánud|Mán|mán|mán|málsl|Máll|máll|Málfr|málfr|Ma\.kr|ma\.kr|maí|mag\. art|Mád|mád|M\.A|Ma|ma|M|m|Lv|lv|Ltd|ltd|L\.R|Lo|lo|L\.Í\.V|L\.Í\.Ú|Líkl|líkl|L\.Í|l\.f|Ld|ld|Lbs|laugard|lau|Latn|latn|Lat|lat|L\.A|L|l|Kvk|kvk|Kv|kv|kr\. pr|kr|Kóp|Km|km|Klt|klt|Klst|klst|Kl|kl|Kk|kk|Kjós|Kínv|kínv|Kh|Kgl|kgl|kg|Kf|kf|Kefl|Kaupf|kaupf|Kap|kap|K|k|jún|jún|júl|júl|Jr|jan|jan|Ít|ít|Ísl|ísl|Ísf|Ír|ír|Indv|indv|Inc|Ie|ie|Íb|íb|Hvk|hvk|Hv|hv|Hún|H\.u\.b|h\.u\.b|Hst|hst|Höf|höf|Hlst|hlst|Hl|hl|Hk|hk|hjónah|H\.Í|H\.H|Hf|H\.f|hf|h\.f|herb|helv|Hebr|hebr|Hdr|hdr|hdl|Hbs|hæstv|Gullbr|Gull|G\.T|G\.t|grb|Grænl|grænl|Gr|gr|Gotn|gotn|Gm|gm|Germ|germ|G|g|Fyrrv|fyrrv|Fyrrn|fyrrn|Fv|fv|f\.v|Fulltr|fulltr|Ftr|ftr|Ft|ft|Fsl|fsl|Fskj|fskj|Fsh|fsh|Fs|fs|Frv|frv|Frt|frt|Frsm|frsm|Frl|frl|Frk|frk|Frh|frh|föstud|fös|Forsk|forsk|Form|form|For|for|Fol|fol|Föd|föd|Fob|F\.o\.b|fob|f\.o\.b|Fn|fn|fm|Fltr|fltr|Flt|flt|Fl|fl|F\.Kr|f\.Kr|fimmtud|fim|Fid|fid|Fi|fi|F\.hl|f\.hl|Fh|fh|Ferm|ferm|Fél|fél|febr|feb|feb|F\.a\.s|f\.a\.s|Fær|fær|F|f|E\.þ\.u\.l|e\.þ\.u\.l|E\.þ\.h|e\.þ\.h|Eyjafj|Eyf|etv|Et|et|Est|est|ES|Erl|erl|Ens|ens|Ennfr|ennfr|E\.Kr|e\.Kr|E\.k|e\.k|Einsk|einsk|Eiginl|eiginl|Ehf|ehf|E\.h|e\.h|Efn|efn|efh|Ef|ef|Ed|E\.B\.E|E\.B|Dós|dós|Do|do|des|des|Dd|dd|Danm|Dan|dan|dags|D|d|Corp|Co|co|cm|Cand|cand|Ca|ca|c\.a|B\.Sc|B\.S|bs|b\.s|brl|Brbl|brbl|Bp|bp|Borg|Bls|bls|Blm|blm|Bl|bl|Bifr|bifr|Bh|bh|Ben|B\.Ed|Bd|bd|Bbs|Barð|baðherb|B\.A|augl|Au|au|Atr|atr|Aths|aths|Ath|ath|Ás|ás|A\.s|a\.s|árg|Árd|árd|Arab|arab|apr|apr|ap|Ao|A\.o|ao|a\.o|A\.n\.l|a\.n\.l|Andr|andr|Andl|andl|A\.n|a\.n|amk|Alþt|Alþm|alþm|Alþjóðl|alþjóðl|Alþbl|Alþ|Áls|áls|Alm|alm|Alg|alg|ákv|Ak|Áhrs|áhrs|ág|ág|Áfn|áfn|Afn|afn|Afl|afl|Ábm|ábm|Abl|Ábfn|ábfn|Áb|áb|A\.B|á|A|a)\.</beforebreak>
+          <afterbreak>\s*?[a-zçéèêëàâäáæîïíìôöòõóøœřšûüùúñÿýðþ0-9\(\)\-]</afterbreak>
+        </rule>
+        <!-- second part of consecutive abbreviations (cand. theol., o. fl.) -->
+        <rule break="no">
+          <beforebreak>(\s|\.)(theol|phil|oecon|med|mag|fl|s|meðf)\.</beforebreak>
+          <afterbreak>\s*?[a-zçéèêëàâäáæîïíìôöòõóøœřšûüùúñÿýðþ0-9]</afterbreak>
+        </rule>
+      </languagerule>
+    </languagerules>
+    <maprules>
+      <languagemap languagepattern="[Aa][Rr].*" languagerulename="Arabic"/>
+      <languagemap languagepattern="[Hh][Yy].*" languagerulename="Armenian"/>
+      <languagemap languagepattern="[Mm][Yy].*" languagerulename="Burmese"/>
+      <languagemap languagepattern="[Zz][HhTt].*" languagerulename="Chinese"/>
+      <languagemap languagepattern="[Hh][Rr].*" languagerulename="Croatian"/>
+      <languagemap languagepattern="[Cc][Ss].*" languagerulename="Czech"/>
+      <languagemap languagepattern="[Dd][Aa].*" languagerulename="Danish"/>
+      <languagemap languagepattern="[Nn][Ll].*" languagerulename="Dutch"/>
+      <languagemap languagepattern="[Ee][Nn].*" languagerulename="English"/>
+      <languagemap languagepattern="[Ee][Tt].*" languagerulename="Estonian"/>
+      <languagemap languagepattern="[Ff][Ii].*" languagerulename="Finnish"/>
+      <languagemap languagepattern="[Ff][Rr].*" languagerulename="French"/>
+      <languagemap languagepattern="[Dd][Ee].*" languagerulename="German"/>
+      <languagemap languagepattern="[Ee][Ll].*" languagerulename="Greek"/>
+      <languagemap languagepattern="[Hh][Uu].*" languagerulename="Hungarian"/>
+      <languagemap languagepattern="[Ii][Ss].*" languagerulename="Icelandic"/>
+      <languagemap languagepattern="[Ii][Tt].*" languagerulename="Italian"/>
+      <languagemap languagepattern="[Kk][Aa].*" languagerulename="Georgian"/>
+      <languagemap languagepattern="[Kk][Oo].*" languagerulename="Korean"/>
+      <languagemap languagepattern="[Jj][Aa].*" languagerulename="Japanese"/>
+      <languagemap languagepattern="[Ll][Vv].*" languagerulename="Latvian"/>
+      <languagemap languagepattern="[Ll][Tt].*" languagerulename="Lithuanian"/>
+      <languagemap languagepattern="[Ff][Aa].*" languagerulename="Persian"/>
+      <languagemap languagepattern="[Pp][Ll].*" languagerulename="Polish"/>
+      <languagemap languagepattern="[Pp][Tt].*" languagerulename="Portuguese"/>
+      <languagemap languagepattern="[Rr][Oo].*" languagerulename="Romanian"/>
+      <languagemap languagepattern="[Rr][Uu].*" languagerulename="Russian"/>
+      <languagemap languagepattern="[Ss][Rr].*" languagerulename="Serbian"/>
+      <languagemap languagepattern="[Ss][Kk].*" languagerulename="Slovak"/>
+      <languagemap languagepattern="[Ss][Ll].*" languagerulename="Slovenian"/>
+      <languagemap languagepattern="[Ee][Ss].*" languagerulename="Spanish"/>
+      <languagemap languagepattern="[Ss][Oo].*" languagerulename="Somali"/>
+      <languagemap languagepattern="[Ss][Ww].*" languagerulename="Swahili"/>
+      <languagemap languagepattern="[Ss][Vv].*" languagerulename="Swedish"/>
+      <languagemap languagepattern="[Tt][Ll].*" languagerulename="Tagalog"/>
+      <languagemap languagepattern="[Tt][Jj].*" languagerulename="TajikCyr"/>
+      <languagemap languagepattern="[Tt][Aa].*" languagerulename="Tamil"/>
+      <languagemap languagepattern="[Tt][Rr].*" languagerulename="Turkish"/>
+      <languagemap languagepattern="[Uu][Kk].*" languagerulename="Ukrainian"/>
+      <languagemap languagepattern="[Vv][Ii].*" languagerulename="Vietnamese"/>
+      <languagemap languagepattern=".*" languagerulename="Default"/>
+    </maprules>
+  </body>
+</srx>

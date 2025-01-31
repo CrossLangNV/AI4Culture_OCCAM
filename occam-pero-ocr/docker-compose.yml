@@ -1,0 +1,41 @@
+version: '3'
+
+services:
+#  django:
+#    build: ./backend
+#    env_file:
+#      - ./secrets/ocr.env
+#    ### We already copy the folder. Also, ./start.sh can't be run from volume mapping.
+#    volumes:
+#      - ./backend:/backend
+#    command: ./start.sh
+#    restart:
+#      always
+#    ports:
+#      - "9060:8000"
+#    runtime: nvidia
+#    environment:
+#      - "DEVICE=cuda:0"
+#      # Only the second one on Turing
+#      - "NVIDIA_VISIBLE_DEVICES=1"
+
+  pero-ocr-api:
+    build: ./services/CL_pero_ocr
+    volumes:
+      - ./services/CL_pero_ocr:/app
+    ports:
+      - 9065:80
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: 1
+              capabilities: [ gpu ]
+    networks:
+      - occam_shared
+
+networks:
+  occam_shared:
+    name: occam_shared
+    external: true
