@@ -1,8 +1,8 @@
 # build environment
 # source: https://mherman.org/blog/dockerizing-a-react-app/
-FROM node:16.17.0-alpine as build
+FROM node:16.17.0-alpine AS build
 WORKDIR /frontend
-ENV PATH /frontend/node_modules/.bin:$PATH
+ENV PATH=/frontend/node_modules/.bin:$PATH
 COPY package.json ./
 COPY package-lock.json ./
 RUN NODE_OPTIONS=--max_old_space_size=1024 npm ci
@@ -22,12 +22,13 @@ EXPOSE 80
 # Copy .env file and shell script to container
 WORKDIR /usr/share/nginx/html
 COPY ./env.sh .
-COPY ./.env .
+COPY ./.env.sample ./.env.local
 
 # Add bash
 RUN apk add --no-cache bash
 
 # Make our shell script executable
-RUN chmod +x env.sh
+RUN chmod +x env.sh \
+	&& chmod -R a+rX /usr/share/nginx/html
 
 CMD ["/bin/bash", "-c", "/usr/share/nginx/html/env.sh && nginx -g \"daemon off;\""]

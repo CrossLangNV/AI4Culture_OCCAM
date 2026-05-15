@@ -3,6 +3,7 @@ Connector methods to POST-OCR correction API.
 """
 
 import os
+import time
 import urllib.parse
 from typing import Optional
 
@@ -20,6 +21,8 @@ class CorrectionResponse(BaseModel):
 
 class CorrectionConnector:
     URL = os.environ.get("CORRECTION_URL", "http://host.docker.internal:18100")
+    LLM_JSON_PARSE_RETRIES = int(os.environ.get("CORRECTION_LLM_RETRIES", "3"))
+    LLM_RETRY_DELAY_SECONDS = float(os.environ.get("CORRECTION_LLM_RETRY_DELAY", "1.0"))
 
     def health(self) -> bool:
         response = requests.get(self.URL)
@@ -72,12 +75,29 @@ class CorrectionConnector:
             data["prompt"] = prompt
 
         url = urllib.parse.urljoin(self.URL, "tools/llm")
-        response = requests.post(
-            url,
-            json=data,
-        )
+        last_response = None
 
-        if not response.ok:
+        for attempt in range(1, self.LLM_JSON_PARSE_RETRIES + 1):
+            response = requests.post(
+                url,
+                json=data,
+                timeout=120,
+            )
+            last_response = response
+
+            if response.ok:
+                return CorrectionResponse(**response.json())
+
+            response_text = response.text or ""
+            is_retryable_parse_failure = (
+                response.status_code >= 500
+                and "Could not parse as JSON" in response_text
+                and attempt < self.LLM_JSON_PARSE_RETRIES
+            )
+            if is_retryable_parse_failure:
+                time.sleep(self.LLM_RETRY_DELAY_SECONDS)
+                continue
+
             raise_response(response)
 
-        return CorrectionResponse(**response.json())
+        raise_response(last_response)

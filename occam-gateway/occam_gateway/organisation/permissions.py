@@ -12,6 +12,19 @@ class HasOrganisationAPIKey(BaseHasAPIKey):
     model = OrganisationAPIKey
 
 
+def get_optional_organisation_api_key(request):
+    raw_key = request.META.get("HTTP_API_KEY")
+    if not raw_key:
+        return None
+
+    try:
+        return OrganisationAPIKey.objects.get_from_key(raw_key)
+    except Exception:
+        if getattr(request.user, "is_authenticated", False):
+            return None
+        raise
+
+
 class IsAuthenticatedOrHasAPIKey(BasePermission):
     """
     Grant access if user is authenticated OR has a valid API key.
@@ -25,26 +38,14 @@ class IsAuthenticatedOrHasAPIKey(BasePermission):
         return HasOrganisationAPIKey().has_permission(request, view)
 
 
-class IsAuthenticatedOrHasAPIKeyDebug(BaseHasAPIKey):
-    model = OrganisationAPIKey
-
+class IsAuthenticatedOrHasAPIKeyDebug(BasePermission):
     def has_permission(self, request, view):
         # Print/log the incoming headers:
         logger.debug("---- Headers ----")
         for k, v in request.headers.items():
             logger.debug("%s: %s", k, v)
 
-        # Now let the parent class handle normal logic
-        result = super().has_permission(request, view)
+        result = IsAuthenticatedOrHasAPIKey().has_permission(request, view)
 
-        logger.debug("APIKey permission result: %s", result)
+        logger.debug("Auth/API key permission result: %s", result)
         return result
-
-    def get_key(self, request):
-        """
-        Extracts the raw key string from the request headers.
-        We'll add debug logs to see what it returns.
-        """
-        raw_key = super().get_key(request)
-        logger.debug("Extracted raw_key = %s", raw_key)
-        return raw_key

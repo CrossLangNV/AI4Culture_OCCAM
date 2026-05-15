@@ -367,22 +367,28 @@ a {
   width: 100%;
 }
 
-.transcription-line.highlight {
+.transcription-line.highlight, .correction-line.highlight, .translation-line.highlight {
   background-color: yellow;
 }
 
-.transcription-panel {
+.transcription-line:hover, .correction-line:hover, .translation-line:hover {
+  background-color: yellow;
+}
+
+.transcription-panel, .translation-panel {
   overflow-y: auto;
   max-height: 75vh;
   //padding: 10px;
 }
 
-.transcription-line {
+.transcription-line, .translation-line, .correction-line {
   padding: 4px;
   //cursor: pointer;
 }
 
-.transcription-line[contenteditable="true"] {
+.transcription-line[contenteditable="true"],
+.correction-line[contenteditable="true"],
+.translation-line[contenteditable="true"] {
   border-bottom: 1px dashed #ccc;
   padding: 4px;
 }

@@ -16,8 +16,7 @@ from rest_framework.response import Response
 from rest_framework.views import APIView
 
 from occam_gateway import settings
-from organisation.models import OrganisationAPIKey
-from organisation.permissions import HasOrganisationAPIKey
+from organisation.permissions import IsAuthenticatedOrHasAPIKey, get_optional_organisation_api_key
 from shared.models import StatusField
 from shared.pipeline import PipelineStepEnum
 from .connector import CEFETranslationConnector
@@ -72,11 +71,11 @@ class BaseTranslationAPIView(GenericAPIView):
     Base class for Translation API views that handle common functionalities.
     """
 
-    permission_classes = [HasOrganisationAPIKey]
+    permission_classes = [IsAuthenticatedOrHasAPIKey]
 
     def get_api_key(self, request):
         """Retrieve the OrganisationAPIKey from the request."""
-        return OrganisationAPIKey.objects.get_from_request(request)
+        return get_optional_organisation_api_key(request)
 
     def get_pipeline_steps(self, options):
         if options is None:
@@ -625,7 +624,7 @@ class TranslatePipelineOptionsAPIView(APIView):
     Retrieve available pipeline options for translation.
     """
 
-    permission_classes = [HasOrganisationAPIKey]
+    permission_classes = [IsAuthenticatedOrHasAPIKey]
 
     @extend_schema(
         description="Retrieve available pipeline options for translation.",
@@ -643,7 +642,7 @@ class TranslationJobStatusAPIView(APIView):
     Check the status of a translation job using its task ID.
     """
 
-    permission_classes = [HasOrganisationAPIKey]
+    permission_classes = [IsAuthenticatedOrHasAPIKey]
 
     def get(self, request, task_id, *args, **kwargs):
         task_result = AsyncResult(task_id)
@@ -662,7 +661,7 @@ class TranslationJobResultAPIView(APIView):
     Retrieve the result of a completed translation job using its task ID.
     """
 
-    permission_classes = [HasOrganisationAPIKey]
+    permission_classes = [IsAuthenticatedOrHasAPIKey]
 
     def get(self, request, task_id, *args, **kwargs):
         task_result = AsyncResult(task_id)

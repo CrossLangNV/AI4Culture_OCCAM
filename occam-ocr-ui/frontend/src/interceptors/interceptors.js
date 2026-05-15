@@ -1,7 +1,7 @@
 import axios from "axios";
 import { Logout } from "../actions/authActions";
-import { useDispatch } from "react-redux";
 import { baseUrl } from "../constants/axiosConf";
+import store from "../Store";
 
 export const setupInterceptorsTo = (axiosInstance) => {
   axiosInstance.interceptors.response.use(
@@ -16,7 +16,7 @@ export const setupInterceptorsTo = (axiosInstance) => {
         const refreshToken = localStorage.getItem("refreshToken");
         if (!refreshToken) {
           // No refresh token => must log out
-          useDispatch(Logout());
+          store.dispatch(Logout());
           return Promise.reject(error);
         }
 
@@ -27,8 +27,8 @@ export const setupInterceptorsTo = (axiosInstance) => {
           //  refresh: refreshToken,
           //});
 
-          //hardcoded url for now
-          const response = await axios.post("https://ai4culture.crosslang.dev/api/user/token/refresh/", {
+          const refreshUrl = `${baseUrl || ""}/api/user/token/refresh/`;
+          const response = await axios.post(refreshUrl, {
             refresh: refreshToken,
           });
 
@@ -47,7 +47,7 @@ export const setupInterceptorsTo = (axiosInstance) => {
           return axiosInstance(originalRequest);
         } catch (refreshError) {
           // Refresh failed => must log out
-          useDispatch(Logout());
+          store.dispatch(Logout());
           return Promise.reject(refreshError);
         }
       }

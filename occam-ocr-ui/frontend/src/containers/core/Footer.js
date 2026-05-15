@@ -35,7 +35,7 @@ const Footer = () => {
           href="https://crosslang.com/about-us/"
           className="footer-links font-light text-xs w-10 text-600"
         >
-          Copyright © 2025
+          Copyright © 2026
         </a>
         <p></p>
       </div>

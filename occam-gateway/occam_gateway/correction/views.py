@@ -20,8 +20,10 @@ from rest_framework.response import Response
 
 from occam_gateway import settings
 from ocr.pagexml2geojson import main_from_xml_string
-from organisation.models import OrganisationAPIKey
-from organisation.permissions import HasOrganisationAPIKey
+from organisation.permissions import (
+    IsAuthenticatedOrHasAPIKey,
+    get_optional_organisation_api_key,
+)
 from shared.models import StatusField
 from shared.pipeline import (
     PageXMLParagraphParser,
@@ -36,16 +38,25 @@ from .ocr_correction_manual import OCRCorrectorManual
 from .serializers import (
     CorrectionFileSerializer,
     CorrectionOptionsResponseSerializer,
-    PostOCRCorrectionLLMSerializer,
-    PostOCRCorrectionSerializer,
     ManualCorrectionSerializer,
     ManualCorrectionStringSerializer,
+    PostOCRCorrectionLLMSerializer,
+    PostOCRCorrectionSerializer,
 )
-from .tasks import manual_correction_task, manual_correction_string_task, manual_correction_geojson_task, \
-    post_ocr_correction_task, correction_file_geojson_task
+from .tasks import (
+    correction_file_geojson_task,
+    manual_correction_geojson_task,
+    manual_correction_string_task,
+    manual_correction_task,
+    post_ocr_correction_task,
+)
 
 logger = logging.getLogger(__name__)
 logger.info("Django views - correction")
+
+
+def get_api_key(request):
+    return get_optional_organisation_api_key(request)
 
 
 def handle_exceptions(func: Callable):
@@ -76,7 +87,7 @@ class CorrectionJobStatusAPIView(GenericAPIView):
     """
     Poll the status of a Celery-based correction job
     """
-    permission_classes = [HasOrganisationAPIKey]
+    permission_classes = [IsAuthenticatedOrHasAPIKey]
 
     def get(self, request, task_id, *args, **kwargs):
         task_result = AsyncResult(task_id)
@@ -95,7 +106,7 @@ class CorrectionJobResultAPIView(GenericAPIView):
     """
     Retrieve the final result of a Celery-based correction job
     """
-    permission_classes = [HasOrganisationAPIKey]
+    permission_classes = [IsAuthenticatedOrHasAPIKey]
 
     def get(self, request, task_id, *args, **kwargs):
         task_result = AsyncResult(task_id)
@@ -129,7 +140,7 @@ class OCRManualCorrectionAPIView(GenericAPIView):
     Supports both sync and async correction based on `async_param`.
     """
 
-    permission_classes = [HasOrganisationAPIKey]
+    permission_classes = [IsAuthenticatedOrHasAPIKey]
     serializer_class = ManualCorrectionSerializer
     parser_classes = [MultiPartParser]
 
@@ -157,7 +168,7 @@ class OCRManualCorrectionAPIView(GenericAPIView):
         params = {k: v for k, v in params.items() if v is not None}
 
         # Create a UsageCorrection record
-        api_key = OrganisationAPIKey.objects.get_from_request(request)
+        api_key = get_api_key(request)
         usage = UsageCorrection.objects.create(
             api_key=api_key,
             method="manual_correction",
@@ -229,7 +240,7 @@ class OCRManualCorrectionStringInputAPIView(GenericAPIView):
     Supports sync/async via `async_param`.
     """
 
-    permission_classes = [HasOrganisationAPIKey]
+    permission_classes = [IsAuthenticatedOrHasAPIKey]
     serializer_class = ManualCorrectionStringSerializer
 
     @handle_exceptions
@@ -252,7 +263,7 @@ class OCRManualCorrectionStringInputAPIView(GenericAPIView):
         xml_log_changes = serializer.validated_data.get("xml_log_changes")
 
         # Create usage
-        api_key = OrganisationAPIKey.objects.get_from_request(request)
+        api_key = get_api_key(request)
         usage = UsageCorrection.objects.create(
             api_key=api_key,
             method="manual_correction_string",
@@ -360,7 +371,7 @@ class OCRManualCorrectionGeoJsonAPIView(GenericAPIView):
     Supports sync/async via `async_param`.
     """
 
-    permission_classes = [HasOrganisationAPIKey]
+    permission_classes = [IsAuthenticatedOrHasAPIKey]
     serializer_class = ManualCorrectionSerializer
     parser_classes = [MultiPartParser]
 
@@ -425,7 +436,7 @@ class OCRManualCorrectionGeoJsonAPIView(GenericAPIView):
         }
         params = {k: v for k, v in params.items() if v is not None}
 
-        api_key = OrganisationAPIKey.objects.get_from_request(request)
+        api_key = get_api_key(request)
         usage = UsageCorrection.objects.create(
             api_key=api_key,
             method="manual_correction_geojson",
@@ -506,7 +517,7 @@ class CorrectionAPIViewMixin(GenericAPIView):
 
     parser_classes = [MultiPartParser]
     serializer_class = PostOCRCorrectionSerializer
-    permission_classes = [HasOrganisationAPIKey]
+    permission_classes = [IsAuthenticatedOrHasAPIKey]
 
     def __init__(self, correction_method, name, *args, **kwargs):
         super().__init__(*args, **kwargs)
@@ -524,7 +535,7 @@ class CorrectionAPIViewMixin(GenericAPIView):
         async_param = serializer.validated_data.get("async_param", False)
 
         # Create usage
-        api_key = OrganisationAPIKey.objects.get_from_request(request)
+        api_key = get_api_key(request)
         usage = UsageCorrection.objects.create(
             api_key=api_key,
             method=self.name,
@@ -603,7 +614,7 @@ class PostOCRLLMAPIView(CorrectionAPIViewMixin):
         _prompt = serializer.validated_data.get("prompt")
         async_param = serializer.validated_data.get("async_param", False)
 
-        api_key = OrganisationAPIKey.objects.get_from_request(request)
+        api_key = get_api_key(request)
         usage = UsageCorrection.objects.create(
             api_key=api_key,
             method=self.name,  # "llm"
@@ -655,11 +666,10 @@ class CorrectionFileAPIView(GenericAPIView):
 
     parser_classes = [MultiPartParser]
     serializer_class = CorrectionFileSerializer
-    permission_classes = [HasOrganisationAPIKey]
+    permission_classes = [IsAuthenticatedOrHasAPIKey]
 
     @handle_exceptions
     def post(self, request, *args, **kwargs):
-        api_key = OrganisationAPIKey.objects.get_from_request(request)
         serializer = self.get_serializer(data=request.data)
         if not serializer.is_valid():
             return Response(serializer.errors, status=400)
@@ -762,7 +772,7 @@ class CorrectionFileGeoJsonAPIView(GenericAPIView):
 
     parser_classes = [MultiPartParser]
     serializer_class = CorrectionFileSerializer
-    permission_classes = [HasOrganisationAPIKey]
+    permission_classes = [IsAuthenticatedOrHasAPIKey]
 
     @handle_exceptions
     def post(self, request, *args, **kwargs):
@@ -776,7 +786,7 @@ class CorrectionFileGeoJsonAPIView(GenericAPIView):
         async_param = serializer.validated_data.get("async_param", False)
 
         # (1) Create a UsageCorrection record if you want to track usage
-        api_key = OrganisationAPIKey.objects.get_from_request(request)
+        api_key = get_api_key(request)
         usage = UsageCorrection.objects.create(
             api_key=api_key,
             method=f"file_geojson_{option}",

@@ -36,6 +36,26 @@ Each service runs independently and requires specific configurations. Ensure you
    docker compose up -d --build
    ```
 
+## Release Builds
+
+The checked-in `docker-compose.yml` files are mainly convenient for local/dev usage. For publishing immutable images, build the API and UI directly from this monorepo:
+
+```bash
+cd /path/to/AI4Culture_OCCAM
+REGISTRY=docker2.crosslang.com \
+NAMESPACE=ai4c \
+API_IMAGE_NAME=occam-gateway-jwt \
+UI_IMAGE_NAME=occam-ocr-ui-jwt \
+TAG=2026-05-15 \
+bash ./build-release-images.sh
+```
+
+This produces two images:
+- the gateway API image from `occam-gateway/occam_gateway`
+- the OCR UI image from `occam-ocr-ui/frontend`
+
+The script only builds locally. Push to the registry yourself once you have validated the tags.
+
 ## API Documentation
 For API details, refer to the documentation provided by each module. The main gateway API documentation is available at:
 [http://localhost:18000/docs](http://localhost:18000/docs).

@@ -7,6 +7,8 @@ touch ./env-config.js
 # Add assignment
 echo "window._env_ = {" >> ./env-config.js
 
+public_vars="REACT_APP_API_URL REACT_APP_VERSION MAX_FILESIZE"
+
 # Read each line in .env file
 # Each line represents key=value pairs
 while read -r line || [[ -n "$line" ]];
@@ -15,6 +17,10 @@ do
   if printf '%s\n' "$line" | grep -q -e '='; then
     varname=$(printf '%s\n' "$line" | sed -e 's/=.*//')
     varvalue=$(printf '%s\n' "$line" | sed -e 's/^[^=]*=//')
+  fi
+
+  if [[ ! " $public_vars " =~ " $varname " ]]; then
+    continue
   fi
 
   # Read value of current variable if exists as Environment variable

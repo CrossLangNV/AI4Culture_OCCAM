@@ -5,7 +5,7 @@ A single-page React application that:
 - **Applies post-OCR text corrections** (manual transcription or automated approaches).
 - **Translates** extracted text into multiple languages.
 - **Allows in-browser viewing and downloading** of results.
-- **Supports** JWT or API Key authentication with the backend.
+- **Uses** JWT authentication in the browser for OCR, correction, and translation workflows.
 
 ---
 
@@ -31,7 +31,8 @@ This project uses:
 - **Node.js** (v14 or higher)
 - **npm** (v6 or higher) or **Yarn** (v1 or higher)
 - **OCR-enabled backend** that accepts image files and returns OCR data (PDF OCR is not supported by this UI).
-- **API Key** or **JWT token** (if your backend requires authentication).
+- **JWT token** for browser-based UI usage.
+- Organisation **API keys** remain useful for service-to-service or direct API clients.
 
 ---
 
@@ -62,13 +63,11 @@ Set environment variables in a `.env` or `.env.local` file at the project root. 
 
 ```bash
 REACT_APP_API_URL=<API_URL>
-REACT_APP_DJANGO_CLIENT_ID=<DJANGO_CLIENT_ID>
-REACT_APP_DJANGO_CLIENT_SECRET=<DJANGO_CLIENT_SECRET>
 REACT_APP_VERSION=<VERSION>
-REACT_APP_API_KEY=<API_KEY>
+MAX_FILESIZE=<MAX_FILESIZE_BYTES>
 ```
 
-These values can be accessed in the code (e.g., `process.env.REACT_APP_API_BASE_URL`) and passed through an **Axios** interceptor or directly in requests for authentication.
+These values are exposed as public runtime configuration for the browser and should stay limited to non-secret values such as the API base URL, version, and upload size limits.
 
 ### Docker Deployment
 

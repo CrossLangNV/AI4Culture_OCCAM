@@ -10,6 +10,7 @@ import { Ripple } from "primereact/ripple";
 import { Menu } from "primereact/menu";
 import { Menubar } from "primereact/menubar";
 import { Button } from "primereact/button";
+import { Tooltip } from "primereact/tooltip";
 
 const Header = () => {
   const location = useLocation();
@@ -442,6 +443,11 @@ const Header = () => {
 
   return (
     <div className="bg-white">
+      <Tooltip
+        target="#info-tooltip-icon"
+        content="This interface provides an extension of the OCCAM services as part of the AI4Culture project."
+        position="right"
+      />
       {/* END Menu */}
 
       {/* BEGIN Breadcrumbs */}
@@ -450,25 +456,35 @@ const Header = () => {
         className="list-none py-3 px-5 m-0 flex align-items-center font-medium overflow-x-auto"
       >
         {/* HOME breadcrumb */}
-        {location.pathname === "/" && (
+        {location.pathname.startsWith("/ui") && (
           <>
             <li className="pr-3">
-              <button className="btn-no-decoration disabled-button text-white white-space-nowrap">
+              <button
+                className="btn-no-decoration text-white white-space-nowrap underline"
+                onClick={() => navigate("/ui")}
+              >
                 Home
               </button>
             </li>
             <li className="px-2">
               <i className="pi pi-angle-right text-white" />
             </li>
-            <li className="px-2">
-              <button className="btn-no-decoration text-white white-space-nowrap disabled-button">
-                OCR
-              </button>
-            </li>
+            <i
+              id="info-tooltip-icon"
+              className="pi pi-info-circle"
+              style={{
+                position: "absolute",
+                left: "9rem",
+                top: "1.2rem",
+                cursor: "pointer",
+                color: "#fff"
+              }}
+            />
           </>
         )}
         {/* OTHER breadcrumbs */}
         {location.pathname !== "/" &&
+          !location.pathname.startsWith("/ui") &&
           location.pathname !== "/login" &&
           !location.pathname.startsWith("signup") &&
           location.pathname !== "/forgot-password" &&

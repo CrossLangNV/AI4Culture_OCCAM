@@ -20,8 +20,11 @@ from rest_framework.response import Response
 from rest_framework.views import APIView
 
 from occam_gateway import settings
-from organisation.models import OrganisationAPIKey
-from organisation.permissions import HasOrganisationAPIKey, IsAuthenticatedOrHasAPIKeyDebug
+from organisation.permissions import (
+    HasOrganisationAPIKey,
+    IsAuthenticatedOrHasAPIKey,
+    get_optional_organisation_api_key,
+)
 from shared.models import StatusField
 from shared.pipeline import PipelineStepEnum
 from .models import OCREngine, UsageOCR
@@ -78,7 +81,7 @@ class OCREngineListView(ListAPIView):
 
 
 class OCRHealthCheckAPIView(APIView):
-    permission_classes = [IsAuthenticatedOrHasAPIKeyDebug]
+    permission_classes = [IsAuthenticatedOrHasAPIKey]
 
     @extend_schema(description="Check the health of the OCR service")
     def get(self, request, *args, **kwargs):
@@ -96,7 +99,10 @@ class BaseOCRAPIView(GenericAPIView):
     Base class for OCR API views that process images. Subclasses must implement get_image.
     """
 
-    permission_classes = [HasOrganisationAPIKey]
+    permission_classes = [IsAuthenticatedOrHasAPIKey]
+
+    def get_api_key(self, request):
+        return get_optional_organisation_api_key(request)
 
     def get_image(self, serializer):
         """
@@ -666,7 +672,7 @@ class CombinedOCRAPIView(BaseCombinedOCRAPIView):
 
         # Create usage record
         usage = self.create_usage(
-            api_key=OrganisationAPIKey.objects.get_from_request(request),
+            api_key=self.get_api_key(request),
             engine=engine,
             image_size=_file.size
         )
@@ -731,7 +737,7 @@ class CombinedOCRFromURLAPIView(BaseCombinedOCRAPIView):
 
         # Create usage record
         usage = self.create_usage(
-            api_key=OrganisationAPIKey.objects.get_from_request(request),
+            api_key=self.get_api_key(request),
             engine=engine,
             image_size=0  # Size will be updated after fetching in sync mode
         )
@@ -794,7 +800,7 @@ class OCRPipelineOptionsAPIView(GenericAPIView):
     Available options for the pipeline
     """
 
-    permission_classes = [HasOrganisationAPIKey]
+    permission_classes = [IsAuthenticatedOrHasAPIKey]
 
     @extend_schema(description="Available pipeline options")
     def get(self, request, *args, **kwargs):
@@ -803,7 +809,7 @@ class OCRPipelineOptionsAPIView(GenericAPIView):
 
 
 class OCRJobStatusAPIView(APIView):
-    permission_classes = [HasOrganisationAPIKey]
+    permission_classes = [IsAuthenticatedOrHasAPIKey]
 
     def get(self, request, task_id, *args, **kwargs):
         task_result = AsyncResult(task_id)
@@ -818,7 +824,7 @@ class OCRJobStatusAPIView(APIView):
 
 
 class OCRJobResultAPIView(APIView):
-    permission_classes = [HasOrganisationAPIKey]
+    permission_classes = [IsAuthenticatedOrHasAPIKey]
 
     def get(self, request, task_id, *args, **kwargs):
         task_result = AsyncResult(task_id)
@@ -849,7 +855,7 @@ class OCRCorrectionAPIView(GenericAPIView):
     Correct a PageXML file using a manual transcription
     """
 
-    permission_classes = [HasOrganisationAPIKey]
+    permission_classes = [IsAuthenticatedOrHasAPIKey]
     serializer_class = CorrectionSerializer
     parser_classes = [MultiPartParser]
 

@@ -35,7 +35,11 @@ if DEBUG:
 
 ALLOWED_HOSTS = [h for h in os.environ.get("ALLOWED_HOSTS", "localhost").split(" ")]
 
-CSRF_TRUSTED_ORIGINS = [o for o in os.environ.get("CSRF_TRUSTED_ORIGINS", "").split(" ")]
+CSRF_TRUSTED_ORIGINS = [
+    origin
+    for origin in os.environ.get("CSRF_TRUSTED_ORIGINS", "").split(" ")
+    if origin
+]
 
 # Application definition
 
@@ -217,6 +221,7 @@ CELERY_TIMEZONE = 'UTC'
 
 CELERY_QUEUES = (
     Queue('ocr_queue', Exchange('ocr_queue'), routing_key='ocr_queue'),
+    Queue('correction_queue', Exchange('correction_queue'), routing_key='correction_queue'),
     Queue('translation_queue', Exchange('translation_queue'), routing_key='translation_queue'),
 )
 

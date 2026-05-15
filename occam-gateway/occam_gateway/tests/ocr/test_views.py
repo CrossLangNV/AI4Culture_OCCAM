@@ -56,6 +56,8 @@ def mock_ocr_image(*args, **kwargs):
           <Unicode>History of Automated Advisories</Unicode>
         </TextEquiv>
       </TextLine>
+from django.contrib.auth import get_user_model
+from rest_framework_simplejwt.tokens import AccessToken
     </TextRegion>
   </Page>
 </PcGts>
@@ -81,6 +83,26 @@ def mock_fetch_image(url, *args, **kwargs):
         return response
 
 
+
+    def test_post_with_jwt(self):
+        user = get_user_model().objects.create_user(
+            email="ocr-jwt@example.com",
+            password="testpass123",
+        )
+        token = AccessToken.for_user(user)
+        self.client.credentials(HTTP_AUTHORIZATION=f"Bearer {token}")
+
+        with open(FILENAME_IMAGE, "rb") as file:
+            response = self.client.post(
+                self.url,
+                data={"file": file, "engineId": self.ocr_engine.id},
+                format="multipart",
+            )
+
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+        usage = UsageOCR.objects.last()
+        self.assertIsNone(usage.api_key)
+        self.assertEqual(usage.status, StatusField.SUCCESS)
 class OCRShared(APITestCase):
     @classmethod
     def setUpClass(cls):
@@ -138,7 +160,7 @@ class OCREngineListViewTest(APITestCase):
         # Remove authentication credentials
         self.client.credentials()
         response = self.client.get(self.url)
-        self.assertEqual(response.status_code, status.HTTP_403_FORBIDDEN)
+        self.assertEqual(response.status_code, status.HTTP_401_UNAUTHORIZED)
 
 
 @mock.patch("ocr.connector.LocalOcrConnector.ocr_image", mock_ocr_image)

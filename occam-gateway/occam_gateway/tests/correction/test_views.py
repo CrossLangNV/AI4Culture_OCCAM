@@ -5,6 +5,8 @@ import django.test
 from django.urls import reverse
 from rest_framework import status
 
+from django.contrib.auth import get_user_model
+from rest_framework_simplejwt.tokens import AccessToken
 from correction.models import UsageCorrection
 from correction.views import (
     CorrectionEnum,
@@ -34,6 +36,29 @@ class PostOCRSymSpellAPIViewTest(django.test.TestCase, SharedTestAPIPermission):
         # Login
         self.headers = create_test_api_headers()
 
+
+    def test_post_with_jwt(self):
+        user = get_user_model().objects.create_user(
+            email="correction-jwt@example.com",
+            password="testpass123",
+        )
+        token = AccessToken.for_user(user)
+        language = "fr"
+        text = "misdlen Self Indulgence, scrivent ahrègé M57 est un groupe d'étutropunt américain."
+
+        response = self.client.post(
+            self.url,
+            HTTP_AUTHORIZATION=f"Bearer {token}",
+            data={"text": text, "language": language},
+        )
+
+        with self.subTest("Access"):
+            self.assertEqual(status.HTTP_200_OK, response.status_code)
+
+        with self.subTest("Usage"):
+            usage = UsageCorrection.objects.last()
+            self.assertIsNone(usage.api_key)
+            self.assertEqual(usage.method, "sym_spell")
     def test_post(self):
         language = "fr"
         text = "misdlen Self Indulgence, scrivent ahrègé M57 est un groupe d'étutropunt américain, onigiraire de New Yek. leur musique est formée d'un nélange de hipobop, puk rock, rock alternatif, electronia, sechno et musique isdurtrielle. le nom du greupe provient d'un alham du chonteur Sinmy Arire et de sen père enregistré en 1995."

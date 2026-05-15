@@ -23,7 +23,7 @@ logger = logging.getLogger(__name__)
 
 @shared_task(
     bind=True,
-    queue='ocr_queue',  # or create a dedicated 'correction_queue' if you prefer
+    queue='correction_queue',
     time_limit=TIME_LIMIT,
     soft_time_limit=TIME_LIMIT - 10
 )
@@ -91,7 +91,7 @@ def manual_correction_task(self, usage_id: int, ocr_content: bytes, transcriptio
 
 @shared_task(
     bind=True,
-    queue='ocr_queue',
+    queue='correction_queue',
     time_limit=TIME_LIMIT,
     soft_time_limit=TIME_LIMIT - 10
 )
@@ -168,7 +168,7 @@ def manual_correction_string_task(self, usage_id: int, ocr_str: str, transcripti
 
 @shared_task(
     bind=True,
-    queue='ocr_queue',
+    queue='correction_queue',
     time_limit=TIME_LIMIT,
     soft_time_limit=TIME_LIMIT - 10
 )
@@ -283,7 +283,7 @@ def _xml2sentences_helper(xml_str: str) -> str:
 
 @shared_task(
     bind=True,
-    queue='ocr_queue',
+    queue='correction_queue',
     time_limit=TIME_LIMIT,
     soft_time_limit=TIME_LIMIT - 10
 )
@@ -339,7 +339,7 @@ def post_ocr_correction_task(self, usage_id: int, text: str, language: str, meth
 
 @shared_task(
     bind=True,
-    queue='ocr_queue',
+    queue='correction_queue',
     time_limit=TIME_LIMIT,
     soft_time_limit=TIME_LIMIT - 10
 )

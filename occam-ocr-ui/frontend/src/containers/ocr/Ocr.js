@@ -15,11 +15,11 @@ import React, { useCallback, useEffect, useRef, useState } from "react";
 import { useDispatch } from "react-redux";
 import { ResetTranslatedFileStatus } from "../../actions/translationActions";
 import api from "../../interceptors/api";
-import Analysis from "../translate/Analysis";
 
 import { OCRSplitview, SelectButtonOCRView } from "./OCRSplitview";
 import { PageSelection } from "./PageSelection";
 import ProgressBar from "./ProgressBar";
+import { ProgressBar as PrimeProgressBar } from "primereact/progressbar";
 
 const TOAST_LIFE = 10000;
 
@@ -33,19 +33,55 @@ const updateArrayAtIndex = (array, index, data) => {
 };
 
 const getFormConfig = () => {
-  return {
-    headers: {
-      "Content-Type": "multipart/form-data",
-      "Api-Key": window._env_.REACT_APP_API_KEY,
-    },
-  };
+  return {};
 };
+
+async function mergeUserEditsIntoPageXML(pageXML, userLines) {
+  if (!pageXML || !userLines?.length) return pageXML;
+
+  const parser = new xml2js.Parser();
+  const builder = new xml2js.Builder({ headless: true });
+
+  let parsed;
+  try {
+    parsed = await parser.parseStringPromise(pageXML);
+  } catch (e) {
+    console.warn("Failed to parse existing pageXML for merging edits.", e);
+    return pageXML;
+  }
+
+  const page = parsed?.PcGts?.Page?.[0];
+  if (!page) return pageXML;
+
+  const textRegions = page.TextRegion || [];
+  textRegions.forEach((region) => {
+    const lines = region.TextLine || [];
+    lines.forEach((lineObj) => {
+      const lineId = lineObj.$.id;
+      const userLine = userLines.find((ul) => ul.id === lineId);
+      if (userLine) {
+        if (!lineObj.TextEquiv) lineObj.TextEquiv = [{}];
+        if (!lineObj.TextEquiv[0].Unicode) {
+          lineObj.TextEquiv[0].Unicode = [""];
+        }
+        lineObj.TextEquiv[0].Unicode[0] = userLine.text;
+      }
+    });
+  });
+
+  return builder.buildObject(parsed);
+}
 
 const Ocr = () => {
   const dispatch = useDispatch();
 
   const uploadRef = useRef(null);
   const toast = useRef(null);
+  const progressTimerRef = useRef(null);
+
+  const [taskInProgress, setTaskInProgress] = useState(false);
+  const [taskProgress, setTaskProgress] = useState(0);
+  const [taskName, setTaskName] = useState("");
 
   const [uploadedFile, setUploadedFile] = useState(null);
   const [isImageFileLoading, setIsImageFileLoading] = useState(false);
@@ -72,8 +108,6 @@ const Ocr = () => {
   const [isTranslating, setIsTranslating] = useState(false);
   const [selectedSourceLang, setSelectedSourceLang] = useState(null);
   const [selectedTargetLang, setSelectedTargetLang] = useState(null);
-
-  const [analysisFile, setAnalysisFile] = useState(null);
 
   const [displayDownloadOptions, setDisplayDownloadOptions] = useState(false);
 
@@ -103,7 +137,60 @@ const Ocr = () => {
     1: true,
     2: false,
     3: false,
+    4: false,
   });
+
+  const [tooltipHighlightMode, setTooltipHighlightMode] = useState("original");
+  const disableOriginalMode = false;
+
+  function isCorrectionAvailable() {
+    const lines = correctionTextLines[indexPage] || [];
+    return lines.length > 0;
+  }
+
+  function isTranslationAvailable() {
+    return !!(translation[indexPage] && translation[indexPage].trim());
+  }
+
+  const startTimeBasedProgress = useCallback((durationSecs, displayName) => {
+    if (progressTimerRef.current) {
+      clearInterval(progressTimerRef.current);
+      progressTimerRef.current = null;
+    }
+
+    setTaskProgress(0);
+    setTaskName(displayName || "Processing...");
+    setTaskInProgress(true);
+
+    const startTime = Date.now();
+    const intervalId = setInterval(() => {
+      const elapsedSec = (Date.now() - startTime) / 1000;
+      let newProgress = (elapsedSec / durationSecs) * 100;
+      if (newProgress >= 99) newProgress = 99;
+      setTaskProgress(newProgress);
+
+      if (newProgress >= 99) {
+        clearInterval(intervalId);
+        progressTimerRef.current = null;
+      }
+    }, 500);
+
+    progressTimerRef.current = intervalId;
+  }, []);
+
+  const endTimeBasedProgress = useCallback(() => {
+    if (progressTimerRef.current) {
+      clearInterval(progressTimerRef.current);
+      progressTimerRef.current = null;
+    }
+
+    setTaskProgress(100);
+    setTimeout(() => {
+      setTaskInProgress(false);
+      setTaskName("");
+      setTaskProgress(0);
+    }, 600);
+  }, []);
 
   const clearFile = useCallback(() => {
     try {
@@ -114,13 +201,20 @@ const Ocr = () => {
   }, [dispatch]);
 
   const resetState = useCallback(() => {
+    if (progressTimerRef.current) {
+      clearInterval(progressTimerRef.current);
+      progressTimerRef.current = null;
+    }
+
+    setTaskInProgress(false);
+    setTaskProgress(0);
+    setTaskName("");
     setIsOCRingFile(false);
     setIsImageFileLoading(false);
     dispatch(ResetTranslatedFileStatus());
 
     setCorrection([]);
     setTranscription([]);
-    setAnalysisFile(null);
     setGeojson([]);
     setPages([]);
     setIndexPage(null);
@@ -393,7 +487,7 @@ const Ocr = () => {
   const pollCorrectionJobStatus = async (task_id) => {
     // Poll until status != PENDING/Processing
     while (true) {
-      const res = await api.get(`/api/correction/job-status/${task_id}`, getFormConfig());
+      const res = await api.get(`/api/correction/status/${task_id}/`, getFormConfig());
       const status = res.data.status;
       if (status === "Completed") {
         return true;
@@ -407,7 +501,7 @@ const Ocr = () => {
   };
 
   const getCorrectionJobResult = async (task_id) => {
-    const res = await api.get(`/api/correction/job-result/${task_id}`, getFormConfig());
+    const res = await api.get(`/api/correction/result/${task_id}/`, getFormConfig());
     return res.data; // should be { text, geojson, pagexml }, or JSON with these keys
   };
 
@@ -545,10 +639,10 @@ const Ocr = () => {
       const taskId = startRes.data.task_id;
 
       // Poll
-      await pollJobStatus(taskId);
+      await pollCorrectionJobStatus(taskId);
 
       // Retrieve result
-      const resultData = await getJobResult(taskId);
+      const resultData = await getCorrectionJobResult(taskId);
 
       // Store
       const { text, geojson, pagexml } = resultData;
@@ -581,6 +675,7 @@ const Ocr = () => {
     });
 
     setIsCorrecting(true);
+    startTimeBasedProgress(30, "Correction in progress");
     try {
       if (selectedCorrectionOption === "manual_transcription") {
         // Typically correct single page (the current one)
@@ -594,6 +689,7 @@ const Ocr = () => {
       }
     } finally {
       setIsCorrecting(false);
+      endTimeBasedProgress();
     }
   };
   
@@ -607,14 +703,15 @@ const Ocr = () => {
     });
 
     setIsOCRingFile(true);
+    startTimeBasedProgress(Math.max(pages.length * 15, 15), "OCR in progress");
     try {
       for (const page of pages) {
         const index = pages.indexOf(page);
         await OCRFile(page, index);
       }
-      setAnalysisFile(createFileFromTranscription());
     } finally {
       setIsOCRingFile(false);
+      endTimeBasedProgress();
     }
   };
 
@@ -714,28 +811,66 @@ const Ocr = () => {
     }
   };
 
-  const createFileFromTranscription = () => {
-    const transcriptionText = transcription.join("\n");
-    const transcriptionBlob = new Blob([transcriptionText], {
-      type: "text/plain",
-    });
-    const transcriptionFile = new File(
-      [transcriptionBlob],
-      "transcription.txt",
-      { type: "text/plain" }
-    );
-
-    return transcriptionFile;
-  };
-
   // Translation Setup
   const [availableLanguages] = useState([
+    { label: "Arabic", value: "ar" },
+    { label: "Bulgarian", value: "bg" },
+    { label: "Czech", value: "cs" },
+    { label: "Danish", value: "da" },
+    { label: "German", value: "de" },
+    { label: "Greek", value: "el" },
     { label: "English", value: "en" },
-    { label: "French", value: "fr" },
     { label: "Spanish", value: "es" },
+    { label: "Estonian", value: "et" },
+    { label: "Finnish", value: "fi" },
+    { label: "French", value: "fr" },
+    { label: "Irish", value: "ga" },
+    { label: "Croatian", value: "hr" },
+    { label: "Hungarian", value: "hu" },
+    { label: "Icelandic", value: "is" },
+    { label: "Italian", value: "it" },
+    { label: "Japanese", value: "ja" },
+    { label: "Lithuanian", value: "lt" },
+    { label: "Latvian", value: "lv" },
+    { label: "Maltese", value: "mt" },
+    { label: "Norwegian", value: "nb" },
+    { label: "Dutch", value: "nl" },
+    { label: "Polish", value: "pl" },
+    { label: "Portuguese", value: "pt" },
+    { label: "Romanian", value: "ro" },
+    { label: "Russian", value: "ru" },
+    { label: "Slovak", value: "sk" },
+    { label: "Slovenian", value: "sl" },
+    { label: "Swedish", value: "sv" },
+    { label: "Turkish", value: "tr" },
+    { label: "Ukrainian", value: "uk" },
+    { label: "Chinese", value: "zh" },
   ]);
 
+  function combineLinesForTranslation(lines) {
+    const paragraphs = [];
+    let buffer = "";
+
+    lines.forEach((lineObj) => {
+      const currentLine = lineObj.text.trim();
+      if (!currentLine) return;
+
+      if (!buffer) {
+        buffer = currentLine;
+      } else if (/[.!?]/.test(buffer.slice(-1))) {
+        paragraphs.push(buffer);
+        buffer = currentLine;
+      } else {
+        buffer += ` ${currentLine}`;
+      }
+    });
+
+    if (buffer) paragraphs.push(buffer);
+    return paragraphs.join("\n\n");
+  }
+
   const translateAll = async (source, target) => {
+    startTimeBasedProgress(600, "Translation in progress");
     toast.current.show({
       severity: "info",
       summary: "Translation",
@@ -746,15 +881,16 @@ const Ocr = () => {
     setIsTranslating(true);
     try {
       for (let i = 0; i < pages.length; i++) {
-        const textToTranslate =
-          correction[i] && correction[i].trim().length > 0
-            ? correction[i]
-            : transcription[i];
+        const lines =
+          correctionTextLines[i]?.length > 0
+            ? correctionTextLines[i]
+            : textLines[i] || [];
+
+        const textToTranslate = combineLinesForTranslation(lines);
 
         if (!textToTranslate) continue;
 
         let bodyFormData = new FormData();
-        // Create a blob for the text
         const textBlob = new Blob([textToTranslate], { type: "text/plain" });
         const textFile = new File([textBlob], `page_${i + 1}.txt`, {
           type: "text/plain",
@@ -764,32 +900,28 @@ const Ocr = () => {
         bodyFormData.append("source", source);
         bodyFormData.append("target", target);
 
-        await api
-          .post(`/api/translation/file`, bodyFormData, getFormConfig())
-          .then((res) => {
-            // res.data should contain translated text
-            const translatedText = res.data.text || "";
-            setTranslation((prevTranslation) =>
-              updateArrayAtIndex(prevTranslation, i, translatedText)
-            );
+        const response = await api.post(`/api/translation/file`, bodyFormData, {
+          ...getFormConfig(),
+          responseType: "blob",
+          timeout: 600000,
+        });
 
-            // If you need PageXML translation in the future, handle similarly.
-          })
-          .catch((error) => {
-            console.error(`Translation failed for page ${i}`, error);
-            toast.current.show({
-              life: TOAST_LIFE,
-              severity: "error",
-              summary: "Translation",
-              detail: "Something went wrong with translation.",
-            });
-            setTranslation((prevTranslation) =>
-              updateArrayAtIndex(prevTranslation, i, null)
-            );
-          });
+        const translatedText = await response.data.text();
+        setTranslation((prevTranslation) =>
+          updateArrayAtIndex(prevTranslation, i, translatedText)
+        );
       }
+    } catch (error) {
+      console.error("Error during translation:", error);
+      toast.current.show({
+        severity: "error",
+        summary: "Translation",
+        detail: "Something went wrong with translation.",
+        life: TOAST_LIFE,
+      });
     } finally {
       setIsTranslating(false);
+      endTimeBasedProgress();
     }
   };
 
@@ -861,14 +993,45 @@ const Ocr = () => {
     setCorrectionTextLines((prevTextLines) =>
       updateArrayAtIndex(prevTextLines, pageIndex, updatedLines)
     );
+    const combined = updatedLines.map((line) => line.text).join("\n");
+    setCorrection((prev) => updateArrayAtIndex(prev, pageIndex, combined));
+
+    if (correctionPageXMLs[pageIndex]) {
+      mergeUserEditsIntoPageXML(correctionPageXMLs[pageIndex], updatedLines)
+        .then((newXML) => {
+          setCorrectionPageXMLs((prev) => updateArrayAtIndex(prev, pageIndex, newXML));
+        })
+        .catch((err) => console.warn("Failed to merge user edits into correction PageXML", err));
+    }
+  };
+
+  const setTextLinesAtIndex = (pageIndex, updatedLines) => {
+    setTextLines((prev) => updateArrayAtIndex(prev, pageIndex, updatedLines));
+
+    if (pageXMLs[pageIndex]) {
+      mergeUserEditsIntoPageXML(pageXMLs[pageIndex], updatedLines)
+        .then((newXML) => {
+          setPageXMLs((prev) => updateArrayAtIndex(prev, pageIndex, newXML));
+        })
+        .catch((err) => console.warn("Failed to merge user edits into OCR PageXML", err));
+    }
   };
 
   return (
     <div>
       <ProgressBar activeStep={activeStep} setActiveStep={setActiveStep} />
 
-      {analysisFile && (
-        <Analysis file={analysisFile} language={"en"} className={"mb-3"} />
+      {taskInProgress && (
+        <div className="mt-3">
+          <PrimeProgressBar
+            value={taskProgress}
+            showValue
+            displayValueTemplate={(val) => `${Math.round(val)}%`}
+          />
+          <p style={{ textAlign: "center" }}>
+            {taskName} ({Math.round(taskProgress)}%)
+          </p>
+        </div>
       )}
 
       {activeStep > 0 && (
@@ -906,6 +1069,39 @@ const Ocr = () => {
                 setViewVisibility={setViewVisibility}
                 allow_text={activeStep >= 2}
                 allow_correction={activeStep >= 3}
+                allow_translation={activeStep >= 4}
+              />
+            )}
+
+            {activeStep >= 2 && (
+              <Dropdown
+                value={tooltipHighlightMode}
+                options={[
+                  { label: "Original OCR", value: "original", disabled: disableOriginalMode },
+                  {
+                    label: "Correction",
+                    value: "correction",
+                    disabled: !isCorrectionAvailable(),
+                  },
+                  {
+                    label: "Translation",
+                    value: "translation",
+                    disabled: !isTranslationAvailable(),
+                  },
+                ]}
+                onChange={(e) => {
+                  if (e.value === "original" && disableOriginalMode) {
+                    return;
+                  }
+                  setTooltipHighlightMode(e.value);
+                }}
+                itemTemplate={(option) => {
+                  if (option.disabled) {
+                    return <span style={{ color: "gray" }}>{option.label}</span>;
+                  }
+                  return <span>{option.label}</span>;
+                }}
+                className="ml-3"
               />
             )}
           </div>
@@ -963,9 +1159,18 @@ const Ocr = () => {
               setTranscription((prev) =>
                 updateArrayAtIndex(prev, indexPage, text)
               );
+
+              const lines = textLines[indexPage] || [];
+              setTimeout(async () => {
+                if (pageXMLs[indexPage]) {
+                  const newXML = await mergeUserEditsIntoPageXML(pageXMLs[indexPage], lines);
+                  setPageXMLs((prev) => updateArrayAtIndex(prev, indexPage, newXML));
+                }
+              }, 0);
             }}
             geojson={geojson[indexPage]}
             textLines={textLines[indexPage]}
+            setTextLinesAtIndex={setTextLinesAtIndex}
             correction={correction[indexPage]}
             setCorrection={(text) => {
               setCorrection((prev) =>
@@ -976,9 +1181,12 @@ const Ocr = () => {
             correctionTextLines={correctionTextLines[indexPage]}
             allow_text={activeStep >= 2}
             allow_correction={activeStep >= 3}
+            translation={translation[indexPage]}
+            allow_translation={activeStep >= 4}
             viewVisibility={viewVisibility}
             setCorrectionTextLinesAtIndex={setCorrectionTextLinesAtIndex}
             currentPageIndex={indexPage}
+            tooltipDisplayMode={tooltipHighlightMode}
           />
         </div>
       )}
@@ -1108,9 +1316,7 @@ const Ocr = () => {
           <Button
             label="Extract text"
             onClick={() => {
-              fileOCRer().then(() => {
-                setAnalysisFile(createFileFromTranscription());
-              });
+              fileOCRer();
               setDisplayOCROptions(false);
             }}
             disabled={isOCRingFile || indexPage === null || !selectedOCREngine}

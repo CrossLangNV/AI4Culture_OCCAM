@@ -1,9 +1,9 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "OCCAM OCR",
+  "name": "AI4Culture OCCAM OCR",
   "icons": [
     {
-      "src": "favicon.ico",
+      "src": "favicon_ai4c.ico",
       "sizes": "64x64 32x32 24x24 16x16",
       "type": "image/x-icon"
     },

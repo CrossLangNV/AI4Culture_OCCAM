@@ -1,7 +1,4 @@
 import { AuthActionTypes } from "../constants/auth-action-types";
-import axios from "axios";
-import { clientId, clientSecret } from "../constants/axiosConf";
-import { GetThemeConfig } from "./uiActions";
 import api from "../interceptors/api";
 
 export const LoadUser = () => async (dispatch) => {
@@ -98,37 +95,6 @@ export const AcceptToS = () => async (dispatch) => {
   }
 };
 
-export const GoogleAuthenticate = (accessToken) => async (dispatch) => {
-  try {
-    dispatch({
-      type: AuthActionTypes.GOOGLE_AUTH_LOADING,
-    });
-
-    await api
-      .post("/auth/convert-token", {
-        grant_type: "convert_token",
-        client_id: clientId, // REACT_DJANGO_CLIENT_ID
-        client_secret: clientSecret, // REACT_DJANGO_CLIENT_SECRET
-        backend: "google-oauth2",
-        token: accessToken,
-      })
-      .then((res) => {
-        dispatch({
-          type: AuthActionTypes.GOOGLE_AUTH_SUCCESS,
-          payload: res.data,
-        });
-
-        dispatch(LoadUser());
-        dispatch(HasUserAcceptedToS());
-        dispatch(GetThemeConfig());
-      });
-  } catch (e) {
-    dispatch({
-      type: AuthActionTypes.GOOGLE_AUTH_FAIL,
-    });
-  }
-};
-
 export const Login = (email, password, onSuccess) => async (dispatch) => {
   try {
     dispatch({
@@ -159,38 +125,6 @@ export const Login = (email, password, onSuccess) => async (dispatch) => {
     
   } catch (error) {
     dispatch({ type: AuthActionTypes.AUTH_LOGIN_FAILED });
-  }
-};
-
-export const LoginWithIP = () => async (dispatch) => {
-  try {
-    dispatch({
-      type: AuthActionTypes.AUTH_LOGIN_IP_LOADING,
-    });
-
-    const res = await axios.get("https://geolocation-db.com/json/");
-    const ip_address = res.data.IPv4;
-
-    await api
-      .post("/auth/ip", {
-        client_id: clientId, // REACT_DJANGO_CLIENT_ID
-        client_secret: clientSecret, // REACT_DJANGO_CLIENT_SECRET
-        ip_address: ip_address,
-      })
-      .then((res) => {
-        dispatch({
-          type: AuthActionTypes.AUTH_LOGIN_IP_SUCCESS,
-          payload: res.data,
-        });
-
-        dispatch(LoadUser());
-        dispatch(HasUserAcceptedToS());
-        dispatch(GetThemeConfig());
-      });
-  } catch (e) {
-    dispatch({
-      type: AuthActionTypes.AUTH_LOGIN_IP_FAILED,
-    });
   }
 };
 
