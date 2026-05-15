@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react";
+import React, { useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Login } from "../../actions/authActions";
 import { useLocation, useNavigate } from "react-router-dom";

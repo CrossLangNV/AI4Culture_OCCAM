@@ -83,7 +83,7 @@ const Ocr = () => {
   const [taskProgress, setTaskProgress] = useState(0);
   const [taskName, setTaskName] = useState("");
 
-  const [uploadedFile, setUploadedFile] = useState(null);
+  const [, setUploadedFile] = useState(null);
   const [isImageFileLoading, setIsImageFileLoading] = useState(false);
 
   const [pages, setPages] = useState([]);
@@ -102,8 +102,8 @@ const Ocr = () => {
 
   // Translation
   const [translation, setTranslation] = useState([]);
-  const [translationPageXMLs, setTranslationPageXMLs] = useState([]);
-  const [translationTextLines, setTranslationTextLines] = useState([]);
+  const [, setTranslationPageXMLs] = useState([]);
+  const [, setTranslationTextLines] = useState([]);
   const [displayTranslationOptions, setDisplayTranslationOptions] = useState(false);
   const [isTranslating, setIsTranslating] = useState(false);
   const [selectedSourceLang, setSelectedSourceLang] = useState(null);
@@ -192,14 +192,6 @@ const Ocr = () => {
     }, 600);
   }, []);
 
-  const clearFile = useCallback(() => {
-    try {
-      uploadRef.current.clear();
-    } catch (e) {}
-
-    resetState();
-  }, [dispatch]);
-
   const resetState = useCallback(() => {
     if (progressTimerRef.current) {
       clearInterval(progressTimerRef.current);
@@ -235,6 +227,14 @@ const Ocr = () => {
     setSelectedSourceLang(null);
     setSelectedTargetLang(null);
   }, [dispatch]);
+
+  const clearFile = useCallback(() => {
+    try {
+      uploadRef.current.clear();
+    } catch (e) {}
+
+    resetState();
+  }, [resetState]);
 
   const onTemplateRemove = (file, callback) => {
     callback();
@@ -378,7 +378,7 @@ const Ocr = () => {
     if (pages?.length > 0 && activeStep === 0) {
       setActiveStep(1);
     }
-  }, [pages]);
+  }, [activeStep, pages]);
 
   useEffect(() => {
     if (activeStep === 2 && pages?.length && oCROptionsAuto) {

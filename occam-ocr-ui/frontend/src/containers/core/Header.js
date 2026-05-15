@@ -1,24 +1,10 @@
-import React, { useRef } from "react";
+import React from "react";
 import { useLocation, useNavigate } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
-import {
-  Logout,
-  ModifyRegistrationSuccessMessage,
-} from "../../actions/authActions";
-import { StyleClass } from "primereact/styleclass";
-import { Ripple } from "primereact/ripple";
-import { Menu } from "primereact/menu";
-import { Menubar } from "primereact/menubar";
-import { Button } from "primereact/button";
 import { Tooltip } from "primereact/tooltip";
 
 const Header = () => {
   const location = useLocation();
-  const dispatch = useDispatch();
   const navigate = useNavigate();
-
-  // Redux
-  const auth = useSelector((state) => state.auth);
 
   // For the navigation mapping (e.g. Home > Configure > Manage configurations)
   const routeMapping = [
@@ -295,151 +281,6 @@ const Header = () => {
       return routeItem.categoryClickable;
     }
   };
-
-  const configureItems = [
-    {
-      label: "Manage configurations",
-      icon: "pi pi-sliders-h mr-2",
-      command: (_) => {
-        navigate("/config");
-      },
-    },
-    {
-      label: "Engines",
-      icon: "pi pi-server mr-2",
-      command: (_) => {
-        navigate("/engines");
-      },
-    },
-    {
-      label: "Providers",
-      icon: "pi pi-th-large mr-2",
-      command: (_) => {
-        navigate("/providers");
-      },
-    },
-  ];
-
-  let advisoryItems = [
-    {
-      label: "New",
-      icon: "pi pi-check-circle mr-2",
-      command: (_) => {
-        navigate("/engine-advisory");
-      },
-    },
-    {
-      label: "History",
-      icon: "pi pi-server mr-2",
-      command: (_) => {
-        navigate("/engine-advisory/automated");
-      },
-    },
-  ];
-
-  let settingsItems = [
-    {
-      label: "Profile",
-      icon: "pi pi-user mr-2",
-      command: (_) => {
-        navigate("/profile");
-      },
-    },
-    {
-      label: "User management",
-      icon: "pi pi-cog mr-2",
-      command: (_) => {
-        navigate("/user-management");
-      },
-    },
-    {
-      label: "Sign out",
-      icon: "pi pi-sign-out mr-2",
-      command: (_) => {
-        dispatch(Logout());
-        navigate("/login");
-      },
-    },
-  ];
-
-  let helpItems = [
-    {
-      label: "TMS",
-      icon: "pi pi-th-large mr-2",
-      command: (_) => {
-        navigate("/help/tms");
-      },
-    },
-    {
-      label: "FAQ",
-      icon: "pi pi-question-circle mr-2",
-      command: (_) => {
-        navigate("/help/faq");
-      },
-    },
-  ];
-
-  let extraItems = [
-    {
-      label: "OCR",
-      icon: "pi pi-image", // OR pi-search
-      command: (_) => {
-        navigate("/ocr");
-      },
-    },
-  ];
-
-  const menuItems = [
-    {
-      label: "Translate",
-      icon: "pi pi-comments",
-      command: (_) => {
-        navigate("/");
-      },
-    },
-    {
-      label: "Configure",
-      icon: "pi pi-sliders-h",
-      items: configureItems,
-    },
-    {
-      label: "Advisory",
-      icon: "pi pi-check-circle",
-      items: advisoryItems,
-    },
-    // Dashboard no longer available for now
-    {
-      label: "Extra",
-      icon: "pi pi-list",
-      items: extraItems,
-    },
-    {
-      label: "Help",
-      icon: "pi pi-question-circle",
-      items: helpItems,
-    },
-    {
-      label: auth.user,
-      items: settingsItems,
-    },
-  ];
-
-  const start = (
-    <button
-      className={"btn-no-decoration text-white white-space-nowrap"}
-      onClick={() => {
-        navigate("/");
-      }}
-    >
-      <img
-        alt="logo"
-        src="/icon-crosslang.svg"
-        height="48"
-        className="mr-2 top-logo"
-        aria-hidden={true}
-      ></img>
-    </button>
-  );
 
   return (
     <div className="bg-white">

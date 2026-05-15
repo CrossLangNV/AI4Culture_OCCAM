@@ -84,7 +84,7 @@ const ProgressBar = ({ activeStep, setActiveStep }) => {
             <li
               key={index}
               className={`relative mr-0 flex-auto ${
-                index != steps.length - 1 ? "md:mr-8" : ""
+                index !== steps.length - 1 ? "md:mr-8" : ""
               }`}
             >
               {renderStep(index, step.icon, activeStep)}

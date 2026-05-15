@@ -154,8 +154,9 @@ export const Register = (email, password, name) => {
     } catch (err) {
       // If your server returns 400 with a body like { "email": ["already exists"] }
       if (err.response?.status === 400 && err.response.data) {
-        // Throw a custom error object that has the fieldErrors
-        throw { fieldErrors: err.response.data };
+        const registrationError = new Error("Registration validation failed");
+        registrationError.fieldErrors = err.response.data;
+        throw registrationError;
       } else {
         // Some other error (network error, 500, etc.)
         dispatch({ type: AuthActionTypes.AUTH_REGISTER_FAILED });

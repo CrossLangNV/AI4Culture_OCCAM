@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { useFormik } from "formik";
 import { useDispatch, useSelector } from "react-redux";
 import { Card } from "primereact/card";
@@ -16,7 +16,6 @@ import { useNavigate } from "react-router-dom";
 import { Alert } from "@mui/material";
 
 const SignupPage = () => {
-  const [formData, setFormData] = useState({});
   const auth = useSelector((state) => state.auth);
 
   const dispatch = useDispatch();
@@ -85,7 +84,7 @@ const SignupPage = () => {
         formik.setFieldError(field, auth.fieldErrors[field][0]);
       });
     }
-  }, [auth.fieldErrors]);
+  }, [auth.fieldErrors, formik]);
 
   const isFormFieldValid = (name) =>
     !!(formik.touched[name] && formik.errors[name]);
@@ -158,7 +157,7 @@ const SignupPage = () => {
             <h5>Registration Successful!</h5>
             <br />
             <p>
-              Your account has been registered under the name <b>{formData.name}</b>.
+              Your account has been registered under the name <b>{formik.values.name}</b>.
               <br />
               Press 'OK' to proceed to the OCR UI.
             </p>

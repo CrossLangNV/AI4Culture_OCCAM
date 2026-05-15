@@ -33,7 +33,10 @@ except ValueError:
 if DEBUG:
     print("DEBUG is enabled")
 
-ALLOWED_HOSTS = [h for h in os.environ.get("ALLOWED_HOSTS", "localhost").split(" ")]
+ALLOWED_HOSTS = [h for h in os.environ.get("ALLOWED_HOSTS", "localhost").split(" ") if h]
+for local_host in ("127.0.0.1",):
+    if local_host not in ALLOWED_HOSTS:
+        ALLOWED_HOSTS.append(local_host)
 
 CSRF_TRUSTED_ORIGINS = [
     origin
@@ -218,6 +221,7 @@ CELERY_ACCEPT_CONTENT = ['json']
 CELERY_TASK_SERIALIZER = 'json'
 CELERY_RESULT_SERIALIZER = 'json'
 CELERY_TIMEZONE = 'UTC'
+CELERY_BROKER_CONNECTION_RETRY_ON_STARTUP = True
 
 CELERY_QUEUES = (
     Queue('ocr_queue', Exchange('ocr_queue'), routing_key='ocr_queue'),

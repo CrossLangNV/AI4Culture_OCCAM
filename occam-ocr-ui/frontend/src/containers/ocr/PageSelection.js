@@ -16,7 +16,6 @@ export const PageSelection = ({ pages, selectedPage, setSelectedPage }) => {
     setSelectedPage(index);
   };
 
-  const pageScrollerHeight = "360px";
   const pageThumbnailHeight = "200px";
   const pageThumbnailWidth = "150px";
 
