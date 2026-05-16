@@ -92,15 +92,6 @@ const LoginPage = () => {
           ) : null}
           <br />
           <br />
-          <button
-            type="button"
-            className="btn-link mt-2"
-            onClick={() => navigate("/signup")}
-          >
-            Don't have an account? Sign up.
-          </button>
-          <br />
-          <br />
           <Button
             type="submit"
             label="Sign in"

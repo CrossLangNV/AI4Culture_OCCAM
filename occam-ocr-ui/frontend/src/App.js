@@ -1,4 +1,4 @@
-import { Route, Routes } from "react-router-dom";
+import { Navigate, Route, Routes } from "react-router-dom";
 import Header from "./containers/core/Header";
 
 import React, { useEffect } from "react";
@@ -14,7 +14,6 @@ import CookieConsent from "./containers/core/CookieConsent";
 import Ocr from "./containers/ocr/Ocr";
 import PrivateRoute from "./containers/core/PrivateRoute";
 import LoginPage from "./containers/core/LoginPage";
-import SignupPage from "./containers/core/SignupPage";
 import { useDispatch, useSelector } from "react-redux";
 import { rehydrateAuth } from "./actions/authActions";
 
@@ -51,7 +50,7 @@ function App() {
               }
             />
             <Route path={"/login"} element={<LoginPage />} />
-            <Route path={"/signup"} element={<SignupPage />} />
+            <Route path={"/signup"} element={<Navigate replace to="/login" />} />
           </Routes>
         </div>
       </div>

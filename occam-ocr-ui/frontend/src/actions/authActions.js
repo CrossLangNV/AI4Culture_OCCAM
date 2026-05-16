@@ -128,44 +128,6 @@ export const Login = (email, password, onSuccess) => async (dispatch) => {
   }
 };
 
-export const Register = (email, password, name) => {
-  // Return the thunk function:
-  return async (dispatch) => {
-    dispatch({ type: AuthActionTypes.AUTH_REGISTER_LOADING});
-
-    try {
-      const res = await api.post("/api/user/register/", {
-        email,
-        password,
-        name,
-      });
-
-      // For a successful creation, Django REST typically returns 201
-      if (res.status === 201) {
-        dispatch({ type: AuthActionTypes.AUTH_REGISTER_SUCCESS });
-        // **IMPORTANT**: return something so the promise resolves
-        return res.data;  
-      } else {
-        // For any unexpected status code
-        dispatch({ type: AuthActionTypes.AUTH_REGISTER_FAILED });
-        // cause the promise to reject, so .catch() runs
-        throw new Error(`Registration failed with status ${res.status}`);
-      }
-    } catch (err) {
-      // If your server returns 400 with a body like { "email": ["already exists"] }
-      if (err.response?.status === 400 && err.response.data) {
-        const registrationError = new Error("Registration validation failed");
-        registrationError.fieldErrors = err.response.data;
-        throw registrationError;
-      } else {
-        // Some other error (network error, 500, etc.)
-        dispatch({ type: AuthActionTypes.AUTH_REGISTER_FAILED });
-        throw err;
-      }
-    }
-  };
-};
-
 export const ModifyRegistrationSuccessMessage = (value) => async (dispatch) => {
   dispatch({
     type: AuthActionTypes.MESSAGE_REGISTRATION_SUCCESS,
